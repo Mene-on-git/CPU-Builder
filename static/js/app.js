@@ -53,6 +53,7 @@ const DEFS = {
                   interattivo:true, fn:null },
     COSTANTE_0: { nome:'0',     cat:'io', ing:[], usc:['OUT'], col:'#555555', w:60, h:45, fn:()=>[0] },
     COSTANTE_1: { nome:'1',     cat:'io', ing:[], usc:['OUT'], col:'#00aa55', w:60, h:45, fn:()=>[1] },
+    DISPLAY7:   { nome:'7SEG',  cat:'display', ing:['A','B','C','D','E','F','G','DP'], usc:[], col:'#1a1a2e', w:120, h:160, fn:null },
 };
 
 // ======================== CLASSI DATI ========================
@@ -469,6 +470,108 @@ class Renderer {
                 ctx.fillText('OFF', c.x+c.w/2, c.y+c.h-4);
             }
         }
+        if(c.tipo==='DISPLAY7') {
+            this._display7seg(ctx, c);
+        }
+    }
+
+    // ---- Display a 7 segmenti ----
+    //
+    //   Pin: A=seg superiore, B=seg alto-dx, C=seg basso-dx,
+    //        D=seg inferiore, E=seg basso-sx, F=seg alto-sx,
+    //        G=seg centrale, DP=punto decimale
+    //
+    //     AAAA
+    //    F    B
+    //    F    B
+    //     GGGG
+    //    E    C
+    //    E    C
+    //     DDDD  .DP
+    //
+    _display7seg(ctx, c) {
+        const pA = c.pinI[0]?.stato || 0;
+        const pB = c.pinI[1]?.stato || 0;
+        const pC = c.pinI[2]?.stato || 0;
+        const pD = c.pinI[3]?.stato || 0;
+        const pE = c.pinI[4]?.stato || 0;
+        const pF = c.pinI[5]?.stato || 0;
+        const pG = c.pinI[6]?.stato || 0;
+        const pDP= c.pinI[7]?.stato || 0;
+
+        // Area display interna
+        const pad = 10;
+        const dx = c.x + pad;
+        const dy = c.y + 22;
+        const dw = c.w - pad*2;
+        const dh = c.h - 32;
+
+        // Sfondo display (nero)
+        ctx.fillStyle = '#0a0a0a';
+        this._rrect(ctx, dx, dy, dw, dh, 4);
+        ctx.fill();
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 1/this.zoom;
+        ctx.stroke();
+
+        // Geometria segmenti
+        const mx = dx + dw/2;           // centro X
+        const my = dy + dh/2;           // centro Y
+        const segL = dw * 0.55;         // lunghezza segmento
+        const segW = dw * 0.12;         // spessore segmento
+        const hGap = dh * 0.42;         // metà altezza verticale
+        const colOn  = '#ff1a1a';
+        const colOff = '#1a0a0a';
+        const glowOn = '#ff4444';
+
+        const segs = [
+            // [acceso, cx, cy, orizzontale]
+            { on:pA, cx:mx, cy:my-hGap,     horiz:true  },  // A - superiore
+            { on:pB, cx:mx+segL/2, cy:my-hGap/2, horiz:false }, // B - alto dx
+            { on:pC, cx:mx+segL/2, cy:my+hGap/2, horiz:false }, // C - basso dx
+            { on:pD, cx:mx, cy:my+hGap,     horiz:true  },  // D - inferiore
+            { on:pE, cx:mx-segL/2, cy:my+hGap/2, horiz:false }, // E - basso sx
+            { on:pF, cx:mx-segL/2, cy:my-hGap/2, horiz:false }, // F - alto sx
+            { on:pG, cx:mx, cy:my,           horiz:true  },  // G - centro
+        ];
+
+        segs.forEach(s => {
+            ctx.save();
+            if(s.on) { ctx.shadowColor=glowOn; ctx.shadowBlur=8; }
+            ctx.fillStyle = s.on ? colOn : colOff;
+            ctx.beginPath();
+            if(s.horiz) {
+                // Segmento orizzontale (esagono allungato)
+                const hw = segL/2, hh = segW/2;
+                ctx.moveTo(s.cx-hw+hh, s.cy-hh);
+                ctx.lineTo(s.cx+hw-hh, s.cy-hh);
+                ctx.lineTo(s.cx+hw,    s.cy);
+                ctx.lineTo(s.cx+hw-hh, s.cy+hh);
+                ctx.lineTo(s.cx-hw+hh, s.cy+hh);
+                ctx.lineTo(s.cx-hw,    s.cy);
+            } else {
+                // Segmento verticale (esagono allungato ruotato)
+                const hw = segW/2, hh = hGap/2-segW*0.3;
+                ctx.moveTo(s.cx,    s.cy-hh);
+                ctx.lineTo(s.cx+hw, s.cy-hh+hw);
+                ctx.lineTo(s.cx+hw, s.cy+hh-hw);
+                ctx.lineTo(s.cx,    s.cy+hh);
+                ctx.lineTo(s.cx-hw, s.cy+hh-hw);
+                ctx.lineTo(s.cx-hw, s.cy-hh+hw);
+            }
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        });
+
+        // Punto decimale (DP)
+        ctx.save();
+        if(pDP) { ctx.shadowColor=glowOn; ctx.shadowBlur=8; }
+        ctx.fillStyle = pDP ? colOn : colOff;
+        ctx.beginPath();
+        ctx.arc(mx + segL/2 + segW, my + hGap, segW*0.6, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
     }
 
     _pin(ctx, chip, pin) {
