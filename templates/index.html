@@ -41,6 +41,15 @@
         </div>
     </header>
 
+    <!-- ============ BANNER MODIFICA CHIP ============ -->
+    <div id="banner-modifica-chip" class="banner-modifica nascosta">
+        <span>✏️ <strong>Modalità modifica chip:</strong> <span id="nome-chip-editing"></span></span>
+        <div style="display:flex;gap:8px">
+            <button id="btn-salva-chip-edit" class="btn-toolbar btn-primario">💾 Salva Chip</button>
+            <button id="btn-annulla-chip-edit" class="btn-toolbar">✕ Annulla</button>
+        </div>
+    </div>
+
     <!-- ============ CONTENUTO PRINCIPALE ============ -->
     <div id="contenuto">
         <!-- SIDEBAR SINISTRA: Libreria componenti -->
@@ -65,6 +74,7 @@
                 <h4 class="cat-titolo" data-cat="io">▸ Input / Output</h4>
                 <div class="cat-contenuto" id="cat-io">
                     <button class="btn-chip" data-tipo="INGRESSO" style="--chip-col: #16a085">IN (Switch)</button>
+                    <button class="btn-chip" data-tipo="PULSANTE" style="--chip-col: #e74c3c">IN (Pulsante)</button>
                     <button class="btn-chip" data-tipo="USCITA" style="--chip-col: #e67e22">OUT (LED)</button>
                     <button class="btn-chip" data-tipo="CLOCK" style="--chip-col: #34495e">Clock</button>
                     <button class="btn-chip" data-tipo="COSTANTE_0" style="--chip-col: #555">Cost. 0</button>
@@ -157,7 +167,10 @@
         <div class="modale-contenuto modale-interno-contenuto">
             <div class="modale-interno-header">
                 <h3 id="titolo-interno">🔍 Vista Interna</h3>
-                <button id="btn-chiudi-interno" class="btn-toolbar">✕ Chiudi</button>
+                <div style="display:flex;gap:8px">
+                    <button id="btn-modifica-chip" class="btn-toolbar btn-primario" style="display:none">✏️ Modifica</button>
+                    <button id="btn-chiudi-interno" class="btn-toolbar">✕ Chiudi</button>
+                </div>
             </div>
             <div id="info-chip-interno" class="info-chip-interno"></div>
             <div class="canvas-interno-wrap">
@@ -168,6 +181,7 @@
     </div>
 
     <!-- JavaScript -->
+    <script src="/static/js/graphics.js"></script>
     <script src="/static/js/app.js"></script>
 </body>
 </html>

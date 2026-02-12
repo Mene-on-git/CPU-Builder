@@ -394,6 +394,24 @@ html, body {
     padding: 20px;
 }
 
+/* ---- Banner Modifica Chip ---- */
+.banner-modifica {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 38px;
+    background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+    color: #fff;
+    padding: 0 16px;
+    font-size: 13px;
+    z-index: 101;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+.banner-modifica.nascosta {
+    display: none;
+}
+
 .modale-interno-header {
     display: flex;
     align-items: center;

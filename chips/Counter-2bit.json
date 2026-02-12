@@ -1,0 +1,261 @@
+{
+  "nome": "Counter-2bit",
+  "colore": "#cbbdbd",
+  "ingressi": [
+    "OUT"
+  ],
+  "uscite": [
+    "IN",
+    "IN"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 745824,
+        "tipo": "FLIPFLOP_D",
+        "x": -320,
+        "y": 60,
+        "stato": 0,
+        "statoInterno": {
+          "Q": 0,
+          "clkPrev": 1
+        },
+        "pinI": [
+          {
+            "id": 745825,
+            "et": "D"
+          },
+          {
+            "id": 745826,
+            "et": "CLK"
+          },
+          {
+            "id": 745827,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 745828,
+            "et": "Q"
+          },
+          {
+            "id": 745829,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 745831,
+        "tipo": "FLIPFLOP_D",
+        "x": -320,
+        "y": 280,
+        "stato": 0,
+        "statoInterno": {
+          "Q": 0,
+          "clkPrev": 1
+        },
+        "pinI": [
+          {
+            "id": 745832,
+            "et": "D"
+          },
+          {
+            "id": 745833,
+            "et": "CLK"
+          },
+          {
+            "id": 745834,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 745835,
+            "et": "Q"
+          },
+          {
+            "id": 745836,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 745847,
+        "tipo": "NOT",
+        "x": -300,
+        "y": -40,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 745848,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 745849,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 745851,
+        "tipo": "XOR",
+        "x": -180,
+        "y": 180,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 745852,
+            "et": "A"
+          },
+          {
+            "id": 745853,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 745854,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 745861,
+        "tipo": "USCITA",
+        "x": 60,
+        "y": 40,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 745862,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 745864,
+        "tipo": "USCITA",
+        "x": 80,
+        "y": 260,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 745865,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 745895,
+        "tipo": "COSTANTE_0",
+        "x": -500,
+        "y": 300,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 745896,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 745898,
+        "tipo": "COSTANTE_0",
+        "x": -520,
+        "y": 140,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 745899,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 745909,
+        "tipo": "INGRESSO",
+        "x": -720,
+        "y": 100,
+        "stato": 1,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 745910,
+            "et": "OUT"
+          }
+        ]
+      }
+    ],
+    "fili": [
+      {
+        "id": 745885,
+        "srcId": 745828,
+        "dstId": 745848
+      },
+      {
+        "id": 745887,
+        "srcId": 745849,
+        "dstId": 745825
+      },
+      {
+        "id": 745889,
+        "srcId": 745829,
+        "dstId": 745852
+      },
+      {
+        "id": 745891,
+        "srcId": 745836,
+        "dstId": 745853
+      },
+      {
+        "id": 745893,
+        "srcId": 745854,
+        "dstId": 745832
+      },
+      {
+        "id": 745901,
+        "srcId": 745899,
+        "dstId": 745827
+      },
+      {
+        "id": 745903,
+        "srcId": 745896,
+        "dstId": 745834
+      },
+      {
+        "id": 745905,
+        "srcId": 745828,
+        "dstId": 745862
+      },
+      {
+        "id": 745907,
+        "srcId": 745835,
+        "dstId": 745865
+      },
+      {
+        "id": 745915,
+        "srcId": 745910,
+        "dstId": 745826
+      },
+      {
+        "id": 745917,
+        "srcId": 745910,
+        "dstId": 745833
+      }
+    ]
+  }
+}
