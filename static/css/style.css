@@ -386,6 +386,73 @@ html, body {
     margin-top: 16px;
 }
 
+/* ---- Modale Vista Interna ---- */
+.modale-interno-contenuto {
+    min-width: 700px;
+    max-width: 900px;
+    max-height: 85vh;
+    padding: 20px;
+}
+
+.modale-interno-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.modale-interno-header h3 {
+    margin-bottom: 0;
+}
+
+.info-chip-interno {
+    font-size: 12px;
+    color: var(--testo-2);
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: var(--sfondo);
+    border-radius: var(--raggio);
+    border: 1px solid var(--bordo);
+    line-height: 1.6;
+}
+
+.canvas-interno-wrap {
+    width: 100%;
+    height: 420px;
+    border-radius: var(--raggio);
+    overflow: hidden;
+    border: 1px solid var(--bordo);
+    background: #0a0a18;
+}
+
+#canvas-interno {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.legenda-interno {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--testo-2);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.leg-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.leg-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
 /* ---- Lista Progetti ---- */
 #lista-progetti {
     max-height: 300px;

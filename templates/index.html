@@ -73,9 +73,18 @@
             </div>
 
             <div class="categoria">
+                <h4 class="cat-titolo" data-cat="memoria">▸ Memoria</h4>
+                <div class="cat-contenuto" id="cat-memoria">
+                    <button class="btn-chip" data-tipo="FLIPFLOP_D" style="--chip-col: #3498db">Flip-Flop D</button>
+                    <button class="btn-chip" data-tipo="CONTATORE_4BIT" style="--chip-col: #9b59b6">Contatore 4bit</button>
+                </div>
+            </div>
+
+            <div class="categoria">
                 <h4 class="cat-titolo" data-cat="display">▸ Display</h4>
                 <div class="cat-contenuto" id="cat-display">
                     <button class="btn-chip" data-tipo="DISPLAY7" style="--chip-col: #e74c3c">7 Segmenti</button>
+                    <button class="btn-chip" data-tipo="DECODER_BCD7" style="--chip-col: #e67e22">Decoder BCD→7</button>
                 </div>
             </div>
 
@@ -140,6 +149,21 @@
                 <button id="btn-conferma-esporta" class="btn-toolbar btn-primario">Esporta</button>
                 <button id="btn-annulla-esporta" class="btn-toolbar">Annulla</button>
             </div>
+        </div>
+    </div>
+
+    <!-- ============ MODALE VISTA INTERNA ============ -->
+    <div id="modale-interno" class="modale nascosta">
+        <div class="modale-contenuto modale-interno-contenuto">
+            <div class="modale-interno-header">
+                <h3 id="titolo-interno">🔍 Vista Interna</h3>
+                <button id="btn-chiudi-interno" class="btn-toolbar">✕ Chiudi</button>
+            </div>
+            <div id="info-chip-interno" class="info-chip-interno"></div>
+            <div class="canvas-interno-wrap">
+                <canvas id="canvas-interno"></canvas>
+            </div>
+            <div id="legenda-interno" class="legenda-interno"></div>
         </div>
     </div>
 

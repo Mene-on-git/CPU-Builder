@@ -54,6 +54,9 @@ const DEFS = {
     COSTANTE_0: { nome:'0',     cat:'io', ing:[], usc:['OUT'], col:'#555555', w:60, h:45, fn:()=>[0] },
     COSTANTE_1: { nome:'1',     cat:'io', ing:[], usc:['OUT'], col:'#00aa55', w:60, h:45, fn:()=>[1] },
     DISPLAY7:   { nome:'7SEG',  cat:'display', ing:['A','B','C','D','E','F','G','DP'], usc:[], col:'#1a1a2e', w:120, h:160, fn:null },
+    FLIPFLOP_D: { nome:'D-FF',  cat:'memoria', ing:['D','CLK','RST'], usc:['Q','Q̄'], col:'#3498db', w:110, h:80, fn:null },
+    CONTATORE_4BIT: { nome:'CNT4', cat:'memoria', ing:['CLK','RST'], usc:['Q0','Q1','Q2','Q3'], col:'#9b59b6', w:120, h:100, fn:null },
+    DECODER_BCD7:   { nome:'BCD→7', cat:'display', ing:['D0','D1','D2','D3'], usc:['A','B','C','D','E','F','G'], col:'#e67e22', w:120, h:130, fn:null },
 };
 
 // ======================== CLASSI DATI ========================
@@ -93,6 +96,17 @@ class Chip {
         this.pinI = [];
         this.pinU = [];
         this.stato = (tipo === 'CLOCK') ? 1 : 0;  // statoInterattivo
+        this.statoInterno = {};  // Stato interno per chip sequenziali (es. flip-flop)
+
+        // Inizializza stato interno per chip sequenziali
+        if(tipo === 'FLIPFLOP_D') {
+            this.statoInterno.Q = 0;
+            this.statoInterno.clkPrev = 0;
+        }
+        if(tipo === 'CONTATORE_4BIT') {
+            this.statoInterno.valore = 0;   // conteggio 0-15
+            this.statoInterno.clkPrev = 0;
+        }
 
         // Crea pin
         if (d) {
@@ -199,6 +213,75 @@ class Simulatore {
                         if(i<c.pinU.length){ const nv = v?1:0; if(c.pinU[i].stato!==nv){ c.pinU[i].stato=nv; changed=true; }}
                     });
                 }
+                // Flip-flop D (edge-triggered)
+                if(c.tipo === 'FLIPFLOP_D' && c.pinI.length >= 3){
+                    const D = c.pinI[0].stato;      // Data input
+                    const CLK = c.pinI[1].stato;    // Clock
+                    const RST = c.pinI[2].stato;    // Reset (attivo alto)
+                    const clkPrev = c.statoInterno.clkPrev || 0;
+                    
+                    // Rileva fronte di salita (rising edge)
+                    const risingEdge = (CLK === 1 && clkPrev === 0);
+                    
+                    if(RST) {
+                        // Reset sincrono: azzera Q
+                        if(c.statoInterno.Q !== 0){ c.statoInterno.Q = 0; changed = true; }
+                    } else if(risingEdge) {
+                        // Sul fronte di salita: cattura D in Q
+                        if(c.statoInterno.Q !== D){ c.statoInterno.Q = D; changed = true; }
+                    }
+                    
+                    // Aggiorna uscite Q e Q̄
+                    const Q = c.statoInterno.Q;
+                    if(c.pinU[0] && c.pinU[0].stato !== Q){ c.pinU[0].stato = Q; changed = true; }
+                    if(c.pinU[1] && c.pinU[1].stato !== (1-Q)){ c.pinU[1].stato = 1-Q; changed = true; }
+                    
+                    // Memorizza stato clock per prossimo ciclo
+                    c.statoInterno.clkPrev = CLK;
+                }
+                // Contatore 4 bit (edge-triggered, conta sul fronte di salita)
+                if(c.tipo === 'CONTATORE_4BIT' && c.pinI.length >= 2){
+                    const CLK = c.pinI[0].stato;
+                    const RST = c.pinI[1].stato;
+                    const clkPrev = c.statoInterno.clkPrev || 0;
+                    const risingEdge = (CLK === 1 && clkPrev === 0);
+
+                    if(RST) {
+                        if(c.statoInterno.valore !== 0){ c.statoInterno.valore = 0; changed = true; }
+                    } else if(risingEdge) {
+                        c.statoInterno.valore = (c.statoInterno.valore + 1) & 0xF;
+                        changed = true;
+                    }
+
+                    // Uscite Q0..Q3 (bit meno significativo → Q0)
+                    const v = c.statoInterno.valore;
+                    for(let b=0; b<4; b++){
+                        const bit = (v >> b) & 1;
+                        if(c.pinU[b] && c.pinU[b].stato !== bit){ c.pinU[b].stato = bit; changed = true; }
+                    }
+                    c.statoInterno.clkPrev = CLK;
+                }
+                // Decoder BCD → 7 segmenti (combinatorio, truth table)
+                if(c.tipo === 'DECODER_BCD7' && c.pinI.length >= 4){
+                    //       A B C D E F G
+                    const TT = [
+                        [1,1,1,1,1,1,0], // 0
+                        [0,1,1,0,0,0,0], // 1
+                        [1,1,0,1,1,0,1], // 2
+                        [1,1,1,1,0,0,1], // 3
+                        [0,1,1,0,0,1,1], // 4
+                        [1,0,1,1,0,1,1], // 5
+                        [1,0,1,1,1,1,1], // 6
+                        [1,1,1,0,0,0,0], // 7
+                        [1,1,1,1,1,1,1], // 8
+                        [1,1,1,1,0,1,1], // 9
+                    ];
+                    const digit = (c.pinI[0].stato) | (c.pinI[1].stato<<1) | (c.pinI[2].stato<<2) | (c.pinI[3].stato<<3);
+                    const row = (digit >= 0 && digit <= 9) ? TT[digit] : [0,0,0,0,0,0,0];
+                    for(let s=0; s<7; s++){
+                        if(c.pinU[s] && c.pinU[s].stato !== row[s]){ c.pinU[s].stato = row[s]; changed = true; }
+                    }
+                }
                 // Chip personalizzati
                 if(this.customDefs.has(c.tipo)){
                     const cd = this.customDefs.get(c.tipo);
@@ -281,6 +364,16 @@ class Simulatore {
         for(const c of this.chips.values()){
             c.tutti().forEach(p=>p.stato=0);
             if(c.tipo!=='CLOCK') c.stato=0;
+            // Reset stato interno flip-flop
+            if(c.tipo==='FLIPFLOP_D' && c.statoInterno){
+                c.statoInterno.Q = 0;
+                c.statoInterno.clkPrev = 0;
+            }
+            // Reset stato interno contatore
+            if(c.tipo==='CONTATORE_4BIT' && c.statoInterno){
+                c.statoInterno.valore = 0;
+                c.statoInterno.clkPrev = 0;
+            }
         }
     }
 
@@ -288,6 +381,7 @@ class Simulatore {
         const chips=[], fili=[];
         for(const c of this.chips.values())
             chips.push({ id:c.id, tipo:c.tipo, x:c.x, y:c.y, stato:c.stato,
+                statoInterno: c.statoInterno || {},
                 pinI: c.pinI.map(p=>({id:p.id, et:p.etichetta})),
                 pinU: c.pinU.map(p=>({id:p.id, et:p.etichetta})) });
         for(const f of this.fili.values())
@@ -300,6 +394,7 @@ class Simulatore {
         if(data.chips) data.chips.forEach(cd => {
             const ch = new Chip(cd.tipo, cd.x, cd.y, cd.id);
             ch.stato = cd.stato||0;
+            if(cd.statoInterno) ch.statoInterno = cd.statoInterno;
             if(cd.pinI) cd.pinI.forEach((pd,i)=>{ if(i<ch.pinI.length){ ch.pinI[i].id=pd.id; ch.pinI[i].etichetta=pd.et||ch.pinI[i].etichetta; }});
             if(cd.pinU) cd.pinU.forEach((pd,i)=>{ if(i<ch.pinU.length){ ch.pinU[i].id=pd.id; ch.pinU[i].etichetta=pd.et||ch.pinU[i].etichetta; }});
             this.add(ch);
@@ -473,6 +568,15 @@ class Renderer {
         if(c.tipo==='DISPLAY7') {
             this._display7seg(ctx, c);
         }
+        if(c.tipo==='FLIPFLOP_D') {
+            this._flipflopD(ctx, c);
+        }
+        if(c.tipo==='CONTATORE_4BIT') {
+            this._contatore4bit(ctx, c);
+        }
+        if(c.tipo==='DECODER_BCD7') {
+            this._decoderBcd7(ctx, c);
+        }
     }
 
     // ---- Display a 7 segmenti ----
@@ -572,6 +676,76 @@ class Renderer {
         ctx.arc(mx + segL/2 + segW, my + hGap, segW*0.6, 0, Math.PI*2);
         ctx.fill();
         ctx.restore();
+    }
+
+    // ---- Flip-flop D ----
+    _flipflopD(ctx, c) {
+        // Disegna simbolo > per indicare edge-triggered
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1.5/this.zoom;
+        ctx.beginPath();
+        const tx = c.x + 8, ty = c.y + 48;
+        ctx.moveTo(tx, ty-4);
+        ctx.lineTo(tx+5, ty);
+        ctx.lineTo(tx, ty+4);
+        ctx.stroke();
+
+        // Mostra valore memorizzato Q
+        const Q = c.statoInterno?.Q || 0;
+        ctx.fillStyle = Q ? '#00ff88' : '#666';
+        ctx.font = `bold ${18/this.zoom}px monospace`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(Q.toString(), c.x + c.w/2, c.y + c.h - 15);
+
+        // Label "Q="
+        ctx.fillStyle = '#aaa';
+        ctx.font = `${10/this.zoom}px sans-serif`;
+        ctx.fillText('Q=', c.x + c.w/2, c.y + c.h - 28);
+    }
+
+    // ---- Contatore 4 bit ----
+    _contatore4bit(ctx, c) {
+        const val = c.statoInterno?.valore || 0;
+        // Mostra valore decimale grande
+        ctx.fillStyle = '#00ff88';
+        ctx.font = `bold ${22/this.zoom}px monospace`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(val.toString(), c.x + c.w/2, c.y + c.h/2 + 8);
+        // Mostra valore binario
+        ctx.fillStyle = '#aaa';
+        ctx.font = `${10/this.zoom}px monospace`;
+        const bin = val.toString(2).padStart(4,'0');
+        ctx.fillText(bin, c.x + c.w/2, c.y + c.h - 10);
+        // Simbolo > per edge-triggered
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1.5/this.zoom;
+        ctx.beginPath();
+        const tx = c.x + 8, ty = c.y + 42;
+        ctx.moveTo(tx, ty-4);
+        ctx.lineTo(tx+5, ty);
+        ctx.lineTo(tx, ty+4);
+        ctx.stroke();
+    }
+
+    // ---- Decoder BCD → 7 segmenti ----
+    _decoderBcd7(ctx, c) {
+        const d0 = c.pinI[0]?.stato || 0;
+        const d1 = c.pinI[1]?.stato || 0;
+        const d2 = c.pinI[2]?.stato || 0;
+        const d3 = c.pinI[3]?.stato || 0;
+        const digit = d0 | (d1<<1) | (d2<<2) | (d3<<3);
+        // Mostra cifra decodificata
+        ctx.fillStyle = digit <= 9 ? '#ffdd44' : '#ff4444';
+        ctx.font = `bold ${24/this.zoom}px monospace`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(digit <= 9 ? digit.toString() : '?', c.x + c.w/2, c.y + c.h/2 + 10);
+        // Label
+        ctx.fillStyle = '#aaa';
+        ctx.font = `${9/this.zoom}px sans-serif`;
+        ctx.fillText('digit=' + (digit<=9 ? digit : 'ERR'), c.x + c.w/2, c.y + c.h - 10);
     }
 
     _pin(ctx, chip, pin) {
@@ -967,6 +1141,9 @@ class Editor {
                 chip.stato = 1 - chip.stato;
             } else if(chip.tipo==='CLOCK'){
                 chip.stato = 1 - chip.stato;
+            } else if(chip.tipo==='FLIPFLOP_D' || chip.tipo==='CONTATORE_4BIT' ||
+                       chip.tipo==='DECODER_BCD7' || this._sim.customDefs.has(chip.tipo)) {
+                apriVistaInterna(chip, this._sim);
             }
         }
     }
@@ -1112,6 +1289,15 @@ function init() {
     document.getElementById('btn-carica').addEventListener('click', mostraModaleCarica);
     document.getElementById('btn-chiudi-modale').addEventListener('click', () => {
         document.getElementById('modale-carica').classList.add('nascosta');
+    });
+
+    // Chiudi modale vista interna
+    document.getElementById('btn-chiudi-interno').addEventListener('click', () => {
+        document.getElementById('modale-interno').classList.add('nascosta');
+    });
+    document.getElementById('modale-interno').addEventListener('click', (e) => {
+        if(e.target.id === 'modale-interno')
+            document.getElementById('modale-interno').classList.add('nascosta');
     });
 
     // Esporta chip
@@ -1346,6 +1532,507 @@ async function caricaChipPersonalizzati() {
         // Server non raggiungibile, ignora
         cont.innerHTML = '<p class="placeholder-text">Server non raggiungibile.</p>';
     }
+}
+
+// ======================== VISTA INTERNA CHIP ========================
+
+// Schemi interni per chip nativi
+const SCHEMI_INTERNI = {
+    FLIPFLOP_D: {
+        titolo: 'Flip-Flop D — Vista Interna',
+        desc: 'Flip-flop D edge-triggered con reset sincrono. Cattura il valore di D sul fronte di salita di CLK. Se RST=1, Q viene forzato a 0.',
+        nodi: [
+            { id:'in_d',   tipo:'IN',   nome:'D',   x:40,  y:80 },
+            { id:'in_clk', tipo:'IN',   nome:'CLK', x:40,  y:190 },
+            { id:'in_rst', tipo:'IN',   nome:'RST', x:40,  y:300 },
+            { id:'nand1',  tipo:'NAND', nome:'NAND₁', x:200, y:60 },
+            { id:'nand2',  tipo:'NAND', nome:'NAND₂', x:200, y:160 },
+            { id:'nand3',  tipo:'NAND', nome:'NAND₃', x:380, y:80 },
+            { id:'nand4',  tipo:'NAND', nome:'NAND₄', x:380, y:200 },
+            { id:'not1',   tipo:'NOT',  nome:'NOT',   x:120, y:140 },
+            { id:'and_r',  tipo:'AND',  nome:'AND',   x:120, y:260 },
+            { id:'out_q',  tipo:'OUT',  nome:'Q',     x:530, y:80 },
+            { id:'out_qn', tipo:'OUT',  nome:'Q̄',    x:530, y:200 },
+        ],
+        conn: [
+            ['in_d','nand1'],['in_clk','nand1'],['in_clk','not1'],
+            ['not1','nand2'],['in_d','nand2'],
+            ['nand1','nand3'],['nand4','nand3'],
+            ['nand2','nand4'],['nand3','nand4'],
+            ['nand3','out_q'],['nand4','out_qn'],
+            ['in_rst','and_r'],['and_r','nand4'],
+        ],
+        legenda: [
+            { col:'#c0392b', txt:'NAND' },
+            { col:'#8e44ad', txt:'NOT' },
+            { col:'#16a085', txt:'Ingresso' },
+            { col:'#e67e22', txt:'Uscita' },
+        ],
+    },
+    CONTATORE_4BIT: {
+        titolo: 'Contatore 4 Bit — Vista Interna',
+        desc: 'Contatore binario 4 bit (0-15). Incrementa sul fronte di salita di CLK. RST=1 azzera il contatore. Le uscite Q0-Q3 rappresentano i bit dal meno al più significativo.',
+        nodi: [
+            { id:'in_clk', tipo:'IN',   nome:'CLK',   x:40,  y:120 },
+            { id:'in_rst', tipo:'IN',   nome:'RST',   x:40,  y:300 },
+            { id:'ff0',    tipo:'DFF',  nome:'D-FF₀', x:180, y:60 },
+            { id:'ff1',    tipo:'DFF',  nome:'D-FF₁', x:180, y:150 },
+            { id:'ff2',    tipo:'DFF',  nome:'D-FF₂', x:180, y:240 },
+            { id:'ff3',    tipo:'DFF',  nome:'D-FF₃', x:180, y:330 },
+            { id:'not0',   tipo:'NOT',  nome:'¬Q₀',   x:320, y:60 },
+            { id:'not1',   tipo:'NOT',  nome:'¬Q₁',   x:320, y:150 },
+            { id:'not2',   tipo:'NOT',  nome:'¬Q₂',   x:320, y:240 },
+            { id:'not3',   tipo:'NOT',  nome:'¬Q₃',   x:320, y:330 },
+            { id:'out0',   tipo:'OUT',  nome:'Q0',     x:460, y:60 },
+            { id:'out1',   tipo:'OUT',  nome:'Q1',     x:460, y:150 },
+            { id:'out2',   tipo:'OUT',  nome:'Q2',     x:460, y:240 },
+            { id:'out3',   tipo:'OUT',  nome:'Q3',     x:460, y:330 },
+        ],
+        conn: [
+            ['in_clk','ff0'],['ff0','ff1'],['ff1','ff2'],['ff2','ff3'],
+            ['in_rst','ff0'],['in_rst','ff1'],['in_rst','ff2'],['in_rst','ff3'],
+            ['ff0','not0'],['ff1','not1'],['ff2','not2'],['ff3','not3'],
+            ['not0','ff0'],['not1','ff1'],['not2','ff2'],['not3','ff3'],
+            ['ff0','out0'],['ff1','out1'],['ff2','out2'],['ff3','out3'],
+        ],
+        legenda: [
+            { col:'#3498db', txt:'D Flip-Flop' },
+            { col:'#8e44ad', txt:'NOT (feedback)' },
+            { col:'#16a085', txt:'Ingresso' },
+            { col:'#e67e22', txt:'Uscita' },
+        ],
+    },
+    DECODER_BCD7: {
+        titolo: 'Decoder BCD → 7 Segmenti — Vista Interna',
+        desc: 'Decodificatore combinatorio. Converte un valore BCD (4 bit, 0-9) nei 7 segnali di controllo per un display a 7 segmenti (A-G).',
+        nodi: [
+            { id:'in_d0', tipo:'IN',   nome:'D0', x:40,  y:50 },
+            { id:'in_d1', tipo:'IN',   nome:'D1', x:40,  y:120 },
+            { id:'in_d2', tipo:'IN',   nome:'D2', x:40,  y:190 },
+            { id:'in_d3', tipo:'IN',   nome:'D3', x:40,  y:260 },
+            { id:'rom',   tipo:'ROM',  nome:'ROM\nTruth\nTable',  x:200, y:100, w:120, h:140 },
+            { id:'out_a', tipo:'OUT',  nome:'A',  x:430, y:20 },
+            { id:'out_b', tipo:'OUT',  nome:'B',  x:430, y:70 },
+            { id:'out_c', tipo:'OUT',  nome:'C',  x:430, y:120 },
+            { id:'out_d', tipo:'OUT',  nome:'D',  x:430, y:170 },
+            { id:'out_e', tipo:'OUT',  nome:'E',  x:430, y:220 },
+            { id:'out_f', tipo:'OUT',  nome:'F',  x:430, y:270 },
+            { id:'out_g', tipo:'OUT',  nome:'G',  x:430, y:320 },
+        ],
+        conn: [
+            ['in_d0','rom'],['in_d1','rom'],['in_d2','rom'],['in_d3','rom'],
+            ['rom','out_a'],['rom','out_b'],['rom','out_c'],['rom','out_d'],
+            ['rom','out_e'],['rom','out_f'],['rom','out_g'],
+        ],
+        tabella: [
+            ['BCD','A','B','C','D','E','F','G'],
+            ['0','1','1','1','1','1','1','0'],
+            ['1','0','1','1','0','0','0','0'],
+            ['2','1','1','0','1','1','0','1'],
+            ['3','1','1','1','1','0','0','1'],
+            ['4','0','1','1','0','0','1','1'],
+            ['5','1','0','1','1','0','1','1'],
+            ['6','1','0','1','1','1','1','1'],
+            ['7','1','1','1','0','0','0','0'],
+            ['8','1','1','1','1','1','1','1'],
+            ['9','1','1','1','1','0','1','1'],
+        ],
+        legenda: [
+            { col:'#f39c12', txt:'ROM (Truth Table)' },
+            { col:'#16a085', txt:'Ingresso' },
+            { col:'#e67e22', txt:'Uscita' },
+        ],
+    },
+};
+
+const COLORI_NODO = {
+    IN:   '#16a085', OUT:  '#e67e22', NAND: '#c0392b', AND: '#2980b9',
+    OR:   '#27ae60', NOT:  '#8e44ad', XOR:  '#d35400', DFF:  '#3498db',
+    ROM:  '#f39c12', NOR:  '#1abc9c', XNOR: '#e91e63', BUF:  '#607d8b',
+};
+
+function apriVistaInterna(chip, simRef) {
+    const modale = document.getElementById('modale-interno');
+    const canvas = document.getElementById('canvas-interno');
+    const titolo = document.getElementById('titolo-interno');
+    const info   = document.getElementById('info-chip-interno');
+    const legenda= document.getElementById('legenda-interno');
+
+    modale.classList.remove('nascosta');
+
+    // Se è un chip custom, mostra il suo circuito interno
+    if(simRef.customDefs.has(chip.tipo)) {
+        _mostraCircuitoCustom(chip, simRef, canvas, titolo, info, legenda);
+    } else if(SCHEMI_INTERNI[chip.tipo]) {
+        _mostraSchematico(chip, SCHEMI_INTERNI[chip.tipo], canvas, titolo, info, legenda);
+    }
+}
+
+function _mostraSchematico(chip, schema, canvas, titoloEl, infoEl, legendaEl) {
+    titoloEl.textContent = '🔍 ' + schema.titolo;
+
+    // Info box
+    let infoHtml = `<strong>Tipo:</strong> ${chip.nome} &nbsp;|&nbsp; <strong>ID:</strong> ${chip.id}<br>`;
+    infoHtml += schema.desc;
+    if(chip.statoInterno) {
+        infoHtml += '<br><strong>Stato attuale:</strong> ';
+        if(chip.tipo === 'CONTATORE_4BIT') infoHtml += `valore = ${chip.statoInterno.valore} (${chip.statoInterno.valore.toString(2).padStart(4,'0')}b)`;
+        else if(chip.tipo === 'FLIPFLOP_D') infoHtml += `Q = ${chip.statoInterno.Q}`;
+    }
+    infoEl.innerHTML = infoHtml;
+
+    // Legenda
+    legendaEl.innerHTML = schema.legenda.map(l =>
+        `<span class="leg-item"><span class="leg-dot" style="background:${l.col}"></span>${l.txt}</span>`
+    ).join('');
+
+    // Disegna sullo schematico
+    const rect = canvas.parentElement.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const W = rect.width, H = rect.height;
+    ctx.clearRect(0, 0, W, H);
+
+    // Sfondo
+    ctx.fillStyle = '#0a0a18';
+    ctx.fillRect(0, 0, W, H);
+
+    // Griglia leggera
+    ctx.strokeStyle = '#15152a';
+    ctx.lineWidth = 0.5;
+    for(let x = 0; x < W; x += 20) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+    for(let y = 0; y < H; y += 20) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+    // Calcola scala e offset per centrare lo schema
+    const nodi = schema.nodi;
+    let minX=Infinity, minY=Infinity, maxX=-Infinity, maxY=-Infinity;
+    nodi.forEach(n => {
+        const nw = n.w || 80, nh = n.h || 50;
+        if(n.x < minX) minX = n.x;
+        if(n.y < minY) minY = n.y;
+        if(n.x + nw > maxX) maxX = n.x + nw;
+        if(n.y + nh > maxY) maxY = n.y + nh;
+    });
+    const schW = maxX - minX, schH = maxY - minY;
+    const scala = Math.min((W - 80) / schW, (H - 60) / schH, 1.3);
+    const offX = (W - schW * scala) / 2 - minX * scala;
+    const offY = (H - schH * scala) / 2 - minY * scala;
+
+    ctx.save();
+    ctx.translate(offX, offY);
+    ctx.scale(scala, scala);
+
+    // Mappa posizioni nodi per connessioni
+    const pos = {};
+    nodi.forEach(n => {
+        const nw = n.w || 80, nh = n.h || 50;
+        pos[n.id] = {
+            x: n.x, y: n.y, w: nw, h: nh,
+            cx: n.x + nw/2, cy: n.y + nh/2,
+            left: n.x, right: n.x + nw,
+            top: n.y, bottom: n.y + nh,
+        };
+    });
+
+    // Disegna connessioni
+    schema.conn.forEach(([fromId, toId]) => {
+        const from = pos[fromId], to = pos[toId];
+        if(!from || !to) return;
+        const x1 = from.right, y1 = from.cy;
+        const x2 = to.left, y2 = to.cy;
+
+        ctx.strokeStyle = '#4a5568';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        const dx = Math.max(Math.abs(x2 - x1) * 0.4, 25);
+        ctx.bezierCurveTo(x1 + dx, y1, x2 - dx, y2, x2, y2);
+        ctx.stroke();
+
+        // Freccia
+        const angle = Math.atan2(y2 - (y2 - (y2-y1)*0.05), x2 - (x2 - dx*0.3));
+        ctx.fillStyle = '#4a5568';
+        ctx.beginPath();
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(x2 - 8*Math.cos(angle - 0.3), y2 - 8*Math.sin(angle - 0.3));
+        ctx.lineTo(x2 - 8*Math.cos(angle + 0.3), y2 - 8*Math.sin(angle + 0.3));
+        ctx.closePath();
+        ctx.fill();
+    });
+
+    // Disegna nodi
+    nodi.forEach(n => {
+        const p = pos[n.id];
+        const col = COLORI_NODO[n.tipo] || '#7f8c8d';
+
+        // Ombra
+        ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        _rrectPath(ctx, p.x+2, p.y+2, p.w, p.h, 6);
+        ctx.fill();
+
+        // Corpo
+        ctx.fillStyle = col;
+        _rrectPath(ctx, p.x, p.y, p.w, p.h, 6);
+        ctx.fill();
+
+        // Bordo
+        ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Nome (supporta multiline con \n)
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 12px monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const lines = n.nome.split('\n');
+        const lh = 14;
+        const startY = p.cy - (lines.length - 1) * lh / 2;
+        lines.forEach((line, i) => {
+            ctx.fillText(line, p.cx, startY + i * lh);
+        });
+
+        // Indicatore tipo (piccola etichetta)
+        if(n.tipo !== 'IN' && n.tipo !== 'OUT') {
+            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            ctx.font = '9px sans-serif';
+            ctx.fillText(n.tipo, p.cx, p.bottom - 6);
+        }
+
+        // Pin indicators
+        ctx.fillStyle = '#aaa';
+        ctx.beginPath();
+        ctx.arc(p.left, p.cy, 3, 0, Math.PI*2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(p.right, p.cy, 3, 0, Math.PI*2);
+        ctx.fill();
+    });
+
+    ctx.restore();
+
+    // Per il decoder BCD, disegna la truth table nel canvas
+    if(schema.tabella) {
+        _disegnaTruthTable(ctx, schema.tabella, W, H);
+    }
+}
+
+function _disegnaTruthTable(ctx, tabella, W, H) {
+    const startX = W - 210;
+    const startY = 10;
+    const cellW = 24;
+    const cellH = 18;
+    const cols = tabella[0].length;
+
+    // Sfondo tabella
+    ctx.fillStyle = 'rgba(10,10,30,0.85)';
+    const tw = cols * cellW + 16;
+    const th = tabella.length * cellH + 12;
+    ctx.fillRect(startX - 8, startY - 4, tw, th);
+    ctx.strokeStyle = '#333';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(startX - 8, startY - 4, tw, th);
+
+    ctx.font = '10px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    tabella.forEach((row, ri) => {
+        row.forEach((cell, ci) => {
+            const cx = startX + ci * cellW + cellW/2;
+            const cy = startY + ri * cellH + cellH/2;
+
+            if(ri === 0) {
+                ctx.fillStyle = '#ffdd44';
+                ctx.font = 'bold 10px monospace';
+            } else {
+                ctx.fillStyle = cell === '1' ? '#00ff88' : '#555';
+                ctx.font = '10px monospace';
+            }
+            ctx.fillText(cell, cx, cy);
+        });
+
+        // Riga separatrice header
+        if(ri === 0) {
+            ctx.strokeStyle = '#555';
+            ctx.beginPath();
+            ctx.moveTo(startX - 4, startY + cellH);
+            ctx.lineTo(startX + cols * cellW + 4, startY + cellH);
+            ctx.stroke();
+        }
+    });
+}
+
+function _mostraCircuitoCustom(chip, simRef, canvas, titoloEl, infoEl, legendaEl) {
+    const cd = simRef.customDefs.get(chip.tipo);
+    if(!cd || !cd.circuito) return;
+
+    titoloEl.textContent = '🔍 ' + (cd.nome || chip.tipo) + ' — Circuito Interno';
+
+    let infoHtml = `<strong>Tipo:</strong> ${cd.nome} &nbsp;|&nbsp; <strong>ID:</strong> ${chip.id}<br>`;
+    infoHtml += `<strong>Ingressi:</strong> ${(cd.ingressi||[]).join(', ')} &nbsp;|&nbsp; <strong>Uscite:</strong> ${(cd.uscite||[]).join(', ')}`;
+    infoHtml += `<br>Chip personalizzato — contiene ${cd.circuito.chips.length} componenti e ${cd.circuito.fili.length} connessioni`;
+    infoEl.innerHTML = infoHtml;
+
+    // Legenda dinamica basata sui tipi di chip interni
+    const tipiInterni = new Set(cd.circuito.chips.map(c => c.tipo));
+    const legItems = [];
+    tipiInterni.forEach(t => {
+        const def = DEFS[t];
+        if(def) legItems.push({ col: def.col, txt: def.nome });
+    });
+    legendaEl.innerHTML = legItems.map(l =>
+        `<span class="leg-item"><span class="leg-dot" style="background:${l.col}"></span>${l.txt}</span>`
+    ).join('');
+
+    // Setup canvas
+    const rect = canvas.parentElement.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const W = rect.width, H = rect.height;
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#0a0a18';
+    ctx.fillRect(0, 0, W, H);
+
+    // Griglia
+    ctx.strokeStyle = '#15152a';
+    ctx.lineWidth = 0.5;
+    for(let x = 0; x < W; x += 20) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+    for(let y = 0; y < H; y += 20) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+    const chips = cd.circuito.chips;
+    const fili = cd.circuito.fili;
+    if(!chips.length) return;
+
+    // Calcola bounding box
+    let minX=Infinity, minY=Infinity, maxX=-Infinity, maxY=-Infinity;
+    chips.forEach(c => {
+        const def = DEFS[c.tipo];
+        const cw = def ? def.w : 100, ch = def ? def.h : 60;
+        if(c.x < minX) minX = c.x;
+        if(c.y < minY) minY = c.y;
+        if(c.x+cw > maxX) maxX = c.x+cw;
+        if(c.y+ch > maxY) maxY = c.y+ch;
+    });
+
+    const schW = maxX - minX || 200, schH = maxY - minY || 200;
+    const scala = Math.min((W-60)/schW, (H-40)/schH, 2);
+    const offX = (W - schW * scala) / 2 - minX * scala;
+    const offY = (H - schH * scala) / 2 - minY * scala;
+
+    ctx.save();
+    ctx.translate(offX, offY);
+    ctx.scale(scala, scala);
+
+    // Prepara pin map per i fili
+    const pinMap = {};  // pinId -> {x, y}
+    const chipMap = {}; // chipId -> chip data + calculated pins
+
+    chips.forEach(c => {
+        const def = DEFS[c.tipo];
+        const cw = def ? def.w : 100, ch = def ? def.h : 60;
+        const mt = 22, hu = ch - mt;
+
+        chipMap[c.id] = { ...c, w: cw, h: ch, def };
+
+        if(c.pinI) c.pinI.forEach((p, i) => {
+            const s = hu / (c.pinI.length + 1);
+            pinMap[p.id] = { x: c.x, y: c.y + mt + s*(i+1) };
+        });
+        if(c.pinU) c.pinU.forEach((p, i) => {
+            const s = hu / (c.pinU.length + 1);
+            pinMap[p.id] = { x: c.x + cw, y: c.y + mt + s*(i+1) };
+        });
+    });
+
+    // Disegna fili
+    fili.forEach(f => {
+        const src = pinMap[f.srcId], dst = pinMap[f.dstId];
+        if(!src || !dst) return;
+        ctx.strokeStyle = '#4a5568';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(src.x, src.y);
+        const dx = Math.max(Math.abs(dst.x - src.x) * 0.4, 25);
+        ctx.bezierCurveTo(src.x + dx, src.y, dst.x - dx, dst.y, dst.x, dst.y);
+        ctx.stroke();
+    });
+
+    // Disegna chip
+    chips.forEach(c => {
+        const def = DEFS[c.tipo];
+        const cw = def ? def.w : 100, ch = def ? def.h : 60;
+        const col = def ? def.col : '#7f8c8d';
+        const nome = def ? def.nome : c.tipo;
+
+        // Ombra
+        ctx.fillStyle = 'rgba(0,0,0,0.35)';
+        _rrectPath(ctx, c.x+2, c.y+2, cw, ch, 5);
+        ctx.fill();
+
+        // Corpo
+        ctx.fillStyle = col;
+        _rrectPath(ctx, c.x, c.y, cw, ch, 5);
+        ctx.fill();
+
+        ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Nome
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 11px monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(nome, c.x + cw/2, c.y + 12);
+
+        // Pin
+        const mt = 22, hu = ch - mt;
+        if(c.pinI) c.pinI.forEach((p, i) => {
+            const s = hu / (c.pinI.length + 1);
+            const px = c.x, py = c.y + mt + s*(i+1);
+            ctx.fillStyle = '#888';
+            ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = '#aaa';
+            ctx.font = '8px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText(p.et || '', px + 6, py + 3);
+        });
+        if(c.pinU) c.pinU.forEach((p, i) => {
+            const s = hu / (c.pinU.length + 1);
+            const px = c.x + cw, py = c.y + mt + s*(i+1);
+            ctx.fillStyle = '#888';
+            ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = '#aaa';
+            ctx.font = '8px sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText(p.et || '', px - 6, py + 3);
+        });
+    });
+
+    ctx.restore();
+}
+
+function _rrectPath(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x+r, y);
+    ctx.lineTo(x+w-r, y);   ctx.quadraticCurveTo(x+w, y,   x+w, y+r);
+    ctx.lineTo(x+w, y+h-r); ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+    ctx.lineTo(x+r, y+h);   ctx.quadraticCurveTo(x, y+h,   x, y+h-r);
+    ctx.lineTo(x, y+r);     ctx.quadraticCurveTo(x, y,      x+r, y);
+    ctx.closePath();
 }
 
 // ======================== NOTIFICHE ========================
