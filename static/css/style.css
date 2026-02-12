@@ -1,0 +1,459 @@
+/* ==========================================================
+   CPU-Builder — Stili dell'applicazione
+   Tema scuro ispirato a Digital Logic Sim
+   ========================================================== */
+
+/* ---- Reset e Base ---- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --sfondo: #12121f;
+    --sfondo-pannello: #16213e;
+    --sfondo-pannello-2: #1a2744;
+    --bordo: #2a4a7f;
+    --accento: #5865f2;
+    --accento-hover: #7289da;
+    --testo: #e0e0e0;
+    --testo-2: #a0a0b0;
+    --testo-3: #666680;
+    --errore: #ff4444;
+    --successo: #00cc66;
+    --raggio: 6px;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--sfondo);
+    color: var(--testo);
+    font-size: 13px;
+    user-select: none;
+}
+
+/* ---- Barra Superiore ---- */
+#barra-superiore {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    background: var(--sfondo-pannello);
+    border-bottom: 1px solid var(--bordo);
+    padding: 0 12px;
+    gap: 8px;
+    z-index: 100;
+}
+
+.barra-sinistra, .barra-centro, .barra-destra {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.barra-centro {
+    flex: 1;
+    justify-content: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accento);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.separatore {
+    color: var(--testo-3);
+    margin: 0 2px;
+}
+
+#nome-progetto {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--testo);
+    font-size: 13px;
+    padding: 3px 8px;
+    border-radius: var(--raggio);
+    width: 160px;
+    transition: border-color 0.2s;
+}
+
+#nome-progetto:hover {
+    border-color: var(--bordo);
+}
+
+#nome-progetto:focus {
+    outline: none;
+    border-color: var(--accento);
+    background: var(--sfondo-pannello-2);
+}
+
+/* ---- Bottoni Toolbar ---- */
+.btn-toolbar {
+    background: var(--sfondo-pannello-2);
+    color: var(--testo);
+    border: 1px solid var(--bordo);
+    padding: 5px 10px;
+    border-radius: var(--raggio);
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.15s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-toolbar:hover {
+    background: var(--accento);
+    border-color: var(--accento);
+    color: #fff;
+}
+
+.btn-toolbar:active {
+    transform: scale(0.95);
+}
+
+.btn-toolbar.btn-attivo {
+    background: var(--accento);
+    border-color: var(--accento);
+    color: #fff;
+}
+
+.btn-primario {
+    background: var(--accento) !important;
+    border-color: var(--accento) !important;
+    color: #fff !important;
+}
+
+.btn-primario:hover {
+    background: var(--accento-hover) !important;
+}
+
+/* ---- Speed / Clock labels ---- */
+.speed-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--testo-2);
+    font-size: 11px;
+    cursor: default;
+}
+
+.speed-label input[type="range"] {
+    width: 80px;
+    height: 4px;
+    accent-color: var(--accento);
+    cursor: pointer;
+}
+
+/* ---- Layout Principale ---- */
+#contenuto {
+    display: flex;
+    height: calc(100% - 44px);
+}
+
+/* ---- Sidebar ---- */
+#sidebar {
+    width: 200px;
+    min-width: 200px;
+    background: var(--sfondo-pannello);
+    border-right: 1px solid var(--bordo);
+    overflow-y: auto;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar h3 {
+    font-size: 13px;
+    color: var(--accento);
+    padding: 0 12px 8px;
+    border-bottom: 1px solid var(--bordo);
+    margin-bottom: 6px;
+}
+
+.categoria {
+    margin-bottom: 4px;
+}
+
+.cat-titolo {
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--testo-2);
+    transition: color 0.15s;
+    font-weight: 600;
+}
+
+.cat-titolo:hover {
+    color: var(--testo);
+}
+
+.cat-titolo.aperta {
+    color: var(--testo);
+}
+
+.cat-contenuto {
+    display: none;
+    padding: 4px 8px 8px;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.cat-contenuto.visibile {
+    display: flex;
+}
+
+.btn-chip {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 75px;
+    padding: 6px 4px;
+    border: 1px solid var(--bordo);
+    border-left: 3px solid var(--chip-col, #888);
+    background: var(--sfondo-pannello-2);
+    color: var(--testo);
+    font-size: 11px;
+    border-radius: var(--raggio);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+}
+
+.btn-chip:hover {
+    background: var(--chip-col, #888);
+    color: #fff;
+    border-color: var(--chip-col, #888);
+}
+
+.btn-chip.selezionato {
+    background: var(--chip-col, #888);
+    color: #fff;
+    box-shadow: 0 0 8px var(--chip-col, #888);
+}
+
+.sidebar-info {
+    margin-top: auto;
+    padding: 10px 12px;
+    border-top: 1px solid var(--bordo);
+}
+
+.sidebar-info h4 {
+    font-size: 11px;
+    color: var(--testo-3);
+    margin-bottom: 6px;
+}
+
+.sidebar-info ul {
+    list-style: none;
+    font-size: 10px;
+    color: var(--testo-3);
+    line-height: 1.8;
+}
+
+.sidebar-info kbd {
+    background: var(--sfondo-pannello-2);
+    border: 1px solid var(--bordo);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-family: monospace;
+    color: var(--testo-2);
+}
+
+.placeholder-text {
+    color: var(--testo-3);
+    font-size: 11px;
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+}
+
+/* ---- Area Canvas ---- */
+#area-canvas {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: crosshair;
+}
+
+/* ---- Barra di Stato ---- */
+#barra-stato {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    background: var(--sfondo-pannello);
+    border-top: 1px solid var(--bordo);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 20px;
+    font-size: 11px;
+    color: var(--testo-3);
+    z-index: 10;
+}
+
+#stato-sim {
+    color: var(--successo);
+}
+
+/* ---- Modale ---- */
+.modale {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modale.nascosta {
+    display: none;
+}
+
+.modale-contenuto {
+    background: var(--sfondo-pannello);
+    border: 1px solid var(--bordo);
+    border-radius: 10px;
+    padding: 24px;
+    min-width: 360px;
+    max-width: 500px;
+    max-height: 70vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.modale-contenuto h3 {
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+.modale-contenuto label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--testo-2);
+}
+
+.modale-contenuto input[type="text"] {
+    flex: 1;
+    background: var(--sfondo);
+    border: 1px solid var(--bordo);
+    color: var(--testo);
+    padding: 6px 10px;
+    border-radius: var(--raggio);
+    font-size: 13px;
+}
+
+.modale-contenuto input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accento);
+}
+
+.modale-contenuto input[type="color"] {
+    width: 40px;
+    height: 30px;
+    border: 1px solid var(--bordo);
+    border-radius: var(--raggio);
+    background: transparent;
+    cursor: pointer;
+}
+
+.modale-azioni {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+/* ---- Lista Progetti ---- */
+#lista-progetti {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.progetto-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: var(--sfondo-pannello-2);
+    border: 1px solid var(--bordo);
+    border-radius: var(--raggio);
+    margin-bottom: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.progetto-item:hover {
+    border-color: var(--accento);
+    background: var(--sfondo);
+}
+
+.progetto-nome {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.progetto-dettagli {
+    font-size: 10px;
+    color: var(--testo-3);
+}
+
+.progetto-azioni {
+    display: flex;
+    gap: 4px;
+}
+
+.progetto-azioni button {
+    background: transparent;
+    border: none;
+    color: var(--testo-3);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.progetto-azioni button:hover {
+    color: var(--errore);
+    background: rgba(255, 68, 68, 0.1);
+}
+
+/* ---- Scrollbar Custom ---- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sfondo);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bordo);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accento);
+}
