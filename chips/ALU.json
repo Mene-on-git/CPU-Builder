@@ -1,0 +1,756 @@
+{
+  "nome": "ALU",
+  "colore": "#06e03c",
+  "ingressi": [
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT"
+  ],
+  "uscite": [
+    "IN",
+    "IN",
+    "IN",
+    "IN",
+    "IN",
+    "IN",
+    "IN"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 1,
+        "tipo": "INGRESSO",
+        "x": -460,
+        "y": -400,
+        "stato": 1,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "tipo": "INGRESSO",
+        "x": -460,
+        "y": -340,
+        "stato": 1,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 5,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "tipo": "INGRESSO",
+        "x": -460,
+        "y": -280,
+        "stato": 1,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 8,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "tipo": "INGRESSO",
+        "x": -460,
+        "y": -220,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 11,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "tipo": "INGRESSO",
+        "x": -460,
+        "y": -100,
+        "stato": 1,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 14,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "tipo": "INGRESSO",
+        "x": -460,
+        "y": -40,
+        "stato": 1,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 17,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "tipo": "INGRESSO",
+        "x": -460,
+        "y": 20,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 20,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "tipo": "INGRESSO",
+        "x": -460,
+        "y": 80,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 23,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "tipo": "INGRESSO",
+        "x": -400,
+        "y": 300,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 26,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "tipo": "XOR",
+        "x": -300,
+        "y": -140,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 29,
+            "et": "A"
+          },
+          {
+            "id": 30,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 31,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "tipo": "XOR",
+        "x": -300,
+        "y": -60,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 34,
+            "et": "A"
+          },
+          {
+            "id": 35,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 36,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "tipo": "XOR",
+        "x": -300,
+        "y": 20,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 39,
+            "et": "A"
+          },
+          {
+            "id": 40,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 41,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "tipo": "XOR",
+        "x": -300,
+        "y": 100,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 44,
+            "et": "A"
+          },
+          {
+            "id": 45,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 46,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 48,
+        "tipo": "CUSTOM_4_BIT_ADDER",
+        "x": 40,
+        "y": -300,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 49,
+            "et": "OUT"
+          },
+          {
+            "id": 50,
+            "et": "OUT"
+          },
+          {
+            "id": 51,
+            "et": "OUT"
+          },
+          {
+            "id": 52,
+            "et": "OUT"
+          },
+          {
+            "id": 53,
+            "et": "OUT"
+          },
+          {
+            "id": 54,
+            "et": "OUT"
+          },
+          {
+            "id": 55,
+            "et": "OUT"
+          },
+          {
+            "id": 56,
+            "et": "OUT"
+          },
+          {
+            "id": 57,
+            "et": "OUT"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 58,
+            "et": "IN"
+          },
+          {
+            "id": 59,
+            "et": "IN"
+          },
+          {
+            "id": 60,
+            "et": "IN"
+          },
+          {
+            "id": 61,
+            "et": "IN"
+          },
+          {
+            "id": 62,
+            "et": "IN"
+          }
+        ]
+      },
+      {
+        "id": 572,
+        "tipo": "USCITA",
+        "x": 920,
+        "y": -540,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 573,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 575,
+        "tipo": "USCITA",
+        "x": 920,
+        "y": -480,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 576,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 578,
+        "tipo": "USCITA",
+        "x": 920,
+        "y": -420,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 579,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 581,
+        "tipo": "USCITA",
+        "x": 920,
+        "y": -360,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 582,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 584,
+        "tipo": "USCITA",
+        "x": 920,
+        "y": -160,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 585,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 587,
+        "tipo": "USCITA",
+        "x": 920,
+        "y": -80,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 588,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 590,
+        "tipo": "USCITA",
+        "x": 920,
+        "y": 160,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 591,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 598,
+        "tipo": "NOT",
+        "x": 320,
+        "y": -20,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 599,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 600,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 602,
+        "tipo": "NOT",
+        "x": 320,
+        "y": 40,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 603,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 604,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 606,
+        "tipo": "NOT",
+        "x": 320,
+        "y": 100,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 607,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 608,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 610,
+        "tipo": "NOT",
+        "x": 320,
+        "y": 160,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 611,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 612,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 622,
+        "tipo": "AND",
+        "x": 460,
+        "y": 0,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 623,
+            "et": "A"
+          },
+          {
+            "id": 624,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 625,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 627,
+        "tipo": "AND",
+        "x": 580,
+        "y": 80,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 628,
+            "et": "A"
+          },
+          {
+            "id": 629,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 630,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 632,
+        "tipo": "AND",
+        "x": 700,
+        "y": 140,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 633,
+            "et": "A"
+          },
+          {
+            "id": 634,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 635,
+            "et": "Q"
+          }
+        ]
+      }
+    ],
+    "fili": [
+      {
+        "id": 538,
+        "srcId": 2,
+        "dstId": 49
+      },
+      {
+        "id": 540,
+        "srcId": 5,
+        "dstId": 50
+      },
+      {
+        "id": 542,
+        "srcId": 8,
+        "dstId": 51
+      },
+      {
+        "id": 544,
+        "srcId": 11,
+        "dstId": 52
+      },
+      {
+        "id": 546,
+        "srcId": 26,
+        "dstId": 57
+      },
+      {
+        "id": 548,
+        "srcId": 14,
+        "dstId": 29
+      },
+      {
+        "id": 550,
+        "srcId": 17,
+        "dstId": 34
+      },
+      {
+        "id": 552,
+        "srcId": 20,
+        "dstId": 39
+      },
+      {
+        "id": 554,
+        "srcId": 23,
+        "dstId": 44
+      },
+      {
+        "id": 556,
+        "srcId": 26,
+        "dstId": 30
+      },
+      {
+        "id": 558,
+        "srcId": 26,
+        "dstId": 35
+      },
+      {
+        "id": 560,
+        "srcId": 26,
+        "dstId": 40
+      },
+      {
+        "id": 562,
+        "srcId": 26,
+        "dstId": 45
+      },
+      {
+        "id": 564,
+        "srcId": 31,
+        "dstId": 53
+      },
+      {
+        "id": 566,
+        "srcId": 36,
+        "dstId": 54
+      },
+      {
+        "id": 568,
+        "srcId": 41,
+        "dstId": 55
+      },
+      {
+        "id": 570,
+        "srcId": 46,
+        "dstId": 56
+      },
+      {
+        "id": 596,
+        "srcId": 62,
+        "dstId": 585
+      },
+      {
+        "id": 614,
+        "srcId": 58,
+        "dstId": 599
+      },
+      {
+        "id": 616,
+        "srcId": 59,
+        "dstId": 603
+      },
+      {
+        "id": 618,
+        "srcId": 60,
+        "dstId": 607
+      },
+      {
+        "id": 620,
+        "srcId": 61,
+        "dstId": 611
+      },
+      {
+        "id": 637,
+        "srcId": 600,
+        "dstId": 623
+      },
+      {
+        "id": 639,
+        "srcId": 604,
+        "dstId": 624
+      },
+      {
+        "id": 641,
+        "srcId": 625,
+        "dstId": 628
+      },
+      {
+        "id": 643,
+        "srcId": 608,
+        "dstId": 629
+      },
+      {
+        "id": 645,
+        "srcId": 630,
+        "dstId": 633
+      },
+      {
+        "id": 647,
+        "srcId": 612,
+        "dstId": 634
+      },
+      {
+        "id": 649,
+        "srcId": 635,
+        "dstId": 591
+      },
+      {
+        "id": 651,
+        "srcId": 58,
+        "dstId": 588
+      },
+      {
+        "id": 653,
+        "srcId": 61,
+        "dstId": 582
+      },
+      {
+        "id": 655,
+        "srcId": 60,
+        "dstId": 579
+      },
+      {
+        "id": 657,
+        "srcId": 59,
+        "dstId": 576
+      },
+      {
+        "id": 659,
+        "srcId": 58,
+        "dstId": 573
+      }
+    ]
+  }
+}

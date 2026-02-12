@@ -1,0 +1,244 @@
+{
+  "nome": "1 bit register",
+  "colore": "#e0d806",
+  "ingressi": [
+    "OUT",
+    "OUT",
+    "OUT"
+  ],
+  "uscite": [
+    "IN"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 1869,
+        "tipo": "INGRESSO",
+        "x": -960,
+        "y": -480,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 1870,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 1872,
+        "tipo": "INGRESSO",
+        "x": -960,
+        "y": -400,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 1873,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 1875,
+        "tipo": "INGRESSO",
+        "x": -960,
+        "y": -320,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 1876,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 1887,
+        "tipo": "CUSTOM_D_FLIP_FLOP",
+        "x": -380,
+        "y": -400,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 1888,
+            "et": "OUT"
+          },
+          {
+            "id": 1889,
+            "et": "OUT"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 1890,
+            "et": "IN"
+          }
+        ]
+      },
+      {
+        "id": 1896,
+        "tipo": "USCITA",
+        "x": -40,
+        "y": -400,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 1897,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 2089,
+        "tipo": "NOT",
+        "x": -840,
+        "y": -600,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2090,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2091,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 2093,
+        "tipo": "AND",
+        "x": -680,
+        "y": -660,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2094,
+            "et": "A"
+          },
+          {
+            "id": 2095,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2096,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 2098,
+        "tipo": "AND",
+        "x": -680,
+        "y": -500,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2099,
+            "et": "A"
+          },
+          {
+            "id": 2100,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2101,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 2103,
+        "tipo": "OR",
+        "x": -500,
+        "y": -600,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2104,
+            "et": "A"
+          },
+          {
+            "id": 2105,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2106,
+            "et": "Q"
+          }
+        ]
+      }
+    ],
+    "fili": [
+      {
+        "id": 1899,
+        "srcId": 1890,
+        "dstId": 1897
+      },
+      {
+        "id": 2087,
+        "srcId": 1876,
+        "dstId": 1889
+      },
+      {
+        "id": 2108,
+        "srcId": 1870,
+        "dstId": 2100
+      },
+      {
+        "id": 2110,
+        "srcId": 1890,
+        "dstId": 2094
+      },
+      {
+        "id": 2112,
+        "srcId": 1873,
+        "dstId": 2099
+      },
+      {
+        "id": 2114,
+        "srcId": 1873,
+        "dstId": 2090
+      },
+      {
+        "id": 2116,
+        "srcId": 2091,
+        "dstId": 2095
+      },
+      {
+        "id": 2118,
+        "srcId": 2101,
+        "dstId": 2105
+      },
+      {
+        "id": 2120,
+        "srcId": 2096,
+        "dstId": 2104
+      },
+      {
+        "id": 2122,
+        "srcId": 2106,
+        "dstId": 1888
+      }
+    ]
+  }
+}

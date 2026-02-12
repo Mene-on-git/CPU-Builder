@@ -323,6 +323,8 @@ class Simulatore {
 
         const miniSim = chipEsterno.statoInterno._miniSim;
         miniSim.clkStato = this.clkStato;
+        // Eredita le definizioni dei chip personalizzati (per chip annidati)
+        miniSim.customDefs = this.customDefs;
 
         // Imposta ingressi
         let idxIn = 0;

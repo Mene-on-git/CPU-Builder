@@ -1,0 +1,366 @@
+{
+  "nome": "4 bit register",
+  "colore": "#e0d806",
+  "ingressi": [
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT"
+  ],
+  "uscite": [
+    "IN",
+    "IN",
+    "IN",
+    "IN"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 2124,
+        "tipo": "INGRESSO",
+        "x": -1000,
+        "y": -640,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2125,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 2127,
+        "tipo": "INGRESSO",
+        "x": -1000,
+        "y": -580,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2128,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 2130,
+        "tipo": "INGRESSO",
+        "x": -1000,
+        "y": -520,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2131,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 2133,
+        "tipo": "INGRESSO",
+        "x": -1000,
+        "y": -460,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2134,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 2136,
+        "tipo": "INGRESSO",
+        "x": -1000,
+        "y": -300,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2137,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 2139,
+        "tipo": "INGRESSO",
+        "x": -1000,
+        "y": -240,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2140,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 2142,
+        "tipo": "USCITA",
+        "x": -200,
+        "y": -580,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2143,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 2145,
+        "tipo": "USCITA",
+        "x": -200,
+        "y": -500,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2146,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 2148,
+        "tipo": "USCITA",
+        "x": -200,
+        "y": -420,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2149,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 2151,
+        "tipo": "USCITA",
+        "x": -200,
+        "y": -340,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2152,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 2157,
+        "tipo": "CUSTOM_1_BIT_REGISTER",
+        "x": -640,
+        "y": -660,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2158,
+            "et": "OUT"
+          },
+          {
+            "id": 2159,
+            "et": "OUT"
+          },
+          {
+            "id": 2160,
+            "et": "OUT"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2161,
+            "et": "IN"
+          }
+        ]
+      },
+      {
+        "id": 2163,
+        "tipo": "CUSTOM_1_BIT_REGISTER",
+        "x": -640,
+        "y": -540,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2164,
+            "et": "OUT"
+          },
+          {
+            "id": 2165,
+            "et": "OUT"
+          },
+          {
+            "id": 2166,
+            "et": "OUT"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2167,
+            "et": "IN"
+          }
+        ]
+      },
+      {
+        "id": 2169,
+        "tipo": "CUSTOM_1_BIT_REGISTER",
+        "x": -640,
+        "y": -420,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2170,
+            "et": "OUT"
+          },
+          {
+            "id": 2171,
+            "et": "OUT"
+          },
+          {
+            "id": 2172,
+            "et": "OUT"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2173,
+            "et": "IN"
+          }
+        ]
+      },
+      {
+        "id": 2175,
+        "tipo": "CUSTOM_1_BIT_REGISTER",
+        "x": -640,
+        "y": -300,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2176,
+            "et": "OUT"
+          },
+          {
+            "id": 2177,
+            "et": "OUT"
+          },
+          {
+            "id": 2178,
+            "et": "OUT"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2179,
+            "et": "IN"
+          }
+        ]
+      }
+    ],
+    "fili": [
+      {
+        "id": 2181,
+        "srcId": 2125,
+        "dstId": 2158
+      },
+      {
+        "id": 2183,
+        "srcId": 2128,
+        "dstId": 2164
+      },
+      {
+        "id": 2185,
+        "srcId": 2131,
+        "dstId": 2170
+      },
+      {
+        "id": 2187,
+        "srcId": 2134,
+        "dstId": 2176
+      },
+      {
+        "id": 2189,
+        "srcId": 2137,
+        "dstId": 2177
+      },
+      {
+        "id": 2191,
+        "srcId": 2137,
+        "dstId": 2171
+      },
+      {
+        "id": 2193,
+        "srcId": 2137,
+        "dstId": 2165
+      },
+      {
+        "id": 2195,
+        "srcId": 2137,
+        "dstId": 2159
+      },
+      {
+        "id": 2197,
+        "srcId": 2140,
+        "dstId": 2178
+      },
+      {
+        "id": 2199,
+        "srcId": 2140,
+        "dstId": 2172
+      },
+      {
+        "id": 2201,
+        "srcId": 2140,
+        "dstId": 2166
+      },
+      {
+        "id": 2203,
+        "srcId": 2140,
+        "dstId": 2160
+      },
+      {
+        "id": 2205,
+        "srcId": 2161,
+        "dstId": 2143
+      },
+      {
+        "id": 2207,
+        "srcId": 2167,
+        "dstId": 2146
+      },
+      {
+        "id": 2209,
+        "srcId": 2173,
+        "dstId": 2149
+      },
+      {
+        "id": 2211,
+        "srcId": 2179,
+        "dstId": 2152
+      }
+    ]
+  }
+}

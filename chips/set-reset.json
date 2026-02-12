@@ -1,0 +1,160 @@
+{
+  "nome": "set-reset",
+  "colore": "#e0d806",
+  "ingressi": [
+    "OUT",
+    "OUT"
+  ],
+  "uscite": [
+    "IN"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 661,
+        "tipo": "INGRESSO",
+        "x": -500,
+        "y": -280,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 662,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 664,
+        "tipo": "INGRESSO",
+        "x": -500,
+        "y": -200,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 665,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 667,
+        "tipo": "OR",
+        "x": -260,
+        "y": -380,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 668,
+            "et": "A"
+          },
+          {
+            "id": 669,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 670,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 674,
+        "tipo": "NOT",
+        "x": -280,
+        "y": -140,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 675,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 676,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 680,
+        "tipo": "AND",
+        "x": -80,
+        "y": -240,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 681,
+            "et": "A"
+          },
+          {
+            "id": 682,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 683,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 687,
+        "tipo": "USCITA",
+        "x": 140,
+        "y": -240,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 688,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 672,
+        "srcId": 662,
+        "dstId": 669
+      },
+      {
+        "id": 678,
+        "srcId": 665,
+        "dstId": 675
+      },
+      {
+        "id": 685,
+        "srcId": 676,
+        "dstId": 682
+      },
+      {
+        "id": 690,
+        "srcId": 670,
+        "dstId": 681
+      },
+      {
+        "id": 692,
+        "srcId": 683,
+        "dstId": 688
+      },
+      {
+        "id": 694,
+        "srcId": 683,
+        "dstId": 668
+      }
+    ]
+  }
+}

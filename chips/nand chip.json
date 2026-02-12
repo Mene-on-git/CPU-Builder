@@ -1,0 +1,362 @@
+{
+  "nome": "nand chip",
+  "colore": "#e0d806",
+  "ingressi": [
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT",
+    "OUT"
+  ],
+  "uscite": [
+    "IN",
+    "IN",
+    "IN",
+    "IN"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 759,
+        "tipo": "INGRESSO",
+        "x": -820,
+        "y": -520,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 760,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 762,
+        "tipo": "INGRESSO",
+        "x": -820,
+        "y": -440,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 763,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 765,
+        "tipo": "INGRESSO",
+        "x": -820,
+        "y": -360,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 766,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 768,
+        "tipo": "INGRESSO",
+        "x": -820,
+        "y": -280,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 769,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 771,
+        "tipo": "INGRESSO",
+        "x": -820,
+        "y": -200,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 772,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 774,
+        "tipo": "INGRESSO",
+        "x": -820,
+        "y": -120,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 775,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 777,
+        "tipo": "INGRESSO",
+        "x": -820,
+        "y": -40,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 778,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 780,
+        "tipo": "INGRESSO",
+        "x": -820,
+        "y": 40,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 781,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 792,
+        "tipo": "NAND",
+        "x": -640,
+        "y": -480,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 793,
+            "et": "A"
+          },
+          {
+            "id": 794,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 795,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 802,
+        "tipo": "NAND",
+        "x": -640,
+        "y": -340,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 803,
+            "et": "A"
+          },
+          {
+            "id": 804,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 805,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 807,
+        "tipo": "NAND",
+        "x": -640,
+        "y": -180,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 808,
+            "et": "A"
+          },
+          {
+            "id": 809,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 810,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 812,
+        "tipo": "NAND",
+        "x": -640,
+        "y": -20,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 813,
+            "et": "A"
+          },
+          {
+            "id": 814,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 815,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 817,
+        "tipo": "USCITA",
+        "x": -440,
+        "y": -480,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 818,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 820,
+        "tipo": "USCITA",
+        "x": -440,
+        "y": -340,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 821,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 823,
+        "tipo": "USCITA",
+        "x": -440,
+        "y": -180,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 824,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 826,
+        "tipo": "USCITA",
+        "x": -440,
+        "y": -20,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 827,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 829,
+        "srcId": 760,
+        "dstId": 793
+      },
+      {
+        "id": 831,
+        "srcId": 763,
+        "dstId": 794
+      },
+      {
+        "id": 833,
+        "srcId": 795,
+        "dstId": 818
+      },
+      {
+        "id": 835,
+        "srcId": 766,
+        "dstId": 803
+      },
+      {
+        "id": 837,
+        "srcId": 769,
+        "dstId": 804
+      },
+      {
+        "id": 839,
+        "srcId": 805,
+        "dstId": 821
+      },
+      {
+        "id": 841,
+        "srcId": 772,
+        "dstId": 808
+      },
+      {
+        "id": 843,
+        "srcId": 775,
+        "dstId": 809
+      },
+      {
+        "id": 845,
+        "srcId": 810,
+        "dstId": 824
+      },
+      {
+        "id": 847,
+        "srcId": 778,
+        "dstId": 813
+      },
+      {
+        "id": 849,
+        "srcId": 781,
+        "dstId": 814
+      },
+      {
+        "id": 851,
+        "srcId": 815,
+        "dstId": 827
+      }
+    ]
+  }
+}

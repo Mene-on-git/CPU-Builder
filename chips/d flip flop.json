@@ -1,0 +1,160 @@
+{
+  "nome": "d flip flop",
+  "colore": "#e0d806",
+  "ingressi": [
+    "OUT",
+    "OUT"
+  ],
+  "uscite": [
+    "IN"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 1533,
+        "tipo": "INGRESSO",
+        "x": -900,
+        "y": -380,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 1534,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 1536,
+        "tipo": "INGRESSO",
+        "x": -900,
+        "y": -300,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 1537,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 1539,
+        "tipo": "CUSTOM_DATA-STORE",
+        "x": -540,
+        "y": -460,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 1540,
+            "et": "OUT"
+          },
+          {
+            "id": 1541,
+            "et": "OUT"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 1542,
+            "et": "IN"
+          }
+        ]
+      },
+      {
+        "id": 1544,
+        "tipo": "CUSTOM_DATA-STORE",
+        "x": -340,
+        "y": -320,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 1545,
+            "et": "OUT"
+          },
+          {
+            "id": 1546,
+            "et": "OUT"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 1547,
+            "et": "IN"
+          }
+        ]
+      },
+      {
+        "id": 1549,
+        "tipo": "NOT",
+        "x": -680,
+        "y": -380,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 1550,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 1551,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 1703,
+        "tipo": "USCITA",
+        "x": -40,
+        "y": -300,
+        "stato": 0,
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 1704,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 1553,
+        "srcId": 1537,
+        "dstId": 1550
+      },
+      {
+        "id": 1555,
+        "srcId": 1551,
+        "dstId": 1541
+      },
+      {
+        "id": 1697,
+        "srcId": 1534,
+        "dstId": 1540
+      },
+      {
+        "id": 1699,
+        "srcId": 1542,
+        "dstId": 1545
+      },
+      {
+        "id": 1701,
+        "srcId": 1537,
+        "dstId": 1546
+      },
+      {
+        "id": 1706,
+        "srcId": 1547,
+        "dstId": 1704
+      }
+    ]
+  }
+}
