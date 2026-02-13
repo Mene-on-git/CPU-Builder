@@ -82,6 +82,7 @@ class Chip {
 
         this.pinI = [];
         this.pinU = [];
+        this.nomeCustom = '';  // Nome personalizzato (per INGRESSO/USCITA)
         this.stato = (tipo === 'CLOCK') ? 1 : 0;  // statoInterattivo
         this.statoInterno = {};  // Stato interno per chip sequenziali (es. flip-flop)
 
@@ -376,6 +377,7 @@ class Simulatore {
             const si = Object.assign({}, c.statoInterno || {});
             delete si._miniSim;
             chips.push({ id:c.id, tipo:c.tipo, x:c.x, y:c.y, stato:c.stato,
+                nomeCustom: c.nomeCustom || '',
                 statoInterno: si,
                 pinI: c.pinI.map(p=>({id:p.id, et:p.etichetta})),
                 pinU: c.pinU.map(p=>({id:p.id, et:p.etichetta})) });
@@ -390,6 +392,13 @@ class Simulatore {
         if(data.chips) data.chips.forEach(cd => {
             const ch = new Chip(cd.tipo, cd.x, cd.y, cd.id);
             ch.stato = cd.stato||0;
+            ch.nomeCustom = cd.nomeCustom || '';
+            if(ch.nomeCustom) {
+                const d = DEFS[ch.tipo];
+                const minW = d ? d.w : 80;
+                ch.w = Math.max(minW, ch.nomeCustom.length * 9 + 20);
+                ch._calcolaOffset();
+            }
             if(cd.statoInterno) ch.statoInterno = cd.statoInterno;
             if(cd.pinI) cd.pinI.forEach((pd,i)=>{ if(i<ch.pinI.length){ ch.pinI[i].id=pd.id; ch.pinI[i].etichetta=pd.et||ch.pinI[i].etichetta; }});
             if(cd.pinU) cd.pinU.forEach((pd,i)=>{ if(i<ch.pinU.length){ ch.pinU[i].id=pd.id; ch.pinU[i].etichetta=pd.et||ch.pinU[i].etichetta; }});
@@ -727,8 +736,37 @@ class Editor {
         const chip = this._hitChip(w.x, w.y);
         if(chip) {
             if(chip.tipo==='INGRESSO'){
-                chip.stato = 1 - chip.stato;
-                this._propagaFili();
+                // Top half: rinomina, bottom half: toggle stato
+                const relY = w.y - chip.y;
+                if(relY < chip.h / 2) {
+                    // Rinomina
+                    const nomeAttuale = chip.nomeCustom || 'IN';
+                    const nuovo = prompt('Rinomina ingresso:', nomeAttuale);
+                    if(nuovo !== null && nuovo.trim() !== '') {
+                        this._salvaUndo();
+                        chip.nomeCustom = nuovo.trim();
+                        const d = DEFS[chip.tipo];
+                        const minW = d ? d.w : 80;
+                        chip.w = Math.max(minW, chip.nomeCustom.length * 9 + 20);
+                        chip._calcolaOffset();
+                    }
+                } else {
+                    // Toggle ON/OFF
+                    chip.stato = 1 - chip.stato;
+                    this._propagaFili();
+                }
+            } else if(chip.tipo==='USCITA'){
+                // Rinomina USCITA con doppio click
+                const nomeAttuale = chip.nomeCustom || 'OUT';
+                const nuovo = prompt('Rinomina uscita:', nomeAttuale);
+                if(nuovo !== null && nuovo.trim() !== '') {
+                    this._salvaUndo();
+                    chip.nomeCustom = nuovo.trim();
+                    const d = DEFS[chip.tipo];
+                    const minW = d ? d.w : 80;
+                    chip.w = Math.max(minW, chip.nomeCustom.length * 9 + 20);
+                    chip._calcolaOffset();
+                }
             } else if(chip.tipo==='CLOCK'){
                 chip.stato = 1 - chip.stato;
             } else if(chip.tipo==='FLIPFLOP_D' || chip.tipo==='CONTATORE_4BIT' ||
@@ -768,6 +806,25 @@ class Editor {
         if(e.ctrlKey && e.key==='a'){
             e.preventDefault();
             for(const c of this._sim.chips.values()) this.selChips.add(c.id);
+        }
+        // F2: Rinomina INGRESSO/USCITA selezionato
+        if(e.key==='F2' && this.selChips.size===1){
+            const chipId = [...this.selChips][0];
+            const chip = this._sim.chips.get(chipId);
+            if(chip && (chip.tipo==='INGRESSO' || chip.tipo==='USCITA')){
+                e.preventDefault();
+                const nomeAttuale = chip.nomeCustom || (chip.tipo==='INGRESSO' ? 'IN' : 'OUT');
+                const nuovo = prompt('Rinomina ' + (chip.tipo==='INGRESSO' ? 'ingresso' : 'uscita') + ':', nomeAttuale);
+                if(nuovo !== null && nuovo.trim() !== '') {
+                    this._salvaUndo();
+                    chip.nomeCustom = nuovo.trim();
+                    // Adatta larghezza chip al nome
+                    const d = DEFS[chip.tipo];
+                    const minW = d ? d.w : 80;
+                    chip.w = Math.max(minW, chip.nomeCustom.length * 9 + 20);
+                    chip._calcolaOffset();
+                }
+            }
         }
     }
 
@@ -1083,8 +1140,8 @@ async function salvaModificaChip() {
     // Trova ingressi e uscite
     const ingressi = [], uscite = [];
     for(const c of sim.chips.values()){
-        if(c.tipo==='INGRESSO') ingressi.push(c.pinU[0]?.etichetta || 'IN');
-        if(c.tipo==='USCITA')   uscite.push(c.pinI[0]?.etichetta || 'OUT');
+        if(c.tipo==='INGRESSO') ingressi.push(c.nomeCustom || c.pinU[0]?.etichetta || 'IN');
+        if(c.tipo==='USCITA')   uscite.push(c.nomeCustom || c.pinI[0]?.etichetta || 'OUT');
     }
 
     // Aggiorna definizione
@@ -1111,9 +1168,11 @@ async function salvaModificaChip() {
             _editChipDef.uscite = uscite;
             sim.customDefs.set(_editChipTipo, _editChipDef);
 
-            // Aggiorna DEFS
+            // Aggiorna DEFS (incluse dimensioni)
             DEFS[_editChipTipo].ing = ingressi;
             DEFS[_editChipTipo].usc = uscite;
+            DEFS[_editChipTipo].w = Math.max(90, 30 + Math.max(ingressi.length, uscite.length)*15 + (_editChipDef.nome||'').length*8);
+            DEFS[_editChipTipo].h = Math.max(50, 22 + Math.max(ingressi.length, uscite.length)*20 + 10);
         }
     } catch(e) {
         mostraNotifica('Errore nel salvataggio del chip.', 'errore');
@@ -1131,9 +1190,16 @@ function annullaModificaChip() {
 }
 
 function _esciDallaModifica() {
+    const tipoAggiornato = _editChipTipo;
+
     // Ripristina circuito precedente
     if(_editPrevCircuito) {
         sim.deserializza(_editPrevCircuito);
+    }
+
+    // Aggiorna tutte le istanze del chip modificato nel progetto ripristinato
+    if(tipoAggiornato) {
+        _aggiornaIstanzeChip(tipoAggiornato);
     }
 
     // Ripristina UI
@@ -1152,6 +1218,62 @@ function _esciDallaModifica() {
     aggiornaUI();
 }
 
+// Aggiorna tutte le istanze di un tipo di chip personalizzato dopo una modifica
+function _aggiornaIstanzeChip(tipoKey) {
+    const def = DEFS[tipoKey];
+    if(!def) return;
+
+    for(const c of sim.chips.values()) {
+        if(c.tipo !== tipoKey) continue;
+
+        // Salva le connessioni (fili) attuali per provare a riconnetterle
+        const vecchiPinI = c.pinI.map(p => p.id);
+        const vecchiPinU = c.pinU.map(p => p.id);
+
+        // Ricostruisci i pin secondo la nuova definizione
+        c.pinI = [];
+        c.pinU = [];
+        def.ing.forEach(e => c.pinI.push(new Pin('ingresso', e, c.id)));
+        def.usc.forEach(e => c.pinU.push(new Pin('uscita',  e, c.id)));
+
+        // Aggiorna dimensioni
+        c.w = def.w;
+        c.h = def.h;
+        c.nome = def.nome;
+        c.colore = def.col;
+        c._calcolaOffset();
+
+        // Rimappa i fili ai nuovi pin ID (mantieni connessioni per indice)
+        for(const f of sim.fili.values()) {
+            const idxI = vecchiPinI.indexOf(f.dstId);
+            if(idxI !== -1 && idxI < c.pinI.length) {
+                f.dstId = c.pinI[idxI].id;
+            }
+            const idxU = vecchiPinU.indexOf(f.srcId);
+            if(idxU !== -1 && idxU < c.pinU.length) {
+                f.srcId = c.pinU[idxU].id;
+            }
+        }
+
+        // Invalida la mini-simulazione così viene ricreata con il nuovo circuito
+        if(c.statoInterno && c.statoInterno._miniSim) {
+            delete c.statoInterno._miniSim;
+        }
+
+        // Rimuovi fili orfani (collegati a pin che non esistono più)
+        const validPinIds = new Set(c.tutti().map(p => p.id));
+        const filiDaRimuovere = [];
+        for(const f of sim.fili.values()) {
+            const srcChip = sim.chipDaPin(f.srcId);
+            const dstChip = sim.chipDaPin(f.dstId);
+            if(!srcChip || !dstChip) {
+                filiDaRimuovere.push(f.id);
+            }
+        }
+        filiDaRimuovere.forEach(id => sim.fili.delete(id));
+    }
+}
+
 // ======================== CHIP PERSONALIZZATI ========================
 
 async function esportaChip() {
@@ -1163,8 +1285,8 @@ async function esportaChip() {
     // Trova gli input e output del circuito
     const ingressi = [], uscite = [];
     for(const c of sim.chips.values()){
-        if(c.tipo==='INGRESSO') ingressi.push(c.pinU[0]?.etichetta || 'IN');
-        if(c.tipo==='USCITA')   uscite.push(c.pinI[0]?.etichetta || 'OUT');
+        if(c.tipo==='INGRESSO') ingressi.push(c.nomeCustom || c.pinU[0]?.etichetta || 'IN');
+        if(c.tipo==='USCITA')   uscite.push(c.nomeCustom || c.pinI[0]?.etichetta || 'OUT');
     }
 
     if(!ingressi.length && !uscite.length){

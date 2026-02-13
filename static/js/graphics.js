@@ -238,11 +238,12 @@ class Renderer {
         this._rrect(ctx, c.x, c.y, c.w, c.h, 6);
         ctx.fill(); ctx.stroke();
 
-        // Nome
+        // Nome (usa nomeCustom per INGRESSO/USCITA se disponibile)
         ctx.fillStyle = '#fff';
         ctx.font = `bold ${Math.max(11,12/this.zoom)}px monospace`;
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillText(c.nome, c.x+c.w/2, c.y+12);
+        const nomeVisualizzato = (c.nomeCustom) ? c.nomeCustom : c.nome;
+        ctx.fillText(nomeVisualizzato, c.x+c.w/2, c.y+12);
 
         // Decorazioni speciali
         this._chipExtra(ctx, c);

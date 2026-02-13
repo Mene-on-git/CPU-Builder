@@ -2,11 +2,11 @@
   "nome": "d flip flop",
   "colore": "#e0d806",
   "ingressi": [
-    "OUT",
+    "IN",
     "OUT"
   ],
   "uscite": [
-    "IN"
+    "OUT"
   ],
   "circuito": {
     "chips": [
@@ -16,6 +16,7 @@
         "x": -900,
         "y": -380,
         "stato": 0,
+        "nomeCustom": "IN",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -31,6 +32,7 @@
         "x": -900,
         "y": -300,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -46,6 +48,7 @@
         "x": -540,
         "y": -460,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
@@ -70,6 +73,7 @@
         "x": -340,
         "y": -320,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
@@ -94,6 +98,7 @@
         "x": -680,
         "y": -380,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
@@ -114,6 +119,7 @@
         "x": -40,
         "y": -300,
         "stato": 0,
+        "nomeCustom": "OUT",
         "statoInterno": {},
         "pinI": [
           {

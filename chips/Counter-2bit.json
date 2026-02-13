@@ -2,11 +2,11 @@
   "nome": "Counter-2bit",
   "colore": "#cbbdbd",
   "ingressi": [
-    "OUT"
+    "IN"
   ],
   "uscite": [
-    "IN",
-    "IN"
+    "OUT",
+    "OUT"
   ],
   "circuito": {
     "chips": [
@@ -16,6 +16,7 @@
         "x": -320,
         "y": 60,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {
           "Q": 0,
           "clkPrev": 1
@@ -51,6 +52,7 @@
         "x": -320,
         "y": 280,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {
           "Q": 0,
           "clkPrev": 1
@@ -86,6 +88,7 @@
         "x": -300,
         "y": -40,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
@@ -106,6 +109,7 @@
         "x": -180,
         "y": 180,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
@@ -130,6 +134,7 @@
         "x": 60,
         "y": 40,
         "stato": 0,
+        "nomeCustom": "OUT",
         "statoInterno": {},
         "pinI": [
           {
@@ -145,6 +150,7 @@
         "x": 80,
         "y": 260,
         "stato": 0,
+        "nomeCustom": "OUT",
         "statoInterno": {},
         "pinI": [
           {
@@ -160,6 +166,7 @@
         "x": -500,
         "y": 300,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -175,6 +182,7 @@
         "x": -520,
         "y": 140,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -190,6 +198,7 @@
         "x": -720,
         "y": 100,
         "stato": 1,
+        "nomeCustom": "IN",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
