@@ -2,11 +2,11 @@
   "nome": "Counter-2bit",
   "colore": "#cbbdbd",
   "ingressi": [
-    "IN"
+    "CLK"
   ],
   "uscite": [
-    "OUT",
-    "OUT"
+    "Q0",
+    "Q1"
   ],
   "circuito": {
     "chips": [
@@ -134,7 +134,7 @@
         "x": 60,
         "y": 40,
         "stato": 0,
-        "nomeCustom": "OUT",
+        "nomeCustom": "Q0",
         "statoInterno": {},
         "pinI": [
           {
@@ -150,7 +150,7 @@
         "x": 80,
         "y": 260,
         "stato": 0,
-        "nomeCustom": "OUT",
+        "nomeCustom": "Q1",
         "statoInterno": {},
         "pinI": [
           {
@@ -198,7 +198,7 @@
         "x": -720,
         "y": 100,
         "stato": 1,
-        "nomeCustom": "IN",
+        "nomeCustom": "CLK",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -266,5 +266,6 @@
         "dstId": 745833
       }
     ]
-  }
+  },
+  "descrizione": "Contatore a 2 bit (0-3). Conta ciclicamente da 0 a 3 sul fronte di clock. Q0 è il bit meno significativo."
 }

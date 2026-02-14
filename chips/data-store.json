@@ -2,11 +2,11 @@
   "nome": "data-store",
   "colore": "#e0d806",
   "ingressi": [
-    "OUT",
-    "OUT"
+    "D",
+    "EN"
   ],
   "uscite": [
-    "IN"
+    "Q"
   ],
   "circuito": {
     "chips": [
@@ -23,7 +23,8 @@
             "id": 697,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "D"
       },
       {
         "id": 699,
@@ -38,7 +39,8 @@
             "id": 700,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "EN"
       },
       {
         "id": 702,
@@ -101,7 +103,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q"
       },
       {
         "id": 725,
@@ -224,5 +227,6 @@
         "dstId": 727
       }
     ]
-  }
+  },
+  "descrizione": "D Latch con abilitazione (Gated D Latch). Quando EN=1, l'uscita Q segue l'ingresso D. Quando EN=0, Q mantiene l'ultimo valore memorizzato."
 }

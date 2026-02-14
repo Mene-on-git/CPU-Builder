@@ -2,24 +2,24 @@
   "nome": "ALU",
   "colore": "#06e03c",
   "ingressi": [
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT"
+    "A3",
+    "A2",
+    "A1",
+    "A0",
+    "B3",
+    "B2",
+    "B1",
+    "B0",
+    "SUB"
   ],
   "uscite": [
-    "IN",
-    "IN",
-    "IN",
-    "IN",
-    "IN",
-    "IN",
-    "IN"
+    "S3",
+    "S2",
+    "S1",
+    "S0",
+    "CARRY",
+    "NEG",
+    "ZERO"
   ],
   "circuito": {
     "chips": [
@@ -36,7 +36,8 @@
             "id": 2,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "A3"
       },
       {
         "id": 4,
@@ -51,7 +52,8 @@
             "id": 5,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "A2"
       },
       {
         "id": 7,
@@ -66,7 +68,8 @@
             "id": 8,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "A1"
       },
       {
         "id": 10,
@@ -81,7 +84,8 @@
             "id": 11,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "A0"
       },
       {
         "id": 13,
@@ -96,7 +100,8 @@
             "id": 14,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "B3"
       },
       {
         "id": 16,
@@ -111,7 +116,8 @@
             "id": 17,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "B2"
       },
       {
         "id": 19,
@@ -126,7 +132,8 @@
             "id": 20,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "B1"
       },
       {
         "id": 22,
@@ -141,7 +148,8 @@
             "id": 23,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "B0"
       },
       {
         "id": 25,
@@ -156,7 +164,8 @@
             "id": 26,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "SUB"
       },
       {
         "id": 28,
@@ -264,61 +273,61 @@
         "pinI": [
           {
             "id": 49,
-            "et": "OUT"
+            "et": "A3"
           },
           {
             "id": 50,
-            "et": "OUT"
+            "et": "A2"
           },
           {
             "id": 51,
-            "et": "OUT"
+            "et": "A1"
           },
           {
             "id": 52,
-            "et": "OUT"
+            "et": "A0"
           },
           {
             "id": 53,
-            "et": "OUT"
+            "et": "B3"
           },
           {
             "id": 54,
-            "et": "OUT"
+            "et": "B2"
           },
           {
             "id": 55,
-            "et": "OUT"
+            "et": "B1"
           },
           {
             "id": 56,
-            "et": "OUT"
+            "et": "B0"
           },
           {
             "id": 57,
-            "et": "OUT"
+            "et": "Cin"
           }
         ],
         "pinU": [
           {
             "id": 58,
-            "et": "IN"
+            "et": "S3"
           },
           {
             "id": 59,
-            "et": "IN"
+            "et": "S2"
           },
           {
             "id": 60,
-            "et": "IN"
+            "et": "S1"
           },
           {
             "id": 61,
-            "et": "IN"
+            "et": "S0"
           },
           {
             "id": 62,
-            "et": "IN"
+            "et": "Cout"
           }
         ]
       },
@@ -335,7 +344,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "S3"
       },
       {
         "id": 575,
@@ -350,7 +360,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "S2"
       },
       {
         "id": 578,
@@ -365,7 +376,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "S1"
       },
       {
         "id": 581,
@@ -380,7 +392,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "S0"
       },
       {
         "id": 584,
@@ -395,7 +408,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "CARRY"
       },
       {
         "id": 587,
@@ -410,7 +424,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "NEG"
       },
       {
         "id": 590,
@@ -425,7 +440,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "ZERO"
       },
       {
         "id": 598,
@@ -752,5 +768,6 @@
         "dstId": 573
       }
     ]
-  }
+  },
+  "descrizione": "Unità Aritmetico-Logica a 4 bit. Esegue addizione (SUB=0) o sottrazione in complemento a 2 (SUB=1) tra A[3:0] e B[3:0]. Produce il risultato S[3:0] e i flag: CARRY (riporto), NEG (risultato negativo, MSB), ZERO (risultato uguale a zero)."
 }

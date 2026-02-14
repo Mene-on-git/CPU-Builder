@@ -2,22 +2,22 @@
   "nome": "4 bit ADDER",
   "colore": "#7f8c8d",
   "ingressi": [
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT"
+    "A3",
+    "A2",
+    "A1",
+    "A0",
+    "B3",
+    "B2",
+    "B1",
+    "B0",
+    "Cin"
   ],
   "uscite": [
-    "IN",
-    "IN",
-    "IN",
-    "IN",
-    "IN"
+    "S3",
+    "S2",
+    "S1",
+    "S0",
+    "Cout"
   ],
   "circuito": {
     "chips": [
@@ -27,6 +27,7 @@
         "x": -940,
         "y": -300,
         "stato": 0,
+        "nomeCustom": "A3",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -42,6 +43,7 @@
         "x": -940,
         "y": -220,
         "stato": 1,
+        "nomeCustom": "A2",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -57,6 +59,7 @@
         "x": -940,
         "y": -140,
         "stato": 0,
+        "nomeCustom": "A1",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -72,6 +75,7 @@
         "x": -940,
         "y": -60,
         "stato": 0,
+        "nomeCustom": "A0",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -87,6 +91,7 @@
         "x": -940,
         "y": 100,
         "stato": 0,
+        "nomeCustom": "B3",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -102,6 +107,7 @@
         "x": -940,
         "y": 180,
         "stato": 0,
+        "nomeCustom": "B2",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -117,6 +123,7 @@
         "x": -940,
         "y": 260,
         "stato": 0,
+        "nomeCustom": "B1",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -132,6 +139,7 @@
         "x": -940,
         "y": 340,
         "stato": 1,
+        "nomeCustom": "B0",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -147,6 +155,7 @@
         "x": -940,
         "y": 440,
         "stato": 1,
+        "nomeCustom": "Cin",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -162,6 +171,7 @@
         "x": 180,
         "y": -180,
         "stato": 0,
+        "nomeCustom": "S3",
         "statoInterno": {},
         "pinI": [
           {
@@ -177,6 +187,7 @@
         "x": 180,
         "y": -100,
         "stato": 0,
+        "nomeCustom": "S2",
         "statoInterno": {},
         "pinI": [
           {
@@ -192,6 +203,7 @@
         "x": 180,
         "y": 0,
         "stato": 0,
+        "nomeCustom": "S1",
         "statoInterno": {},
         "pinI": [
           {
@@ -207,6 +219,7 @@
         "x": 180,
         "y": 100,
         "stato": 0,
+        "nomeCustom": "S0",
         "statoInterno": {},
         "pinI": [
           {
@@ -222,6 +235,7 @@
         "x": 180,
         "y": 240,
         "stato": 0,
+        "nomeCustom": "Cout",
         "statoInterno": {},
         "pinI": [
           {
@@ -237,29 +251,30 @@
         "x": -640,
         "y": 140,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
             "id": 341,
-            "et": "OUT"
+            "et": "A"
           },
           {
             "id": 342,
-            "et": "OUT"
+            "et": "B"
           },
           {
             "id": 343,
-            "et": "OUT"
+            "et": "Cin"
           }
         ],
         "pinU": [
           {
             "id": 344,
-            "et": "IN"
+            "et": "S"
           },
           {
             "id": 345,
-            "et": "IN"
+            "et": "Cout"
           }
         ]
       },
@@ -269,29 +284,30 @@
         "x": -480,
         "y": 40,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
             "id": 432,
-            "et": "OUT"
+            "et": "A"
           },
           {
             "id": 433,
-            "et": "OUT"
+            "et": "B"
           },
           {
             "id": 434,
-            "et": "OUT"
+            "et": "Cin"
           }
         ],
         "pinU": [
           {
             "id": 435,
-            "et": "IN"
+            "et": "S"
           },
           {
             "id": 436,
-            "et": "IN"
+            "et": "Cout"
           }
         ]
       },
@@ -301,29 +317,30 @@
         "x": -340,
         "y": -60,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
             "id": 523,
-            "et": "OUT"
+            "et": "A"
           },
           {
             "id": 524,
-            "et": "OUT"
+            "et": "B"
           },
           {
             "id": 525,
-            "et": "OUT"
+            "et": "Cin"
           }
         ],
         "pinU": [
           {
             "id": 526,
-            "et": "IN"
+            "et": "S"
           },
           {
             "id": 527,
-            "et": "IN"
+            "et": "Cout"
           }
         ]
       },
@@ -333,29 +350,30 @@
         "x": -200,
         "y": -140,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
             "id": 614,
-            "et": "OUT"
+            "et": "A"
           },
           {
             "id": 615,
-            "et": "OUT"
+            "et": "B"
           },
           {
             "id": 616,
-            "et": "OUT"
+            "et": "Cin"
           }
         ],
         "pinU": [
           {
             "id": 617,
-            "et": "IN"
+            "et": "S"
           },
           {
             "id": 618,
-            "et": "IN"
+            "et": "Cout"
           }
         ]
       }
@@ -447,5 +465,6 @@
         "dstId": 614
       }
     ]
-  }
+  },
+  "descrizione": "Sommatore a 4 bit con riporto (Ripple Carry Adder). Somma due numeri binari a 4 bit A[3:0] + B[3:0] con riporto in ingresso Cin."
 }

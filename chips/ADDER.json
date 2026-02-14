@@ -2,13 +2,13 @@
   "nome": "ADDER",
   "colore": "#7f8c8d",
   "ingressi": [
-    "OUT",
-    "OUT",
-    "OUT"
+    "A",
+    "B",
+    "Cin"
   ],
   "uscite": [
-    "IN",
-    "IN"
+    "S",
+    "Cout"
   ],
   "circuito": {
     "chips": [
@@ -25,7 +25,8 @@
             "id": 219,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "A"
       },
       {
         "id": 221,
@@ -40,7 +41,8 @@
             "id": 222,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "B"
       },
       {
         "id": 224,
@@ -55,7 +57,8 @@
             "id": 225,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "Cin"
       },
       {
         "id": 227,
@@ -190,7 +193,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "S"
       },
       {
         "id": 285,
@@ -205,7 +209,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Cout"
       }
     ],
     "fili": [
@@ -270,5 +275,6 @@
         "dstId": 283
       }
     ]
-  }
+  },
+  "descrizione": "Sommatore completo a 1 bit (Full Adder). Somma A + B + Cin, produce S (somma) e Cout (riporto in uscita)."
 }

@@ -2,11 +2,11 @@
   "nome": "d flip flop",
   "colore": "#e0d806",
   "ingressi": [
-    "IN",
-    "OUT"
+    "D",
+    "CLK"
   ],
   "uscite": [
-    "OUT"
+    "Q"
   ],
   "circuito": {
     "chips": [
@@ -16,7 +16,7 @@
         "x": -900,
         "y": -380,
         "stato": 0,
-        "nomeCustom": "IN",
+        "nomeCustom": "D",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -32,7 +32,7 @@
         "x": -900,
         "y": -300,
         "stato": 0,
-        "nomeCustom": "",
+        "nomeCustom": "CLK",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -53,17 +53,17 @@
         "pinI": [
           {
             "id": 1540,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 1541,
-            "et": "OUT"
+            "et": "EN"
           }
         ],
         "pinU": [
           {
             "id": 1542,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       },
@@ -78,17 +78,17 @@
         "pinI": [
           {
             "id": 1545,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 1546,
-            "et": "OUT"
+            "et": "EN"
           }
         ],
         "pinU": [
           {
             "id": 1547,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       },
@@ -119,7 +119,7 @@
         "x": -40,
         "y": -300,
         "stato": 0,
-        "nomeCustom": "OUT",
+        "nomeCustom": "Q",
         "statoInterno": {},
         "pinI": [
           {
@@ -162,5 +162,6 @@
         "dstId": 1704
       }
     ]
-  }
+  },
+  "descrizione": "Flip-Flop D master-slave edge-triggered. Cattura il valore dell'ingresso D sul fronte di salita del clock CLK."
 }
