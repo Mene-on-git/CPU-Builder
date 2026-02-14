@@ -1008,19 +1008,14 @@ async function salvaProgetto() {
         circuito: sim.serializza()
     };
     try {
-        const resp = await fetch('/api/progetti', {
-            method: 'POST',
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify(data)
-        });
-        const result = await resp.json();
+        const result = await window.pywebview.api.salva_progetto(data);
         if(result.successo){
             mostraNotifica('Progetto salvato con successo!', 'successo');
         } else {
             mostraNotifica('Errore nel salvataggio.', 'errore');
         }
     } catch(e) {
-        mostraNotifica('Errore di connessione al server.', 'errore');
+        mostraNotifica('Errore nel salvataggio: ' + e, 'errore');
     }
 }
 
@@ -1030,8 +1025,7 @@ async function mostraModaleCarica() {
     modale.classList.remove('nascosta');
 
     try {
-        const resp = await fetch('/api/progetti');
-        const progetti = await resp.json();
+        const progetti = await window.pywebview.api.lista_progetti();
 
         if(!progetti.length){
             lista.innerHTML = '<p class="placeholder-text">Nessun progetto salvato.</p>';
@@ -1066,8 +1060,7 @@ async function mostraModaleCarica() {
 
 async function caricaProgetto(nome) {
     try {
-        const resp = await fetch(`/api/progetti/${encodeURIComponent(nome)}`);
-        const data = await resp.json();
+        const data = await window.pywebview.api.carica_progetto(nome);
         if(data.errore){ mostraNotifica(data.errore, 'errore'); return; }
 
         document.getElementById('nome-progetto').value = data.nome || nome;
@@ -1083,7 +1076,7 @@ async function caricaProgetto(nome) {
 async function eliminaProgetto(nome) {
     if(!confirm(`Eliminare il progetto "${nome}"?`)) return;
     try {
-        await fetch(`/api/progetti/${encodeURIComponent(nome)}`, {method:'DELETE'});
+        await window.pywebview.api.elimina_progetto(nome);
         mostraModaleCarica(); // Ricarica lista
     } catch(e) {
         mostraNotifica('Errore nell\'eliminazione.', 'errore');
@@ -1154,12 +1147,7 @@ async function salvaModificaChip() {
     };
 
     try {
-        const resp = await fetch('/api/chip-personalizzati', {
-            method: 'POST',
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify(chipDef)
-        });
-        const result = await resp.json();
+        const result = await window.pywebview.api.salva_chip_personalizzato(chipDef);
         if(result.successo){
             mostraNotifica(`Chip "${_editChipDef.nome}" salvato!`, 'successo');
             // Aggiorna la definizione in memoria
@@ -1303,12 +1291,7 @@ async function esportaChip() {
     };
 
     try {
-        const resp = await fetch('/api/chip-personalizzati', {
-            method: 'POST',
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify(chipDef)
-        });
-        const result = await resp.json();
+        const result = await window.pywebview.api.salva_chip_personalizzato(chipDef);
         if(result.successo){
             mostraNotifica(`Chip "${nome}" esportato!`, 'successo');
             document.getElementById('modale-esporta').classList.add('nascosta');
@@ -1322,8 +1305,7 @@ async function esportaChip() {
 async function caricaChipPersonalizzati() {
     const cont = document.getElementById('cat-custom');
     try {
-        const resp = await fetch('/api/chip-personalizzati');
-        const chips = await resp.json();
+        const chips = await window.pywebview.api.lista_chip_personalizzati();
 
         if(!chips.length){
             cont.innerHTML = '<p class="placeholder-text">Nessun chip personalizzato.<br>Usa "Esporta Chip" per crearne.</p>';
@@ -1364,10 +1346,17 @@ async function caricaChipPersonalizzati() {
             cont.appendChild(btn);
         });
     } catch(e) {
-        // Server non raggiungibile, ignora
-        cont.innerHTML = '<p class="placeholder-text">Server non raggiungibile.</p>';
+        // pywebview API non disponibile, ignora
+        cont.innerHTML = '<p class="placeholder-text">Errore nel caricamento chip.</p>';
     }
 }
 
 // ======================== AVVIO ========================
-document.addEventListener('DOMContentLoaded', init);
+// Attende che pywebview sia pronto prima di inizializzare
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.pywebview) {
+        init();
+    } else {
+        window.addEventListener('pywebviewready', init);
+    }
+});

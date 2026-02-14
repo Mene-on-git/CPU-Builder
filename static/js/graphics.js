@@ -839,6 +839,9 @@ function _mostraCircuitoCustom(chip, simRef, canvas, titoloEl, infoEl, legendaEl
     titoloEl.textContent = '🔍 ' + (cd.nome || chip.tipo) + ' — Circuito Interno';
 
     let infoHtml = `<strong>Tipo:</strong> ${cd.nome} &nbsp;|&nbsp; <strong>ID:</strong> ${chip.id}<br>`;
+    if(cd.descrizione) {
+        infoHtml += `${cd.descrizione}<br>`;
+    }
     infoHtml += `<strong>Ingressi:</strong> ${(cd.ingressi||[]).join(', ')} &nbsp;|&nbsp; <strong>Uscite:</strong> ${(cd.uscite||[]).join(', ')}`;
     infoHtml += `<br>Chip personalizzato — contiene ${cd.circuito.chips.length} componenti e ${cd.circuito.fili.length} connessioni`;
     infoEl.innerHTML = infoHtml;
