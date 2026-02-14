@@ -2,18 +2,18 @@
   "nome": "alu-register",
   "colore": "#e0d806",
   "ingressi": [
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT"
+    "B3",
+    "B2",
+    "B1",
+    "B0",
+    "WE",
+    "CLK"
   ],
   "uscite": [
-    "IN",
-    "IN",
-    "IN",
-    "IN"
+    "Q3",
+    "Q2",
+    "Q1",
+    "Q0"
   ],
   "circuito": {
     "chips": [
@@ -30,7 +30,8 @@
             "id": 2125,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "B3"
       },
       {
         "id": 2127,
@@ -45,7 +46,8 @@
             "id": 2128,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "B2"
       },
       {
         "id": 2130,
@@ -60,7 +62,8 @@
             "id": 2131,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "B1"
       },
       {
         "id": 2133,
@@ -75,7 +78,8 @@
             "id": 2134,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "B0"
       },
       {
         "id": 2136,
@@ -90,7 +94,8 @@
             "id": 2137,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "WE"
       },
       {
         "id": 2139,
@@ -105,7 +110,8 @@
             "id": 2140,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "CLK"
       },
       {
         "id": 2142,
@@ -120,7 +126,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q3"
       },
       {
         "id": 2145,
@@ -135,7 +142,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q2"
       },
       {
         "id": 2148,
@@ -150,7 +158,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q1"
       },
       {
         "id": 2151,
@@ -165,7 +174,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q0"
       },
       {
         "id": 3253,
@@ -177,45 +187,45 @@
         "pinI": [
           {
             "id": 3254,
-            "et": "OUT"
+            "et": "D0"
           },
           {
             "id": 3255,
-            "et": "OUT"
+            "et": "D1"
           },
           {
             "id": 3256,
-            "et": "OUT"
+            "et": "D2"
           },
           {
             "id": 3257,
-            "et": "OUT"
+            "et": "D3"
           },
           {
             "id": 3258,
-            "et": "OUT"
+            "et": "WE"
           },
           {
             "id": 3259,
-            "et": "OUT"
+            "et": "CLK"
           }
         ],
         "pinU": [
           {
             "id": 3260,
-            "et": "IN"
+            "et": "Q0"
           },
           {
             "id": 3261,
-            "et": "IN"
+            "et": "Q1"
           },
           {
             "id": 3262,
-            "et": "IN"
+            "et": "Q2"
           },
           {
             "id": 3263,
-            "et": "IN"
+            "et": "Q3"
           }
         ]
       },
@@ -229,45 +239,45 @@
         "pinI": [
           {
             "id": 3266,
-            "et": "OUT"
+            "et": "D0"
           },
           {
             "id": 3267,
-            "et": "OUT"
+            "et": "D1"
           },
           {
             "id": 3268,
-            "et": "OUT"
+            "et": "D2"
           },
           {
             "id": 3269,
-            "et": "OUT"
+            "et": "D3"
           },
           {
             "id": 3270,
-            "et": "OUT"
+            "et": "WE"
           },
           {
             "id": 3271,
-            "et": "OUT"
+            "et": "CLK"
           }
         ],
         "pinU": [
           {
             "id": 3272,
-            "et": "IN"
+            "et": "Q0"
           },
           {
             "id": 3273,
-            "et": "IN"
+            "et": "Q1"
           },
           {
             "id": 3274,
-            "et": "IN"
+            "et": "Q2"
           },
           {
             "id": 3275,
-            "et": "IN"
+            "et": "Q3"
           }
         ]
       },
@@ -281,69 +291,69 @@
         "pinI": [
           {
             "id": 7934,
-            "et": "OUT"
+            "et": "A3"
           },
           {
             "id": 7935,
-            "et": "OUT"
+            "et": "A2"
           },
           {
             "id": 7936,
-            "et": "OUT"
+            "et": "A1"
           },
           {
             "id": 7937,
-            "et": "OUT"
+            "et": "A0"
           },
           {
             "id": 7938,
-            "et": "OUT"
+            "et": "B3"
           },
           {
             "id": 7939,
-            "et": "OUT"
+            "et": "B2"
           },
           {
             "id": 7940,
-            "et": "OUT"
+            "et": "B1"
           },
           {
             "id": 7941,
-            "et": "OUT"
+            "et": "B0"
           },
           {
             "id": 7942,
-            "et": "OUT"
+            "et": "SUB"
           }
         ],
         "pinU": [
           {
             "id": 7943,
-            "et": "IN"
+            "et": "S3"
           },
           {
             "id": 7944,
-            "et": "IN"
+            "et": "S2"
           },
           {
             "id": 7945,
-            "et": "IN"
+            "et": "S1"
           },
           {
             "id": 7946,
-            "et": "IN"
+            "et": "S0"
           },
           {
             "id": 7947,
-            "et": "IN"
+            "et": "CARRY"
           },
           {
             "id": 7948,
-            "et": "IN"
+            "et": "NEG"
           },
           {
             "id": 7949,
-            "et": "IN"
+            "et": "ZERO"
           }
         ]
       }
@@ -440,5 +450,6 @@
         "dstId": 3259
       }
     ]
-  }
+  },
+  "descrizione": "Blocco ALU con registri. Due registri a 4 bit (A e B) collegati a un'ALU. Il risultato dell'ALU viene riscritto nel registro A. B3-B0 sono gli ingressi dati per il registro B. WE abilita la scrittura, CLK è il clock."
 }

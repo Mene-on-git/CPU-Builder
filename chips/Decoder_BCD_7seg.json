@@ -31,7 +31,8 @@
             "id": 5101,
             "et": "D0"
           }
-        ]
+        ],
+        "nomeCustom": "D0"
       },
       {
         "id": 5002,
@@ -45,7 +46,8 @@
             "id": 5102,
             "et": "D1"
           }
-        ]
+        ],
+        "nomeCustom": "D1"
       },
       {
         "id": 5003,
@@ -59,7 +61,8 @@
             "id": 5103,
             "et": "D2"
           }
-        ]
+        ],
+        "nomeCustom": "D2"
       },
       {
         "id": 5004,
@@ -73,7 +76,8 @@
             "id": 5104,
             "et": "D3"
           }
-        ]
+        ],
+        "nomeCustom": "D3"
       },
       {
         "id": 5011,
@@ -87,7 +91,8 @@
             "et": "A"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "A"
       },
       {
         "id": 5012,
@@ -101,7 +106,8 @@
             "et": "B"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "B"
       },
       {
         "id": 5013,
@@ -115,7 +121,8 @@
             "et": "C"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "C"
       },
       {
         "id": 5014,
@@ -129,7 +136,8 @@
             "et": "D"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "D"
       },
       {
         "id": 5015,
@@ -143,7 +151,8 @@
             "et": "E"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "E"
       },
       {
         "id": 5016,
@@ -157,7 +166,8 @@
             "et": "F"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "F"
       },
       {
         "id": 5017,
@@ -171,7 +181,8 @@
             "et": "G"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "G"
       },
       {
         "id": 5018,
@@ -185,7 +196,8 @@
             "et": "DP"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "DP"
       },
       {
         "id": 5020,
@@ -434,5 +446,6 @@
         "dstId": 5208
       }
     ]
-  }
+  },
+  "descrizione": "Decoder BCD → 7 segmenti. Converte un valore BCD a 4 bit (D0-D3, cifre 0-9) nei 7 segnali di controllo (A-G) per un display a 7 segmenti. DP (punto decimale) è fisso a 0."
 }

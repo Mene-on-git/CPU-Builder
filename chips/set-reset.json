@@ -2,11 +2,11 @@
   "nome": "set-reset",
   "colore": "#e0d806",
   "ingressi": [
-    "OUT",
-    "OUT"
+    "S",
+    "R"
   ],
   "uscite": [
-    "IN"
+    "Q"
   ],
   "circuito": {
     "chips": [
@@ -23,7 +23,8 @@
             "id": 662,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "S"
       },
       {
         "id": 664,
@@ -38,7 +39,8 @@
             "id": 665,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "R"
       },
       {
         "id": 667,
@@ -121,7 +123,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q"
       }
     ],
     "fili": [
@@ -156,5 +159,6 @@
         "dstId": 668
       }
     ]
-  }
+  },
+  "descrizione": "Latch SR (Set-Reset). S (Set) porta Q a 1, R (Reset) porta Q a 0. Quando entrambi sono 0, Q mantiene lo stato memorizzato."
 }

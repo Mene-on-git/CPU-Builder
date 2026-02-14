@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU-Builder — Simulatore di Logica Digitale</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <!-- ============ BARRA SUPERIORE ============ -->
+    <header id="barra-superiore">
+        <div class="barra-sinistra">
+            <span class="logo">⚡ CPU-Builder</span>
+            <span class="separatore">|</span>
+            <input type="text" id="nome-progetto" value="Nuovo Progetto" spellcheck="false">
+        </div>
+        <div class="barra-centro">
+            <button id="btn-annulla" class="btn-toolbar" title="Annulla (Ctrl+Z)">↩</button>
+            <button id="btn-ripristina" class="btn-toolbar" title="Ripristina (Ctrl+Y)">↪</button>
+            <span class="separatore">|</span>
+            <button id="btn-play" class="btn-toolbar btn-attivo" title="Avvia/Pausa simulazione (Spazio)">▶</button>
+            <button id="btn-passo" class="btn-toolbar" title="Passo singolo">⏭</button>
+            <button id="btn-reset" class="btn-toolbar" title="Reset simulazione">⟲</button>
+            <span class="separatore">|</span>
+            <label class="speed-label" title="Velocità simulazione">
+                🕐
+                <input type="range" id="velocita-sim" min="1" max="500" value="200">
+                <span id="velocita-valore">200 Hz</span>
+            </label>
+            <span class="separatore">|</span>
+            <label class="speed-label" title="Periodo clock (passi)">
+                📊
+                <input type="range" id="clock-periodo" min="2" max="200" value="30">
+                <span id="clock-valore">30</span>
+            </label>
+        </div>
+        <div class="barra-destra">
+            <button id="btn-salva" class="btn-toolbar" title="Salva progetto (Ctrl+S)">💾 Salva</button>
+            <button id="btn-carica" class="btn-toolbar" title="Carica progetto">📂 Carica</button>
+            <button id="btn-esporta-chip" class="btn-toolbar" title="Esporta come chip personalizzato">📦 Esporta Chip</button>
+        </div>
+    </header>
+
+    <!-- ============ BANNER MODIFICA CHIP ============ -->
+    <div id="banner-modifica-chip" class="banner-modifica nascosta">
+        <span>✏️ <strong>Modalità modifica chip:</strong> <span id="nome-chip-editing"></span></span>
+        <div style="display:flex;gap:8px">
+            <button id="btn-salva-chip-edit" class="btn-toolbar btn-primario">💾 Salva Chip</button>
+            <button id="btn-annulla-chip-edit" class="btn-toolbar">✕ Annulla</button>
+        </div>
+    </div>
+
+    <!-- ============ CONTENUTO PRINCIPALE ============ -->
+    <div id="contenuto">
+        <!-- SIDEBAR SINISTRA: Libreria componenti -->
+        <aside id="sidebar">
+            <h3>Componenti</h3>
+
+            <div class="categoria">
+                <h4 class="cat-titolo" data-cat="porte">▸ Porte Logiche</h4>
+                <div class="cat-contenuto" id="cat-porte">
+                    <button class="btn-chip" data-tipo="NAND" style="--chip-col: #c0392b">NAND</button>
+                    <button class="btn-chip" data-tipo="AND" style="--chip-col: #2980b9">AND</button>
+                    <button class="btn-chip" data-tipo="OR" style="--chip-col: #27ae60">OR</button>
+                    <button class="btn-chip" data-tipo="NOT" style="--chip-col: #8e44ad">NOT</button>
+                    <button class="btn-chip" data-tipo="XOR" style="--chip-col: #d35400">XOR</button>
+                    <button class="btn-chip" data-tipo="NOR" style="--chip-col: #1abc9c">NOR</button>
+                    <button class="btn-chip" data-tipo="XNOR" style="--chip-col: #e91e63">XNOR</button>
+                    <button class="btn-chip" data-tipo="BUFFER" style="--chip-col: #607d8b">BUF</button>
+                </div>
+            </div>
+
+            <div class="categoria">
+                <h4 class="cat-titolo" data-cat="io">▸ Input / Output</h4>
+                <div class="cat-contenuto" id="cat-io">
+                    <button class="btn-chip" data-tipo="INGRESSO" style="--chip-col: #16a085">IN (Switch)</button>
+                    <button class="btn-chip" data-tipo="PULSANTE" style="--chip-col: #e74c3c">IN (Pulsante)</button>
+                    <button class="btn-chip" data-tipo="USCITA" style="--chip-col: #e67e22">OUT (LED)</button>
+                    <button class="btn-chip" data-tipo="CLOCK" style="--chip-col: #34495e">Clock</button>
+                    <button class="btn-chip" data-tipo="COSTANTE_0" style="--chip-col: #555">Cost. 0</button>
+                    <button class="btn-chip" data-tipo="COSTANTE_1" style="--chip-col: #00aa55">Cost. 1</button>
+                </div>
+            </div>
+
+            <div class="categoria">
+                <h4 class="cat-titolo" data-cat="memoria">▸ Memoria</h4>
+                <div class="cat-contenuto" id="cat-memoria">
+                    <button class="btn-chip" data-tipo="FLIPFLOP_D" style="--chip-col: #3498db">Flip-Flop D</button>
+                    <button class="btn-chip" data-tipo="CONTATORE_4BIT" style="--chip-col: #9b59b6">Contatore 4bit</button>
+                </div>
+            </div>
+
+            <div class="categoria">
+                <h4 class="cat-titolo" data-cat="display">▸ Display</h4>
+                <div class="cat-contenuto" id="cat-display">
+                    <button class="btn-chip" data-tipo="DISPLAY7" style="--chip-col: #e74c3c">7 Segmenti</button>
+                    <button class="btn-chip" data-tipo="DECODER_BCD7" style="--chip-col: #e67e22">Decoder BCD→7</button>
+                </div>
+            </div>
+
+            <div class="categoria">
+                <h4 class="cat-titolo" data-cat="custom">▸ Chip Personalizzati</h4>
+                <div class="cat-contenuto" id="cat-custom">
+                    <p class="placeholder-text">Nessun chip personalizzato.<br>Usa "Esporta Chip" per crearne.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-info">
+                <h4>Comandi rapidi</h4>
+                <ul>
+                    <li><kbd>Canc</kbd> Elimina selezione</li>
+                    <li><kbd>Esc</kbd> Annulla azione</li>
+                    <li><kbd>Spazio</kbd> Play / Pausa</li>
+                    <li><kbd>Ctrl+Z</kbd> Annulla</li>
+                    <li><kbd>Ctrl+S</kbd> Salva</li>
+                    <li><kbd>F2</kbd> Rinomina IN/OUT</li>
+                    <li><kbd>Rotella</kbd> Zoom</li>
+                    <li><kbd>Click centro</kbd> Trascina vista</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- AREA CANVAS -->
+        <main id="area-canvas">
+            <canvas id="canvas"></canvas>
+            <!-- Barra di stato -->
+            <div id="barra-stato">
+                <span id="stato-sim">▶ Simulazione attiva</span>
+                <span id="stato-info">Chip: 0 | Fili: 0</span>
+                <span id="stato-zoom">Zoom: 100%</span>
+                <span id="stato-cursore">x: 0, y: 0</span>
+            </div>
+        </main>
+    </div>
+
+    <!-- ============ MODALE CARICA PROGETTO ============ -->
+    <div id="modale-carica" class="modale nascosta">
+        <div class="modale-contenuto">
+            <h3>📂 Carica Progetto</h3>
+            <div id="lista-progetti">
+                <p class="placeholder-text">Nessun progetto salvato.</p>
+            </div>
+            <div class="modale-azioni">
+                <button id="btn-chiudi-modale" class="btn-toolbar">Chiudi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ MODALE ESPORTA CHIP ============ -->
+    <div id="modale-esporta" class="modale nascosta">
+        <div class="modale-contenuto">
+            <h3>📦 Esporta come Chip Personalizzato</h3>
+            <label>Nome del chip:
+                <input type="text" id="nome-chip-esporta" placeholder="MioChip" spellcheck="false">
+            </label>
+            <label>Colore:
+                <input type="color" id="colore-chip-esporta" value="#7f8c8d">
+            </label>
+            <div class="modale-azioni">
+                <button id="btn-conferma-esporta" class="btn-toolbar btn-primario">Esporta</button>
+                <button id="btn-annulla-esporta" class="btn-toolbar">Annulla</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ MODALE VISTA INTERNA ============ -->
+    <div id="modale-interno" class="modale nascosta">
+        <div class="modale-contenuto modale-interno-contenuto">
+            <div class="modale-interno-header">
+                <h3 id="titolo-interno">🔍 Vista Interna</h3>
+                <div style="display:flex;gap:8px">
+                    <button id="btn-modifica-chip" class="btn-toolbar btn-primario" style="display:none">✏️ Modifica</button>
+                    <button id="btn-chiudi-interno" class="btn-toolbar">✕ Chiudi</button>
+                </div>
+            </div>
+            <div id="info-chip-interno" class="info-chip-interno"></div>
+            <div class="canvas-interno-wrap">
+                <canvas id="canvas-interno"></canvas>
+            </div>
+            <div id="legenda-interno" class="legenda-interno"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="static/js/graphics.js"></script>
+    <script src="static/js/app.js"></script>
+</body>
+</html>

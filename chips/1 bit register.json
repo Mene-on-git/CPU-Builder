@@ -2,12 +2,12 @@
   "nome": "1 bit register",
   "colore": "#e0d806",
   "ingressi": [
-    "OUT",
-    "OUT",
-    "OUT"
+    "D",
+    "WE",
+    "CLK"
   ],
   "uscite": [
-    "IN"
+    "Q"
   ],
   "circuito": {
     "chips": [
@@ -24,7 +24,8 @@
             "id": 1870,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "D"
       },
       {
         "id": 1872,
@@ -39,7 +40,8 @@
             "id": 1873,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "WE"
       },
       {
         "id": 1875,
@@ -54,7 +56,8 @@
             "id": 1876,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "CLK"
       },
       {
         "id": 1887,
@@ -66,17 +69,17 @@
         "pinI": [
           {
             "id": 1888,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 1889,
-            "et": "OUT"
+            "et": "CLK"
           }
         ],
         "pinU": [
           {
             "id": 1890,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       },
@@ -93,7 +96,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q"
       },
       {
         "id": 2089,
@@ -240,5 +244,6 @@
         "dstId": 1888
       }
     ]
-  }
+  },
+  "descrizione": "Registro a 1 bit con Write Enable. Quando WE=1, memorizza il valore di D sul fronte di clock. Quando WE=0, mantiene il valore corrente."
 }

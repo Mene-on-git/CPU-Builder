@@ -2,18 +2,18 @@
   "nome": "4 bit register",
   "colore": "#e0d806",
   "ingressi": [
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT"
+    "D0",
+    "D1",
+    "D2",
+    "D3",
+    "WE",
+    "CLK"
   ],
   "uscite": [
-    "IN",
-    "IN",
-    "IN",
-    "IN"
+    "Q0",
+    "Q1",
+    "Q2",
+    "Q3"
   ],
   "circuito": {
     "chips": [
@@ -30,7 +30,8 @@
             "id": 2125,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "D0"
       },
       {
         "id": 2127,
@@ -45,7 +46,8 @@
             "id": 2128,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "D1"
       },
       {
         "id": 2130,
@@ -60,7 +62,8 @@
             "id": 2131,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "D2"
       },
       {
         "id": 2133,
@@ -75,7 +78,8 @@
             "id": 2134,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "D3"
       },
       {
         "id": 2136,
@@ -90,7 +94,8 @@
             "id": 2137,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "WE"
       },
       {
         "id": 2139,
@@ -105,7 +110,8 @@
             "id": 2140,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "CLK"
       },
       {
         "id": 2142,
@@ -120,7 +126,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q0"
       },
       {
         "id": 2145,
@@ -135,7 +142,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q1"
       },
       {
         "id": 2148,
@@ -150,7 +158,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q2"
       },
       {
         "id": 2151,
@@ -165,7 +174,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q3"
       },
       {
         "id": 2157,
@@ -177,21 +187,21 @@
         "pinI": [
           {
             "id": 2158,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 2159,
-            "et": "OUT"
+            "et": "WE"
           },
           {
             "id": 2160,
-            "et": "OUT"
+            "et": "CLK"
           }
         ],
         "pinU": [
           {
             "id": 2161,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       },
@@ -205,21 +215,21 @@
         "pinI": [
           {
             "id": 2164,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 2165,
-            "et": "OUT"
+            "et": "WE"
           },
           {
             "id": 2166,
-            "et": "OUT"
+            "et": "CLK"
           }
         ],
         "pinU": [
           {
             "id": 2167,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       },
@@ -233,21 +243,21 @@
         "pinI": [
           {
             "id": 2170,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 2171,
-            "et": "OUT"
+            "et": "WE"
           },
           {
             "id": 2172,
-            "et": "OUT"
+            "et": "CLK"
           }
         ],
         "pinU": [
           {
             "id": 2173,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       },
@@ -261,21 +271,21 @@
         "pinI": [
           {
             "id": 2176,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 2177,
-            "et": "OUT"
+            "et": "WE"
           },
           {
             "id": 2178,
-            "et": "OUT"
+            "et": "CLK"
           }
         ],
         "pinU": [
           {
             "id": 2179,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       }
@@ -362,5 +372,6 @@
         "dstId": 2152
       }
     ]
-  }
+  },
+  "descrizione": "Registro a 4 bit con Write Enable e Clock. Memorizza i 4 bit di dato D0-D3 quando WE=1 sul fronte di salita del clock CLK."
 }

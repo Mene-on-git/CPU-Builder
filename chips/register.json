@@ -2,17 +2,17 @@
   "nome": "register",
   "colore": "#e0d806",
   "ingressi": [
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT",
-    "OUT"
+    "D0",
+    "D1",
+    "D2",
+    "D3",
+    "EN"
   ],
   "uscite": [
-    "IN",
-    "IN",
-    "IN",
-    "IN"
+    "Q0",
+    "Q1",
+    "Q2",
+    "Q3"
   ],
   "circuito": {
     "chips": [
@@ -29,7 +29,8 @@
             "id": 760,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "D0"
       },
       {
         "id": 762,
@@ -44,7 +45,8 @@
             "id": 763,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "D1"
       },
       {
         "id": 765,
@@ -59,7 +61,8 @@
             "id": 766,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "D2"
       },
       {
         "id": 768,
@@ -74,7 +77,8 @@
             "id": 769,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "D3"
       },
       {
         "id": 771,
@@ -89,7 +93,8 @@
             "id": 772,
             "et": "OUT"
           }
-        ]
+        ],
+        "nomeCustom": "EN"
       },
       {
         "id": 817,
@@ -104,7 +109,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q0"
       },
       {
         "id": 820,
@@ -119,7 +125,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q1"
       },
       {
         "id": 823,
@@ -134,7 +141,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q2"
       },
       {
         "id": 826,
@@ -149,7 +157,8 @@
             "et": "IN"
           }
         ],
-        "pinU": []
+        "pinU": [],
+        "nomeCustom": "Q3"
       },
       {
         "id": 853,
@@ -161,17 +170,17 @@
         "pinI": [
           {
             "id": 854,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 855,
-            "et": "OUT"
+            "et": "EN"
           }
         ],
         "pinU": [
           {
             "id": 856,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       },
@@ -185,17 +194,17 @@
         "pinI": [
           {
             "id": 929,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 930,
-            "et": "OUT"
+            "et": "EN"
           }
         ],
         "pinU": [
           {
             "id": 931,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       },
@@ -209,17 +218,17 @@
         "pinI": [
           {
             "id": 1004,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 1005,
-            "et": "OUT"
+            "et": "EN"
           }
         ],
         "pinU": [
           {
             "id": 1006,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       },
@@ -233,17 +242,17 @@
         "pinI": [
           {
             "id": 1079,
-            "et": "OUT"
+            "et": "D"
           },
           {
             "id": 1080,
-            "et": "OUT"
+            "et": "EN"
           }
         ],
         "pinU": [
           {
             "id": 1081,
-            "et": "IN"
+            "et": "Q"
           }
         ]
       }
@@ -310,5 +319,6 @@
         "dstId": 827
       }
     ]
-  }
+  },
+  "descrizione": "Registro a 4 bit (latch). Memorizza 4 bit di dato D0-D3 quando EN (Enable) è attivo (1). Quando EN=0, mantiene i valori memorizzati."
 }
