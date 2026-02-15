@@ -542,3 +542,48 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accento);
 }
+
+/* ---- Cartelle chip personalizzati ---- */
+.custom-folder {
+    margin-top: 6px;
+    border: 1px solid var(--bordo);
+    border-radius: var(--raggio);
+    overflow: hidden;
+}
+
+.custom-folder-titolo {
+    margin: 0;
+    padding: 5px 8px;
+    font-size: 11px;
+    color: var(--testo-2);
+    background: rgba(255,255,255,0.03);
+    cursor: pointer;
+    user-select: none;
+}
+
+.custom-folder-titolo:hover {
+    color: var(--testo);
+    background: rgba(255,255,255,0.06);
+}
+
+.custom-folder-contenuto {
+    display: none;
+    padding: 4px;
+}
+
+.custom-folder-contenuto.visibile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* Select stilizzato nel modale */
+.modale-contenuto select {
+    flex: 1;
+    background: var(--sfondo);
+    border: 1px solid var(--bordo);
+    color: var(--testo);
+    padding: 6px 10px;
+    border-radius: var(--raggio);
+    font-size: 13px;
+}

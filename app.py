@@ -79,29 +79,64 @@ class Api:
     # ==================== CHIP PERSONALIZZATI ====================
 
     def lista_chip_personalizzati(self):
-        """Restituisce la lista dei chip personalizzati."""
+        """Restituisce la lista dei chip personalizzati da chips/ (incluse sottocartelle)."""
         os.makedirs(CHIPS_DIR, exist_ok=True)
         chips = []
+        
+        # Leggi dalla root (chips/) per retrocompatibilità
         for f in sorted(os.listdir(CHIPS_DIR)):
             if f.endswith('.json'):
                 filepath = os.path.join(CHIPS_DIR, f)
-                try:
-                    with open(filepath, 'r', encoding='utf-8') as file:
-                        data = json.load(file)
-                        chips.append(data)
-                except (json.JSONDecodeError, IOError):
-                    continue
+                if os.path.isfile(filepath):
+                    try:
+                        with open(filepath, 'r', encoding='utf-8') as file:
+                            data = json.load(file)
+                            if 'cartella' not in data:
+                                data['cartella'] = ''
+                            chips.append(data)
+                    except (json.JSONDecodeError, IOError):
+                        continue
+        
+        # Leggi dalle sottocartelle
+        try:
+            for item in os.listdir(CHIPS_DIR):
+                item_path = os.path.join(CHIPS_DIR, item)
+                if os.path.isdir(item_path):
+                    for f in sorted(os.listdir(item_path)):
+                        if f.endswith('.json'):
+                            filepath = os.path.join(item_path, f)
+                            try:
+                                with open(filepath, 'r', encoding='utf-8') as file:
+                                    data = json.load(file)
+                                    if 'cartella' not in data:
+                                        data['cartella'] = item
+                                    chips.append(data)
+                            except (json.JSONDecodeError, IOError):
+                                continue
+        except OSError:
+            pass
+        
         return chips
 
     def salva_chip_personalizzato(self, data):
-        """Salva un chip personalizzato."""
+        """Salva un chip personalizzato, eventualmente in una sottocartella."""
         nome = data.get('nome', 'chip_custom')
         nome_sicuro = "".join(
             c for c in nome if c.isalnum() or c in ('-', '_', ' ')
         ).strip()
 
-        os.makedirs(CHIPS_DIR, exist_ok=True)
-        filepath = os.path.join(CHIPS_DIR, f'{nome_sicuro}.json')
+        cartella = data.get('cartella', '')
+        cartella_sicura = "".join(
+            c for c in cartella if c.isalnum() or c in ('-', '_', ' ')
+        ).strip()
+
+        if cartella_sicura:
+            dest_dir = os.path.join(CHIPS_DIR, cartella_sicura)
+        else:
+            dest_dir = CHIPS_DIR
+
+        os.makedirs(dest_dir, exist_ok=True)
+        filepath = os.path.join(dest_dir, f'{nome_sicuro}.json')
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
         return {'successo': True, 'nome': nome_sicuro}

@@ -41,6 +41,7 @@ const DEFS = {
     COSTANTE_0: { nome:'0',     cat:'io', ing:[], usc:['OUT'], col:'#555555', w:60, h:45, fn:()=>[0] },
     COSTANTE_1: { nome:'1',     cat:'io', ing:[], usc:['OUT'], col:'#00aa55', w:60, h:45, fn:()=>[1] },
     DISPLAY7:   { nome:'7SEG',  cat:'display', ing:['A','B','C','D','E','F','G','DP'], usc:[], col:'#1a1a2e', w:120, h:160, fn:null },
+    DISPLAY7_NEG:{ nome:'DISP-7', cat:'display', ing:['D0','D1','D2','D3','BLANK','NEG'], usc:['BLK OUT'], col:'#1a1a3e', w:120, h:160, fn:null },
     FLIPFLOP_D: { nome:'D-FF',  cat:'memoria', ing:['D','CLK','RST'], usc:['Q','Q̄'], col:'#3498db', w:110, h:80, fn:null },
     CONTATORE_4BIT: { nome:'CNT4', cat:'memoria', ing:['CLK','RST'], usc:['Q0','Q1','Q2','Q3'], col:'#9b59b6', w:120, h:100, fn:null },
     DECODER_BCD7:   { nome:'BCD→7', cat:'display', ing:['D0','D1','D2','D3'], usc:['A','B','C','D','E','F','G'], col:'#e67e22', w:120, h:130, fn:null },
@@ -251,6 +252,33 @@ class Simulatore {
                     }
                     c.statoInterno.clkPrev = CLK;
                 }
+                // DISPLAY7_NEG — display integrato con decoder BCD + blanking
+                if(c.tipo === 'DISPLAY7_NEG' && c.pinI.length >= 6){
+                    if(!c.statoInterno) c.statoInterno = {};
+                    const TT_NEG = [
+                        [1,1,1,1,1,1,0], // 0
+                        [0,1,1,0,0,0,0], // 1
+                        [1,1,0,1,1,0,1], // 2
+                        [1,1,1,1,0,0,1], // 3
+                        [0,1,1,0,0,1,1], // 4
+                        [1,0,1,1,0,1,1], // 5
+                        [1,0,1,1,1,1,1], // 6
+                        [1,1,1,0,0,0,0], // 7
+                        [1,1,1,1,1,1,1], // 8
+                        [1,1,1,1,0,1,1], // 9
+                    ];
+                    const digit = (c.pinI[0].stato) | (c.pinI[1].stato<<1) | (c.pinI[2].stato<<2) | (c.pinI[3].stato<<3);
+                    const blankIn = c.pinI[4].stato;
+                    const isZero = (digit === 0) ? 1 : 0;
+                    const shouldBlank = isZero & blankIn;
+                    const row = (digit >= 0 && digit <= 9) ? TT_NEG[digit] : [0,0,0,0,0,0,0];
+                    c.statoInterno.segmenti = shouldBlank ? [0,0,0,0,0,0,0] : row;
+                    c.statoInterno.blanked = shouldBlank;
+                    // BLANK OUT
+                    if(c.pinU[0] && c.pinU[0].stato !== shouldBlank){
+                        c.pinU[0].stato = shouldBlank; changed = true;
+                    }
+                }
                 // Decoder BCD → 7 segmenti (combinatorio, truth table)
                 if(c.tipo === 'DECODER_BCD7' && c.pinI.length >= 4){
                     //       A B C D E F G
@@ -446,9 +474,15 @@ class Editor {
         // Pulsante momentaneo
         this._pulsanteAttivo = null;
 
+        // Clipboard (copia/incolla)
+        this._clipboard = null;  // { chips: [...], fili: [...] }
+
         // Undo
         this._undoStack = [];
         this._redoStack = [];
+
+        // Dirty flag per ottimizzare il rendering
+        this._dirty = true;
 
         this._bindEventi();
     }
@@ -807,6 +841,16 @@ class Editor {
             e.preventDefault();
             for(const c of this._sim.chips.values()) this.selChips.add(c.id);
         }
+        // Copia (Ctrl+C)
+        if(e.ctrlKey && e.key==='c'){
+            e.preventDefault();
+            this._copia();
+        }
+        // Incolla (Ctrl+V)
+        if(e.ctrlKey && e.key==='v'){
+            e.preventDefault();
+            this._incolla();
+        }
         // F2: Rinomina INGRESSO/USCITA selezionato
         if(e.key==='F2' && this.selChips.size===1){
             const chipId = [...this.selChips][0];
@@ -849,6 +893,111 @@ class Editor {
         const data = JSON.parse(this._redoStack.pop());
         this._sim.deserializza(data);
         this.selChips.clear(); this.selFili.clear();
+    }
+
+    // ---- Copia / Incolla ----
+    _copia() {
+        if(!this.selChips.size) return;
+
+        // Raccogli i chip selezionati
+        const chipsData = [];
+        const pinIdSet = new Set();
+        for(const cid of this.selChips){
+            const c = this._sim.chips.get(cid);
+            if(!c) continue;
+            c.tutti().forEach(p => pinIdSet.add(p.id));
+            const si = Object.assign({}, c.statoInterno || {});
+            delete si._miniSim;
+            chipsData.push({
+                id: c.id, tipo: c.tipo, x: c.x, y: c.y, stato: c.stato,
+                nomeCustom: c.nomeCustom || '',
+                statoInterno: si,
+                w: c.w, h: c.h,
+                pinI: c.pinI.map(p => ({ id: p.id, et: p.etichetta })),
+                pinU: c.pinU.map(p => ({ id: p.id, et: p.etichetta }))
+            });
+        }
+
+        // Raccogli solo i fili che collegano pin entrambi appartenenti ai chip selezionati
+        const filiData = [];
+        for(const f of this._sim.fili.values()){
+            if(pinIdSet.has(f.srcId) && pinIdSet.has(f.dstId))
+                filiData.push({ id: f.id, srcId: f.srcId, dstId: f.dstId });
+        }
+
+        // Calcola baricentro per posizionamento relativo
+        let cx = 0, cy = 0;
+        chipsData.forEach(c => { cx += c.x + c.w/2; cy += c.y + c.h/2; });
+        cx /= chipsData.length; cy /= chipsData.length;
+
+        this._clipboard = {
+            chips: chipsData,
+            fili: filiData,
+            centroX: cx,
+            centroY: cy
+        };
+
+        mostraNotifica(`Copiati ${chipsData.length} chip e ${filiData.length} fili`, 'info');
+    }
+
+    _incolla() {
+        if(!this._clipboard || !this._clipboard.chips.length) return;
+
+        this._salvaUndo();
+
+        const cb = this._clipboard;
+        const idMap = new Map();  // vecchio id -> nuovo id
+
+        // Offset: centra nel punto dove si trova il mouse
+        const offX = this.mx - cb.centroX;
+        const offY = this.my - cb.centroY;
+
+        // Crea nuovi chip
+        const nuoviChipIds = [];
+        for(const cd of cb.chips){
+            const nuovoChip = new Chip(cd.tipo, snap(cd.x + offX, 20), snap(cd.y + offY, 20));
+            nuovoChip.stato = cd.stato || 0;
+            nuovoChip.nomeCustom = cd.nomeCustom || '';
+            if(nuovoChip.nomeCustom) {
+                const d = DEFS[nuovoChip.tipo];
+                const minW = d ? d.w : 80;
+                nuovoChip.w = Math.max(minW, nuovoChip.nomeCustom.length * 9 + 20);
+                nuovoChip._calcolaOffset();
+            }
+            // Copia stato interno (escluso _miniSim)
+            if(cd.statoInterno) {
+                nuovoChip.statoInterno = JSON.parse(JSON.stringify(cd.statoInterno));
+            }
+
+            // Mappa vecchi pin ID -> nuovi pin ID
+            idMap.set(cd.id, nuovoChip.id);
+            cd.pinI.forEach((pd, i) => {
+                if(i < nuovoChip.pinI.length) idMap.set(pd.id, nuovoChip.pinI[i].id);
+            });
+            cd.pinU.forEach((pd, i) => {
+                if(i < nuovoChip.pinU.length) idMap.set(pd.id, nuovoChip.pinU[i].id);
+            });
+
+            this._sim.add(nuovoChip);
+            nuoviChipIds.push(nuovoChip.id);
+        }
+
+        // Crea fili rimappati
+        for(const fd of cb.fili){
+            const newSrc = idMap.get(fd.srcId);
+            const newDst = idMap.get(fd.dstId);
+            if(newSrc !== undefined && newDst !== undefined){
+                this._sim.addFilo(new Filo(newSrc, newDst));
+            }
+        }
+
+        // Seleziona i nuovi chip incollati
+        this.selChips.clear();
+        this.selFili.clear();
+        nuoviChipIds.forEach(id => this.selChips.add(id));
+
+        this._dirty = true;
+        mostraNotifica(`Incollati ${cb.chips.length} chip`, 'successo');
     }
 
     _aggiornaBtnChip() {
@@ -956,14 +1105,30 @@ function init() {
     });
     document.getElementById('btn-conferma-esporta').addEventListener('click', esportaChip);
 
+    // Cartella chip: mostra/nasconde il campo "nuova cartella"
+    document.getElementById('cartella-chip-esporta').addEventListener('change', (ev) => {
+        const labelNuova = document.getElementById('label-nuova-cartella');
+        if(ev.target.value === '__nuova__'){
+            labelNuova.style.display = '';
+            document.getElementById('nuova-cartella-nome').focus();
+        } else {
+            labelNuova.style.display = 'none';
+        }
+    });
+
     // Modifica chip personalizzato
     document.getElementById('btn-salva-chip-edit').addEventListener('click', salvaModificaChip);
     document.getElementById('btn-annulla-chip-edit').addEventListener('click', annullaModificaChip);
 
-    // Loop rendering
-    function renderLoop() {
+    // Loop rendering (ottimizzato: disegna solo quando necessario)
+    let _ultimoStatoUI = 0;
+    function renderLoop(ts) {
         ren.disegna(sim, ed);
-        aggiornaStatoUI();
+        // Aggiorna DOM della barra di stato max 10 volte al secondo
+        if(ts - _ultimoStatoUI > 100) {
+            aggiornaStatoUI();
+            _ultimoStatoUI = ts;
+        }
         requestAnimationFrame(renderLoop);
     }
     requestAnimationFrame(renderLoop);
@@ -973,11 +1138,16 @@ function init() {
 
     // Carica chip personalizzati
     caricaChipPersonalizzati();
+
+    // Snapshot iniziale per il tracking delle modifiche non salvate
+    _ultimoSalvataggio = JSON.stringify(sim.serializza());
 }
 
 function avviaSimLoop() {
     if(simInterval) clearInterval(simInterval);
-    simInterval = setInterval(() => { sim.tick(); }, 1000/simVelocita);
+    simInterval = setInterval(() => {
+        if(sim.attivo) sim.tick();
+    }, 1000/simVelocita);
 }
 
 function aggiornaUI() {
@@ -1001,6 +1171,27 @@ function aggiornaStatoUI() {
 
 // ======================== SALVATAGGIO / CARICAMENTO ========================
 
+// Stato di "modifiche non salvate"
+let _ultimoSalvataggio = '';  // JSON snapshot dell'ultimo salvataggio
+
+function _segnaModificato() {
+    // Viene chiamato dopo ogni azione che modifica il circuito
+    // (il check avviene confrontando lo snapshot al momento di salvare/caricare)
+}
+
+function _haModificheNonSalvate() {
+    if(!sim || !sim.chips.size && !sim.fili.size) return false;
+    const attuale = JSON.stringify(sim.serializza());
+    return attuale !== _ultimoSalvataggio;
+}
+
+function _confermaSeNonSalvato() {
+    if(_haModificheNonSalvate()){
+        return confirm('Hai modifiche non salvate. Vuoi continuare senza salvare?');
+    }
+    return true;
+}
+
 async function salvaProgetto() {
     const nome = document.getElementById('nome-progetto').value.trim() || 'Nuovo Progetto';
     const data = {
@@ -1010,6 +1201,7 @@ async function salvaProgetto() {
     try {
         const result = await window.pywebview.api.salva_progetto(data);
         if(result.successo){
+            _ultimoSalvataggio = JSON.stringify(sim.serializza());
             mostraNotifica('Progetto salvato con successo!', 'successo');
         } else {
             mostraNotifica('Errore nel salvataggio.', 'errore');
@@ -1059,12 +1251,14 @@ async function mostraModaleCarica() {
 }
 
 async function caricaProgetto(nome) {
+    if(!_confermaSeNonSalvato()) return;
     try {
         const data = await window.pywebview.api.carica_progetto(nome);
         if(data.errore){ mostraNotifica(data.errore, 'errore'); return; }
 
         document.getElementById('nome-progetto').value = data.nome || nome;
         sim.deserializza(data.circuito || {});
+        _ultimoSalvataggio = JSON.stringify(sim.serializza());
         ed.selChips.clear(); ed.selFili.clear();
         document.getElementById('modale-carica').classList.add('nascosta');
         mostraNotifica(`Progetto "${nome}" caricato!`, 'successo');
@@ -1267,6 +1461,12 @@ function _aggiornaIstanzeChip(tipoKey) {
 async function esportaChip() {
     const nome   = document.getElementById('nome-chip-esporta').value.trim();
     const colore = document.getElementById('colore-chip-esporta').value;
+    let cartella = document.getElementById('cartella-chip-esporta').value.trim();
+    // Se ha scelto "nuova cartella", usa il valore dal campo di testo
+    if(cartella === '__nuova__'){
+        cartella = document.getElementById('nuova-cartella-nome').value.trim();
+        if(!cartella){ mostraNotifica('Inserisci un nome per la cartella.', 'errore'); return; }
+    }
     if(!nome){ mostraNotifica('Inserisci un nome per il chip.', 'errore'); return; }
     if(!sim.chips.size){ mostraNotifica('Il circuito è vuoto.', 'errore'); return; }
 
@@ -1285,6 +1485,7 @@ async function esportaChip() {
     const chipDef = {
         nome: nome,
         colore: colore,
+        cartella: cartella || '',
         ingressi: ingressi,
         uscite: uscite,
         circuito: sim.serializza()
@@ -1307,14 +1508,28 @@ async function caricaChipPersonalizzati() {
     try {
         const chips = await window.pywebview.api.lista_chip_personalizzati();
 
-        if(!chips.length){
-            cont.innerHTML = '<p class="placeholder-text">Nessun chip personalizzato.<br>Usa "Esporta Chip" per crearne.</p>';
+        if(!chips || !chips.length){
+            cont.innerHTML = '<p class="placeholder-text">Nessun chip trovato (ricevuti: ' + (chips ? chips.length : 'null') + ').<br>Usa "Esporta Chip" per crearne.</p>';
+            _aggiornaSelectCartelle([]);
             return;
         }
 
         cont.innerHTML = '';
+
+        // Raggruppa chip per cartella
+        const perCartella = new Map();  // cartella -> [cd, ...]
         chips.forEach(cd => {
-            // Registra definizione per la simulazione
+            const folder = cd.cartella || '';
+            if(!perCartella.has(folder)) perCartella.set(folder, []);
+            perCartella.get(folder).push(cd);
+        });
+
+        // Raccogli nomi cartelle per il select dell'esportazione
+        const nomiCartelle = [...perCartella.keys()].filter(k => k !== '').sort();
+        _aggiornaSelectCartelle(nomiCartelle);
+
+        // Render: prima quelli senza cartella, poi per cartella
+        const renderChipBtn = (cd) => {
             const tipoKey = 'CUSTOM_'+cd.nome.toUpperCase().replace(/\s/g,'_');
             DEFS[tipoKey] = {
                 nome: cd.nome,
@@ -1324,7 +1539,7 @@ async function caricaChipPersonalizzati() {
                 col: cd.colore || '#7f8c8d',
                 w: Math.max(90, 30 + Math.max((cd.ingressi||[]).length, (cd.uscite||[]).length)*15 + cd.nome.length*8),
                 h: Math.max(50, 22 + Math.max((cd.ingressi||[]).length, (cd.uscite||[]).length)*20 + 10),
-                fn: null  // Gestito dal simulatore customDefs
+                fn: null
             };
             sim.customDefs.set(tipoKey, cd);
 
@@ -1343,11 +1558,56 @@ async function caricaChipPersonalizzati() {
                     ed.filoStart=null;
                 }
             });
-            cont.appendChild(btn);
+            return btn;
+        };
+
+        // Chip senza cartella
+        if(perCartella.has('')){
+            perCartella.get('').forEach(cd => cont.appendChild(renderChipBtn(cd)));
+        }
+
+        // Chip raggruppati per cartella
+        nomiCartelle.forEach(folder => {
+            const folderDiv = document.createElement('div');
+            folderDiv.className = 'custom-folder';
+            const folderTitle = document.createElement('h5');
+            folderTitle.className = 'custom-folder-titolo';
+            folderTitle.textContent = '📁 ' + folder;
+            folderTitle.addEventListener('click', () => {
+                folderTitle.classList.toggle('aperta');
+                folderContent.classList.toggle('visibile');
+            });
+            const folderContent = document.createElement('div');
+            folderContent.className = 'custom-folder-contenuto visibile';
+            perCartella.get(folder).forEach(cd => folderContent.appendChild(renderChipBtn(cd)));
+            folderDiv.appendChild(folderTitle);
+            folderDiv.appendChild(folderContent);
+            cont.appendChild(folderDiv);
         });
     } catch(e) {
-        // pywebview API non disponibile, ignora
-        cont.innerHTML = '<p class="placeholder-text">Errore nel caricamento chip.</p>';
+        cont.innerHTML = '<p class="placeholder-text">ERRORE: ' + (e.message || e) + '</p>';
+    }
+}
+
+function _aggiornaSelectCartelle(nomiCartelle) {
+    const select = document.getElementById('cartella-chip-esporta');
+    if(!select) return;
+    // Svuota le opzioni tranne le prime (vuoto + "Nuova cartella")
+    const valCorrente = select.value;
+    select.innerHTML = '<option value="">(nessuna cartella)</option>';
+    nomiCartelle.forEach(n => {
+        const opt = document.createElement('option');
+        opt.value = n;
+        opt.textContent = n;
+        select.appendChild(opt);
+    });
+    const optNuova = document.createElement('option');
+    optNuova.value = '__nuova__';
+    optNuova.textContent = '+ Crea nuova cartella...';
+    select.appendChild(optNuova);
+    // Ripristina selezione se possibile
+    if(valCorrente && select.querySelector(`option[value="${valCorrente}"]`)){
+        select.value = valCorrente;
     }
 }
 

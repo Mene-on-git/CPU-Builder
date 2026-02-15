@@ -200,7 +200,7 @@ class Renderer {
         const sx = Math.floor(tl.x/g1)*g1, sy = Math.floor(tl.y/g1)*g1;
         const ex = Math.ceil(br.x/g1)*g1,  ey = Math.ceil(br.y/g1)*g1;
 
-        // Sotto-griglia
+        // Sotto-griglia (batch unica)
         if(this.zoom > 0.4){
             ctx.strokeStyle = COL.GRIGLIA;
             ctx.lineWidth = 0.5/this.zoom;
@@ -210,7 +210,7 @@ class Renderer {
             ctx.stroke();
         }
 
-        // Griglia principale
+        // Griglia principale (batch unica)
         ctx.strokeStyle = COL.GRIGLIA2;
         ctx.lineWidth = 1/this.zoom;
         const sx2 = Math.floor(tl.x/g2)*g2, sy2 = Math.floor(tl.y/g2)*g2;
@@ -322,7 +322,10 @@ class Renderer {
             }
         }
         if(c.tipo==='DISPLAY7') {
-            this._display7seg(ctx, c);
+            this._display7seg(ctx, c, false);
+        }
+        if(c.tipo==='DISPLAY7_NEG') {
+            this._display7segNeg(ctx, c);
         }
         if(c.tipo==='FLIPFLOP_D') {
             this._flipflopD(ctx, c);
@@ -349,7 +352,7 @@ class Renderer {
     //    E    C
     //     DDDD  .DP
     //
-    _display7seg(ctx, c) {
+    _display7seg(ctx, c, mostraMeno = false) {
         const pA = c.pinI[0]?.stato || 0;
         const pB = c.pinI[1]?.stato || 0;
         const pC = c.pinI[2]?.stato || 0;
@@ -375,11 +378,13 @@ class Renderer {
         ctx.stroke();
 
         // Geometria segmenti
-        const mx = dx + dw/2;           // centro X
-        const my = dy + dh/2;           // centro Y
-        const segL = dw * 0.55;         // lunghezza segmento
-        const segW = dw * 0.12;         // spessore segmento
-        const hGap = dh * 0.42;         // metà altezza verticale
+        // Se mostra il meno, spostiamo il centro X a destra per fare spazio al segno a sinistra
+        const offsetX = mostraMeno ? dw * 0.15 : 0;
+        const mx = dx + dw/2 + offsetX;  // centro X
+        const my = dy + dh/2;            // centro Y
+        const segL = dw * (mostraMeno ? 0.45 : 0.55);  // lunghezza segmento (più piccola se c'è il meno)
+        const segW = dw * 0.12;          // spessore segmento
+        const hGap = dh * 0.42;          // metà altezza verticale
         const colOn  = '#ff1a1a';
         const colOff = '#1a0a0a';
         const glowOn = '#ff4444';
@@ -424,14 +429,126 @@ class Renderer {
             ctx.restore();
         });
 
-        // Punto decimale (DP)
+        // Punto decimale (DP) o segno meno (NEG)
         ctx.save();
         if(pDP) { ctx.shadowColor=glowOn; ctx.shadowBlur=8; }
         ctx.fillStyle = pDP ? colOn : colOff;
+        if(mostraMeno) {
+            // Disegna un trattino "-" PRIMA (a sinistra) del display
+            const mw = segL * 0.5;
+            const mh = segW * 0.7;
+            const mx2 = dx + dw * 0.18;  // Posizione a sinistra dei segmenti
+            const my2 = my;
+            ctx.beginPath();
+            ctx.rect(mx2 - mw/2, my2 - mh/2, mw, mh);
+            ctx.fill();
+        } else {
+            // Punto decimale classico (a destra)
+            ctx.beginPath();
+            ctx.arc(mx + segL/2 + segW, my + hGap, segW*0.6, 0, Math.PI*2);
+            ctx.fill();
+        }
+        ctx.restore();
+    }
+
+    // ---- Display 7 segmenti integrato con BCD decoder + segno meno ----
+    //
+    //   Pin: D0..D3 (BCD), BLANK, NEG
+    //   Il decoder BCD→7seg è interno, il segno "-" appare A SINISTRA della cifra
+    //   BLANK + valore=0 → spegne tutto il display
+    //
+    //    -  AAAA
+    //       F    B
+    //       F    B
+    //        GGGG
+    //       E    C
+    //       E    C
+    //        DDDD
+    //
+    _display7segNeg(ctx, c) {
+        const seg = c.statoInterno?.segmenti || [0,0,0,0,0,0,0];
+        const pNEG = c.pinI[5]?.stato || 0;
+        const blanked = c.statoInterno?.blanked || 0;
+
+        const pA = seg[0], pB = seg[1], pC = seg[2], pD = seg[3];
+        const pE = seg[4], pF = seg[5], pG = seg[6];
+
+        // Area display interna — tutto dentro il chip
+        const pad = 8;
+        const dx = c.x + pad;
+        const dy = c.y + 20;
+        const dw = c.w - pad*2;
+        const dh = c.h - 28;
+
+        // Sfondo display (nero)
+        ctx.fillStyle = '#0a0a0a';
+        this._rrect(ctx, dx, dy, dw, dh, 4);
+        ctx.fill();
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 1/this.zoom;
+        ctx.stroke();
+
+        // Geometria: segno meno a sinistra, cifra a destra
+        const negSpace = dw * 0.28;          // spazio per il segno meno
+        const digitArea = dw - negSpace - 4; // area per la cifra
+        const mx = dx + negSpace + digitArea/2;  // centro X della cifra
+        const my = dy + dh/2;                    // centro Y
+        const segL = digitArea * 0.7;            // lunghezza segmento
+        const segW = digitArea * 0.14;           // spessore segmento
+        const hGap = dh * 0.38;                 // metà altezza verticale
+        const colOn  = '#ff1a1a';
+        const colOff = '#1a0a0a';
+        const glowOn = '#ff4444';
+
+        // Segno meno (a sinistra della cifra)
+        ctx.save();
+        if(pNEG && !blanked) { ctx.shadowColor=glowOn; ctx.shadowBlur=8; }
+        ctx.fillStyle = (pNEG && !blanked) ? colOn : colOff;
+        const mw = negSpace * 0.65;
+        const mh = segW * 0.8;
+        const negX = dx + negSpace/2;
         ctx.beginPath();
-        ctx.arc(mx + segL/2 + segW, my + hGap, segW*0.6, 0, Math.PI*2);
+        ctx.rect(negX - mw/2, my - mh/2, mw, mh);
         ctx.fill();
         ctx.restore();
+
+        // 7 segmenti della cifra
+        const segs = [
+            { on:pA, cx:mx, cy:my-hGap,          horiz:true  },  // A - superiore
+            { on:pB, cx:mx+segL/2, cy:my-hGap/2, horiz:false },  // B - alto dx
+            { on:pC, cx:mx+segL/2, cy:my+hGap/2, horiz:false },  // C - basso dx
+            { on:pD, cx:mx, cy:my+hGap,          horiz:true  },  // D - inferiore
+            { on:pE, cx:mx-segL/2, cy:my+hGap/2, horiz:false },  // E - basso sx
+            { on:pF, cx:mx-segL/2, cy:my-hGap/2, horiz:false },  // F - alto sx
+            { on:pG, cx:mx, cy:my,               horiz:true  },  // G - centro
+        ];
+
+        segs.forEach(s => {
+            ctx.save();
+            if(s.on) { ctx.shadowColor=glowOn; ctx.shadowBlur=8; }
+            ctx.fillStyle = s.on ? colOn : colOff;
+            ctx.beginPath();
+            if(s.horiz) {
+                const hw = segL/2, hh = segW/2;
+                ctx.moveTo(s.cx-hw+hh, s.cy-hh);
+                ctx.lineTo(s.cx+hw-hh, s.cy-hh);
+                ctx.lineTo(s.cx+hw,    s.cy);
+                ctx.lineTo(s.cx+hw-hh, s.cy+hh);
+                ctx.lineTo(s.cx-hw+hh, s.cy+hh);
+                ctx.lineTo(s.cx-hw,    s.cy);
+            } else {
+                const hw = segW/2, hh = hGap/2-segW*0.3;
+                ctx.moveTo(s.cx,    s.cy-hh);
+                ctx.lineTo(s.cx+hw, s.cy-hh+hw);
+                ctx.lineTo(s.cx+hw, s.cy+hh-hw);
+                ctx.lineTo(s.cx,    s.cy+hh);
+                ctx.lineTo(s.cx-hw, s.cy+hh-hw);
+                ctx.lineTo(s.cx-hw, s.cy-hh+hw);
+            }
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        });
     }
 
     // ---- Flip-flop D ----

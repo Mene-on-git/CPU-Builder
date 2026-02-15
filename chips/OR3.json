@@ -1,0 +1,158 @@
+{
+  "nome": "OR3",
+  "colore": "#7f8c8d",
+  "cartella": "",
+  "ingressi": [
+    "OUT",
+    "OUT",
+    "OUT"
+  ],
+  "uscite": [
+    "IN"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 31,
+        "tipo": "INGRESSO",
+        "x": -440,
+        "y": -240,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 32,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "tipo": "INGRESSO",
+        "x": -440,
+        "y": -160,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 35,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 37,
+        "tipo": "INGRESSO",
+        "x": -440,
+        "y": -80,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 38,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 40,
+        "tipo": "OR",
+        "x": -260,
+        "y": -220,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 41,
+            "et": "A"
+          },
+          {
+            "id": 42,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 43,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 45,
+        "tipo": "OR",
+        "x": -100,
+        "y": -120,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 46,
+            "et": "A"
+          },
+          {
+            "id": 47,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 48,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 50,
+        "tipo": "USCITA",
+        "x": 180,
+        "y": -100,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 51,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 53,
+        "srcId": 48,
+        "dstId": 51
+      },
+      {
+        "id": 55,
+        "srcId": 32,
+        "dstId": 41
+      },
+      {
+        "id": 57,
+        "srcId": 35,
+        "dstId": 42
+      },
+      {
+        "id": 59,
+        "srcId": 43,
+        "dstId": 46
+      },
+      {
+        "id": 61,
+        "srcId": 38,
+        "dstId": 47
+      }
+    ]
+  }
+}

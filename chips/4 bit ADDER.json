@@ -42,7 +42,7 @@
         "tipo": "INGRESSO",
         "x": -940,
         "y": -220,
-        "stato": 1,
+        "stato": 0,
         "nomeCustom": "A2",
         "statoInterno": {},
         "pinI": [],
@@ -138,7 +138,7 @@
         "tipo": "INGRESSO",
         "x": -940,
         "y": 340,
-        "stato": 1,
+        "stato": 0,
         "nomeCustom": "B0",
         "statoInterno": {},
         "pinI": [],
@@ -154,7 +154,7 @@
         "tipo": "INGRESSO",
         "x": -940,
         "y": 440,
-        "stato": 1,
+        "stato": 0,
         "nomeCustom": "Cin",
         "statoInterno": {},
         "pinI": [],
@@ -465,6 +465,5 @@
         "dstId": 614
       }
     ]
-  },
-  "descrizione": "Sommatore a 4 bit con riporto (Ripple Carry Adder). Somma due numeri binari a 4 bit A[3:0] + B[3:0] con riporto in ingresso Cin."
+  }
 }

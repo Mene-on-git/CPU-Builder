@@ -94,6 +94,7 @@
                 <h4 class="cat-titolo" data-cat="display">▸ Display</h4>
                 <div class="cat-contenuto" id="cat-display">
                     <button class="btn-chip" data-tipo="DISPLAY7" style="--chip-col: #e74c3c">7 Segmenti</button>
+                    <button class="btn-chip" data-tipo="DISPLAY7_NEG" style="--chip-col: #e74c3c">DISP-7</button>
                     <button class="btn-chip" data-tipo="DECODER_BCD7" style="--chip-col: #e67e22">Decoder BCD→7</button>
                 </div>
             </div>
@@ -155,6 +156,15 @@
             </label>
             <label>Colore:
                 <input type="color" id="colore-chip-esporta" value="#7f8c8d">
+            </label>
+            <label>Cartella:
+                <select id="cartella-chip-esporta">
+                    <option value="">(nessuna cartella)</option>
+                    <option value="__nuova__">+ Crea nuova cartella...</option>
+                </select>
+            </label>
+            <label id="label-nuova-cartella" style="display:none">Nome nuova cartella:
+                <input type="text" id="nuova-cartella-nome" placeholder="La mia cartella" spellcheck="false">
             </label>
             <div class="modale-azioni">
                 <button id="btn-conferma-esporta" class="btn-toolbar btn-primario">Esporta</button>
