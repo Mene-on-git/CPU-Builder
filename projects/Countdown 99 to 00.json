@@ -1,5 +1,6 @@
 {
   "nome": "Countdown 99 to 00",
+  "descrizione": "Contatore decrescente a 2 cifre decimali, da 99 a 00: le cifre delle decine e delle unità sono realizzate con il chip Countdown-BCD-7seg collegate in cascata (il prestito dell'unità decrementa la decina) e mostrate su display a 7 segmenti.",
   "circuito": {
     "chips": [
       {

@@ -13,6 +13,7 @@
             <span class="logo">⚡ CPU-Builder</span>
             <span class="separatore">|</span>
             <input type="text" id="nome-progetto" value="Nuovo Progetto" spellcheck="false">
+            <button id="btn-descrizione-progetto" class="btn-toolbar" title="Modifica descrizione progetto">📝</button>
         </div>
         <div class="barra-centro">
             <button id="btn-annulla" class="btn-toolbar" title="Annulla (Ctrl+Z)">↩</button>
@@ -35,6 +36,7 @@
             </label>
         </div>
         <div class="barra-destra">
+            <button id="btn-vista-calcolatrice" class="btn-toolbar nascosta" title="Mostra/nascondi il pannello frontale della calcolatrice">🧮 Vista Calcolatrice</button>
             <button id="btn-salva" class="btn-toolbar" title="Salva progetto (Ctrl+S)">💾 Salva</button>
             <button id="btn-carica" class="btn-toolbar" title="Carica progetto">📂 Carica</button>
             <button id="btn-esporta-chip" class="btn-toolbar" title="Esporta come chip personalizzato">📦 Esporta Chip</button>
@@ -152,6 +154,9 @@
             <h3>📦 Esporta come Chip Personalizzato</h3>
             <label>Nome del chip:
                 <input type="text" id="nome-chip-esporta" placeholder="MioChip" spellcheck="false">
+            </label>
+            <label>Descrizione:
+                <textarea id="descrizione-chip-esporta" placeholder="Cosa fa questo chip e come si usa..." rows="3"></textarea>
             </label>
             <label>Colore:
                 <input type="color" id="colore-chip-esporta" value="#7f8c8d">

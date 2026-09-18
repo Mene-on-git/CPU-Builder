@@ -527,6 +527,14 @@ class Editor {
     }
 
     _onDown(e) {
+        // Modalità pannello calcolatrice: intercetta il click e delega al pannello,
+        // ignorando drag/wiring/selezione del circuito sottostante.
+        if(typeof modalitaCalcolatrice !== 'undefined' && modalitaCalcolatrice && typeof calcPanel !== 'undefined' && calcPanel) {
+            const rect = this._cv.getBoundingClientRect();
+            calcPanel.handleClick(e.clientX - rect.left, e.clientY - rect.top);
+            return;
+        }
+
         const w = this._mouseWorld(e);
         this.mx=w.x; this.my=w.y;
 
@@ -639,6 +647,13 @@ class Editor {
     }
 
     _onMove(e) {
+        if(typeof modalitaCalcolatrice !== 'undefined' && modalitaCalcolatrice && typeof calcPanel !== 'undefined' && calcPanel) {
+            const rect = this._cv.getBoundingClientRect();
+            const hit = calcPanel.hitTest(e.clientX - rect.left, e.clientY - rect.top);
+            this._cv.style.cursor = hit ? 'pointer' : 'default';
+            return;
+        }
+
         const w = this._mouseWorld(e);
         this.mx=w.x; this.my=w.y;
 
@@ -710,6 +725,7 @@ class Editor {
 
     _onWheel(e) {
         e.preventDefault();
+        if(typeof modalitaCalcolatrice !== 'undefined' && modalitaCalcolatrice) return;
         const delta = e.deltaY > 0 ? 0.9 : 1.1;
         this._ren.zoom = Math.max(0.1, Math.min(5, this._ren.zoom * delta));
     }
@@ -733,6 +749,7 @@ class Editor {
     }
 
     _onDblClick(e) {
+        if(typeof modalitaCalcolatrice !== 'undefined' && modalitaCalcolatrice) return;
         const w = this._mouseWorld(e);
         const chip = this._hitChip(w.x, w.y);
         if(chip) {
@@ -842,6 +859,7 @@ class Editor {
         const data = JSON.parse(this._undoStack.pop());
         this._sim.deserializza(data);
         this.selChips.clear(); this.selFili.clear();
+        if(typeof aggiornaCalcPanel==='function') aggiornaCalcPanel();
     }
 
     _redo() {
@@ -850,6 +868,7 @@ class Editor {
         const data = JSON.parse(this._redoStack.pop());
         this._sim.deserializza(data);
         this.selChips.clear(); this.selFili.clear();
+        if(typeof aggiornaCalcPanel==='function') aggiornaCalcPanel();
     }
 
     _aggiornaBtnChip() {
@@ -862,6 +881,20 @@ class Editor {
 let sim, ren, ed, loopId;
 let simInterval = null;
 let simVelocita = 200;
+let calcPanel = null;              // istanza di PannelloCalcolatrice, se il progetto caricato è compatibile
+let modalitaCalcolatrice = false;  // true = mostra il pannello frontale invece del circuito
+
+// Rileva se il circuito corrente è compatibile con il pannello calcolatrice e
+// aggiorna la visibilità del pulsante in toolbar.
+function aggiornaCalcPanel() {
+    calcPanel = PannelloCalcolatrice.rileva(sim);
+    if(!calcPanel) modalitaCalcolatrice = false;
+    const btn = document.getElementById('btn-vista-calcolatrice');
+    if(btn){
+        btn.classList.toggle('nascosta', !calcPanel);
+        btn.classList.toggle('btn-attivo', modalitaCalcolatrice);
+    }
+}
 
 function init() {
     const canvas = document.getElementById('canvas');
@@ -915,6 +948,13 @@ function init() {
     document.getElementById('btn-annulla').addEventListener('click', () => ed._undo());
     document.getElementById('btn-ripristina').addEventListener('click', () => ed._redo());
 
+    // Vista frontale calcolatrice (skin senza cablaggi, solo per progetti compatibili)
+    document.getElementById('btn-vista-calcolatrice').addEventListener('click', () => {
+        if(!calcPanel) return;
+        modalitaCalcolatrice = !modalitaCalcolatrice;
+        document.getElementById('btn-vista-calcolatrice').classList.toggle('btn-attivo', modalitaCalcolatrice);
+    });
+
     // Velocità
     const sliderVel = document.getElementById('velocita-sim');
     const labelVel  = document.getElementById('velocita-valore');
@@ -937,6 +977,12 @@ function init() {
     document.getElementById('btn-carica').addEventListener('click', mostraModaleCarica);
     document.getElementById('btn-chiudi-modale').addEventListener('click', () => {
         document.getElementById('modale-carica').classList.add('nascosta');
+    });
+
+    // Descrizione progetto
+    document.getElementById('btn-descrizione-progetto').addEventListener('click', () => {
+        const nuova = prompt('Descrizione del progetto:', descrizioneProgettoCorrente);
+        if(nuova !== null) descrizioneProgettoCorrente = nuova.trim();
     });
 
     // Chiudi modale vista interna
@@ -963,7 +1009,11 @@ function init() {
 
     // Loop rendering
     function renderLoop() {
-        ren.disegna(sim, ed);
+        if(modalitaCalcolatrice && calcPanel) {
+            ren.disegnaPannelloCalcolatrice(calcPanel);
+        } else {
+            ren.disegna(sim, ed);
+        }
         aggiornaStatoUI();
         requestAnimationFrame(renderLoop);
     }
@@ -974,6 +1024,9 @@ function init() {
 
     // Carica chip personalizzati
     caricaChipPersonalizzati();
+
+    // Rileva compatibilità con il pannello calcolatrice per il progetto iniziale
+    aggiornaCalcPanel();
 }
 
 function avviaSimLoop() {
@@ -1002,10 +1055,13 @@ function aggiornaStatoUI() {
 
 // ======================== SALVATAGGIO / CARICAMENTO ========================
 
+let descrizioneProgettoCorrente = '';
+
 async function salvaProgetto() {
     const nome = document.getElementById('nome-progetto').value.trim() || 'Nuovo Progetto';
     const data = {
         nome: nome,
+        descrizione: descrizioneProgettoCorrente,
         circuito: sim.serializza()
     };
     try {
@@ -1046,6 +1102,7 @@ async function mostraModaleCarica() {
             div.innerHTML = `
                 <div>
                     <div class="progetto-nome">${p.nome}</div>
+                    ${p.descrizione ? `<div class="progetto-descrizione">${p.descrizione}</div>` : ''}
                     <div class="progetto-dettagli">Chip: ${p.num_chip} | Fili: ${p.num_fili}</div>
                 </div>
                 <div class="progetto-azioni">
@@ -1072,8 +1129,10 @@ async function caricaProgetto(nome) {
         if(data.errore){ mostraNotifica(data.errore, 'errore'); return; }
 
         document.getElementById('nome-progetto').value = data.nome || nome;
+        descrizioneProgettoCorrente = data.descrizione || '';
         sim.deserializza(data.circuito || {});
         ed.selChips.clear(); ed.selFili.clear();
+        aggiornaCalcPanel();
         document.getElementById('modale-carica').classList.add('nascosta');
         mostraNotifica(`Progetto "${nome}" caricato!`, 'successo');
     } catch(e) {
@@ -1114,6 +1173,8 @@ function entraNellaModificaChip(tipoKey) {
     sim.deserializza(cd.circuito);
     sim.attivo = false;
     aggiornaUI();
+    modalitaCalcolatrice = false;
+    aggiornaCalcPanel();
 
     // Attiva modalità modifica
     _editMode = true;
@@ -1203,6 +1264,8 @@ function _esciDallaModifica() {
         _aggiornaIstanzeChip(tipoAggiornato);
     }
 
+    aggiornaCalcPanel();
+
     // Ripristina UI
     document.getElementById('banner-modifica-chip').classList.add('nascosta');
     document.getElementById('nome-progetto').value = _editPrevNome;
@@ -1279,6 +1342,7 @@ function _aggiornaIstanzeChip(tipoKey) {
 
 async function esportaChip() {
     const nome   = document.getElementById('nome-chip-esporta').value.trim();
+    const descrizione = document.getElementById('descrizione-chip-esporta').value.trim();
     const colore = document.getElementById('colore-chip-esporta').value;
     if(!nome){ mostraNotifica('Inserisci un nome per il chip.', 'errore'); return; }
     if(!sim.chips.size){ mostraNotifica('Il circuito è vuoto.', 'errore'); return; }
@@ -1297,6 +1361,7 @@ async function esportaChip() {
 
     const chipDef = {
         nome: nome,
+        descrizione: descrizione,
         colore: colore,
         ingressi: ingressi,
         uscite: uscite,
@@ -1352,6 +1417,7 @@ async function caricaChipPersonalizzati() {
             btn.dataset.tipo = tipoKey;
             btn.style.setProperty('--chip-col', cd.colore || '#7f8c8d');
             btn.textContent = cd.nome;
+            btn.title = cd.descrizione ? `${cd.nome} — ${cd.descrizione}` : cd.nome;
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.btn-chip').forEach(b => b.classList.remove('selezionato'));
                 if(ed.tipoPlace===tipoKey){

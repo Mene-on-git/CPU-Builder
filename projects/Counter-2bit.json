@@ -1,5 +1,6 @@
 {
   "nome": "✏️ Counter-2bit",
+  "descrizione": "Progetto dimostrativo del chip Counter-2bit: un contatore binario a 2 bit (0-3) collegato a due uscite/LED per visualizzarne il valore.",
   "circuito": {
     "chips": [
       {

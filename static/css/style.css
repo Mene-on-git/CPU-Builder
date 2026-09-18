@@ -125,6 +125,10 @@ html, body {
     color: #fff;
 }
 
+.btn-toolbar.nascosta {
+    display: none !important;
+}
+
 .btn-primario {
     background: var(--accento) !important;
     border-color: var(--accento) !important;
@@ -498,6 +502,12 @@ html, body {
 .progetto-nome {
     font-weight: 600;
     font-size: 13px;
+}
+
+.progetto-descrizione {
+    font-size: 11px;
+    color: var(--testo-2);
+    margin: 2px 0;
 }
 
 .progetto-dettagli {

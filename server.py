@@ -37,6 +37,7 @@ def lista_progetti():
                     data = json.load(file)
                     progetti.append({
                         'nome': data.get('nome', f.replace('.json', '')),
+                        'descrizione': data.get('descrizione', ''),
                         'data_modifica': data.get('data_modifica', ''),
                         'num_chip': len(data.get('circuito', {}).get('chips', [])),
                         'num_fili': len(data.get('circuito', {}).get('fili', []))

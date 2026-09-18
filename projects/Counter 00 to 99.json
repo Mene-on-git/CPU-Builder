@@ -1,5 +1,6 @@
 {
   "nome": "Counter 00 to 99",
+  "descrizione": "Contatore crescente a 2 cifre decimali, da 00 a 99: le cifre delle decine e delle unità sono realizzate con contatori BCD collegati in cascata (il riporto dell'unità incrementa la decina) e mostrate su display a 7 segmenti.",
   "circuito": {
     "chips": [
       {

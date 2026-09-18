@@ -1,6 +1,6 @@
 {
-  "nome": "Up-Down 00-99",
-  "descrizione": "Contatore avanti/indietro a 2 cifre decimali (00-99): uno switch MODO sceglie la direzione del conteggio. La direzione viene sincronizzata con il clock della cifra più veloce per evitare che un cambio di direzione, da solo, generi un incremento/decremento indesiderato.",
+  "nome": "Up-Down 00.0-99.9",
+  "descrizione": "Contatore avanti/indietro a 3 cifre decimali con una cifra dopo la virgola (00.0-99.9): uno switch MODO sceglie la direzione del conteggio, sincronizzata con il clock della cifra più veloce (i decimi) per evitare cambi di valore indesiderati quando si inverte la direzione.",
   "circuito": {
     "chips": [
       {
@@ -428,7 +428,243 @@
         ]
       },
       {
-        "id": 5374,
+        "id": 10010,
+        "tipo": "CUSTOM_UPDOWN-BCD-7SEG",
+        "x": 20,
+        "y": 640,
+        "stato": 0,
+        "nomeCustom": "Decimi",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 10011,
+            "et": "CLK"
+          },
+          {
+            "id": 10012,
+            "et": "UP"
+          },
+          {
+            "id": 10013,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 10014,
+            "et": "A"
+          },
+          {
+            "id": 10015,
+            "et": "B"
+          },
+          {
+            "id": 10016,
+            "et": "C"
+          },
+          {
+            "id": 10017,
+            "et": "D"
+          },
+          {
+            "id": 10018,
+            "et": "E"
+          },
+          {
+            "id": 10019,
+            "et": "F"
+          },
+          {
+            "id": 10020,
+            "et": "G"
+          },
+          {
+            "id": 10021,
+            "et": "DP"
+          },
+          {
+            "id": 10022,
+            "et": "ZERO"
+          },
+          {
+            "id": 10023,
+            "et": "NOVE"
+          }
+        ]
+      },
+      {
+        "id": 10050,
+        "tipo": "NOT",
+        "x": 60,
+        "y": 780,
+        "stato": 0,
+        "nomeCustom": "",
+        "pinI": [
+          {
+            "id": 10051,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 10052,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 10053,
+        "tipo": "AND",
+        "x": 180,
+        "y": 820,
+        "stato": 0,
+        "nomeCustom": "",
+        "pinI": [
+          {
+            "id": 10054,
+            "et": "A"
+          },
+          {
+            "id": 10055,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 10056,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 10057,
+        "tipo": "AND",
+        "x": 180,
+        "y": 720,
+        "stato": 0,
+        "nomeCustom": "",
+        "pinI": [
+          {
+            "id": 10058,
+            "et": "A"
+          },
+          {
+            "id": 10059,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 10060,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 10061,
+        "tipo": "OR",
+        "x": 320,
+        "y": 780,
+        "stato": 0,
+        "nomeCustom": "",
+        "pinI": [
+          {
+            "id": 10062,
+            "et": "A"
+          },
+          {
+            "id": 10063,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 10064,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 10065,
+        "tipo": "NOT",
+        "x": 460,
+        "y": 780,
+        "stato": 0,
+        "nomeCustom": "",
+        "pinI": [
+          {
+            "id": 10066,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 10067,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 10070,
+        "tipo": "DISPLAY7",
+        "x": 1120,
+        "y": -360,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 10071,
+            "et": "A"
+          },
+          {
+            "id": 10072,
+            "et": "B"
+          },
+          {
+            "id": 10073,
+            "et": "C"
+          },
+          {
+            "id": 10074,
+            "et": "D"
+          },
+          {
+            "id": 10075,
+            "et": "E"
+          },
+          {
+            "id": 10076,
+            "et": "F"
+          },
+          {
+            "id": 10077,
+            "et": "G"
+          },
+          {
+            "id": 10078,
+            "et": "DP"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 10080,
+        "tipo": "COSTANTE_1",
+        "x": 900,
+        "y": -180,
+        "stato": 0,
+        "nomeCustom": "",
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 10081,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 11120,
         "tipo": "COSTANTE_0",
         "x": -380,
         "y": -220,
@@ -438,13 +674,13 @@
         "pinI": [],
         "pinU": [
           {
-            "id": 5375,
+            "id": 11121,
             "et": "OUT"
           }
         ]
       },
       {
-        "id": 5376,
+        "id": 11122,
         "tipo": "FLIPFLOP_D",
         "x": -220,
         "y": -280,
@@ -453,25 +689,25 @@
         "statoInterno": {},
         "pinI": [
           {
-            "id": 5377,
+            "id": 11123,
             "et": "D"
           },
           {
-            "id": 5378,
+            "id": 11124,
             "et": "CLK"
           },
           {
-            "id": 5379,
+            "id": 11125,
             "et": "RST"
           }
         ],
         "pinU": [
           {
-            "id": 5380,
+            "id": 11126,
             "et": "Q"
           },
           {
-            "id": 5381,
+            "id": 11127,
             "et": "Q̄"
           }
         ]
@@ -500,7 +736,7 @@
       },
       {
         "id": 3005,
-        "srcId": 5380,
+        "srcId": 11126,
         "dstId": 2051
       },
       {
@@ -520,7 +756,7 @@
       },
       {
         "id": 3009,
-        "srcId": 5380,
+        "srcId": 11126,
         "dstId": 2059
       },
       {
@@ -614,11 +850,6 @@
         "dstId": 2077
       },
       {
-        "id": 4369,
-        "srcId": 4367,
-        "dstId": 2011
-      },
-      {
         "id": 4371,
         "srcId": 2002,
         "dstId": 4365
@@ -629,19 +860,119 @@
         "dstId": 4366
       },
       {
-        "id": 5382,
-        "srcId": 2006,
-        "dstId": 5377
-      },
-      {
-        "id": 5383,
+        "id": 10100,
         "srcId": 4367,
-        "dstId": 5378
+        "dstId": 10011
       },
       {
-        "id": 5384,
-        "srcId": 5375,
-        "dstId": 5379
+        "id": 10101,
+        "srcId": 2006,
+        "dstId": 10012
+      },
+      {
+        "id": 10102,
+        "srcId": 2004,
+        "dstId": 10013
+      },
+      {
+        "id": 10103,
+        "srcId": 11126,
+        "dstId": 10051
+      },
+      {
+        "id": 10104,
+        "srcId": 10022,
+        "dstId": 10054
+      },
+      {
+        "id": 10105,
+        "srcId": 10052,
+        "dstId": 10055
+      },
+      {
+        "id": 10106,
+        "srcId": 10023,
+        "dstId": 10058
+      },
+      {
+        "id": 10107,
+        "srcId": 11126,
+        "dstId": 10059
+      },
+      {
+        "id": 10108,
+        "srcId": 10056,
+        "dstId": 10062
+      },
+      {
+        "id": 10109,
+        "srcId": 10060,
+        "dstId": 10063
+      },
+      {
+        "id": 10110,
+        "srcId": 10064,
+        "dstId": 10066
+      },
+      {
+        "id": 10111,
+        "srcId": 10067,
+        "dstId": 2011
+      },
+      {
+        "id": 10112,
+        "srcId": 10014,
+        "dstId": 10071
+      },
+      {
+        "id": 10113,
+        "srcId": 10015,
+        "dstId": 10072
+      },
+      {
+        "id": 10114,
+        "srcId": 10016,
+        "dstId": 10073
+      },
+      {
+        "id": 10115,
+        "srcId": 10017,
+        "dstId": 10074
+      },
+      {
+        "id": 10116,
+        "srcId": 10018,
+        "dstId": 10075
+      },
+      {
+        "id": 10117,
+        "srcId": 10019,
+        "dstId": 10076
+      },
+      {
+        "id": 10118,
+        "srcId": 10020,
+        "dstId": 10077
+      },
+      {
+        "id": 10119,
+        "srcId": 10081,
+        "dstId": 2088
+      },
+      {
+        "id": 11128,
+        "srcId": 2006,
+        "dstId": 11123
+      },
+      {
+        "id": 11129,
+        "srcId": 4367,
+        "dstId": 11124
+      },
+      {
+        "id": 11130,
+        "srcId": 11121,
+        "dstId": 11125
       }
     ]
   },

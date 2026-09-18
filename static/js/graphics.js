@@ -193,6 +193,15 @@ class Renderer {
         ctx.restore();
     }
 
+    // Disegna il pannello frontale stilizzato della calcolatrice al posto del circuito
+    disegnaPannelloCalcolatrice(pannello) {
+        const ctx = this.ctx;
+        ctx.clearRect(0,0,this.W,this.H);
+        ctx.fillStyle = COL.SFONDO;
+        ctx.fillRect(0,0,this.W,this.H);
+        pannello.disegna(ctx, this.W, this.H);
+    }
+
     _griglia(ctx) {
         const g1=20, g2=100;
         const tl = this.s2w(0,0);
@@ -605,6 +614,357 @@ class Renderer {
     }
 }
 
+// ======================== PANNELLO FRONTALE CALCOLATRICE ========================
+//
+// Skin grafica "a fine progetto" per il progetto Calcolatrice 3 cifre:
+// nasconde chip/fili e mostra solo display + tastierino stilizzati,
+// mantenendo il progetto sottostante intatto e funzionante (gli stessi
+// PULSANTE/INGRESSO/USCITA vengono pilotati direttamente).
+
+// Tabella cifra decimale -> segmenti [A,B,C,D,E,F,G] (stessa codifica di DECODER_BCD7)
+const CALC_SEG_DIGITI = {
+    0:[1,1,1,1,1,1,0], 1:[0,1,1,0,0,0,0], 2:[1,1,0,1,1,0,1], 3:[1,1,1,1,0,0,1],
+    4:[0,1,1,0,0,1,1], 5:[1,0,1,1,0,1,1], 6:[1,0,1,1,1,1,1], 7:[1,1,1,0,0,0,0],
+    8:[1,1,1,1,1,1,1], 9:[1,1,1,1,0,1,1]
+};
+
+// Layout tastierino stile calcolatrice: [riga][colonna] -> cifra (o null = vuoto)
+const CALC_TASTIERA_GRID = [
+    [7,8,9],
+    [4,5,6],
+    [1,2,3],
+    [null,0,null]
+];
+
+// Disegna una cifra a 7 segmenti centrata in (cx,cy) dentro un riquadro dw x dh.
+// digit: 0-9 oppure null per display spento.
+function disegnaCifra7SegPanel(ctx, cx, cy, dw, dh) {
+    return function(digit) {
+        const segL = dw * 0.55, segW = dw * 0.16, hGap = dh * 0.42;
+        const colOn = '#ff2222', colOff = '#331414', glowOn = '#ff5555';
+        const pat = (digit!==null && CALC_SEG_DIGITI[digit]) ? CALC_SEG_DIGITI[digit] : [0,0,0,0,0,0,0];
+        const segs = [
+            { on:pat[0], cx:cx, cy:cy-hGap,        horiz:true  },
+            { on:pat[1], cx:cx+segL/2, cy:cy-hGap/2, horiz:false },
+            { on:pat[2], cx:cx+segL/2, cy:cy+hGap/2, horiz:false },
+            { on:pat[3], cx:cx, cy:cy+hGap,        horiz:true  },
+            { on:pat[4], cx:cx-segL/2, cy:cy+hGap/2, horiz:false },
+            { on:pat[5], cx:cx-segL/2, cy:cy-hGap/2, horiz:false },
+            { on:pat[6], cx:cx, cy:cy,             horiz:true  },
+        ];
+        segs.forEach(s => {
+            ctx.save();
+            if(s.on){ ctx.shadowColor=glowOn; ctx.shadowBlur=10; }
+            ctx.fillStyle = s.on ? colOn : colOff;
+            ctx.beginPath();
+            if(s.horiz){
+                const hw=segL/2, hh=segW/2;
+                ctx.moveTo(s.cx-hw+hh, s.cy-hh); ctx.lineTo(s.cx+hw-hh, s.cy-hh);
+                ctx.lineTo(s.cx+hw, s.cy); ctx.lineTo(s.cx+hw-hh, s.cy+hh);
+                ctx.lineTo(s.cx-hw+hh, s.cy+hh); ctx.lineTo(s.cx-hw, s.cy);
+            } else {
+                const hw=segW/2, hh=hGap/2-segW*0.3;
+                ctx.moveTo(s.cx, s.cy-hh); ctx.lineTo(s.cx+hw, s.cy-hh+hw);
+                ctx.lineTo(s.cx+hw, s.cy+hh-hw); ctx.lineTo(s.cx, s.cy+hh);
+                ctx.lineTo(s.cx-hw, s.cy+hh-hw); ctx.lineTo(s.cx-hw, s.cy-hh+hw);
+            }
+            ctx.closePath(); ctx.fill(); ctx.restore();
+        });
+    };
+}
+
+class PannelloCalcolatrice {
+    constructor(sim, config) {
+        this.sim = sim;
+        this.config = config;
+        this._rects = [];       // aree cliccabili in coordinate schermo (calcolate a ogni disegno)
+        this.PW = 760; this.PH = 1020;
+    }
+
+    // Rileva nel circuito caricato la struttura attesa della "Calcolatrice 3 cifre"
+    // (6 tastierini Keypad-BCD, switch OP, LED riporto/negativo, 3 display7).
+    // Restituisce un'istanza pronta all'uso, oppure null se il progetto non è compatibile.
+    static rileva(sim) {
+        const NOMI_GRUPPI = ['A-centinaia','A-decine','A-unita','B-centinaia','B-decine','B-unita'];
+
+        function wireSrc(dstId){
+            for(const f of sim.fili.values()) if(f.dstId===dstId) return f.srcId;
+            return null;
+        }
+        function chipOfPin(pid){
+            for(const c of sim.chips.values()){
+                const all=[...(c.pinI||[]), ...(c.pinU||[])];
+                if(all.some(p=>p.id===pid)) return c;
+            }
+            return null;
+        }
+
+        const keypads = [...sim.chips.values()].filter(c => c.tipo === 'CUSTOM_KEYPAD-BCD');
+        const gruppi = {};
+        for(const nome of NOMI_GRUPPI){
+            const kp = keypads.find(k => k.nomeCustom === nome);
+            if(!kp || kp.pinI.length < 10) return null;
+            const bottoni = [];
+            for(let k=0;k<10;k++){
+                const srcId = wireSrc(kp.pinI[k].id);
+                const btn = srcId ? chipOfPin(srcId) : null;
+                if(!btn || !btn.pinU.length) return null;
+                bottoni.push(btn);
+            }
+            gruppi[nome] = bottoni;
+        }
+
+        const op = [...sim.chips.values()].find(c => c.tipo==='INGRESSO' && c.nomeCustom && c.nomeCustom.toUpperCase().startsWith('OP'));
+        const led = [...sim.chips.values()].find(c => c.tipo==='USCITA' && c.nomeCustom && /RIPORTO|NEGATIV/i.test(c.nomeCustom));
+        const displaysGrezzi = [...sim.chips.values()].filter(c => c.tipo==='DISPLAY7');
+        if(!op || !led || displaysGrezzi.length < 3) return null;
+
+        // Ordina per coordinata Y: nel progetto generato i display sono impilati
+        // dall'alto in basso nell'ordine centinaia, decine, unità.
+        const displays = displaysGrezzi.slice().sort((a,b)=>a.y-b.y).slice(0,3);
+
+        return new PannelloCalcolatrice(sim, { gruppi, op, led, displays });
+    }
+
+    // Forza una propagazione immediata del circuito (senza dover avviare/attendere il clock)
+    _tick() {
+        const wasActive = this.sim.attivo;
+        this.sim.attivo = true;
+        this.sim.tick();
+        this.sim.attivo = wasActive;
+    }
+
+    _digitOf(displayChip) {
+        const segs = displayChip.pinI.slice(0,7).map(p => p.stato ? 1 : 0);
+        for(const d of Object.keys(CALC_SEG_DIGITI)){
+            const pat = CALC_SEG_DIGITI[d];
+            if(pat.every((v,i) => v===segs[i])) return parseInt(d);
+        }
+        return null;
+    }
+
+    _cifraSelezionata(nomeGruppo) {
+        const bottoni = this.config.gruppi[nomeGruppo];
+        for(let i=0;i<10;i++) if(bottoni[i].stato) return i;
+        return null;
+    }
+
+    // Preme una cifra su un gruppo (tastierino); ripremere la stessa cifra la deseleziona (torna a 0).
+    premiCifra(nomeGruppo, cifra) {
+        const bottoni = this.config.gruppi[nomeGruppo];
+        const attuale = this._cifraSelezionata(nomeGruppo);
+        const spegni = (attuale === cifra);
+        for(let i=0;i<10;i++){
+            const nuovo = (!spegni && i===cifra) ? 1 : 0;
+            bottoni[i].stato = nuovo;
+            bottoni[i].pinU[0].stato = nuovo;
+        }
+        this._tick();
+    }
+
+    // Azzera tutte le cifre di entrambi gli operandi
+    azzeraTutto() {
+        for(const nome of Object.keys(this.config.gruppi)){
+            const bottoni = this.config.gruppi[nome];
+            bottoni.forEach(b => { b.stato = 0; b.pinU[0].stato = 0; });
+        }
+        this._tick();
+    }
+
+    setOp(valore) {
+        this.config.op.stato = valore;
+        if(this.config.op.pinU.length) this.config.op.pinU[0].stato = valore;
+        this._tick();
+    }
+
+    hitTest(sx, sy) {
+        for(const r of this._rects){
+            if(sx>=r.sx && sx<=r.sx+r.sw && sy>=r.sy && sy<=r.sy+r.sh) return r;
+        }
+        return null;
+    }
+
+    handleClick(sx, sy) {
+        const r = this.hitTest(sx, sy);
+        if(!r) return;
+        if(r.tipo==='cifra') this.premiCifra(r.gruppo, r.cifra);
+        else if(r.tipo==='op') this.setOp(r.valore);
+        else if(r.tipo==='azzera') this.azzeraTutto();
+    }
+
+    // ---- Disegno ----
+
+    disegna(ctx, W, H) {
+        const rectsPannello = [];
+        const PW = this.PW, PH = this.PH;
+        const scale = Math.max(0.1, Math.min((W-40)/PW, (H-40)/PH));
+        const ox = (W - PW*scale)/2, oy = (H - PH*scale)/2;
+
+        ctx.save();
+        ctx.translate(ox, oy);
+        ctx.scale(scale, scale);
+
+        this._disegnaCorpo(ctx, PW, PH);
+        this._disegnaDisplay(ctx, PW);
+        this._disegnaOp(ctx, PW, rectsPannello);
+        let y = 350;
+        y = this._disegnaTastiere(ctx, PW, y, 'A', ['A-centinaia','A-decine','A-unita'], rectsPannello);
+        y += 30;
+        this._disegnaTastiere(ctx, PW, y, 'B', ['B-centinaia','B-decine','B-unita'], rectsPannello);
+        this._disegnaAzzera(ctx, PW, PH, rectsPannello);
+
+        ctx.restore();
+
+        // Converte le aree cliccabili in coordinate schermo
+        this._rects = rectsPannello.map(r => ({
+            ...r, sx: ox+r.x*scale, sy: oy+r.y*scale, sw: r.w*scale, sh: r.h*scale
+        }));
+    }
+
+    _disegnaCorpo(ctx, PW, PH) {
+        ctx.fillStyle = '#0d0d16';
+        ctx.fillRect(0,0,PW,PH);
+        // Corpo calcolatrice
+        const grad = ctx.createLinearGradient(0,0,0,PH);
+        grad.addColorStop(0,'#2b2b40'); grad.addColorStop(1,'#1a1a2a');
+        ctx.fillStyle = grad;
+        this._rrectPanel(ctx, 10,10, PW-20, PH-20, 22);
+        ctx.fill();
+        ctx.strokeStyle = '#454568'; ctx.lineWidth = 3;
+        ctx.stroke();
+        // Titolo
+        ctx.fillStyle = '#8890c0';
+        ctx.font = 'bold 20px sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('CALCOLATRICE — 3 CIFRE', PW/2, 26);
+    }
+
+    _disegnaDisplay(ctx, PW) {
+        const dx=40, dy=60, dw=PW-80, dh=180;
+        ctx.fillStyle = '#081008';
+        this._rrectPanel(ctx, dx,dy,dw,dh,10); ctx.fill();
+        ctx.strokeStyle = '#0a3d0a'; ctx.lineWidth=3; ctx.stroke();
+
+        const digitW = 160, gap = 30;
+        const totalW = digitW*3 + gap*2;
+        let cx = dx + (dw-totalW)/2 + digitW/2;
+        const cy = dy + dh/2 + 5;
+        for(const display of this.config.displays){
+            const digit = this._digitOf(display);
+            disegnaCifra7SegPanel(ctx, cx, cy, digitW*0.6, dh*0.55)(digit);
+            cx += digitW + gap;
+        }
+
+        // Indicatore RIPORTO/NEGATIVO
+        const ledOn = this.config.led.pinI.length && this.config.led.pinI[0].stato;
+        const opValue = this.config.op.stato;
+        const testoLed = opValue ? '⚠ RIPORTO (overflow)' : '⚠ NEGATIVO (compl. a 10)';
+        ctx.font = 'bold 14px sans-serif'; ctx.textAlign='left'; ctx.textBaseline='top';
+        ctx.fillStyle = ledOn ? '#ff5555' : '#3a2020';
+        if(ledOn){ ctx.shadowColor='#ff5555'; ctx.shadowBlur=6; }
+        ctx.fillText(testoLed, dx+14, dy+dh-24);
+        ctx.shadowBlur = 0;
+    }
+
+    _disegnaOp(ctx, PW, rects) {
+        const w=320, h=56, x=(PW-w)/2, y=270;
+        const opValue = this.config.op.stato;
+
+        ctx.fillStyle = '#111120';
+        this._rrectPanel(ctx, x,y,w,h,10); ctx.fill();
+        ctx.strokeStyle='#3a3a58'; ctx.lineWidth=2; ctx.stroke();
+
+        // Metà sinistra: SOTTRAZIONE (op=0), metà destra: SOMMA (op=1)
+        const half = w/2;
+        ctx.fillStyle = (opValue===0) ? '#e74c3c' : '#1a1a2e';
+        this._rrectPanel(ctx, x+3, y+3, half-6, h-6, 8); ctx.fill();
+        ctx.fillStyle = (opValue===1) ? '#2ecc71' : '#1a1a2e';
+        this._rrectPanel(ctx, x+half+3, y+3, half-6, h-6, 8); ctx.fill();
+
+        ctx.font='bold 22px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.fillStyle = '#fff';
+        ctx.fillText('− SOTTRAI', x+half/2, y+h/2);
+        ctx.fillText('+ SOMMA',  x+half+half/2, y+h/2);
+
+        rects.push({ tipo:'op', valore:0, x:x, y:y, w:half, h:h });
+        rects.push({ tipo:'op', valore:1, x:x+half, y:y, w:half, h:h });
+    }
+
+    _disegnaTastiere(ctx, PW, yStart, etichettaOperando, gruppi, rects) {
+        ctx.fillStyle = '#8890c0';
+        ctx.font = 'bold 15px sans-serif'; ctx.textAlign='left'; ctx.textBaseline='alphabetic';
+        ctx.fillText('OPERANDO ' + etichettaOperando, 40, yStart);
+
+        const margine = 40, gap = 20;
+        const larghezzaGruppo = (PW - margine*2 - gap*2) / 3;
+        const etichette = ['CENTINAIA','DECINE','UNITA\''];
+        let alturaMax = 0;
+        gruppi.forEach((nomeGruppo, idx) => {
+            const gx = margine + idx*(larghezzaGruppo+gap);
+            const gy = yStart + 14;
+            const h = this._disegnaMiniTastiera(ctx, gx, gy, larghezzaGruppo, nomeGruppo, etichette[idx], rects);
+            alturaMax = Math.max(alturaMax, h);
+        });
+        return yStart + 14 + alturaMax;
+    }
+
+    _disegnaMiniTastiera(ctx, gx, gy, gw, nomeGruppo, etichetta, rects) {
+        ctx.fillStyle = '#666a90';
+        ctx.font = '11px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+        ctx.fillText(etichetta, gx+gw/2, gy+12);
+
+        const cifraSel = this._cifraSelezionata(nomeGruppo);
+        const cols=3, rows=CALC_TASTIERA_GRID.length;
+        const cellGap = 6;
+        const cellW = (gw - cellGap*(cols-1)) / cols;
+        const cellH = 42;
+        const top = gy + 20;
+
+        CALC_TASTIERA_GRID.forEach((riga, r) => {
+            riga.forEach((cifra, c) => {
+                if(cifra===null) return;
+                const bx = gx + c*(cellW+cellGap);
+                const by = top + r*(cellH+cellGap);
+                const attiva = (cifraSel === cifra);
+                ctx.fillStyle = attiva ? '#2ecc71' : '#26263c';
+                this._rrectPanel(ctx, bx, by, cellW, cellH, 6); ctx.fill();
+                ctx.strokeStyle = attiva ? '#5cffa0' : '#3a3a58';
+                ctx.lineWidth = attiva ? 2 : 1;
+                ctx.stroke();
+                ctx.fillStyle = attiva ? '#08210f' : '#d0d0e8';
+                ctx.font = 'bold 16px monospace';
+                ctx.textAlign='center'; ctx.textBaseline='middle';
+                ctx.fillText(cifra.toString(), bx+cellW/2, by+cellH/2+1);
+
+                rects.push({ tipo:'cifra', gruppo:nomeGruppo, cifra, x:bx, y:by, w:cellW, h:cellH });
+            });
+        });
+
+        return 20 + rows*(cellH+cellGap);
+    }
+
+    _disegnaAzzera(ctx, PW, PH, rects) {
+        const w=160, h=44, x=(PW-w)/2, y=PH-70;
+        ctx.fillStyle = '#3a2020';
+        this._rrectPanel(ctx, x,y,w,h,8); ctx.fill();
+        ctx.strokeStyle='#a04040'; ctx.lineWidth=2; ctx.stroke();
+        ctx.fillStyle='#ffaaaa'; ctx.font='bold 15px sans-serif';
+        ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.fillText('C — Azzera tutto', x+w/2, y+h/2+1);
+        rects.push({ tipo:'azzera', x, y, w, h });
+    }
+
+    _rrectPanel(ctx, x,y,w,h,r) {
+        ctx.beginPath();
+        ctx.moveTo(x+r,y);
+        ctx.lineTo(x+w-r,y);   ctx.quadraticCurveTo(x+w,y,   x+w,y+r);
+        ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h, x+w-r,y+h);
+        ctx.lineTo(x+r,y+h);   ctx.quadraticCurveTo(x,y+h,   x,y+h-r);
+        ctx.lineTo(x,y+r);     ctx.quadraticCurveTo(x,y,      x+r,y);
+        ctx.closePath();
+    }
+}
+
 // ======================== VISTA INTERNA CHIP ========================
 
 function apriVistaInterna(chip, simRef) {
@@ -839,6 +1199,7 @@ function _mostraCircuitoCustom(chip, simRef, canvas, titoloEl, infoEl, legendaEl
     titoloEl.textContent = '🔍 ' + (cd.nome || chip.tipo) + ' — Circuito Interno';
 
     let infoHtml = `<strong>Tipo:</strong> ${cd.nome} &nbsp;|&nbsp; <strong>ID:</strong> ${chip.id}<br>`;
+    if(cd.descrizione) infoHtml += `<em>${cd.descrizione}</em><br>`;
     infoHtml += `<strong>Ingressi:</strong> ${(cd.ingressi||[]).join(', ')} &nbsp;|&nbsp; <strong>Uscite:</strong> ${(cd.uscite||[]).join(', ')}`;
     infoHtml += `<br>Chip personalizzato — contiene ${cd.circuito.chips.length} componenti e ${cd.circuito.fili.length} connessioni`;
     infoEl.innerHTML = infoHtml;

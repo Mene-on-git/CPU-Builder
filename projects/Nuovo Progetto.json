@@ -1,5 +1,6 @@
 {
   "nome": "Nuovo Progetto",
+  "descrizione": "Progetto di base lasciato dall'editor (autosalvataggio con nome predefinito): contiene una copia del contatore crescente 00→99, utilizzabile come punto di partenza per nuove prove.",
   "circuito": {
     "chips": [
       {
