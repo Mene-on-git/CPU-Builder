@@ -1,0 +1,584 @@
+{
+  "nome": "Up-Down 00-99",
+  "circuito": {
+    "chips": [
+      {
+        "id": 2001,
+        "tipo": "CLOCK",
+        "x": -660,
+        "y": -160,
+        "stato": 1,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2002,
+            "et": "CLK"
+          }
+        ]
+      },
+      {
+        "id": 2003,
+        "tipo": "PULSANTE",
+        "x": -420,
+        "y": 160,
+        "stato": 0,
+        "nomeCustom": "RESET",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2004,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 2005,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": -340,
+        "stato": 1,
+        "nomeCustom": "MODO 1=UP 0=DOWN",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2006,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 2010,
+        "tipo": "CUSTOM_UPDOWN-BCD-7SEG",
+        "x": 20,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "Unita",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2011,
+            "et": "CLK"
+          },
+          {
+            "id": 2012,
+            "et": "UP"
+          },
+          {
+            "id": 2013,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2014,
+            "et": "A"
+          },
+          {
+            "id": 2015,
+            "et": "B"
+          },
+          {
+            "id": 2016,
+            "et": "C"
+          },
+          {
+            "id": 2017,
+            "et": "D"
+          },
+          {
+            "id": 2018,
+            "et": "E"
+          },
+          {
+            "id": 2019,
+            "et": "F"
+          },
+          {
+            "id": 2020,
+            "et": "G"
+          },
+          {
+            "id": 2021,
+            "et": "DP"
+          },
+          {
+            "id": 2022,
+            "et": "ZERO"
+          },
+          {
+            "id": 2023,
+            "et": "NOVE"
+          }
+        ]
+      },
+      {
+        "id": 2030,
+        "tipo": "CUSTOM_UPDOWN-BCD-7SEG",
+        "x": 40,
+        "y": -560,
+        "stato": 0,
+        "nomeCustom": "Decine",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2031,
+            "et": "CLK"
+          },
+          {
+            "id": 2032,
+            "et": "UP"
+          },
+          {
+            "id": 2033,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2034,
+            "et": "A"
+          },
+          {
+            "id": 2035,
+            "et": "B"
+          },
+          {
+            "id": 2036,
+            "et": "C"
+          },
+          {
+            "id": 2037,
+            "et": "D"
+          },
+          {
+            "id": 2038,
+            "et": "E"
+          },
+          {
+            "id": 2039,
+            "et": "F"
+          },
+          {
+            "id": 2040,
+            "et": "G"
+          },
+          {
+            "id": 2041,
+            "et": "DP"
+          },
+          {
+            "id": 2042,
+            "et": "ZERO"
+          },
+          {
+            "id": 2043,
+            "et": "NOVE"
+          }
+        ]
+      },
+      {
+        "id": 2050,
+        "tipo": "NOT",
+        "x": 60,
+        "y": -180,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2051,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2052,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 2053,
+        "tipo": "AND",
+        "x": 180,
+        "y": -220,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2054,
+            "et": "A"
+          },
+          {
+            "id": 2055,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2056,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 2057,
+        "tipo": "AND",
+        "x": 180,
+        "y": -120,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2058,
+            "et": "A"
+          },
+          {
+            "id": 2059,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2060,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 2061,
+        "tipo": "OR",
+        "x": 320,
+        "y": -180,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2062,
+            "et": "A"
+          },
+          {
+            "id": 2063,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2064,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 2065,
+        "tipo": "NOT",
+        "x": 460,
+        "y": -180,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2066,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 2067,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 2070,
+        "tipo": "DISPLAY7",
+        "x": 760,
+        "y": -360,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2071,
+            "et": "A"
+          },
+          {
+            "id": 2072,
+            "et": "B"
+          },
+          {
+            "id": 2073,
+            "et": "C"
+          },
+          {
+            "id": 2074,
+            "et": "D"
+          },
+          {
+            "id": 2075,
+            "et": "E"
+          },
+          {
+            "id": 2076,
+            "et": "F"
+          },
+          {
+            "id": 2077,
+            "et": "G"
+          },
+          {
+            "id": 2078,
+            "et": "DP"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 2080,
+        "tipo": "DISPLAY7",
+        "x": 940,
+        "y": -360,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 2081,
+            "et": "A"
+          },
+          {
+            "id": 2082,
+            "et": "B"
+          },
+          {
+            "id": 2083,
+            "et": "C"
+          },
+          {
+            "id": 2084,
+            "et": "D"
+          },
+          {
+            "id": 2085,
+            "et": "E"
+          },
+          {
+            "id": 2086,
+            "et": "F"
+          },
+          {
+            "id": 2087,
+            "et": "G"
+          },
+          {
+            "id": 2088,
+            "et": "DP"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 4358,
+        "tipo": "INGRESSO",
+        "x": -820,
+        "y": -40,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 4359,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 4364,
+        "tipo": "CUSTOM_DATA-STORE",
+        "x": -460,
+        "y": -40,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 4365,
+            "et": "D"
+          },
+          {
+            "id": 4366,
+            "et": "EN"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 4367,
+            "et": "Q"
+          }
+        ]
+      }
+    ],
+    "fili": [
+      {
+        "id": 3001,
+        "srcId": 2006,
+        "dstId": 2012
+      },
+      {
+        "id": 3002,
+        "srcId": 2006,
+        "dstId": 2032
+      },
+      {
+        "id": 3003,
+        "srcId": 2004,
+        "dstId": 2013
+      },
+      {
+        "id": 3004,
+        "srcId": 2004,
+        "dstId": 2033
+      },
+      {
+        "id": 3005,
+        "srcId": 2006,
+        "dstId": 2051
+      },
+      {
+        "id": 3006,
+        "srcId": 2022,
+        "dstId": 2054
+      },
+      {
+        "id": 3007,
+        "srcId": 2052,
+        "dstId": 2055
+      },
+      {
+        "id": 3008,
+        "srcId": 2023,
+        "dstId": 2058
+      },
+      {
+        "id": 3009,
+        "srcId": 2006,
+        "dstId": 2059
+      },
+      {
+        "id": 3010,
+        "srcId": 2056,
+        "dstId": 2062
+      },
+      {
+        "id": 3011,
+        "srcId": 2060,
+        "dstId": 2063
+      },
+      {
+        "id": 3012,
+        "srcId": 2064,
+        "dstId": 2066
+      },
+      {
+        "id": 3013,
+        "srcId": 2067,
+        "dstId": 2031
+      },
+      {
+        "id": 3020,
+        "srcId": 2014,
+        "dstId": 2081
+      },
+      {
+        "id": 3021,
+        "srcId": 2015,
+        "dstId": 2082
+      },
+      {
+        "id": 3022,
+        "srcId": 2016,
+        "dstId": 2083
+      },
+      {
+        "id": 3023,
+        "srcId": 2017,
+        "dstId": 2084
+      },
+      {
+        "id": 3024,
+        "srcId": 2018,
+        "dstId": 2085
+      },
+      {
+        "id": 3025,
+        "srcId": 2019,
+        "dstId": 2086
+      },
+      {
+        "id": 3026,
+        "srcId": 2020,
+        "dstId": 2087
+      },
+      {
+        "id": 3030,
+        "srcId": 2034,
+        "dstId": 2071
+      },
+      {
+        "id": 3031,
+        "srcId": 2035,
+        "dstId": 2072
+      },
+      {
+        "id": 3032,
+        "srcId": 2036,
+        "dstId": 2073
+      },
+      {
+        "id": 3033,
+        "srcId": 2037,
+        "dstId": 2074
+      },
+      {
+        "id": 3034,
+        "srcId": 2038,
+        "dstId": 2075
+      },
+      {
+        "id": 3035,
+        "srcId": 2039,
+        "dstId": 2076
+      },
+      {
+        "id": 3036,
+        "srcId": 2040,
+        "dstId": 2077
+      },
+      {
+        "id": 4369,
+        "srcId": 4367,
+        "dstId": 2011
+      },
+      {
+        "id": 4371,
+        "srcId": 2002,
+        "dstId": 4365
+      },
+      {
+        "id": 4373,
+        "srcId": 4359,
+        "dstId": 4366
+      }
+    ]
+  },
+  "data_modifica": "2026-09-18T10:16:51.151339"
+}

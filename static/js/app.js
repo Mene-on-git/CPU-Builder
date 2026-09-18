@@ -613,7 +613,8 @@ class Editor {
                         this.selChips.add(chip.id);
                     }
                 }
-                // Prepara drag
+                // Prepara drag (salva stato per undo prima di spostare)
+                this._salvaUndo();
                 this._dragging=true;
                 this._dragOff.clear();
                 for(const cid of this.selChips){
