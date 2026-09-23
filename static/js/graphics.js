@@ -128,6 +128,45 @@ const SCHEMI_INTERNI = {
             { col:'#e67e22', txt:'Uscita' },
         ],
     },
+    DECODER_STRINGA: {
+        titolo: 'ROM Immagine 64 bit — Vista Interna',
+        desc: 'Memoria di sola lettura da 64 bit (immagine 8x8, modificabile con click sull\'anteprima del chip). '
+            + 'Un contatore a 3 bit (0-7) scandisce le righe: durante la fase alta di CLK la riga corrente '
+            + 'viene presentata in uscita (indirizzo R0-R2 + pixel D0-D7) con WE=1, cosi\' lo Schermo 8x8 la memorizza; '
+            + 'sul fronte di discesa di CLK il contatore avanza alla riga successiva. RST riporta la scansione alla riga 0.',
+        nodi: [
+            { id:'in_clk', tipo:'IN',  nome:'CLK', x:40,  y:80 },
+            { id:'in_rst', tipo:'IN',  nome:'RST', x:40,  y:200 },
+            { id:'cnt',    tipo:'DFF', nome:'CONT\n0-7', x:190, y:110, w:90, h:70 },
+            { id:'rom',    tipo:'ROM', nome:'ROM\n64 bit\n8 righe', x:380, y:100, w:120, h:150 },
+            { id:'out_r0', tipo:'OUT', nome:'R0', x:650, y:20,  w:70, h:34 },
+            { id:'out_r1', tipo:'OUT', nome:'R1', x:650, y:64,  w:70, h:34 },
+            { id:'out_r2', tipo:'OUT', nome:'R2', x:650, y:108, w:70, h:34 },
+            { id:'out_d0', tipo:'OUT', nome:'D0', x:650, y:152, w:70, h:34 },
+            { id:'out_d1', tipo:'OUT', nome:'D1', x:650, y:196, w:70, h:34 },
+            { id:'out_d2', tipo:'OUT', nome:'D2', x:650, y:240, w:70, h:34 },
+            { id:'out_d3', tipo:'OUT', nome:'D3', x:650, y:284, w:70, h:34 },
+            { id:'out_d4', tipo:'OUT', nome:'D4', x:650, y:328, w:70, h:34 },
+            { id:'out_d5', tipo:'OUT', nome:'D5', x:650, y:372, w:70, h:34 },
+            { id:'out_d6', tipo:'OUT', nome:'D6', x:650, y:416, w:70, h:34 },
+            { id:'out_d7', tipo:'OUT', nome:'D7', x:650, y:460, w:70, h:34 },
+            { id:'out_we', tipo:'OUT', nome:'WE', x:650, y:504, w:70, h:34 },
+        ],
+        conn: [
+            ['in_clk','cnt'],['in_rst','cnt'],
+            ['cnt','rom'],
+            ['cnt','out_r0'],['cnt','out_r1'],['cnt','out_r2'],
+            ['rom','out_d0'],['rom','out_d1'],['rom','out_d2'],['rom','out_d3'],
+            ['rom','out_d4'],['rom','out_d5'],['rom','out_d6'],['rom','out_d7'],
+            ['in_clk','out_we'],
+        ],
+        legenda: [
+            { col:'#3498db', txt:'Contatore 3 bit (riga)' },
+            { col:'#f39c12', txt:'ROM 64 bit (immagine)' },
+            { col:'#16a085', txt:'Ingresso' },
+            { col:'#e67e22', txt:'Uscita' },
+        ],
+    },
 };
 
 const COLORI_NODO = {
@@ -135,6 +174,13 @@ const COLORI_NODO = {
     OR:   '#27ae60', NOT:  '#8e44ad', XOR:  '#d35400', DFF:  '#3498db',
     ROM:  '#f39c12', NOR:  '#1abc9c', XNOR: '#e91e63', BUF:  '#607d8b',
 };
+
+// Rettangolo (in coordinate mondo) dell'anteprima cliccabile del chip DECODER_STRINGA.
+// Usato sia dal rendering (graphics.js) sia dall'editor per l'hit test del click (app.js).
+function romPreviewRect(c) {
+    const dim = 48;
+    return { x: c.x + (c.w - dim)/2 - 3, y: c.y + c.h - dim - 26 - 3, w: dim + 6, h: dim + 6 };
+}
 
 // ======================== RENDERER ========================
 
@@ -336,6 +382,12 @@ class Renderer {
         if(c.tipo==='DISPLAY7_TRIO') {
             this._display7segTrio(ctx, c);
         }
+        if(c.tipo==='SCHERMO_8X8') {
+            this._schermo8x8(ctx, c);
+        }
+        if(c.tipo==='DECODER_STRINGA') {
+            this._decoderStringa(ctx, c);
+        }
         if(c.tipo==='FLIPFLOP_D') {
             this._flipflopD(ctx, c);
         }
@@ -485,6 +537,95 @@ class Renderer {
                 ctx.stroke();
             }
         }
+    }
+
+    // ---- Schermo a matrice 8x8 (64 bit) ----
+    //
+    //  Framebuffer interno: 8 righe da 8 bit. Pixel accesi = rossi, spenti = neri.
+    //  Si scrive una riga alla volta tramite R0-R2 (indirizzo) + D0-D7 (dati) + WE.
+    //
+    _schermo8x8(ctx, c) {
+        const righe = Array.isArray(c.statoInterno?.righe) ? c.statoInterno.righe : [0,0,0,0,0,0,0,0];
+
+        // Area schermo interna
+        const pad = 10;
+        const gx = c.x + pad;
+        const areaW = c.w - pad*2;
+        const cella = areaW / 8;
+        const gy = c.y + 30;
+        const gh = cella * 8;
+
+        // Sfondo schermo (nero)
+        ctx.fillStyle = '#0a0a0a';
+        this._rrect(ctx, gx, gy, areaW, gh, 4);
+        ctx.fill();
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 1/this.zoom;
+        ctx.stroke();
+
+        // Pixel
+        const colOn  = '#ff1a1a';
+        const colOff = '#1a0a0a';
+        const glowOn = '#ff4444';
+        const raggio = cella * 0.38;
+        for(let r=0; r<8; r++){
+            for(let col=0; col<8; col++){
+                const on = (righe[r] >> col) & 1;
+                const px = gx + col*cella + cella/2;
+                const py = gy + r*cella + cella/2;
+                ctx.save();
+                if(on){ ctx.shadowColor = glowOn; ctx.shadowBlur = 8; }
+                ctx.fillStyle = on ? colOn : colOff;
+                ctx.beginPath();
+                ctx.arc(px, py, raggio, 0, Math.PI*2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+    }
+
+    // ---- Decoder ROM 64 bit (sorgente immagini per SCHERMO_8X8) ----
+    //
+    //  Mostra una mini-anteprima dell'immagine contenuta e la riga
+    //  attualmente in uscita. Click sull'anteprima = modifica immagine,
+    //  doppio click sul corpo del chip = vista interna.
+    //
+    _decoderStringa(ctx, c) {
+        const dati = c.statoInterno?.dati || ROM_DEFAULT_8X8;
+
+        // Mini-anteprima 8x8 centrata (area cliccabile: vedi romPreviewRect)
+        const pr = romPreviewRect(c);
+        const dim = 48;
+        const cella = dim / 8;
+        const gx = pr.x + 3;
+        const gy = pr.y + 3;
+
+        ctx.fillStyle = '#0a0a0a';
+        this._rrect(ctx, pr.x, pr.y, pr.w, pr.h, 3);
+        ctx.fill();
+
+        for(let r=0; r<8; r++){
+            for(let col=0; col<8; col++){
+                if(dati[r*8+col] === '1'){
+                    ctx.fillStyle = '#ff1a1a';
+                    ctx.fillRect(gx + col*cella + 0.5, gy + r*cella + 0.5, cella-1, cella-1);
+                }
+            }
+        }
+
+        // Riga corrente in uscita
+        const riga = c.statoInterno?.riga || 0;
+        ctx.fillStyle = '#ccc';
+        ctx.font = `${10/this.zoom}px monospace`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('riga ' + riga + '/7', c.x + c.w/2, c.y + c.h - 12);
+
+        // Hint per le interazioni
+        ctx.fillStyle = 'rgba(255,255,255,0.45)';
+        ctx.font = `${8/this.zoom}px sans-serif`;
+        ctx.fillText('click img = modifica', c.x + c.w/2, pr.y - 14);
+        ctx.fillText('2x click = vista interna', c.x + c.w/2, pr.y - 5);
     }
 
     // ---- Flip-flop D ----

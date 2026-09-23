@@ -97,6 +97,8 @@
                 <div class="cat-contenuto" id="cat-display">
                     <button class="btn-chip" data-tipo="DISPLAY7" style="--chip-col: #e74c3c" title="Display a 7 segmenti singolo (A-G + punto decimale).">7 Segmenti</button>
                     <button class="btn-chip" data-tipo="DISPLAY7_TRIO" style="--chip-col: #922b21" title="Blocco unico con 3 display a 7 segmenti affiancati (utile per contatori/calcolatrici a piu' cifre).">7 Segmenti x3</button>
+                    <button class="btn-chip" data-tipo="SCHERMO_8X8" style="--chip-col: #c0392b" title="Schermo a matrice 8x8 pixel (64 bit). Si scrive una riga alla volta: R0-R2 = indirizzo riga, D0-D7 = pixel, WE = scrittura, RST = cancella.">Schermo 8x8</button>
+                    <button class="btn-chip" data-tipo="DECODER_STRINGA" style="--chip-col: #7d3c98" title="ROM immagine 64 bit: contiene una stringa binaria (immagine 8x8) e la invia riga per riga a uno Schermo 8x8 a ogni colpo di clock. Doppio click per modificare l'immagine.">ROM Immagine</button>
                     <button class="btn-chip" data-tipo="DECODER_BCD7" style="--chip-col: #e67e22" title="Decodificatore combinatorio: converte un valore BCD (4 bit) nei 7 segnali per un display a 7 segmenti.">Decoder BCD→7</button>
                 </div>
             </div>
@@ -165,6 +167,27 @@
             <div class="modale-azioni">
                 <button id="btn-conferma-esporta" class="btn-toolbar btn-primario">Esporta</button>
                 <button id="btn-annulla-esporta" class="btn-toolbar">Annulla</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ MODALE EDITOR IMMAGINE ROM 8x8 ============ -->
+    <div id="modale-rom" class="modale nascosta">
+        <div class="modale-contenuto">
+            <h3>🖼 Editor Immagine 8×8 (64 bit)</h3>
+            <p class="rom-hint">Clicca sulle celle per accenderle/spegnerle, oppure scrivi/incolla
+                la stringa binaria qui sotto (64 bit = 8 righe da 8 bit, il primo bit di ogni
+                riga e' il pixel piu' a sinistra).</p>
+            <div id="rom-griglia"></div>
+            <label>Stringa binaria:
+                <input type="text" id="rom-testo" spellcheck="false"
+                       placeholder="00111100 01000010 10100101 ...">
+            </label>
+            <div class="modale-azioni">
+                <button id="btn-rom-pulisci" class="btn-toolbar">Pulisci</button>
+                <button id="btn-rom-esempio" class="btn-toolbar">Esempio 🙂</button>
+                <button id="btn-rom-ok" class="btn-toolbar btn-primario">Applica</button>
+                <button id="btn-rom-annulla" class="btn-toolbar">Annulla</button>
             </div>
         </div>
     </div>

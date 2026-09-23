@@ -390,6 +390,45 @@ html, body {
     margin-top: 16px;
 }
 
+/* ---- Modale Editor Immagine ROM 8x8 ---- */
+.rom-hint {
+    font-size: 11px;
+    color: var(--testo-2);
+    margin: 6px 0 10px;
+}
+
+#rom-griglia {
+    display: grid;
+    grid-template-columns: repeat(8, 30px);
+    gap: 3px;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.rom-cella {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background: #1a0a0a;
+    cursor: pointer;
+    padding: 0;
+}
+
+.rom-cella:hover {
+    border-color: #ff6666;
+}
+
+.rom-cella.on {
+    background: #ff1a1a;
+    box-shadow: 0 0 8px #ff4444;
+}
+
+#rom-testo {
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
 /* ---- Modale Vista Interna ---- */
 .modale-interno-contenuto {
     min-width: 700px;

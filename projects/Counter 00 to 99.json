@@ -6,8 +6,8 @@
       {
         "id": 944237,
         "tipo": "DECODER_BCD7",
-        "x": 120,
-        "y": 100,
+        "x": 180,
+        "y": -360,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -63,13 +63,13 @@
       {
         "id": 1000783,
         "tipo": "CONTATORE_4BIT",
-        "x": -100,
-        "y": 120,
+        "x": -40,
+        "y": -340,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {
           "clkPrev": 0,
-          "valore": 0
+          "valore": 8
         },
         "pinI": [
           {
@@ -103,13 +103,13 @@
       {
         "id": 1000791,
         "tipo": "CONTATORE_4BIT",
-        "x": 60,
-        "y": -380,
+        "x": 100,
+        "y": 140,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {
           "clkPrev": 0,
-          "valore": 0
+          "valore": 2
         },
         "pinI": [
           {
@@ -143,8 +143,8 @@
       {
         "id": 1000807,
         "tipo": "DECODER_BCD7",
-        "x": 260,
-        "y": -280,
+        "x": 300,
+        "y": 240,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -200,8 +200,8 @@
       {
         "id": 1000855,
         "tipo": "CLOCK",
-        "x": -80,
-        "y": -380,
+        "x": -100,
+        "y": 140,
         "stato": 1,
         "nomeCustom": "",
         "statoInterno": {},
@@ -216,8 +216,8 @@
       {
         "id": 1000868,
         "tipo": "AND",
-        "x": 40,
-        "y": -200,
+        "x": 120,
+        "y": 380,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -241,8 +241,8 @@
       {
         "id": 1000881,
         "tipo": "AND",
-        "x": -40,
-        "y": 260,
+        "x": 220,
+        "y": -120,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -266,8 +266,8 @@
       {
         "id": 1001901,
         "tipo": "DISPLAY7_TRIO",
-        "x": 260,
-        "y": -100,
+        "x": 700,
+        "y": -160,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -525,5 +525,5 @@
       }
     ]
   },
-  "data_modifica": "2026-09-15T11:25:48.396046"
+  "data_modifica": "2026-09-23T11:47:45.967980"
 }

@@ -1,0 +1,241 @@
+{
+  "nome": "Schermo 8x8 Demo",
+  "descrizione": "Demo dello schermo a matrice 8x8 pixel (64 bit): il chip ROM Immagine contiene una stringa binaria di 64 bit (un cuoricino) e la invia riga per riga allo schermo a ogni colpo di clock. Doppio click sulla ROM per disegnare o importare un'altra immagine.",
+  "circuito": {
+    "chips": [
+      {
+        "id": 1,
+        "tipo": "CLOCK",
+        "x": -500,
+        "y": -100,
+        "stato": 1,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2,
+            "et": "CLK"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "tipo": "DECODER_STRINGA",
+        "x": -300,
+        "y": -200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {
+          "dati": "0110011011111111111111111111111101111110001111000001100000000000",
+          "riga": 3,
+          "clkPrev": 1
+        },
+        "pinI": [
+          {
+            "id": 5,
+            "et": "CLK"
+          },
+          {
+            "id": 6,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 7,
+            "et": "R0"
+          },
+          {
+            "id": 8,
+            "et": "R1"
+          },
+          {
+            "id": 9,
+            "et": "R2"
+          },
+          {
+            "id": 10,
+            "et": "D0"
+          },
+          {
+            "id": 11,
+            "et": "D1"
+          },
+          {
+            "id": 12,
+            "et": "D2"
+          },
+          {
+            "id": 13,
+            "et": "D3"
+          },
+          {
+            "id": 14,
+            "et": "D4"
+          },
+          {
+            "id": 15,
+            "et": "D5"
+          },
+          {
+            "id": 16,
+            "et": "D6"
+          },
+          {
+            "id": 17,
+            "et": "D7"
+          },
+          {
+            "id": 18,
+            "et": "WE"
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "tipo": "SCHERMO_8X8",
+        "x": 80,
+        "y": -240,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {
+          "righe": [
+            102,
+            255,
+            255,
+            255,
+            126,
+            60,
+            24,
+            0
+          ],
+          "wePrev": 1
+        },
+        "pinI": [
+          {
+            "id": 21,
+            "et": "R0"
+          },
+          {
+            "id": 22,
+            "et": "R1"
+          },
+          {
+            "id": 23,
+            "et": "R2"
+          },
+          {
+            "id": 24,
+            "et": "D0"
+          },
+          {
+            "id": 25,
+            "et": "D1"
+          },
+          {
+            "id": 26,
+            "et": "D2"
+          },
+          {
+            "id": 27,
+            "et": "D3"
+          },
+          {
+            "id": 28,
+            "et": "D4"
+          },
+          {
+            "id": 29,
+            "et": "D5"
+          },
+          {
+            "id": 30,
+            "et": "D6"
+          },
+          {
+            "id": 31,
+            "et": "D7"
+          },
+          {
+            "id": 32,
+            "et": "WE"
+          },
+          {
+            "id": 33,
+            "et": "RST"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 35,
+        "srcId": 7,
+        "dstId": 21
+      },
+      {
+        "id": 37,
+        "srcId": 8,
+        "dstId": 22
+      },
+      {
+        "id": 39,
+        "srcId": 9,
+        "dstId": 23
+      },
+      {
+        "id": 41,
+        "srcId": 10,
+        "dstId": 24
+      },
+      {
+        "id": 43,
+        "srcId": 11,
+        "dstId": 25
+      },
+      {
+        "id": 45,
+        "srcId": 12,
+        "dstId": 26
+      },
+      {
+        "id": 47,
+        "srcId": 13,
+        "dstId": 27
+      },
+      {
+        "id": 49,
+        "srcId": 14,
+        "dstId": 28
+      },
+      {
+        "id": 51,
+        "srcId": 15,
+        "dstId": 29
+      },
+      {
+        "id": 53,
+        "srcId": 16,
+        "dstId": 30
+      },
+      {
+        "id": 55,
+        "srcId": 17,
+        "dstId": 31
+      },
+      {
+        "id": 57,
+        "srcId": 18,
+        "dstId": 32
+      },
+      {
+        "id": 59,
+        "srcId": 2,
+        "dstId": 5
+      }
+    ]
+  },
+  "data_modifica": "2026-09-23T12:03:37.574015"
+}

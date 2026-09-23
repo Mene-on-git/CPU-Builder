@@ -40,7 +40,7 @@
         "tipo": "INGRESSO",
         "x": -380,
         "y": -340,
-        "stato": 0,
+        "stato": 1,
         "nomeCustom": "MODO 1=UP 0=DOWN",
         "statoInterno": {},
         "pinI": [],
@@ -54,7 +54,7 @@
       {
         "id": 2010,
         "tipo": "CUSTOM_UPDOWN-BCD-7SEG",
-        "x": 20,
+        "x": 40,
         "y": 40,
         "stato": 0,
         "nomeCustom": "Unita",
@@ -120,7 +120,7 @@
         "id": 2030,
         "tipo": "CUSTOM_UPDOWN-BCD-7SEG",
         "x": 40,
-        "y": -560,
+        "y": -240,
         "stato": 0,
         "nomeCustom": "Decine",
         "statoInterno": {},
@@ -184,8 +184,8 @@
       {
         "id": 2050,
         "tipo": "NOT",
-        "x": 60,
-        "y": -180,
+        "x": -280,
+        "y": -680,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -205,8 +205,8 @@
       {
         "id": 2053,
         "tipo": "AND",
-        "x": 180,
-        "y": -220,
+        "x": -160,
+        "y": -720,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -230,8 +230,8 @@
       {
         "id": 2057,
         "tipo": "AND",
-        "x": 180,
-        "y": -120,
+        "x": -160,
+        "y": -620,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -255,8 +255,8 @@
       {
         "id": 2061,
         "tipo": "OR",
-        "x": 320,
-        "y": -180,
+        "x": -20,
+        "y": -680,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -280,8 +280,8 @@
       {
         "id": 2065,
         "tipo": "NOT",
-        "x": 460,
-        "y": -180,
+        "x": 120,
+        "y": -680,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -342,8 +342,8 @@
       {
         "id": 10010,
         "tipo": "CUSTOM_UPDOWN-BCD-7SEG",
-        "x": 20,
-        "y": 640,
+        "x": 40,
+        "y": 380,
         "stato": 0,
         "nomeCustom": "Decimi",
         "statoInterno": {},
@@ -407,8 +407,8 @@
       {
         "id": 10050,
         "tipo": "NOT",
-        "x": 60,
-        "y": 780,
+        "x": -320,
+        "y": 800,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -428,8 +428,8 @@
       {
         "id": 10053,
         "tipo": "AND",
-        "x": 180,
-        "y": 820,
+        "x": -200,
+        "y": 840,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -453,8 +453,8 @@
       {
         "id": 10057,
         "tipo": "AND",
-        "x": 180,
-        "y": 720,
+        "x": -200,
+        "y": 740,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -478,8 +478,8 @@
       {
         "id": 10061,
         "tipo": "OR",
-        "x": 320,
-        "y": 780,
+        "x": -60,
+        "y": 800,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -503,8 +503,8 @@
       {
         "id": 10065,
         "tipo": "NOT",
-        "x": 460,
-        "y": 780,
+        "x": 80,
+        "y": 800,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -524,7 +524,7 @@
       {
         "id": 10080,
         "tipo": "COSTANTE_1",
-        "x": 620,
+        "x": 500,
         "y": 240,
         "stato": 0,
         "nomeCustom": "",
@@ -540,8 +540,8 @@
       {
         "id": 11120,
         "tipo": "COSTANTE_0",
-        "x": -380,
-        "y": -220,
+        "x": -1160,
+        "y": -580,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -556,13 +556,13 @@
       {
         "id": 11122,
         "tipo": "FLIPFLOP_D",
-        "x": -220,
-        "y": -280,
+        "x": -680,
+        "y": -480,
         "stato": 0,
         "nomeCustom": "MODO (sincronizzato)",
         "statoInterno": {
-          "Q": 0,
-          "clkPrev": 1
+          "Q": 1,
+          "clkPrev": 0
         },
         "pinI": [
           {
@@ -592,8 +592,8 @@
       {
         "id": 12130,
         "tipo": "DISPLAY7_TRIO",
-        "x": 960,
-        "y": -60,
+        "x": 980,
+        "y": -40,
         "stato": 0,
         "nomeCustom": "",
         "statoInterno": {},
@@ -961,5 +961,5 @@
       }
     ]
   },
-  "data_modifica": "2026-09-23T11:44:00.039141"
+  "data_modifica": "2026-09-23T11:46:47.704403"
 }

@@ -46,12 +46,23 @@ const DEFS = {
                           'A2','B2','C2','D2','E2','F2','G2','DP2',
                           'A3','B3','C3','D3','E3','F3','G3','DP3'],
                      usc:[], col:'#1a1a2e', w:340, h:420, fn:null },
+    SCHERMO_8X8: { nome:'8x8', cat:'display',
+                   ing:['R0','R1','R2','D0','D1','D2','D3','D4','D5','D6','D7','WE','RST'],
+                   usc:[], col:'#1a1a2e', w:220, h:290, fn:null },
+    DECODER_STRINGA: { nome:'ROM64', cat:'display',
+                       ing:['CLK','RST'],
+                       usc:['R0','R1','R2','D0','D1','D2','D3','D4','D5','D6','D7','WE'],
+                       col:'#7d3c98', w:150, h:290, fn:null },
     FLIPFLOP_D: { nome:'D-FF',  cat:'memoria', ing:['D','CLK','RST'], usc:['Q','Q̄'], col:'#3498db', w:110, h:80, fn:null },
     CONTATORE_4BIT: { nome:'CNT4', cat:'memoria', ing:['CLK','RST'], usc:['Q0','Q1','Q2','Q3'], col:'#9b59b6', w:120, h:100, fn:null },
     DECODER_BCD7:   { nome:'BCD→7', cat:'display', ing:['D0','D1','D2','D3'], usc:['A','B','C','D','E','F','G'], col:'#e67e22', w:120, h:130, fn:null },
 };
 
 // ======================== CLASSI DATI ========================
+
+// Immagine di default della ROM 8x8 (uno smiley): 8 righe da 8 bit,
+// il carattere in posizione r*8+c e' il pixel alla riga r, colonna c.
+const ROM_DEFAULT_8X8 = '0011110001000010101001011000000110100101100110010100001000111100';
 
 class Pin {
     constructor(tipo, etichetta, chipId, id) {
@@ -98,6 +109,15 @@ class Chip {
         }
         if(tipo === 'CONTATORE_4BIT') {
             this.statoInterno.valore = 0;   // conteggio 0-15
+            this.statoInterno.clkPrev = 0;
+        }
+        if(tipo === 'SCHERMO_8X8') {
+            this.statoInterno.righe = [0,0,0,0,0,0,0,0];  // 8 righe da 8 bit
+            this.statoInterno.wePrev = 0;
+        }
+        if(tipo === 'DECODER_STRINGA') {
+            this.statoInterno.dati = ROM_DEFAULT_8X8;  // stringa di 64 caratteri '0'/'1'
+            this.statoInterno.riga = 0;
             this.statoInterno.clkPrev = 0;
         }
 
@@ -277,6 +297,55 @@ class Simulatore {
                         if(c.pinU[s] && c.pinU[s].stato !== row[s]){ c.pinU[s].stato = row[s]; changed = true; }
                     }
                 }
+                // Schermo a matrice 8x8 (64 bit): memorizza una riga sul fronte di salita di WE.
+                // Pin: R0-R2 = indirizzo riga (0-7), D0-D7 = pixel della riga (D0 = colonna piu' a sinistra),
+                //      WE = write enable (fronte di salita), RST = cancella tutto lo schermo.
+                if(c.tipo === 'SCHERMO_8X8' && c.pinI.length >= 13){
+                    if(!Array.isArray(c.statoInterno.righe)) c.statoInterno.righe = [0,0,0,0,0,0,0,0];
+                    const addr = c.pinI[0].stato | (c.pinI[1].stato<<1) | (c.pinI[2].stato<<2);
+                    let data = 0;
+                    for(let b=0; b<8; b++) data |= (c.pinI[3+b].stato ? 1 : 0) << b;
+                    const WE  = c.pinI[11].stato;
+                    const RST = c.pinI[12].stato;
+                    const wePrev = c.statoInterno.wePrev || 0;
+
+                    if(RST){
+                        if(c.statoInterno.righe.some(v=>v!==0)){
+                            c.statoInterno.righe = [0,0,0,0,0,0,0,0]; changed = true;
+                        }
+                    } else if(WE===1 && wePrev===0){
+                        if(c.statoInterno.righe[addr] !== data){
+                            c.statoInterno.righe[addr] = data; changed = true;
+                        }
+                    }
+                    c.statoInterno.wePrev = WE;
+                }
+                // Decoder ROM 64 bit: tiene in memoria una stringa di 64 bit (immagine 8x8)
+                // e la "riversa" riga per riga verso uno SCHERMO_8X8. Ad ogni ciclo di clock
+                // presenta la riga corrente (R0-R2 + D0-D7) con WE=1 durante la fase alta;
+                // sul fronte di discesa di CLK passa alla riga successiva (0-7 a rotazione).
+                if(c.tipo === 'DECODER_STRINGA' && c.pinI.length >= 2){
+                    const CLK = c.pinI[0].stato;
+                    const RST = c.pinI[1].stato;
+                    const clkPrev = c.statoInterno.clkPrev || 0;
+
+                    if(RST){
+                        c.statoInterno.riga = 0;
+                    } else if(CLK===0 && clkPrev===1){
+                        // Fronte di discesa: la riga appena scritta e' completa, avanza
+                        c.statoInterno.riga = ((c.statoInterno.riga||0)+1) & 7;
+                    }
+                    c.statoInterno.clkPrev = CLK;
+
+                    const riga = RST ? 0 : (c.statoInterno.riga||0);
+                    const dati = c.statoInterno.dati || ROM_DEFAULT_8X8;
+                    const outs = [ riga&1, (riga>>1)&1, (riga>>2)&1 ];
+                    for(let b=0; b<8; b++) outs.push(dati[riga*8+b]==='1' ? 1 : 0);
+                    outs.push(RST ? 0 : CLK);  // WE segue il clock: scrittura sul fronte di salita
+                    outs.forEach((v,i) => {
+                        if(i<c.pinU.length && c.pinU[i].stato!==v){ c.pinU[i].stato=v; changed=true; }
+                    });
+                }
                 // Chip personalizzati
                 if(this.customDefs.has(c.tipo)){
                     const cd = this.customDefs.get(c.tipo);
@@ -368,6 +437,15 @@ class Simulatore {
                 c.statoInterno.valore = 0;
                 c.statoInterno.clkPrev = 0;
             }
+            // Reset schermo 8x8 (spegne tutti i pixel, mantiene la ROM dei decoder)
+            if(c.tipo==='SCHERMO_8X8' && c.statoInterno){
+                c.statoInterno.righe = [0,0,0,0,0,0,0,0];
+                c.statoInterno.wePrev = 0;
+            }
+            if(c.tipo==='DECODER_STRINGA' && c.statoInterno){
+                c.statoInterno.riga = 0;
+                c.statoInterno.clkPrev = 0;
+            }
             // Reset chip personalizzati (rimuovi mini-sim persistente)
             if(c.statoInterno && c.statoInterno._miniSim){
                 delete c.statoInterno._miniSim;
@@ -450,6 +528,9 @@ class Editor {
 
         // Pulsante momentaneo
         this._pulsanteAttivo = null;
+
+        // Click sull'anteprima immagine della ROM64 (apre l'editor al rilascio)
+        this._romClick = null;
 
         // Undo
         this._undoStack = [];
@@ -608,6 +689,18 @@ class Editor {
             // Hit su chip → seleziona / trascina
             const chip = this._hitChip(w.x, w.y);
             if(chip) {
+                // Click sull'anteprima della ROM Immagine: niente drag, apre l'editor al rilascio
+                if(chip.tipo==='DECODER_STRINGA'){
+                    const r = romPreviewRect(chip);
+                    if(w.x>=r.x && w.x<=r.x+r.w && w.y>=r.y && w.y<=r.y+r.h){
+                        this._romClick = {chip, sx:e.clientX, sy:e.clientY};
+                        if(!e.ctrlKey){
+                            this.selChips.clear(); this.selFili.clear();
+                            this.selChips.add(chip.id);
+                        }
+                        return;
+                    }
+                }
                 // Pulsante momentaneo: attiva su mousedown
                 if(chip.tipo==='PULSANTE'){
                     chip.stato = 1;
@@ -709,6 +802,15 @@ class Editor {
             this._pulsanteAttivo = null;
             this._propagaFili();
         }
+        // Click (senza trascinamento) sull'anteprima della ROM Immagine → editor
+        if(this._romClick) {
+            const rc = this._romClick;
+            this._romClick = null;
+            if(Math.abs(e.clientX-rc.sx) < 6 && Math.abs(e.clientY-rc.sy) < 6) {
+                apriEditorROM(rc.chip);
+                return;
+            }
+        }
         if(this._panning){ this._panning=false; this._cv.style.cursor='default'; return; }
 
         if(this._dragging){
@@ -743,6 +845,8 @@ class Editor {
             this._pulsanteAttivo = null;
             this._propagaFili();
         }
+        // Annulla un eventuale click in corso sull'anteprima ROM
+        this._romClick = null;
     }
 
     // Forza un passo di simulazione immediato (inclusa logica chip)
@@ -792,6 +896,11 @@ class Editor {
                 }
             } else if(chip.tipo==='CLOCK'){
                 chip.stato = 1 - chip.stato;
+            } else if(chip.tipo==='DECODER_STRINGA'){
+                // Doppio click sull'anteprima = editor immagine; sul resto del chip = vista interna
+                const r = romPreviewRect(chip);
+                if(w.x>=r.x && w.x<=r.x+r.w && w.y>=r.y && w.y<=r.y+r.h) apriEditorROM(chip);
+                else apriVistaInterna(chip, this._sim);
             } else if(chip.tipo==='FLIPFLOP_D' || chip.tipo==='CONTATORE_4BIT' ||
                        chip.tipo==='DECODER_BCD7' || this._sim.customDefs.has(chip.tipo)) {
                 apriVistaInterna(chip, this._sim);
@@ -1012,6 +1121,30 @@ function init() {
     document.getElementById('btn-salva-chip-edit').addEventListener('click', salvaModificaChip);
     document.getElementById('btn-annulla-chip-edit').addEventListener('click', annullaModificaChip);
 
+    // Editor immagine ROM 8x8 (chip DECODER_STRINGA)
+    document.getElementById('rom-testo').addEventListener('input', (e) => {
+        // Mentre si scrive/incolla una stringa binaria, la griglia si aggiorna live
+        _romAggiornaGriglia(romNormalizza(e.target.value));
+    });
+    document.getElementById('btn-rom-pulisci').addEventListener('click', () => {
+        document.getElementById('rom-testo').value = romFormatta('0'.repeat(64));
+        _romAggiornaGriglia('0'.repeat(64));
+    });
+    document.getElementById('btn-rom-esempio').addEventListener('click', () => {
+        document.getElementById('rom-testo').value = romFormatta(ROM_DEFAULT_8X8);
+        _romAggiornaGriglia(ROM_DEFAULT_8X8);
+    });
+    document.getElementById('btn-rom-ok').addEventListener('click', () => {
+        if(_romChipEdit){
+            ed._salvaUndo();
+            _romChipEdit.statoInterno.dati = romNormalizza(document.getElementById('rom-testo').value);
+            _romChipEdit.statoInterno.riga = 0;
+            mostraNotifica('Immagine ROM aggiornata!', 'successo');
+        }
+        _romChiudi();
+    });
+    document.getElementById('btn-rom-annulla').addEventListener('click', _romChiudi);
+
     // Loop rendering
     function renderLoop() {
         if(modalitaCalcolatrice && calcPanel) {
@@ -1056,6 +1189,54 @@ function aggiornaStatoUI() {
         `Zoom: ${Math.round(ren.zoom*100)}%`;
     document.getElementById('stato-cursore').textContent =
         `x: ${Math.round(ed.mx)}, y: ${Math.round(ed.my)}`;
+}
+
+// ======================== EDITOR IMMAGINE ROM 8x8 ========================
+
+let _romChipEdit = null;   // chip DECODER_STRINGA in modifica
+
+// Normalizza una stringa qualsiasi in 64 bit '0'/'1' (ignora spazi/altri caratteri)
+function romNormalizza(testo) {
+    let bits = (testo || '').replace(/[^01]/g, '');
+    return (bits + '0'.repeat(64)).slice(0, 64);
+}
+
+// Formatta 64 bit in 8 gruppi da 8 (una riga per volta), per leggibilita'
+function romFormatta(dati) {
+    const out = [];
+    for(let r=0; r<8; r++) out.push(dati.slice(r*8, r*8+8));
+    return out.join(' ');
+}
+
+function apriEditorROM(chip) {
+    _romChipEdit = chip;
+    const dati = romNormalizza(chip.statoInterno.dati || ROM_DEFAULT_8X8);
+    document.getElementById('rom-testo').value = romFormatta(dati);
+    _romAggiornaGriglia(dati);
+    document.getElementById('modale-rom').classList.remove('nascosta');
+}
+
+function _romAggiornaGriglia(dati) {
+    const griglia = document.getElementById('rom-griglia');
+    griglia.innerHTML = '';
+    for(let i=0; i<64; i++){
+        const cella = document.createElement('button');
+        cella.className = 'rom-cella' + (dati[i]==='1' ? ' on' : '');
+        cella.title = `r${Math.floor(i/8)} c${i%8}`;
+        cella.addEventListener('click', () => {
+            const t = document.getElementById('rom-testo');
+            const bits = romNormalizza(t.value).split('');
+            bits[i] = bits[i]==='1' ? '0' : '1';
+            t.value = romFormatta(bits.join(''));
+            cella.classList.toggle('on');
+        });
+        griglia.appendChild(cella);
+    }
+}
+
+function _romChiudi() {
+    document.getElementById('modale-rom').classList.add('nascosta');
+    _romChipEdit = null;
 }
 
 // ======================== SALVATAGGIO / CARICAMENTO ========================
