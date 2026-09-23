@@ -333,6 +333,9 @@ class Renderer {
         if(c.tipo==='DISPLAY7') {
             this._display7seg(ctx, c);
         }
+        if(c.tipo==='DISPLAY7_TRIO') {
+            this._display7segTrio(ctx, c);
+        }
         if(c.tipo==='FLIPFLOP_D') {
             this._flipflopD(ctx, c);
         }
@@ -359,14 +362,7 @@ class Renderer {
     //     DDDD  .DP
     //
     _display7seg(ctx, c) {
-        const pA = c.pinI[0]?.stato || 0;
-        const pB = c.pinI[1]?.stato || 0;
-        const pC = c.pinI[2]?.stato || 0;
-        const pD = c.pinI[3]?.stato || 0;
-        const pE = c.pinI[4]?.stato || 0;
-        const pF = c.pinI[5]?.stato || 0;
-        const pG = c.pinI[6]?.stato || 0;
-        const pDP= c.pinI[7]?.stato || 0;
+        const pins = c.pinI.slice(0,8).map(p => p?.stato || 0);
 
         // Area display interna
         const pad = 10;
@@ -382,6 +378,15 @@ class Renderer {
         ctx.strokeStyle = '#333';
         ctx.lineWidth = 1/this.zoom;
         ctx.stroke();
+
+        this._disegnaCifra7SegGeom(ctx, dx, dy, dw, dh, pins);
+    }
+
+    // Disegna i 7 segmenti + DP di UNA cifra dentro il riquadro (dx,dy,dw,dh),
+    // senza disegnare lo sfondo (usato sia dal display singolo che da quello triplo).
+    // pins: [A,B,C,D,E,F,G,DP] (0/1)
+    _disegnaCifra7SegGeom(ctx, dx, dy, dw, dh, pins) {
+        const [pA,pB,pC,pD,pE,pF,pG,pDP] = pins;
 
         // Geometria segmenti
         const mx = dx + dw/2;           // centro X
@@ -441,6 +446,45 @@ class Renderer {
         ctx.arc(mx + segL/2 + segW, my + hGap, segW*0.6, 0, Math.PI*2);
         ctx.fill();
         ctx.restore();
+    }
+
+    // ---- Display a 3 cifre a 7 segmenti (raggruppa 3 DISPLAY7 in un solo chip) ----
+    //
+    //  Pin di ingresso: A1..G1,DP1 (cifra piu' significativa, a sinistra),
+    //                    A2..G2,DP2 (cifra centrale),
+    //                    A3..G3,DP3 (cifra meno significativa, a destra).
+    //  Utile per avere un unico "blocco display" pulito al posto di 3 chip
+    //  DISPLAY7 separati collegati singolarmente (es. decine/unita/decimi).
+    //
+    _display7segTrio(ctx, c) {
+        const N_CIFRE = 3;
+        const pad = 10;
+        const dx = c.x + pad;
+        const dy = c.y + 22;
+        const dw = c.w - pad*2;
+        const dh = 150; // altezza fissa dell'area display (indipendente da c.h)
+
+        // Sfondo unico del display (nero)
+        ctx.fillStyle = '#0a0a0a';
+        this._rrect(ctx, dx, dy, dw, dh, 4);
+        ctx.fill();
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 1/this.zoom;
+        ctx.stroke();
+
+        const digitW = dw / N_CIFRE;
+        for(let i=0; i<N_CIFRE; i++) {
+            const pins = c.pinI.slice(i*8, i*8+8).map(p => p?.stato || 0);
+            this._disegnaCifra7SegGeom(ctx, dx + i*digitW, dy, digitW, dh, pins);
+            if(i < N_CIFRE-1) {
+                ctx.strokeStyle = '#222';
+                ctx.lineWidth = 1/this.zoom;
+                ctx.beginPath();
+                ctx.moveTo(dx + (i+1)*digitW, dy+4);
+                ctx.lineTo(dx + (i+1)*digitW, dy+dh-4);
+                ctx.stroke();
+            }
+        }
     }
 
     // ---- Flip-flop D ----

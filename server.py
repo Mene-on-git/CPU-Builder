@@ -62,8 +62,8 @@ def salva_progetto():
     """Salva un progetto."""
     data = request.json
     nome = data.get('nome', 'senza_nome')
-    # Sanitizza il nome del file
-    nome_sicuro = "".join(c for c in nome if c.isalnum() or c in ('-', '_', ' ')).strip()
+    # Sanitizza il nome del file (mantiene anche il punto, usato ad es. nei nomi con cifre decimali)
+    nome_sicuro = "".join(c for c in nome if c.isalnum() or c in ('-', '_', ' ', '.')).strip()
     if not nome_sicuro:
         nome_sicuro = 'senza_nome'
 
