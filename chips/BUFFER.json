@@ -1,0 +1,125 @@
+{
+  "nome": "BUFFER",
+  "colore": "#607d8b",
+  "ingressi": [
+    "A"
+  ],
+  "uscite": [
+    "Q"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800155,
+        "tipo": "INGRESSO",
+        "x": -320,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "A",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800156,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800157,
+        "tipo": "NAND",
+        "x": -170,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800158,
+            "et": "A"
+          },
+          {
+            "id": 800159,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800160,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800161,
+        "tipo": "NAND",
+        "x": -20,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800162,
+            "et": "A"
+          },
+          {
+            "id": 800163,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800164,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800165,
+        "tipo": "USCITA",
+        "x": 140,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800166,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800167,
+        "srcId": 800156,
+        "dstId": 800158
+      },
+      {
+        "id": 800168,
+        "srcId": 800156,
+        "dstId": 800159
+      },
+      {
+        "id": 800169,
+        "srcId": 800160,
+        "dstId": 800162
+      },
+      {
+        "id": 800170,
+        "srcId": 800160,
+        "dstId": 800163
+      },
+      {
+        "id": 800171,
+        "srcId": 800164,
+        "dstId": 800166
+      }
+    ]
+  },
+  "descrizione": "Buffer (Q = A): doppia inversione con due NAND ad ingressi uniti.",
+  "categoria": "porte"
+}

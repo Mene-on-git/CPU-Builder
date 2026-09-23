@@ -61,14 +61,9 @@
             <div class="categoria">
                 <h4 class="cat-titolo" data-cat="porte">▸ Porte Logiche</h4>
                 <div class="cat-contenuto" id="cat-porte">
-                    <button class="btn-chip" data-tipo="NAND" style="--chip-col: #c0392b">NAND</button>
-                    <button class="btn-chip" data-tipo="AND" style="--chip-col: #2980b9">AND</button>
-                    <button class="btn-chip" data-tipo="OR" style="--chip-col: #27ae60">OR</button>
-                    <button class="btn-chip" data-tipo="NOT" style="--chip-col: #8e44ad">NOT</button>
-                    <button class="btn-chip" data-tipo="XOR" style="--chip-col: #d35400">XOR</button>
-                    <button class="btn-chip" data-tipo="NOR" style="--chip-col: #1abc9c">NOR</button>
-                    <button class="btn-chip" data-tipo="XNOR" style="--chip-col: #e91e63">XNOR</button>
-                    <button class="btn-chip" data-tipo="BUFFER" style="--chip-col: #607d8b">BUF</button>
+                    <button class="btn-chip" data-tipo="NAND" style="--chip-col: #c0392b" title="Porta NAND atomica: la primitiva da cui sono costruite tutte le altre porte logiche. Doppio click per la vista a transistor.">NAND</button>
+                    <!-- Le altre porte (NOT, AND, OR, XOR, NOR, XNOR, BUFFER) sono chip personalizzati
+                         gate-level caricati dalla cartella chips/ e appaiono qui automaticamente -->
                 </div>
             </div>
 
@@ -87,8 +82,8 @@
             <div class="categoria">
                 <h4 class="cat-titolo" data-cat="memoria">▸ Memoria</h4>
                 <div class="cat-contenuto" id="cat-memoria">
-                    <button class="btn-chip" data-tipo="FLIPFLOP_D" style="--chip-col: #3498db">Flip-Flop D</button>
-                    <button class="btn-chip" data-tipo="CONTATORE_4BIT" style="--chip-col: #9b59b6">Contatore 4bit</button>
+                    <!-- Flip-Flop D, Contatore 4bit e Cella 1 bit sono chip personalizzati
+                         gate-level caricati dalla cartella chips/ e appaiono qui automaticamente -->
                 </div>
             </div>
 
@@ -98,8 +93,8 @@
                     <button class="btn-chip" data-tipo="DISPLAY7" style="--chip-col: #e74c3c" title="Display a 7 segmenti singolo (A-G + punto decimale).">7 Segmenti</button>
                     <button class="btn-chip" data-tipo="DISPLAY7_TRIO" style="--chip-col: #922b21" title="Blocco unico con 3 display a 7 segmenti affiancati (utile per contatori/calcolatrici a piu' cifre).">7 Segmenti x3</button>
                     <button class="btn-chip" data-tipo="SCHERMO_8X8" style="--chip-col: #c0392b" title="Schermo a matrice 8x8 pixel (64 bit). Si scrive una riga alla volta: R0-R2 = indirizzo riga, D0-D7 = pixel, WE = scrittura, RST = cancella.">Schermo 8x8</button>
-                    <button class="btn-chip" data-tipo="DECODER_STRINGA" style="--chip-col: #7d3c98" title="ROM immagine 64 bit: contiene una stringa binaria (immagine 8x8) e la invia riga per riga a uno Schermo 8x8 a ogni colpo di clock. Doppio click per modificare l'immagine.">ROM Immagine</button>
-                    <button class="btn-chip" data-tipo="DECODER_BCD7" style="--chip-col: #e67e22" title="Decodificatore combinatorio: converte un valore BCD (4 bit) nei 7 segnali per un display a 7 segmenti.">Decoder BCD→7</button>
+                    <!-- Decoder BCD-7seg, ROM 64bit e ROM Immagine sono chip personalizzati
+                         caricati dalla cartella chips/ e appaiono qui automaticamente -->
                 </div>
             </div>
 

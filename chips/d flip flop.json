@@ -94,7 +94,7 @@
       },
       {
         "id": 1549,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -680,
         "y": -380,
         "stato": 0,

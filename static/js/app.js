@@ -53,6 +53,10 @@ const DEFS = {
                        ing:['CLK','RST'],
                        usc:['R0','R1','R2','D0','D1','D2','D3','D4','D5','D6','D7','WE'],
                        col:'#7d3c98', w:150, h:290, fn:null },
+    ROM_8X8: { nome:'ROM8x8', cat:'display',
+               ing:['R0','R1','R2'],
+               usc:['D0','D1','D2','D3','D4','D5','D6','D7'],
+               col:'#b9770e', w:150, h:230, fn:null },
     FLIPFLOP_D: { nome:'D-FF',  cat:'memoria', ing:['D','CLK','RST'], usc:['Q','Q̄'], col:'#3498db', w:110, h:80, fn:null },
     CONTATORE_4BIT: { nome:'CNT4', cat:'memoria', ing:['CLK','RST'], usc:['Q0','Q1','Q2','Q3'], col:'#9b59b6', w:120, h:100, fn:null },
     DECODER_BCD7:   { nome:'BCD→7', cat:'display', ing:['D0','D1','D2','D3'], usc:['A','B','C','D','E','F','G'], col:'#e67e22', w:120, h:130, fn:null },
@@ -63,6 +67,21 @@ const DEFS = {
 // Immagine di default della ROM 8x8 (uno smiley): 8 righe da 8 bit,
 // il carattere in posizione r*8+c e' il pixel alla riga r, colonna c.
 const ROM_DEFAULT_8X8 = '0011110001000010101001011000000110100101100110010100001000111100';
+
+// Cache per la valutazione dei chip personalizzati:
+// - _memoCustom: tipo -> Map(ingressi -> uscite) per i chip combinatori
+// - _evaluatoriCondivisi: tipo -> mini-simulazione condivisa (chip combinatori)
+// - _combinatorioCache: tipo -> bool (true se il chip non ha stato interno)
+// Vengono invalidate quando un chip personalizzato viene (ri)caricato o modificato.
+const _memoCustom = new Map();
+const _evaluatoriCondivisi = new Map();
+const _combinatorioCache = new Map();
+
+function invalidaCacheChipCustom() {
+    _memoCustom.clear();
+    _evaluatoriCondivisi.clear();
+    _combinatorioCache.clear();
+}
 
 class Pin {
     constructor(tipo, etichetta, chipId, id) {
@@ -119,6 +138,9 @@ class Chip {
             this.statoInterno.dati = ROM_DEFAULT_8X8;  // stringa di 64 caratteri '0'/'1'
             this.statoInterno.riga = 0;
             this.statoInterno.clkPrev = 0;
+        }
+        if(tipo === 'ROM_8X8') {
+            this.statoInterno.dati = ROM_DEFAULT_8X8;  // stringa di 64 caratteri '0'/'1'
         }
 
         // Crea pin
@@ -208,8 +230,9 @@ class Simulatore {
                 c.pinU[0].stato = c.stato ? this.clkStato : 0;
         }
 
-        // Propagazione iterativa
-        for(let iter=0; iter<20; iter++){
+        // Propagazione iterativa (fino a convergenza; il tetto alto serve per le
+        // catene profonde dei chip gate-level, es. flip-flop master-slave da 22 NAND)
+        for(let iter=0; iter<100; iter++){
             let changed = false;
 
             // Fili
@@ -346,6 +369,17 @@ class Simulatore {
                         if(i<c.pinU.length && c.pinU[i].stato!==v){ c.pinU[i].stato=v; changed=true; }
                     });
                 }
+                // ROM 64 bit a righe (combinatoria): dato l'indirizzo riga R0-R2 (0-7),
+                // emette su D0-D7 gli 8 pixel di quella riga della sua immagine interna.
+                // Il contenuto si modifica con click sull'anteprima del chip.
+                if(c.tipo === 'ROM_8X8' && c.pinI.length >= 3){
+                    const addr = c.pinI[0].stato | (c.pinI[1].stato<<1) | (c.pinI[2].stato<<2);
+                    const dati = c.statoInterno.dati || ROM_DEFAULT_8X8;
+                    for(let b=0; b<8; b++){
+                        const v = dati[addr*8+b]==='1' ? 1 : 0;
+                        if(c.pinU[b] && c.pinU[b].stato!==v){ c.pinU[b].stato=v; changed=true; }
+                    }
+                }
                 // Chip personalizzati
                 if(this.customDefs.has(c.tipo)){
                     const cd = this.customDefs.get(c.tipo);
@@ -360,46 +394,71 @@ class Simulatore {
     }
 
     _valutaCustom(def, ingressi, chipEsterno) {
-        // Usa mini-simulazione persistente per mantenere lo stato interno
+        // ---- Percorso combinatorio: memoizzazione globale per (tipo, ingressi) ----
+        // I chip senza stato interno (porte, sommatori, decoder...) producono sempre
+        // lo stesso risultato per gli stessi ingressi: li valutiamo con una
+        // mini-simulazione condivisa e teniamo la tabella dei risultati in cache.
+        const tipo = chipEsterno.tipo;
+        if(this._eCombinatorio(def, tipo)) {
+            const key = ingressi.join('');
+            let perTipo = _memoCustom.get(tipo);
+            if(perTipo && perTipo.has(key)) return perTipo.get(key).slice();
+
+            const evalSim = this._evaluatoreCondiviso(def, tipo);
+            evalSim.clkStato = this.clkStato;
+            let idxIn = 0;
+            for(const c of evalSim.chips.values()){
+                if(c.tipo === 'INGRESSO' && idxIn < ingressi.length){
+                    c.stato = ingressi[idxIn++];
+                }
+            }
+            evalSim.tick();
+            const risultati = [];
+            for(const c of evalSim.chips.values()){
+                if(c.tipo === 'USCITA' && c.pinI.length) risultati.push(c.pinI[0].stato);
+            }
+            if(!perTipo){ perTipo = new Map(); _memoCustom.set(tipo, perTipo); }
+            perTipo.set(key, risultati.slice());
+            return risultati;
+        }
+
+        // ---- Percorso con stato: mini-simulazione persistente per istanza ----
         if(!chipEsterno.statoInterno._miniSim) {
-            // Prima volta: crea la mini-simulazione
-            const miniSim = new Simulatore();
-            miniSim.attivo = true;
-            miniSim.clkPer = this.clkPer;
-
-            const circuito = JSON.parse(JSON.stringify(def.circuito));
-            const idMap = new Map();
-            const oldToNew = (oldId) => {
-                if(!idMap.has(oldId)) idMap.set(oldId, generaId());
-                return idMap.get(oldId);
-            };
-
-            circuito.chips.forEach(cd => {
-                const newId = oldToNew(cd.id);
-                const chip = new Chip(cd.tipo, cd.x, cd.y, newId);
-                chip.stato = cd.stato || 0;
-                cd.pinI.forEach((pd, i) => {
-                    if(i < chip.pinI.length) chip.pinI[i].id = oldToNew(pd.id);
-                });
-                cd.pinU.forEach((pd, i) => {
-                    if(i < chip.pinU.length) chip.pinU[i].id = oldToNew(pd.id);
-                });
-                miniSim.add(chip);
-            });
-
-            circuito.fili.forEach(fd => {
-                const newSrc = oldToNew(fd.srcId);
-                const newDst = oldToNew(fd.dstId);
-                miniSim.addFilo(new Filo(newSrc, newDst, generaId()));
-            });
-
-            chipEsterno.statoInterno._miniSim = miniSim;
+            chipEsterno.statoInterno._miniSim = this._creaMiniSim(def);
+            // Priming deterministico del Flip-Flop D custom: forza Q=0, Qn=1 e
+            // lascia convergere la mini-sim; ripete finche' lo stato non regge
+            // da solo (la retroazione del latch puo' richiedere qualche tick).
+            if(tipo === 'CUSTOM_FLIP-FLOP_D'){
+                const ms0 = chipEsterno.statoInterno._miniSim;
+                ms0.clkStato = this.clkStato;
+                ms0.customDefs = this.customDefs;
+                let qs = null, qns = null;
+                for(const c of ms0.chips.values()){
+                    if(c.nomeCustom === 'QS')  qs  = c;
+                    if(c.nomeCustom === 'QNS') qns = c;
+                }
+                if(qs && qns){
+                    for(let tentativo = 0; tentativo < 10; tentativo++){
+                        qs.pinU[0].stato = 0;
+                        qns.pinU[0].stato = 1;
+                        ms0.tick();
+                        if(qs.pinU[0].stato === 0 && qns.pinU[0].stato === 1) break;
+                    }
+                }
+            }
+            this._sincronizzaContenutoROM(chipEsterno, true);
         }
 
         const miniSim = chipEsterno.statoInterno._miniSim;
         miniSim.clkStato = this.clkStato;
         // Eredita le definizioni dei chip personalizzati (per chip annidati)
         miniSim.customDefs = this.customDefs;
+
+        // Ponte contenuto ROM: se il chip ha un'immagine (stringa 64 bit) la
+        // propaga ai sotto-chip che la ospitano (celle di memoria / ROM native)
+        this._sincronizzaContenutoROM(chipEsterno, false);
+        // Cella di memoria: applica il bit richiesto al latch interno
+        if(chipEsterno.tipo === 'CUSTOM_CELLA_1_BIT') this._applicaBitCella(chipEsterno);
 
         // Imposta ingressi
         let idxIn = 0;
@@ -420,6 +479,173 @@ class Simulatore {
             }
         }
         return risultati;
+    }
+
+    // Crea una mini-simulazione a partire dalla definizione di un chip personalizzato
+    _creaMiniSim(def) {
+        const miniSim = new Simulatore();
+        miniSim.attivo = true;
+        miniSim.clkPer = this.clkPer;
+        miniSim.customDefs = this.customDefs;
+
+        const circuito = JSON.parse(JSON.stringify(def.circuito));
+        const idMap = new Map();
+        const oldToNew = (oldId) => {
+            if(!idMap.has(oldId)) idMap.set(oldId, generaId());
+            return idMap.get(oldId);
+        };
+
+        circuito.chips.forEach(cd => {
+            const newId = oldToNew(cd.id);
+            const chip = new Chip(cd.tipo, cd.x, cd.y, newId);
+            chip.stato = cd.stato || 0;
+            chip.nomeCustom = cd.nomeCustom || '';
+            if(cd.statoInterno) chip.statoInterno = cd.statoInterno;
+            cd.pinI.forEach((pd, i) => {
+                if(i < chip.pinI.length) chip.pinI[i].id = oldToNew(pd.id);
+            });
+            cd.pinU.forEach((pd, i) => {
+                if(i < chip.pinU.length) chip.pinU[i].id = oldToNew(pd.id);
+            });
+            miniSim.add(chip);
+        });
+
+        circuito.fili.forEach(fd => {
+            const newSrc = oldToNew(fd.srcId);
+            const newDst = oldToNew(fd.dstId);
+            miniSim.addFilo(new Filo(newSrc, newDst, generaId()));
+        });
+        return miniSim;
+    }
+
+    // Mini-simulazione condivisa (una per tipo) per valutare chip combinatori
+    _evaluatoreCondiviso(def, tipo) {
+        if(!_evaluatoriCondivisi.has(tipo)) {
+            _evaluatoriCondivisi.set(tipo, this._creaMiniSim(def));
+        }
+        return _evaluatoriCondivisi.get(tipo);
+    }
+
+    // Un chip e' "combinatorio" se il suo circuito (ricorsivamente) non contiene
+    // elementi con stato (flip-flop, contatori, celle, ROM, clock, pulsanti)
+    // e NON contiene anelli di retroazione (un anello = memoria, es. latch).
+    _eCombinatorio(def, tipo, visitati) {
+        if(_combinatorioCache.has(tipo)) return _combinatorioCache.get(tipo);
+        visitati = visitati || new Set();
+        if(visitati.has(tipo)) return false;   // ciclo di definizioni: prudente, stateful
+        visitati.add(tipo);
+
+        const STATEFUL = new Set([
+            'FLIPFLOP_D', 'CONTATORE_4BIT', 'SCHERMO_8X8', 'DECODER_STRINGA',
+            'ROM_8X8', 'CLOCK', 'PULSANTE'
+        ]);
+        let comb = true;
+        const chips = def.circuito.chips || [];
+
+        // 1) nessun tipo con stato (ricorsivo sui custom)
+        for(const c of chips) {
+            if(STATEFUL.has(c.tipo)) { comb = false; break; }
+            if(c.tipo.startsWith('CUSTOM_')) {
+                const sub = this.customDefs.get(c.tipo);
+                if(!sub || !this._eCombinatorio(sub, c.tipo, visitati)) { comb = false; break; }
+            }
+        }
+
+        // 2) nessun anello nel grafo dei collegamenti (retroazione = stato)
+        if(comb && this._circuitoHaAnelli(def.circuito)) comb = false;
+
+        _combinatorioCache.set(tipo, comb);
+        return comb;
+    }
+
+    // Rileva anelli nel grafo chip->chip dei collegamenti (DFS a 3 colori)
+    _circuitoHaAnelli(circuito) {
+        const pinToChip = new Map();
+        for(const c of (circuito.chips || [])){
+            for(const p of (c.pinI || [])) pinToChip.set(p.id, c.id);
+            for(const p of (c.pinU || [])) pinToChip.set(p.id, c.id);
+        }
+        const adj = new Map();
+        for(const f of (circuito.fili || [])){
+            const a = pinToChip.get(f.srcId), b = pinToChip.get(f.dstId);
+            if(a === undefined || b === undefined || a === b) continue;
+            if(!adj.has(a)) adj.set(a, []);
+            adj.get(a).push(b);
+        }
+        const colore = new Map();  // 0=bianco, 1=grigio, 2=nero
+        const dfs = (u) => {
+            colore.set(u, 1);
+            for(const v of (adj.get(u) || [])){
+                const cv = colore.get(v) || 0;
+                if(cv === 1) return true;          // arco all'indietro -> anello
+                if(cv === 0 && dfs(v)) return true;
+            }
+            colore.set(u, 2);
+            return false;
+        };
+        for(const c of (circuito.chips || [])){
+            if((colore.get(c.id) || 0) === 0 && dfs(c.id)) return true;
+        }
+        return false;
+    }
+
+    // Propaga la stringa immagine (64 bit) del chip verso i sotto-chip che la ospitano:
+    // - chip ROM (native o custom) -> aggiorna il loro campo dati
+    // - celle di memoria (nomeCustom "b0".."b63") -> imposta il bit della cella,
+    //   che la cella stessa applichera' al latch interno al prossimo tick
+    _sincronizzaContenutoROM(chipEsterno, primaVolta) {
+        const dati = chipEsterno.statoInterno.dati;
+        const miniSim = chipEsterno.statoInterno._miniSim;
+        if(!miniSim) return;
+
+        // Prima creazione: se il chip non ha un'immagine propria, eredita quella
+        // di una eventuale ROM interna, cosi' l'anteprima mostra il contenuto reale
+        if(primaVolta && dati === undefined){
+            const romInterna = [...miniSim.chips.values()].find(c =>
+                c.tipo==='ROM_8X8' || c.tipo==='DECODER_STRINGA' ||
+                c.tipo==='CUSTOM_ROM_64BIT' || c.tipo==='CUSTOM_ROM_IMMAGINE');
+            if(romInterna){
+                chipEsterno.statoInterno.dati =
+                    (romInterna.statoInterno && romInterna.statoInterno.dati) || ROM_DEFAULT_8X8;
+                return;
+            }
+            // Register file (celle di memoria): immagine di default se non impostata
+            const haCelle = [...miniSim.chips.values()].some(c => c.tipo==='CUSTOM_CELLA_1_BIT');
+            if(haCelle) chipEsterno.statoInterno.dati = ROM_DEFAULT_8X8;
+            return;
+        }
+        if(dati === undefined) return;
+
+        for(const c of miniSim.chips.values()){
+            // ROM (nativa o custom): sincronizza la stringa; la catena di
+            // _valutaCustom dei sotto-chip la propaghera' fino alle celle
+            if((c.tipo==='ROM_8X8' || c.tipo==='DECODER_STRINGA' ||
+                c.tipo==='CUSTOM_ROM_64BIT' || c.tipo==='CUSTOM_ROM_IMMAGINE')
+               && c.statoInterno.dati !== dati){
+                c.statoInterno.dati = dati;
+            }
+            // Celle di memoria della register file: imposta il bit
+            if(c.tipo==='CUSTOM_CELLA_1_BIT' && /^b\d+$/.test(c.nomeCustom || '')){
+                const idx = parseInt(c.nomeCustom.slice(1));
+                const bit = dati[idx]==='1' ? 1 : 0;
+                if(c.statoInterno.bit !== bit) c.statoInterno.bit = bit;
+            }
+        }
+    }
+
+    // Applica il bit richiesto al latch interno di una Cella 1 bit:
+    // forza le uscite dei due NOR (Q e Qn) a valori complementari coerenti;
+    // la retroazione del latch manterra' poi lo stato da sola.
+    _applicaBitCella(chipCella) {
+        const bit = chipCella.statoInterno.bit;
+        if(bit === undefined || bit === chipCella.statoInterno._bitApplicato) return;
+        const miniSim = chipCella.statoInterno._miniSim;
+        if(!miniSim) return;
+        for(const c of miniSim.chips.values()){
+            if(c.nomeCustom === 'NQ'  && c.pinU.length) c.pinU[0].stato = bit;
+            if(c.nomeCustom === 'NQN' && c.pinU.length) c.pinU[0].stato = bit ? 0 : 1;
+        }
+        chipCella.statoInterno._bitApplicato = bit;
     }
 
     reset() {
@@ -689,8 +915,9 @@ class Editor {
             // Hit su chip → seleziona / trascina
             const chip = this._hitChip(w.x, w.y);
             if(chip) {
-                // Click sull'anteprima della ROM Immagine: niente drag, apre l'editor al rilascio
-                if(chip.tipo==='DECODER_STRINGA'){
+                // Click sull'anteprima della ROM Immagine / ROM 64bit: niente drag, apre l'editor al rilascio
+                if(chip.tipo==='DECODER_STRINGA' || chip.tipo==='ROM_8X8' ||
+                   chip.tipo==='CUSTOM_ROM_64BIT' || chip.tipo==='CUSTOM_ROM_IMMAGINE'){
                     const r = romPreviewRect(chip);
                     if(w.x>=r.x && w.x<=r.x+r.w && w.y>=r.y && w.y<=r.y+r.h){
                         this._romClick = {chip, sx:e.clientX, sy:e.clientY};
@@ -896,12 +1123,13 @@ class Editor {
                 }
             } else if(chip.tipo==='CLOCK'){
                 chip.stato = 1 - chip.stato;
-            } else if(chip.tipo==='DECODER_STRINGA'){
+            } else if(chip.tipo==='DECODER_STRINGA' || chip.tipo==='ROM_8X8' ||
+                      chip.tipo==='CUSTOM_ROM_64BIT' || chip.tipo==='CUSTOM_ROM_IMMAGINE'){
                 // Doppio click sull'anteprima = editor immagine; sul resto del chip = vista interna
                 const r = romPreviewRect(chip);
                 if(w.x>=r.x && w.x<=r.x+r.w && w.y>=r.y && w.y<=r.y+r.h) apriEditorROM(chip);
                 else apriVistaInterna(chip, this._sim);
-            } else if(chip.tipo==='FLIPFLOP_D' || chip.tipo==='CONTATORE_4BIT' ||
+            } else if(chip.tipo==='NAND' || chip.tipo==='FLIPFLOP_D' || chip.tipo==='CONTATORE_4BIT' ||
                        chip.tipo==='DECODER_BCD7' || this._sim.customDefs.has(chip.tipo)) {
                 apriVistaInterna(chip, this._sim);
             }
@@ -1392,13 +1620,15 @@ async function salvaModificaChip() {
         if(c.tipo==='USCITA')   uscite.push(c.nomeCustom || c.pinI[0]?.etichetta || 'OUT');
     }
 
-    // Aggiorna definizione
+    // Aggiorna definizione (mantenendo descrizione e categoria)
     const chipDef = {
         nome: _editChipDef.nome,
         colore: _editChipDef.colore,
         ingressi: ingressi,
         uscite: uscite,
-        circuito: nuovoCircuito
+        circuito: nuovoCircuito,
+        descrizione: _editChipDef.descrizione || '',
+        categoria: _editChipDef.categoria || 'custom'
     };
 
     try {
@@ -1415,6 +1645,7 @@ async function salvaModificaChip() {
             _editChipDef.ingressi = ingressi;
             _editChipDef.uscite = uscite;
             sim.customDefs.set(_editChipTipo, _editChipDef);
+            invalidaCacheChipCustom();
 
             // Aggiorna DEFS (incluse dimensioni)
             DEFS[_editChipTipo].ing = ingressi;
@@ -1577,6 +1808,12 @@ async function caricaChipPersonalizzati() {
         const resp = await fetch('/api/chip-personalizzati');
         const chips = await resp.json();
 
+        // Le definizioni potrebbero essere cambiate: invalida memo e valutatori condivisi
+        invalidaCacheChipCustom();
+
+        // Rimuovi eventuali bottoni custom gia' presenti nelle varie categorie
+        document.querySelectorAll('.btn-chip-custom').forEach(b => b.remove());
+
         if(!chips.length){
             cont.innerHTML = '<p class="placeholder-text">Nessun chip personalizzato.<br>Usa "Esporta Chip" per crearne.</p>';
             return;
@@ -1586,9 +1823,10 @@ async function caricaChipPersonalizzati() {
         chips.forEach(cd => {
             // Registra definizione per la simulazione
             const tipoKey = 'CUSTOM_'+cd.nome.toUpperCase().replace(/\s/g,'_');
+            const cat = cd.categoria || 'custom';
             DEFS[tipoKey] = {
                 nome: cd.nome,
-                cat: 'custom',
+                cat: cat,
                 ing: cd.ingressi || [],
                 usc: cd.uscite || [],
                 col: cd.colore || '#7f8c8d',
@@ -1599,7 +1837,7 @@ async function caricaChipPersonalizzati() {
             sim.customDefs.set(tipoKey, cd);
 
             const btn = document.createElement('button');
-            btn.className = 'btn-chip';
+            btn.className = 'btn-chip btn-chip-custom';
             btn.dataset.tipo = tipoKey;
             btn.style.setProperty('--chip-col', cd.colore || '#7f8c8d');
             btn.textContent = cd.nome;
@@ -1614,7 +1852,9 @@ async function caricaChipPersonalizzati() {
                     ed.filoStart=null;
                 }
             });
-            cont.appendChild(btn);
+            // Inserisci nella sezione corrispondente alla categoria, se esiste
+            const sezione = document.getElementById('cat-' + cat) || cont;
+            sezione.appendChild(btn);
         });
     } catch(e) {
         // Server non raggiungibile, ignora

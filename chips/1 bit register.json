@@ -101,7 +101,7 @@
       },
       {
         "id": 2089,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -840,
         "y": -600,
         "stato": 0,
@@ -121,7 +121,7 @@
       },
       {
         "id": 2093,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -680,
         "y": -660,
         "stato": 0,
@@ -145,7 +145,7 @@
       },
       {
         "id": 2098,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -680,
         "y": -500,
         "stato": 0,
@@ -169,7 +169,7 @@
       },
       {
         "id": 2103,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": -500,
         "y": -600,
         "stato": 0,

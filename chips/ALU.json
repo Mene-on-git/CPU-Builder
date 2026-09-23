@@ -169,7 +169,7 @@
       },
       {
         "id": 28,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -300,
         "y": -140,
         "stato": 0,
@@ -193,7 +193,7 @@
       },
       {
         "id": 33,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -300,
         "y": -60,
         "stato": 0,
@@ -217,7 +217,7 @@
       },
       {
         "id": 38,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -300,
         "y": 20,
         "stato": 0,
@@ -241,7 +241,7 @@
       },
       {
         "id": 43,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -300,
         "y": 100,
         "stato": 0,
@@ -445,7 +445,7 @@
       },
       {
         "id": 598,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": 320,
         "y": -20,
         "stato": 0,
@@ -465,7 +465,7 @@
       },
       {
         "id": 602,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": 320,
         "y": 40,
         "stato": 0,
@@ -485,7 +485,7 @@
       },
       {
         "id": 606,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": 320,
         "y": 100,
         "stato": 0,
@@ -505,7 +505,7 @@
       },
       {
         "id": 610,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": 320,
         "y": 160,
         "stato": 0,
@@ -525,7 +525,7 @@
       },
       {
         "id": 622,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 460,
         "y": 0,
         "stato": 0,
@@ -549,7 +549,7 @@
       },
       {
         "id": 627,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 580,
         "y": 80,
         "stato": 0,
@@ -573,7 +573,7 @@
       },
       {
         "id": 632,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 700,
         "y": 140,
         "stato": 0,

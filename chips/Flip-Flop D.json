@@ -1,0 +1,811 @@
+{
+  "nome": "Flip-Flop D",
+  "colore": "#3498db",
+  "ingressi": [
+    "D",
+    "CLK",
+    "RST"
+  ],
+  "uscite": [
+    "Q",
+    "Q̄"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800172,
+        "tipo": "INGRESSO",
+        "x": -80,
+        "y": 80,
+        "stato": 0,
+        "nomeCustom": "D",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800173,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800174,
+        "tipo": "INGRESSO",
+        "x": -80,
+        "y": 300,
+        "stato": 0,
+        "nomeCustom": "CLK",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800175,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800176,
+        "tipo": "INGRESSO",
+        "x": -80,
+        "y": 520,
+        "stato": 0,
+        "nomeCustom": "RST",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800177,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800178,
+        "tipo": "NAND",
+        "x": 60,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800179,
+            "et": "A"
+          },
+          {
+            "id": 800180,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800181,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800182,
+        "tipo": "NAND",
+        "x": 60,
+        "y": 560,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800183,
+            "et": "A"
+          },
+          {
+            "id": 800184,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800185,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800186,
+        "tipo": "NAND",
+        "x": 160,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800187,
+            "et": "A"
+          },
+          {
+            "id": 800188,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800189,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800190,
+        "tipo": "NAND",
+        "x": 290,
+        "y": 80,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800191,
+            "et": "A"
+          },
+          {
+            "id": 800192,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800193,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800194,
+        "tipo": "NAND",
+        "x": 420,
+        "y": 80,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800195,
+            "et": "A"
+          },
+          {
+            "id": 800196,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800197,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800198,
+        "tipo": "NAND",
+        "x": 550,
+        "y": 80,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800199,
+            "et": "A"
+          },
+          {
+            "id": 800200,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800201,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800202,
+        "tipo": "NAND",
+        "x": 420,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800203,
+            "et": "A"
+          },
+          {
+            "id": 800204,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800205,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800206,
+        "tipo": "NAND",
+        "x": 550,
+        "y": 240,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800207,
+            "et": "A"
+          },
+          {
+            "id": 800208,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800209,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800210,
+        "tipo": "NAND",
+        "x": 680,
+        "y": 240,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800211,
+            "et": "A"
+          },
+          {
+            "id": 800212,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800213,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800214,
+        "tipo": "NAND",
+        "x": 820,
+        "y": 240,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800215,
+            "et": "A"
+          },
+          {
+            "id": 800216,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800217,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800218,
+        "tipo": "NAND",
+        "x": 820,
+        "y": 100,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800219,
+            "et": "A"
+          },
+          {
+            "id": 800220,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800221,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800222,
+        "tipo": "NAND",
+        "x": 160,
+        "y": 400,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800223,
+            "et": "A"
+          },
+          {
+            "id": 800224,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800225,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800226,
+        "tipo": "NAND",
+        "x": 290,
+        "y": 440,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800227,
+            "et": "A"
+          },
+          {
+            "id": 800228,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800229,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800230,
+        "tipo": "NAND",
+        "x": 420,
+        "y": 440,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800231,
+            "et": "A"
+          },
+          {
+            "id": 800232,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800233,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800234,
+        "tipo": "NAND",
+        "x": 550,
+        "y": 440,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800235,
+            "et": "A"
+          },
+          {
+            "id": 800236,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800237,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800238,
+        "tipo": "NAND",
+        "x": 420,
+        "y": 580,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800239,
+            "et": "A"
+          },
+          {
+            "id": 800240,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800241,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800242,
+        "tipo": "NAND",
+        "x": 550,
+        "y": 600,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800243,
+            "et": "A"
+          },
+          {
+            "id": 800244,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800245,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800246,
+        "tipo": "NAND",
+        "x": 680,
+        "y": 600,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800247,
+            "et": "A"
+          },
+          {
+            "id": 800248,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800249,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800250,
+        "tipo": "NAND",
+        "x": 820,
+        "y": 600,
+        "stato": 0,
+        "nomeCustom": "QNS",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800251,
+            "et": "A"
+          },
+          {
+            "id": 800252,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800253,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800254,
+        "tipo": "NAND",
+        "x": 820,
+        "y": 460,
+        "stato": 0,
+        "nomeCustom": "QS",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800255,
+            "et": "A"
+          },
+          {
+            "id": 800256,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800257,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800258,
+        "tipo": "USCITA",
+        "x": 1120,
+        "y": 460,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800259,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 800260,
+        "tipo": "USCITA",
+        "x": 1120,
+        "y": 600,
+        "stato": 0,
+        "nomeCustom": "Q̄",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800261,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800262,
+        "srcId": 800175,
+        "dstId": 800179
+      },
+      {
+        "id": 800263,
+        "srcId": 800175,
+        "dstId": 800180
+      },
+      {
+        "id": 800264,
+        "srcId": 800177,
+        "dstId": 800183
+      },
+      {
+        "id": 800265,
+        "srcId": 800177,
+        "dstId": 800184
+      },
+      {
+        "id": 800266,
+        "srcId": 800173,
+        "dstId": 800187
+      },
+      {
+        "id": 800267,
+        "srcId": 800173,
+        "dstId": 800188
+      },
+      {
+        "id": 800268,
+        "srcId": 800173,
+        "dstId": 800191
+      },
+      {
+        "id": 800269,
+        "srcId": 800181,
+        "dstId": 800192
+      },
+      {
+        "id": 800270,
+        "srcId": 800193,
+        "dstId": 800195
+      },
+      {
+        "id": 800271,
+        "srcId": 800193,
+        "dstId": 800196
+      },
+      {
+        "id": 800272,
+        "srcId": 800197,
+        "dstId": 800199
+      },
+      {
+        "id": 800273,
+        "srcId": 800185,
+        "dstId": 800200
+      },
+      {
+        "id": 800274,
+        "srcId": 800189,
+        "dstId": 800203
+      },
+      {
+        "id": 800275,
+        "srcId": 800181,
+        "dstId": 800204
+      },
+      {
+        "id": 800276,
+        "srcId": 800205,
+        "dstId": 800207
+      },
+      {
+        "id": 800277,
+        "srcId": 800185,
+        "dstId": 800208
+      },
+      {
+        "id": 800278,
+        "srcId": 800209,
+        "dstId": 800211
+      },
+      {
+        "id": 800279,
+        "srcId": 800209,
+        "dstId": 800212
+      },
+      {
+        "id": 800280,
+        "srcId": 800213,
+        "dstId": 800215
+      },
+      {
+        "id": 800281,
+        "srcId": 800221,
+        "dstId": 800216
+      },
+      {
+        "id": 800282,
+        "srcId": 800201,
+        "dstId": 800219
+      },
+      {
+        "id": 800283,
+        "srcId": 800217,
+        "dstId": 800220
+      },
+      {
+        "id": 800284,
+        "srcId": 800221,
+        "dstId": 800223
+      },
+      {
+        "id": 800285,
+        "srcId": 800221,
+        "dstId": 800224
+      },
+      {
+        "id": 800286,
+        "srcId": 800221,
+        "dstId": 800227
+      },
+      {
+        "id": 800287,
+        "srcId": 800175,
+        "dstId": 800228
+      },
+      {
+        "id": 800288,
+        "srcId": 800229,
+        "dstId": 800231
+      },
+      {
+        "id": 800289,
+        "srcId": 800229,
+        "dstId": 800232
+      },
+      {
+        "id": 800290,
+        "srcId": 800233,
+        "dstId": 800235
+      },
+      {
+        "id": 800291,
+        "srcId": 800185,
+        "dstId": 800236
+      },
+      {
+        "id": 800292,
+        "srcId": 800225,
+        "dstId": 800239
+      },
+      {
+        "id": 800293,
+        "srcId": 800175,
+        "dstId": 800240
+      },
+      {
+        "id": 800294,
+        "srcId": 800241,
+        "dstId": 800243
+      },
+      {
+        "id": 800295,
+        "srcId": 800185,
+        "dstId": 800244
+      },
+      {
+        "id": 800296,
+        "srcId": 800245,
+        "dstId": 800247
+      },
+      {
+        "id": 800297,
+        "srcId": 800245,
+        "dstId": 800248
+      },
+      {
+        "id": 800298,
+        "srcId": 800249,
+        "dstId": 800251
+      },
+      {
+        "id": 800299,
+        "srcId": 800257,
+        "dstId": 800252
+      },
+      {
+        "id": 800300,
+        "srcId": 800237,
+        "dstId": 800255
+      },
+      {
+        "id": 800301,
+        "srcId": 800253,
+        "dstId": 800256
+      },
+      {
+        "id": 800302,
+        "srcId": 800257,
+        "dstId": 800259
+      },
+      {
+        "id": 800303,
+        "srcId": 800253,
+        "dstId": 800261
+      }
+    ]
+  },
+  "descrizione": "Flip-flop D edge-triggered (fronte di salita) costruito con due latch master-slave da NAND, con reset asincrono: quando RST=1, Q e' forzato a 0. Sul fronte di salita di CLK il valore di D viene catturato in Q; Q negato e' l'uscita complementare.",
+  "categoria": "memoria"
+}

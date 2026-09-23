@@ -1,0 +1,275 @@
+{
+  "nome": "Schermo 8x8 Modulare",
+  "descrizione": "Versione completamente modulare dello schermo 8x8: Clock -> Contatore 0-7 (chip custom con flip-flop e porte) -> ROM 64bit a righe (contiene l'immagine, click sull'anteprima per modificarla) -> Schermo 8x8. Il WE dello schermo e' collegato direttamente al clock: ogni riga viene scritta durante la fase alta.",
+  "circuito": {
+    "chips": [
+      {
+        "id": 1,
+        "tipo": "CLOCK",
+        "x": -560,
+        "y": 20,
+        "stato": 1,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 2,
+            "et": "CLK"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "tipo": "CUSTOM_CONTATORE_0-7",
+        "x": -420,
+        "y": -380,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 5,
+            "et": "CLK"
+          },
+          {
+            "id": 6,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 7,
+            "et": "R0"
+          },
+          {
+            "id": 8,
+            "et": "R1"
+          },
+          {
+            "id": 9,
+            "et": "R2"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "tipo": "CUSTOM_ROM_64BIT",
+        "x": -180,
+        "y": -200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {
+          "dati": "0001100000111100011111101101101110011001000110000001100000011000"
+        },
+        "pinI": [
+          {
+            "id": 12,
+            "et": "R0"
+          },
+          {
+            "id": 13,
+            "et": "R1"
+          },
+          {
+            "id": 14,
+            "et": "R2"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 15,
+            "et": "D0"
+          },
+          {
+            "id": 16,
+            "et": "D1"
+          },
+          {
+            "id": 17,
+            "et": "D2"
+          },
+          {
+            "id": 18,
+            "et": "D3"
+          },
+          {
+            "id": 19,
+            "et": "D4"
+          },
+          {
+            "id": 20,
+            "et": "D5"
+          },
+          {
+            "id": 21,
+            "et": "D6"
+          },
+          {
+            "id": 22,
+            "et": "D7"
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "tipo": "SCHERMO_8X8",
+        "x": 320,
+        "y": -260,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {
+          "righe": [
+            60,
+            66,
+            165,
+            129,
+            165,
+            153,
+            66,
+            60
+          ],
+          "wePrev": 1
+        },
+        "pinI": [
+          {
+            "id": 25,
+            "et": "R0"
+          },
+          {
+            "id": 26,
+            "et": "R1"
+          },
+          {
+            "id": 27,
+            "et": "R2"
+          },
+          {
+            "id": 28,
+            "et": "D0"
+          },
+          {
+            "id": 29,
+            "et": "D1"
+          },
+          {
+            "id": 30,
+            "et": "D2"
+          },
+          {
+            "id": 31,
+            "et": "D3"
+          },
+          {
+            "id": 32,
+            "et": "D4"
+          },
+          {
+            "id": 33,
+            "et": "D5"
+          },
+          {
+            "id": 34,
+            "et": "D6"
+          },
+          {
+            "id": 35,
+            "et": "D7"
+          },
+          {
+            "id": 36,
+            "et": "WE"
+          },
+          {
+            "id": 37,
+            "et": "RST"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 39,
+        "srcId": 2,
+        "dstId": 5
+      },
+      {
+        "id": 41,
+        "srcId": 2,
+        "dstId": 36
+      },
+      {
+        "id": 43,
+        "srcId": 7,
+        "dstId": 12
+      },
+      {
+        "id": 45,
+        "srcId": 7,
+        "dstId": 25
+      },
+      {
+        "id": 47,
+        "srcId": 8,
+        "dstId": 13
+      },
+      {
+        "id": 49,
+        "srcId": 8,
+        "dstId": 26
+      },
+      {
+        "id": 51,
+        "srcId": 9,
+        "dstId": 14
+      },
+      {
+        "id": 53,
+        "srcId": 9,
+        "dstId": 27
+      },
+      {
+        "id": 55,
+        "srcId": 15,
+        "dstId": 28
+      },
+      {
+        "id": 57,
+        "srcId": 16,
+        "dstId": 29
+      },
+      {
+        "id": 59,
+        "srcId": 17,
+        "dstId": 30
+      },
+      {
+        "id": 61,
+        "srcId": 18,
+        "dstId": 31
+      },
+      {
+        "id": 63,
+        "srcId": 19,
+        "dstId": 32
+      },
+      {
+        "id": 65,
+        "srcId": 20,
+        "dstId": 33
+      },
+      {
+        "id": 67,
+        "srcId": 21,
+        "dstId": 34
+      },
+      {
+        "id": 69,
+        "srcId": 22,
+        "dstId": 35
+      }
+    ]
+  },
+  "data_modifica": "2026-09-23T13:59:46.661421"
+}

@@ -21,7 +21,7 @@
       },
       {
         "id": 4,
-        "tipo": "DECODER_STRINGA",
+        "tipo": "CUSTOM_ROM_IMMAGINE",
         "x": -300,
         "y": -200,
         "stato": 0,

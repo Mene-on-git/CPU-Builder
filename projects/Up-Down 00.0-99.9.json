@@ -183,7 +183,7 @@
       },
       {
         "id": 2050,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -280,
         "y": -680,
         "stato": 0,
@@ -204,7 +204,7 @@
       },
       {
         "id": 2053,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -160,
         "y": -720,
         "stato": 0,
@@ -229,7 +229,7 @@
       },
       {
         "id": 2057,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -160,
         "y": -620,
         "stato": 0,
@@ -254,7 +254,7 @@
       },
       {
         "id": 2061,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": -20,
         "y": -680,
         "stato": 0,
@@ -279,7 +279,7 @@
       },
       {
         "id": 2065,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": 120,
         "y": -680,
         "stato": 0,
@@ -406,7 +406,7 @@
       },
       {
         "id": 10050,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -320,
         "y": 800,
         "stato": 0,
@@ -427,7 +427,7 @@
       },
       {
         "id": 10053,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -200,
         "y": 840,
         "stato": 0,
@@ -452,7 +452,7 @@
       },
       {
         "id": 10057,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -200,
         "y": 740,
         "stato": 0,
@@ -477,7 +477,7 @@
       },
       {
         "id": 10061,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": -60,
         "y": 800,
         "stato": 0,
@@ -502,7 +502,7 @@
       },
       {
         "id": 10065,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": 80,
         "y": 800,
         "stato": 0,
@@ -555,7 +555,7 @@
       },
       {
         "id": 11122,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": -680,
         "y": -480,
         "stato": 0,

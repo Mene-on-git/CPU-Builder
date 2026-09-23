@@ -1,0 +1,177 @@
+{
+  "nome": "OR",
+  "colore": "#27ae60",
+  "ingressi": [
+    "A",
+    "B"
+  ],
+  "uscite": [
+    "Q"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800031,
+        "tipo": "INGRESSO",
+        "x": -340,
+        "y": 20,
+        "stato": 0,
+        "nomeCustom": "A",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800032,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800033,
+        "tipo": "INGRESSO",
+        "x": -340,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "B",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800034,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800035,
+        "tipo": "NAND",
+        "x": -200,
+        "y": 20,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800036,
+            "et": "A"
+          },
+          {
+            "id": 800037,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800038,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800039,
+        "tipo": "NAND",
+        "x": -200,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800040,
+            "et": "A"
+          },
+          {
+            "id": 800041,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800042,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800043,
+        "tipo": "NAND",
+        "x": -40,
+        "y": 100,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800044,
+            "et": "A"
+          },
+          {
+            "id": 800045,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800046,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800047,
+        "tipo": "USCITA",
+        "x": 130,
+        "y": 100,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800048,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800049,
+        "srcId": 800032,
+        "dstId": 800036
+      },
+      {
+        "id": 800050,
+        "srcId": 800032,
+        "dstId": 800037
+      },
+      {
+        "id": 800051,
+        "srcId": 800034,
+        "dstId": 800040
+      },
+      {
+        "id": 800052,
+        "srcId": 800034,
+        "dstId": 800041
+      },
+      {
+        "id": 800053,
+        "srcId": 800038,
+        "dstId": 800044
+      },
+      {
+        "id": 800054,
+        "srcId": 800042,
+        "dstId": 800045
+      },
+      {
+        "id": 800055,
+        "srcId": 800046,
+        "dstId": 800048
+      }
+    ]
+  },
+  "descrizione": "Porta OR realizzata con tre NAND (De Morgan): gli ingressi vengono negati e poi combinati.",
+  "categoria": "porte"
+}

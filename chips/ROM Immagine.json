@@ -1,0 +1,490 @@
+{
+  "nome": "ROM Immagine",
+  "colore": "#7d3c98",
+  "ingressi": [
+    "CLK",
+    "RST"
+  ],
+  "uscite": [
+    "R0",
+    "R1",
+    "R2",
+    "D0",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "WE"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 801455,
+        "tipo": "INGRESSO",
+        "x": -700,
+        "y": 80,
+        "stato": 0,
+        "nomeCustom": "CLK",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 801456,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 801457,
+        "tipo": "INGRESSO",
+        "x": -700,
+        "y": 300,
+        "stato": 0,
+        "nomeCustom": "RST",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 801458,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 801459,
+        "tipo": "CUSTOM_CONTATORE_0-7",
+        "x": -480,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801460,
+            "et": "CLK"
+          },
+          {
+            "id": 801461,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801462,
+            "et": "R0"
+          },
+          {
+            "id": 801463,
+            "et": "R1"
+          },
+          {
+            "id": 801464,
+            "et": "R2"
+          }
+        ]
+      },
+      {
+        "id": 801465,
+        "tipo": "CUSTOM_NOT",
+        "x": -480,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801466,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801467,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801468,
+        "tipo": "CUSTOM_AND",
+        "x": -280,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801469,
+            "et": "A"
+          },
+          {
+            "id": 801470,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801471,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801472,
+        "tipo": "CUSTOM_ROM_64BIT",
+        "x": -220,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801473,
+            "et": "R0"
+          },
+          {
+            "id": 801474,
+            "et": "R1"
+          },
+          {
+            "id": 801475,
+            "et": "R2"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801476,
+            "et": "D0"
+          },
+          {
+            "id": 801477,
+            "et": "D1"
+          },
+          {
+            "id": 801478,
+            "et": "D2"
+          },
+          {
+            "id": 801479,
+            "et": "D3"
+          },
+          {
+            "id": 801480,
+            "et": "D4"
+          },
+          {
+            "id": 801481,
+            "et": "D5"
+          },
+          {
+            "id": 801482,
+            "et": "D6"
+          },
+          {
+            "id": 801483,
+            "et": "D7"
+          }
+        ]
+      },
+      {
+        "id": 801484,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "R0",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801485,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801486,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 110,
+        "stato": 0,
+        "nomeCustom": "R1",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801487,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801488,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 180,
+        "stato": 0,
+        "nomeCustom": "R2",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801489,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801490,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 260,
+        "stato": 0,
+        "nomeCustom": "D0",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801491,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801492,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 330,
+        "stato": 0,
+        "nomeCustom": "D1",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801493,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801494,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 400,
+        "stato": 0,
+        "nomeCustom": "D2",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801495,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801496,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 470,
+        "stato": 0,
+        "nomeCustom": "D3",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801497,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801498,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 540,
+        "stato": 0,
+        "nomeCustom": "D4",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801499,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801500,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 610,
+        "stato": 0,
+        "nomeCustom": "D5",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801501,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801502,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 680,
+        "stato": 0,
+        "nomeCustom": "D6",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801503,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801504,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 750,
+        "stato": 0,
+        "nomeCustom": "D7",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801505,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801506,
+        "tipo": "USCITA",
+        "x": 100,
+        "y": 840,
+        "stato": 0,
+        "nomeCustom": "WE",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801507,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 801508,
+        "srcId": 801456,
+        "dstId": 801460
+      },
+      {
+        "id": 801509,
+        "srcId": 801458,
+        "dstId": 801461
+      },
+      {
+        "id": 801510,
+        "srcId": 801458,
+        "dstId": 801466
+      },
+      {
+        "id": 801511,
+        "srcId": 801467,
+        "dstId": 801469
+      },
+      {
+        "id": 801512,
+        "srcId": 801456,
+        "dstId": 801470
+      },
+      {
+        "id": 801513,
+        "srcId": 801471,
+        "dstId": 801507
+      },
+      {
+        "id": 801514,
+        "srcId": 801462,
+        "dstId": 801473
+      },
+      {
+        "id": 801515,
+        "srcId": 801462,
+        "dstId": 801485
+      },
+      {
+        "id": 801516,
+        "srcId": 801463,
+        "dstId": 801474
+      },
+      {
+        "id": 801517,
+        "srcId": 801463,
+        "dstId": 801487
+      },
+      {
+        "id": 801518,
+        "srcId": 801464,
+        "dstId": 801475
+      },
+      {
+        "id": 801519,
+        "srcId": 801464,
+        "dstId": 801489
+      },
+      {
+        "id": 801520,
+        "srcId": 801476,
+        "dstId": 801491
+      },
+      {
+        "id": 801521,
+        "srcId": 801477,
+        "dstId": 801493
+      },
+      {
+        "id": 801522,
+        "srcId": 801478,
+        "dstId": 801495
+      },
+      {
+        "id": 801523,
+        "srcId": 801479,
+        "dstId": 801497
+      },
+      {
+        "id": 801524,
+        "srcId": 801480,
+        "dstId": 801499
+      },
+      {
+        "id": 801525,
+        "srcId": 801481,
+        "dstId": 801501
+      },
+      {
+        "id": 801526,
+        "srcId": 801482,
+        "dstId": 801503
+      },
+      {
+        "id": 801527,
+        "srcId": 801483,
+        "dstId": 801505
+      }
+    ]
+  },
+  "descrizione": "Sorgente immagini per lo Schermo 8x8: un Contatore 0-7 scandisce le righe di una ROM 64bit (immagine 8x8 contenuta nel chip) e ad ogni colpo di clock presenta la riga in uscita (R0-R2 + D0-D7) con WE attivo nella fase alta. Click sull'anteprima per cambiare immagine.",
+  "categoria": "display"
+}

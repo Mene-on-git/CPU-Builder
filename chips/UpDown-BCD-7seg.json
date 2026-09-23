@@ -217,7 +217,7 @@
       },
       {
         "id": 27,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": 420,
         "y": -60,
         "stato": 0,
@@ -253,7 +253,7 @@
       },
       {
         "id": 33,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": 420,
         "y": 100,
         "stato": 0,
@@ -289,7 +289,7 @@
       },
       {
         "id": 39,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": 420,
         "y": 260,
         "stato": 0,
@@ -325,7 +325,7 @@
       },
       {
         "id": 45,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": 420,
         "y": 420,
         "stato": 0,
@@ -361,7 +361,7 @@
       },
       {
         "id": 51,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -60,
         "y": 700,
         "stato": 0,
@@ -385,7 +385,7 @@
       },
       {
         "id": 57,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 40,
         "y": 740,
         "stato": 0,
@@ -409,7 +409,7 @@
       },
       {
         "id": 63,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -60,
         "y": 800,
         "stato": 0,
@@ -433,7 +433,7 @@
       },
       {
         "id": 69,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 40,
         "y": 840,
         "stato": 0,
@@ -457,7 +457,7 @@
       },
       {
         "id": 75,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 140,
         "y": 880,
         "stato": 0,
@@ -481,7 +481,7 @@
       },
       {
         "id": 81,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 140,
         "y": 920,
         "stato": 0,
@@ -505,7 +505,7 @@
       },
       {
         "id": 87,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": 220,
         "y": 960,
         "stato": 0,
@@ -525,7 +525,7 @@
       },
       {
         "id": 91,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": 220,
         "y": 1000,
         "stato": 0,
@@ -545,7 +545,7 @@
       },
       {
         "id": 95,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -640,
         "y": 440,
         "stato": 0,
@@ -565,7 +565,7 @@
       },
       {
         "id": 99,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -640,
         "y": 500,
         "stato": 0,
@@ -585,7 +585,7 @@
       },
       {
         "id": 103,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -160,
         "y": 60,
         "stato": 0,
@@ -609,7 +609,7 @@
       },
       {
         "id": 109,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -160,
         "y": 200,
         "stato": 0,
@@ -633,7 +633,7 @@
       },
       {
         "id": 115,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -160,
         "y": 340,
         "stato": 0,
@@ -657,7 +657,7 @@
       },
       {
         "id": 121,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 60,
         "y": -40,
         "stato": 0,
@@ -681,7 +681,7 @@
       },
       {
         "id": 127,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 60,
         "y": 80,
         "stato": 0,
@@ -705,7 +705,7 @@
       },
       {
         "id": 133,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 60,
         "y": 200,
         "stato": 0,
@@ -729,7 +729,7 @@
       },
       {
         "id": 139,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 60,
         "y": 320,
         "stato": 0,
@@ -753,7 +753,7 @@
       },
       {
         "id": 145,
-        "tipo": "XNOR",
+        "tipo": "CUSTOM_XNOR",
         "x": -320,
         "y": 120,
         "stato": 0,
@@ -777,7 +777,7 @@
       },
       {
         "id": 151,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -320,
         "y": 260,
         "stato": 0,
@@ -801,7 +801,7 @@
       },
       {
         "id": 157,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -320,
         "y": 400,
         "stato": 0,
@@ -825,7 +825,7 @@
       },
       {
         "id": 163,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": 60,
         "y": 460,
         "stato": 0,
@@ -849,7 +849,7 @@
       },
       {
         "id": 169,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 60,
         "y": 520,
         "stato": 0,
@@ -873,7 +873,7 @@
       },
       {
         "id": 175,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 60,
         "y": 580,
         "stato": 0,
@@ -897,7 +897,7 @@
       },
       {
         "id": 181,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": 60,
         "y": 640,
         "stato": 0,
@@ -921,7 +921,7 @@
       },
       {
         "id": 187,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 260,
         "y": -60,
         "stato": 0,
@@ -945,7 +945,7 @@
       },
       {
         "id": 193,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 260,
         "y": -20,
         "stato": 0,
@@ -969,7 +969,7 @@
       },
       {
         "id": 199,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": 340,
         "y": -40,
         "stato": 0,
@@ -993,7 +993,7 @@
       },
       {
         "id": 205,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 340,
         "y": 0,
         "stato": 0,
@@ -1032,7 +1032,7 @@
       },
       {
         "id": 216,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 260,
         "y": 100,
         "stato": 0,
@@ -1056,7 +1056,7 @@
       },
       {
         "id": 222,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 260,
         "y": 140,
         "stato": 0,
@@ -1080,7 +1080,7 @@
       },
       {
         "id": 228,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": 340,
         "y": 120,
         "stato": 0,
@@ -1104,7 +1104,7 @@
       },
       {
         "id": 234,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 340,
         "y": 160,
         "stato": 0,
@@ -1143,7 +1143,7 @@
       },
       {
         "id": 245,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 260,
         "y": 260,
         "stato": 0,
@@ -1167,7 +1167,7 @@
       },
       {
         "id": 251,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 260,
         "y": 300,
         "stato": 0,
@@ -1191,7 +1191,7 @@
       },
       {
         "id": 257,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": 340,
         "y": 280,
         "stato": 0,
@@ -1215,7 +1215,7 @@
       },
       {
         "id": 263,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 340,
         "y": 320,
         "stato": 0,
@@ -1254,7 +1254,7 @@
       },
       {
         "id": 274,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 260,
         "y": 420,
         "stato": 0,
@@ -1278,7 +1278,7 @@
       },
       {
         "id": 280,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 260,
         "y": 460,
         "stato": 0,
@@ -1302,7 +1302,7 @@
       },
       {
         "id": 286,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": 340,
         "y": 440,
         "stato": 0,
@@ -1326,7 +1326,7 @@
       },
       {
         "id": 292,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 340,
         "y": 480,
         "stato": 0,
@@ -1365,7 +1365,7 @@
       },
       {
         "id": 303,
-        "tipo": "DECODER_BCD7",
+        "tipo": "CUSTOM_BCD→7SEG",
         "x": 620,
         "y": 100,
         "stato": 0,

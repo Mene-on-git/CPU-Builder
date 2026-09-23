@@ -5,7 +5,7 @@
     "chips": [
       {
         "id": 745824,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": -320,
         "y": 60,
         "stato": 0,
@@ -40,7 +40,7 @@
       },
       {
         "id": 745831,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": -320,
         "y": 280,
         "stato": 0,
@@ -75,7 +75,7 @@
       },
       {
         "id": 745847,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -300,
         "y": -40,
         "stato": 0,
@@ -95,7 +95,7 @@
       },
       {
         "id": 745851,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -180,
         "y": 180,
         "stato": 0,

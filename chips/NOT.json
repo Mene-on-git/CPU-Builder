@@ -1,0 +1,90 @@
+{
+  "nome": "NOT",
+  "colore": "#8e44ad",
+  "ingressi": [
+    "A"
+  ],
+  "uscite": [
+    "Q"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800001,
+        "tipo": "INGRESSO",
+        "x": -300,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "A",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800002,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800003,
+        "tipo": "NAND",
+        "x": -120,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800004,
+            "et": "A"
+          },
+          {
+            "id": 800005,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800006,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800007,
+        "tipo": "USCITA",
+        "x": 60,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800008,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800009,
+        "srcId": 800002,
+        "dstId": 800004
+      },
+      {
+        "id": 800010,
+        "srcId": 800002,
+        "dstId": 800005
+      },
+      {
+        "id": 800011,
+        "srcId": 800006,
+        "dstId": 800008
+      }
+    ]
+  },
+  "descrizione": "Porta NOT realizzata con una NAND ad ingressi uniti: Q = NOT A.",
+  "categoria": "porte"
+}

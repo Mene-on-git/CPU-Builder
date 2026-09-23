@@ -1,0 +1,531 @@
+{
+  "nome": "Contatore 4bit",
+  "colore": "#9b59b6",
+  "ingressi": [
+    "CLK",
+    "RST"
+  ],
+  "uscite": [
+    "Q0",
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800304,
+        "tipo": "INGRESSO",
+        "x": -720,
+        "y": 100,
+        "stato": 0,
+        "nomeCustom": "CLK",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800305,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800306,
+        "tipo": "INGRESSO",
+        "x": -720,
+        "y": 300,
+        "stato": 0,
+        "nomeCustom": "RST",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800307,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800308,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": -480,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800309,
+            "et": "D"
+          },
+          {
+            "id": 800310,
+            "et": "CLK"
+          },
+          {
+            "id": 800311,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800312,
+            "et": "Q"
+          },
+          {
+            "id": 800313,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 800314,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": -480,
+        "y": 180,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800315,
+            "et": "D"
+          },
+          {
+            "id": 800316,
+            "et": "CLK"
+          },
+          {
+            "id": 800317,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800318,
+            "et": "Q"
+          },
+          {
+            "id": 800319,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 800320,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": -480,
+        "y": 360,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800321,
+            "et": "D"
+          },
+          {
+            "id": 800322,
+            "et": "CLK"
+          },
+          {
+            "id": 800323,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800324,
+            "et": "Q"
+          },
+          {
+            "id": 800325,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 800326,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": -480,
+        "y": 540,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800327,
+            "et": "D"
+          },
+          {
+            "id": 800328,
+            "et": "CLK"
+          },
+          {
+            "id": 800329,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800330,
+            "et": "Q"
+          },
+          {
+            "id": 800331,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 800332,
+        "tipo": "CUSTOM_NOT",
+        "x": -240,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800333,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800334,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800335,
+        "tipo": "CUSTOM_XOR",
+        "x": -240,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800336,
+            "et": "A"
+          },
+          {
+            "id": 800337,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800338,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800339,
+        "tipo": "CUSTOM_AND",
+        "x": -240,
+        "y": 380,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800340,
+            "et": "A"
+          },
+          {
+            "id": 800341,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800342,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800343,
+        "tipo": "CUSTOM_XOR",
+        "x": 40,
+        "y": 400,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800344,
+            "et": "A"
+          },
+          {
+            "id": 800345,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800346,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800347,
+        "tipo": "CUSTOM_AND",
+        "x": 40,
+        "y": 560,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800348,
+            "et": "A"
+          },
+          {
+            "id": 800349,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800350,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800351,
+        "tipo": "CUSTOM_XOR",
+        "x": 300,
+        "y": 560,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800352,
+            "et": "A"
+          },
+          {
+            "id": 800353,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800354,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800355,
+        "tipo": "USCITA",
+        "x": 560,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "Q0",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800356,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 800357,
+        "tipo": "USCITA",
+        "x": 560,
+        "y": 160,
+        "stato": 0,
+        "nomeCustom": "Q1",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800358,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 800359,
+        "tipo": "USCITA",
+        "x": 560,
+        "y": 320,
+        "stato": 0,
+        "nomeCustom": "Q2",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800360,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 800361,
+        "tipo": "USCITA",
+        "x": 560,
+        "y": 480,
+        "stato": 0,
+        "nomeCustom": "Q3",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800362,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800363,
+        "srcId": 800305,
+        "dstId": 800310
+      },
+      {
+        "id": 800364,
+        "srcId": 800307,
+        "dstId": 800311
+      },
+      {
+        "id": 800365,
+        "srcId": 800305,
+        "dstId": 800316
+      },
+      {
+        "id": 800366,
+        "srcId": 800307,
+        "dstId": 800317
+      },
+      {
+        "id": 800367,
+        "srcId": 800305,
+        "dstId": 800322
+      },
+      {
+        "id": 800368,
+        "srcId": 800307,
+        "dstId": 800323
+      },
+      {
+        "id": 800369,
+        "srcId": 800305,
+        "dstId": 800328
+      },
+      {
+        "id": 800370,
+        "srcId": 800307,
+        "dstId": 800329
+      },
+      {
+        "id": 800371,
+        "srcId": 800312,
+        "dstId": 800333
+      },
+      {
+        "id": 800372,
+        "srcId": 800334,
+        "dstId": 800309
+      },
+      {
+        "id": 800373,
+        "srcId": 800312,
+        "dstId": 800336
+      },
+      {
+        "id": 800374,
+        "srcId": 800318,
+        "dstId": 800337
+      },
+      {
+        "id": 800375,
+        "srcId": 800338,
+        "dstId": 800315
+      },
+      {
+        "id": 800376,
+        "srcId": 800312,
+        "dstId": 800340
+      },
+      {
+        "id": 800377,
+        "srcId": 800318,
+        "dstId": 800341
+      },
+      {
+        "id": 800378,
+        "srcId": 800342,
+        "dstId": 800344
+      },
+      {
+        "id": 800379,
+        "srcId": 800324,
+        "dstId": 800345
+      },
+      {
+        "id": 800380,
+        "srcId": 800346,
+        "dstId": 800321
+      },
+      {
+        "id": 800381,
+        "srcId": 800342,
+        "dstId": 800348
+      },
+      {
+        "id": 800382,
+        "srcId": 800324,
+        "dstId": 800349
+      },
+      {
+        "id": 800383,
+        "srcId": 800350,
+        "dstId": 800352
+      },
+      {
+        "id": 800384,
+        "srcId": 800330,
+        "dstId": 800353
+      },
+      {
+        "id": 800385,
+        "srcId": 800354,
+        "dstId": 800327
+      },
+      {
+        "id": 800386,
+        "srcId": 800312,
+        "dstId": 800356
+      },
+      {
+        "id": 800387,
+        "srcId": 800318,
+        "dstId": 800358
+      },
+      {
+        "id": 800388,
+        "srcId": 800324,
+        "dstId": 800360
+      },
+      {
+        "id": 800389,
+        "srcId": 800330,
+        "dstId": 800362
+      }
+    ]
+  },
+  "descrizione": "Contatore binario sincrono 4 bit (0-15) costruito con 4 Flip-Flop D e logica di riporto (NOT/XOR/AND). Incrementa sul fronte di salita di CLK; RST=1 azzera.",
+  "categoria": "memoria"
+}

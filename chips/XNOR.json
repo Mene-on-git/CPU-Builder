@@ -1,0 +1,247 @@
+{
+  "nome": "XNOR",
+  "colore": "#e91e63",
+  "ingressi": [
+    "A",
+    "B"
+  ],
+  "uscite": [
+    "Q"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800118,
+        "tipo": "INGRESSO",
+        "x": -400,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "A",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800119,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800120,
+        "tipo": "INGRESSO",
+        "x": -400,
+        "y": 260,
+        "stato": 0,
+        "nomeCustom": "B",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800121,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800122,
+        "tipo": "NAND",
+        "x": -250,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800123,
+            "et": "A"
+          },
+          {
+            "id": 800124,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800125,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800126,
+        "tipo": "NAND",
+        "x": -100,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800127,
+            "et": "A"
+          },
+          {
+            "id": 800128,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800129,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800130,
+        "tipo": "NAND",
+        "x": -100,
+        "y": 260,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800131,
+            "et": "A"
+          },
+          {
+            "id": 800132,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800133,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800134,
+        "tipo": "NAND",
+        "x": 60,
+        "y": 150,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800135,
+            "et": "A"
+          },
+          {
+            "id": 800136,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800137,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800138,
+        "tipo": "NAND",
+        "x": 200,
+        "y": 150,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800139,
+            "et": "A"
+          },
+          {
+            "id": 800140,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800141,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800142,
+        "tipo": "USCITA",
+        "x": 360,
+        "y": 150,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800143,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800144,
+        "srcId": 800119,
+        "dstId": 800123
+      },
+      {
+        "id": 800145,
+        "srcId": 800121,
+        "dstId": 800124
+      },
+      {
+        "id": 800146,
+        "srcId": 800119,
+        "dstId": 800127
+      },
+      {
+        "id": 800147,
+        "srcId": 800125,
+        "dstId": 800128
+      },
+      {
+        "id": 800148,
+        "srcId": 800121,
+        "dstId": 800131
+      },
+      {
+        "id": 800149,
+        "srcId": 800125,
+        "dstId": 800132
+      },
+      {
+        "id": 800150,
+        "srcId": 800129,
+        "dstId": 800135
+      },
+      {
+        "id": 800151,
+        "srcId": 800133,
+        "dstId": 800136
+      },
+      {
+        "id": 800152,
+        "srcId": 800137,
+        "dstId": 800139
+      },
+      {
+        "id": 800153,
+        "srcId": 800137,
+        "dstId": 800140
+      },
+      {
+        "id": 800154,
+        "srcId": 800141,
+        "dstId": 800143
+      }
+    ]
+  },
+  "descrizione": "Porta XNOR: una XOR (4 NAND) seguita da un invertitore.",
+  "categoria": "porte"
+}

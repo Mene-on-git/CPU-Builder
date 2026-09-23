@@ -183,7 +183,7 @@
       },
       {
         "id": 2050,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": 60,
         "y": -180,
         "stato": 0,
@@ -204,7 +204,7 @@
       },
       {
         "id": 2053,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 180,
         "y": -220,
         "stato": 0,
@@ -229,7 +229,7 @@
       },
       {
         "id": 2057,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 180,
         "y": -120,
         "stato": 0,
@@ -254,7 +254,7 @@
       },
       {
         "id": 2061,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": 320,
         "y": -180,
         "stato": 0,
@@ -279,7 +279,7 @@
       },
       {
         "id": 2065,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": 460,
         "y": -180,
         "stato": 0,
@@ -303,8 +303,8 @@
         "tipo": "INGRESSO",
         "x": -820,
         "y": -40,
-        "stato": 0,
-        "nomeCustom": "",
+        "stato": 1,
+        "nomeCustom": "EN (abilita conteggio)",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
@@ -357,7 +357,7 @@
       },
       {
         "id": 5376,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": -220,
         "y": -280,
         "stato": 0,

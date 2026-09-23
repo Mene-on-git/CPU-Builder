@@ -1,0 +1,142 @@
+{
+  "nome": "AND",
+  "colore": "#2980b9",
+  "ingressi": [
+    "A",
+    "B"
+  ],
+  "uscite": [
+    "Q"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800012,
+        "tipo": "INGRESSO",
+        "x": -320,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "A",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800013,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800014,
+        "tipo": "INGRESSO",
+        "x": -320,
+        "y": 150,
+        "stato": 0,
+        "nomeCustom": "B",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800015,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800016,
+        "tipo": "NAND",
+        "x": -170,
+        "y": 80,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800017,
+            "et": "A"
+          },
+          {
+            "id": 800018,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800019,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800020,
+        "tipo": "NAND",
+        "x": -20,
+        "y": 80,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800021,
+            "et": "A"
+          },
+          {
+            "id": 800022,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800023,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800024,
+        "tipo": "USCITA",
+        "x": 140,
+        "y": 80,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800025,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800026,
+        "srcId": 800013,
+        "dstId": 800017
+      },
+      {
+        "id": 800027,
+        "srcId": 800015,
+        "dstId": 800018
+      },
+      {
+        "id": 800028,
+        "srcId": 800019,
+        "dstId": 800021
+      },
+      {
+        "id": 800029,
+        "srcId": 800019,
+        "dstId": 800022
+      },
+      {
+        "id": 800030,
+        "srcId": 800023,
+        "dstId": 800025
+      }
+    ]
+  },
+  "descrizione": "Porta AND realizzata con due NAND: la seconda, ad ingressi uniti, inverte l'uscita della prima.",
+  "categoria": "porte"
+}

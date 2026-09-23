@@ -23,6 +23,36 @@ const COL = {
 // ======================== SCHEMI INTERNI CHIP NATIVI ========================
 
 const SCHEMI_INTERNI = {
+    NAND: {
+        titolo: 'NAND — Vista Interna (livello transistor)',
+        desc: 'La NAND e\' la porta logica atomica di questo simulatore: tutte le altre porte e chip logici sono costruiti a partire da lei. '
+            + 'A livello di transistor (tecnologia CMOS) si realizza con 4 transistor: due PMOS in parallelo verso VDD (si accendono quando l\'ingresso e\' 0) '
+            + 'e due NMOS in serie verso massa (conducono solo quando entrambi gli ingressi sono 1). '
+            + 'Quindi Q = 0 solo se A=1 e B=1, altrimenti Q = 1.',
+        nodi: [
+            { id:'in_a',  tipo:'IN',   nome:'A',   x:40,  y:150 },
+            { id:'in_b',  tipo:'IN',   nome:'B',   x:40,  y:260 },
+            { id:'vdd',   tipo:'VDD',  nome:'VDD', x:240, y:20,  w:120, h:30 },
+            { id:'p1',    tipo:'PMOS', nome:'PMOS₁', x:200, y:90 },
+            { id:'p2',    tipo:'PMOS', nome:'PMOS₂', x:330, y:90 },
+            { id:'n1',    tipo:'NMOS', nome:'NMOS₁', x:265, y:230 },
+            { id:'n2',    tipo:'NMOS', nome:'NMOS₂', x:265, y:330 },
+            { id:'gnd',   tipo:'GND',  nome:'GND', x:240, y:430, w:120, h:30 },
+            { id:'out_q', tipo:'OUT',  nome:'Q',   x:520, y:180 },
+        ],
+        conn: [
+            ['vdd','p1'],['vdd','p2'],
+            ['p1','out_q'],['p2','out_q'],
+            ['out_q','n1'],['n1','n2'],['n2','gnd'],
+            ['in_a','p1'],['in_a','n1'],
+            ['in_b','p2'],['in_b','n2'],
+        ],
+        legenda: [
+            { col:'#e67e22', txt:'PMOS (conduce con ingresso 0)' },
+            { col:'#3498db', txt:'NMOS (conduce con ingresso 1)' },
+            { col:'#c0392b', txt:'VDD / GND' },
+        ],
+    },
     FLIPFLOP_D: {
         titolo: 'Flip-Flop D — Vista Interna',
         desc: 'Flip-flop D edge-triggered con reset sincrono. Cattura il valore di D sul fronte di salita di CLK. Se RST=1, Q viene forzato a 0.',
@@ -133,7 +163,8 @@ const SCHEMI_INTERNI = {
         desc: 'Memoria di sola lettura da 64 bit (immagine 8x8, modificabile con click sull\'anteprima del chip). '
             + 'Un contatore a 3 bit (0-7) scandisce le righe: durante la fase alta di CLK la riga corrente '
             + 'viene presentata in uscita (indirizzo R0-R2 + pixel D0-D7) con WE=1, cosi\' lo Schermo 8x8 la memorizza; '
-            + 'sul fronte di discesa di CLK il contatore avanza alla riga successiva. RST riporta la scansione alla riga 0.',
+            + 'sul fronte di discesa di CLK il contatore avanza alla riga successiva. RST riporta la scansione alla riga 0. '
+            + 'Le due meta\' esistono anche come chip modulari separati: "Contatore 0-7" e "ROM 64bit".',
         nodi: [
             { id:'in_clk', tipo:'IN',  nome:'CLK', x:40,  y:80 },
             { id:'in_rst', tipo:'IN',  nome:'RST', x:40,  y:200 },
@@ -167,12 +198,43 @@ const SCHEMI_INTERNI = {
             { col:'#e67e22', txt:'Uscita' },
         ],
     },
+    ROM_8X8: {
+        titolo: 'ROM 64 bit a righe — Vista Interna',
+        desc: 'Memoria di sola lettura da 64 bit organizzata in 8 righe da 8 bit (immagine 8x8). '
+            + 'Lettura combinatoria: l\'indirizzo R0-R2 (0-7) seleziona la riga, i cui 8 bit escono su D0-D7 '
+            + '(D0 = pixel piu\' a sinistra). Il contenuto si modifica con click sull\'anteprima del chip.',
+        nodi: [
+            { id:'in_r0', tipo:'IN',  nome:'R0', x:40,  y:60 },
+            { id:'in_r1', tipo:'IN',  nome:'R1', x:40,  y:140 },
+            { id:'in_r2', tipo:'IN',  nome:'R2', x:40,  y:220 },
+            { id:'rom',   tipo:'ROM', nome:'ROM\n64 bit\n8 righe', x:220, y:80, w:120, h:150 },
+            { id:'out_d0', tipo:'OUT', nome:'D0', x:480, y:20,  w:70, h:34 },
+            { id:'out_d1', tipo:'OUT', nome:'D1', x:480, y:64,  w:70, h:34 },
+            { id:'out_d2', tipo:'OUT', nome:'D2', x:480, y:108, w:70, h:34 },
+            { id:'out_d3', tipo:'OUT', nome:'D3', x:480, y:152, w:70, h:34 },
+            { id:'out_d4', tipo:'OUT', nome:'D4', x:480, y:196, w:70, h:34 },
+            { id:'out_d5', tipo:'OUT', nome:'D5', x:480, y:240, w:70, h:34 },
+            { id:'out_d6', tipo:'OUT', nome:'D6', x:480, y:284, w:70, h:34 },
+            { id:'out_d7', tipo:'OUT', nome:'D7', x:480, y:328, w:70, h:34 },
+        ],
+        conn: [
+            ['in_r0','rom'],['in_r1','rom'],['in_r2','rom'],
+            ['rom','out_d0'],['rom','out_d1'],['rom','out_d2'],['rom','out_d3'],
+            ['rom','out_d4'],['rom','out_d5'],['rom','out_d6'],['rom','out_d7'],
+        ],
+        legenda: [
+            { col:'#f39c12', txt:'ROM 64 bit (immagine)' },
+            { col:'#16a085', txt:'Ingresso (indirizzo)' },
+            { col:'#e67e22', txt:'Uscita (pixel riga)' },
+        ],
+    },
 };
 
 const COLORI_NODO = {
     IN:   '#16a085', OUT:  '#e67e22', NAND: '#c0392b', AND: '#2980b9',
     OR:   '#27ae60', NOT:  '#8e44ad', XOR:  '#d35400', DFF:  '#3498db',
     ROM:  '#f39c12', NOR:  '#1abc9c', XNOR: '#e91e63', BUF:  '#607d8b',
+    PMOS: '#e67e22', NMOS: '#3498db', VDD:  '#c0392b', GND:  '#c0392b',
 };
 
 // Rettangolo (in coordinate mondo) dell'anteprima cliccabile del chip DECODER_STRINGA.
@@ -385,8 +447,15 @@ class Renderer {
         if(c.tipo==='SCHERMO_8X8') {
             this._schermo8x8(ctx, c);
         }
-        if(c.tipo==='DECODER_STRINGA') {
+        if(c.tipo==='DECODER_STRINGA' || c.tipo==='CUSTOM_ROM_IMMAGINE') {
             this._decoderStringa(ctx, c);
+        }
+        if(c.tipo==='ROM_8X8') {
+            this._rom8x8(ctx, c);
+        }
+        if(c.tipo==='CUSTOM_ROM_64BIT') {
+            // Il chip personalizzato "ROM 64bit" ha la stessa anteprima cliccabile del nucleo nativo
+            this._rom8x8(ctx, c);
         }
         if(c.tipo==='FLIPFLOP_D') {
             this._flipflopD(ctx, c);
@@ -613,13 +682,58 @@ class Renderer {
             }
         }
 
-        // Riga corrente in uscita
-        const riga = c.statoInterno?.riga || 0;
+        // Riga corrente in uscita (solo se il chip la tiene internamente)
+        const riga = c.statoInterno?.riga;
+        if(riga !== undefined){
+            ctx.fillStyle = '#ccc';
+            ctx.font = `${10/this.zoom}px monospace`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('riga ' + riga + '/7', c.x + c.w/2, c.y + c.h - 12);
+        }
+
+        // Hint per le interazioni
+        ctx.fillStyle = 'rgba(255,255,255,0.45)';
+        ctx.font = `${8/this.zoom}px sans-serif`;
+        ctx.fillText('click img = modifica', c.x + c.w/2, pr.y - 14);
+        ctx.fillText('2x click = vista interna', c.x + c.w/2, pr.y - 5);
+    }
+
+    // ---- ROM 64 bit a righe (contenuto immagine 8x8, lettura combinatoria) ----
+    //
+    //  Ingressi R0-R2 = indirizzo riga, uscite D0-D7 = pixel di quella riga.
+    //  Click sull'anteprima = modifica immagine, doppio click sul corpo = vista interna.
+    //
+    _rom8x8(ctx, c) {
+        const dati = c.statoInterno?.dati || ROM_DEFAULT_8X8;
+
+        // Mini-anteprima 8x8 centrata (area cliccabile: vedi romPreviewRect)
+        const pr = romPreviewRect(c);
+        const dim = 48;
+        const cella = dim / 8;
+        const gx = pr.x + 3;
+        const gy = pr.y + 3;
+
+        ctx.fillStyle = '#0a0a0a';
+        this._rrect(ctx, pr.x, pr.y, pr.w, pr.h, 3);
+        ctx.fill();
+
+        for(let r=0; r<8; r++){
+            for(let col=0; col<8; col++){
+                if(dati[r*8+col] === '1'){
+                    ctx.fillStyle = '#ff1a1a';
+                    ctx.fillRect(gx + col*cella + 0.5, gy + r*cella + 0.5, cella-1, cella-1);
+                }
+            }
+        }
+
+        // Riga attualmente letta (indirizzo in ingresso)
+        const addr = (c.pinI[0]?.stato||0) | ((c.pinI[1]?.stato||0)<<1) | ((c.pinI[2]?.stato||0)<<2);
         ctx.fillStyle = '#ccc';
         ctx.font = `${10/this.zoom}px monospace`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('riga ' + riga + '/7', c.x + c.w/2, c.y + c.h - 12);
+        ctx.fillText('lettura riga ' + addr, c.x + c.w/2, c.y + c.h - 12);
 
         // Hint per le interazioni
         ctx.fillStyle = 'rgba(255,255,255,0.45)';

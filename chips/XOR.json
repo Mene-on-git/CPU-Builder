@@ -1,0 +1,212 @@
+{
+  "nome": "XOR",
+  "colore": "#d35400",
+  "ingressi": [
+    "A",
+    "B"
+  ],
+  "uscite": [
+    "Q"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800056,
+        "tipo": "INGRESSO",
+        "x": -360,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "A",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800057,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800058,
+        "tipo": "INGRESSO",
+        "x": -360,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "B",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800059,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800060,
+        "tipo": "NAND",
+        "x": -210,
+        "y": 120,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800061,
+            "et": "A"
+          },
+          {
+            "id": 800062,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800063,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800064,
+        "tipo": "NAND",
+        "x": -60,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800065,
+            "et": "A"
+          },
+          {
+            "id": 800066,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800067,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800068,
+        "tipo": "NAND",
+        "x": -60,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800069,
+            "et": "A"
+          },
+          {
+            "id": 800070,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800071,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800072,
+        "tipo": "NAND",
+        "x": 100,
+        "y": 130,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800073,
+            "et": "A"
+          },
+          {
+            "id": 800074,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800075,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800076,
+        "tipo": "USCITA",
+        "x": 270,
+        "y": 130,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800077,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800078,
+        "srcId": 800057,
+        "dstId": 800061
+      },
+      {
+        "id": 800079,
+        "srcId": 800059,
+        "dstId": 800062
+      },
+      {
+        "id": 800080,
+        "srcId": 800057,
+        "dstId": 800065
+      },
+      {
+        "id": 800081,
+        "srcId": 800063,
+        "dstId": 800066
+      },
+      {
+        "id": 800082,
+        "srcId": 800059,
+        "dstId": 800069
+      },
+      {
+        "id": 800083,
+        "srcId": 800063,
+        "dstId": 800070
+      },
+      {
+        "id": 800084,
+        "srcId": 800067,
+        "dstId": 800073
+      },
+      {
+        "id": 800085,
+        "srcId": 800071,
+        "dstId": 800074
+      },
+      {
+        "id": 800086,
+        "srcId": 800075,
+        "dstId": 800077
+      }
+    ]
+  },
+  "descrizione": "Porta XOR realizzata con la classica rete di 4 NAND.",
+  "categoria": "porte"
+}

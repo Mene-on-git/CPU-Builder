@@ -44,7 +44,7 @@
       },
       {
         "id": 702,
-        "tipo": "NOR",
+        "tipo": "CUSTOM_NOR",
         "x": -140,
         "y": -400,
         "stato": 0,
@@ -68,7 +68,7 @@
       },
       {
         "id": 707,
-        "tipo": "NOR",
+        "tipo": "CUSTOM_NOR",
         "x": -140,
         "y": -220,
         "stato": 0,
@@ -108,7 +108,7 @@
       },
       {
         "id": 725,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -400,
         "y": -360,
         "stato": 0,
@@ -132,7 +132,7 @@
       },
       {
         "id": 730,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -400,
         "y": -220,
         "stato": 0,
@@ -156,7 +156,7 @@
       },
       {
         "id": 743,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -540,
         "y": -140,
         "stato": 0,

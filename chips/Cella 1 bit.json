@@ -1,0 +1,123 @@
+{
+  "nome": "Cella 1 bit",
+  "colore": "#16a085",
+  "ingressi": [],
+  "uscite": [
+    "Q"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800452,
+        "tipo": "COSTANTE_0",
+        "x": -320,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800453,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800454,
+        "tipo": "CUSTOM_NOR",
+        "x": -160,
+        "y": 20,
+        "stato": 0,
+        "nomeCustom": "NQ",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800455,
+            "et": "A"
+          },
+          {
+            "id": 800456,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800457,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800458,
+        "tipo": "CUSTOM_NOR",
+        "x": -160,
+        "y": 160,
+        "stato": 0,
+        "nomeCustom": "NQN",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800459,
+            "et": "A"
+          },
+          {
+            "id": 800460,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800461,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800462,
+        "tipo": "USCITA",
+        "x": 40,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800463,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800464,
+        "srcId": 800453,
+        "dstId": 800455
+      },
+      {
+        "id": 800465,
+        "srcId": 800461,
+        "dstId": 800456
+      },
+      {
+        "id": 800466,
+        "srcId": 800457,
+        "dstId": 800460
+      },
+      {
+        "id": 800467,
+        "srcId": 800453,
+        "dstId": 800459
+      },
+      {
+        "id": 800468,
+        "srcId": 800457,
+        "dstId": 800463
+      }
+    ]
+  },
+  "descrizione": "Cella di memoria elementare: latch SR realizzato con due NOR in retroazione. Mantiene il bit memorizzato; il contenuto viene impostato dall'editor della ROM che la contiene.",
+  "categoria": "memoria"
+}

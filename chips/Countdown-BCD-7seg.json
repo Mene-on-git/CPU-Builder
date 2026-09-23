@@ -185,7 +185,7 @@
       },
       {
         "id": 130,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": 300,
         "y": -60,
         "stato": 0,
@@ -221,7 +221,7 @@
       },
       {
         "id": 140,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": 300,
         "y": 100,
         "stato": 0,
@@ -257,7 +257,7 @@
       },
       {
         "id": 150,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": 300,
         "y": 260,
         "stato": 0,
@@ -293,7 +293,7 @@
       },
       {
         "id": 160,
-        "tipo": "FLIPFLOP_D",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": 300,
         "y": 420,
         "stato": 0,
@@ -329,7 +329,7 @@
       },
       {
         "id": 170,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -60,
         "y": 500,
         "stato": 0,
@@ -353,7 +353,7 @@
       },
       {
         "id": 174,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -60,
         "y": 600,
         "stato": 0,
@@ -377,7 +377,7 @@
       },
       {
         "id": 178,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 140,
         "y": 640,
         "stato": 0,
@@ -401,7 +401,7 @@
       },
       {
         "id": 182,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": -360,
         "y": 420,
         "stato": 0,
@@ -425,7 +425,7 @@
       },
       {
         "id": 186,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -180,
         "y": 340,
         "stato": 0,
@@ -445,7 +445,7 @@
       },
       {
         "id": 189,
-        "tipo": "XNOR",
+        "tipo": "CUSTOM_XNOR",
         "x": -40,
         "y": 40,
         "stato": 0,
@@ -469,7 +469,7 @@
       },
       {
         "id": 193,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -40,
         "y": 200,
         "stato": 0,
@@ -493,7 +493,7 @@
       },
       {
         "id": 197,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -40,
         "y": 360,
         "stato": 0,
@@ -517,7 +517,7 @@
       },
       {
         "id": 201,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": 140,
         "y": -120,
         "stato": 0,
@@ -541,7 +541,7 @@
       },
       {
         "id": 205,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 140,
         "y": 40,
         "stato": 0,
@@ -565,7 +565,7 @@
       },
       {
         "id": 209,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": 140,
         "y": 200,
         "stato": 0,
@@ -589,7 +589,7 @@
       },
       {
         "id": 213,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": 140,
         "y": 360,
         "stato": 0,
@@ -613,7 +613,7 @@
       },
       {
         "id": 220,
-        "tipo": "DECODER_BCD7",
+        "tipo": "CUSTOM_BCD→7SEG",
         "x": 560,
         "y": 100,
         "stato": 0,

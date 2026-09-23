@@ -1,0 +1,391 @@
+{
+  "nome": "Contatore 0-7",
+  "colore": "#9b59b6",
+  "ingressi": [
+    "CLK",
+    "RST"
+  ],
+  "uscite": [
+    "R0",
+    "R1",
+    "R2"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800390,
+        "tipo": "INGRESSO",
+        "x": -720,
+        "y": 100,
+        "stato": 0,
+        "nomeCustom": "CLK",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800391,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800392,
+        "tipo": "INGRESSO",
+        "x": -720,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "RST",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800393,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800394,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": -480,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800395,
+            "et": "D"
+          },
+          {
+            "id": 800396,
+            "et": "CLK"
+          },
+          {
+            "id": 800397,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800398,
+            "et": "Q"
+          },
+          {
+            "id": 800399,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 800400,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": -480,
+        "y": 180,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800401,
+            "et": "D"
+          },
+          {
+            "id": 800402,
+            "et": "CLK"
+          },
+          {
+            "id": 800403,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800404,
+            "et": "Q"
+          },
+          {
+            "id": 800405,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 800406,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": -480,
+        "y": 360,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800407,
+            "et": "D"
+          },
+          {
+            "id": 800408,
+            "et": "CLK"
+          },
+          {
+            "id": 800409,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800410,
+            "et": "Q"
+          },
+          {
+            "id": 800411,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 800412,
+        "tipo": "CUSTOM_NOT",
+        "x": -240,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800413,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800414,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800415,
+        "tipo": "CUSTOM_XOR",
+        "x": -240,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800416,
+            "et": "A"
+          },
+          {
+            "id": 800417,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800418,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800419,
+        "tipo": "CUSTOM_AND",
+        "x": -240,
+        "y": 380,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800420,
+            "et": "A"
+          },
+          {
+            "id": 800421,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800422,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800423,
+        "tipo": "CUSTOM_XOR",
+        "x": 40,
+        "y": 400,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800424,
+            "et": "A"
+          },
+          {
+            "id": 800425,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800426,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800427,
+        "tipo": "USCITA",
+        "x": 320,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "R0",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800428,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 800429,
+        "tipo": "USCITA",
+        "x": 320,
+        "y": 160,
+        "stato": 0,
+        "nomeCustom": "R1",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800430,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 800431,
+        "tipo": "USCITA",
+        "x": 320,
+        "y": 320,
+        "stato": 0,
+        "nomeCustom": "R2",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800432,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800433,
+        "srcId": 800391,
+        "dstId": 800396
+      },
+      {
+        "id": 800434,
+        "srcId": 800393,
+        "dstId": 800397
+      },
+      {
+        "id": 800435,
+        "srcId": 800391,
+        "dstId": 800402
+      },
+      {
+        "id": 800436,
+        "srcId": 800393,
+        "dstId": 800403
+      },
+      {
+        "id": 800437,
+        "srcId": 800391,
+        "dstId": 800408
+      },
+      {
+        "id": 800438,
+        "srcId": 800393,
+        "dstId": 800409
+      },
+      {
+        "id": 800439,
+        "srcId": 800398,
+        "dstId": 800413
+      },
+      {
+        "id": 800440,
+        "srcId": 800414,
+        "dstId": 800395
+      },
+      {
+        "id": 800441,
+        "srcId": 800398,
+        "dstId": 800416
+      },
+      {
+        "id": 800442,
+        "srcId": 800404,
+        "dstId": 800417
+      },
+      {
+        "id": 800443,
+        "srcId": 800418,
+        "dstId": 800401
+      },
+      {
+        "id": 800444,
+        "srcId": 800398,
+        "dstId": 800420
+      },
+      {
+        "id": 800445,
+        "srcId": 800404,
+        "dstId": 800421
+      },
+      {
+        "id": 800446,
+        "srcId": 800422,
+        "dstId": 800424
+      },
+      {
+        "id": 800447,
+        "srcId": 800410,
+        "dstId": 800425
+      },
+      {
+        "id": 800448,
+        "srcId": 800426,
+        "dstId": 800407
+      },
+      {
+        "id": 800449,
+        "srcId": 800398,
+        "dstId": 800428
+      },
+      {
+        "id": 800450,
+        "srcId": 800404,
+        "dstId": 800430
+      },
+      {
+        "id": 800451,
+        "srcId": 800410,
+        "dstId": 800432
+      }
+    ]
+  },
+  "descrizione": "Contatore sincrono a 3 bit (0-7) con reset, costruito con 3 Flip-Flop D e logica di riporto: ad ogni fronte di salita di CLK il valore incrementa e dopo 7 torna a 0. R0 e' il bit meno significativo. Pensato per scandire le righe della ROM 64bit e dello Schermo 8x8.",
+  "categoria": "memoria"
+}

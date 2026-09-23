@@ -1,0 +1,6105 @@
+{
+  "nome": "ROM 64bit",
+  "colore": "#b9770e",
+  "ingressi": [
+    "R0",
+    "R1",
+    "R2"
+  ],
+  "uscite": [
+    "D0",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800469,
+        "tipo": "INGRESSO",
+        "x": -660,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "R0",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800470,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800471,
+        "tipo": "INGRESSO",
+        "x": -660,
+        "y": 150,
+        "stato": 0,
+        "nomeCustom": "R1",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800472,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800473,
+        "tipo": "INGRESSO",
+        "x": -660,
+        "y": 260,
+        "stato": 0,
+        "nomeCustom": "R2",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800474,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800475,
+        "tipo": "CUSTOM_NOT",
+        "x": -500,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800476,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800477,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800478,
+        "tipo": "CUSTOM_NOT",
+        "x": -500,
+        "y": 150,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800479,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800480,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800481,
+        "tipo": "CUSTOM_NOT",
+        "x": -500,
+        "y": 260,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800482,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800483,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800487,
+        "tipo": "CUSTOM_AND",
+        "x": -340,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800488,
+            "et": "A"
+          },
+          {
+            "id": 800489,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800490,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800491,
+        "tipo": "CUSTOM_AND",
+        "x": -180,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800492,
+            "et": "A"
+          },
+          {
+            "id": 800493,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800494,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800499,
+        "tipo": "CUSTOM_AND",
+        "x": -340,
+        "y": 70,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800500,
+            "et": "A"
+          },
+          {
+            "id": 800501,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800502,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800503,
+        "tipo": "CUSTOM_AND",
+        "x": -180,
+        "y": 70,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800504,
+            "et": "A"
+          },
+          {
+            "id": 800505,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800506,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800511,
+        "tipo": "CUSTOM_AND",
+        "x": -340,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800512,
+            "et": "A"
+          },
+          {
+            "id": 800513,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800514,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800515,
+        "tipo": "CUSTOM_AND",
+        "x": -180,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800516,
+            "et": "A"
+          },
+          {
+            "id": 800517,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800518,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800523,
+        "tipo": "CUSTOM_AND",
+        "x": -340,
+        "y": 210,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800524,
+            "et": "A"
+          },
+          {
+            "id": 800525,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800526,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800527,
+        "tipo": "CUSTOM_AND",
+        "x": -180,
+        "y": 210,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800528,
+            "et": "A"
+          },
+          {
+            "id": 800529,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800530,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800535,
+        "tipo": "CUSTOM_AND",
+        "x": -340,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800536,
+            "et": "A"
+          },
+          {
+            "id": 800537,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800538,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800539,
+        "tipo": "CUSTOM_AND",
+        "x": -180,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800540,
+            "et": "A"
+          },
+          {
+            "id": 800541,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800542,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800547,
+        "tipo": "CUSTOM_AND",
+        "x": -340,
+        "y": 350,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800548,
+            "et": "A"
+          },
+          {
+            "id": 800549,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800550,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800551,
+        "tipo": "CUSTOM_AND",
+        "x": -180,
+        "y": 350,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800552,
+            "et": "A"
+          },
+          {
+            "id": 800553,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800554,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800559,
+        "tipo": "CUSTOM_AND",
+        "x": -340,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800560,
+            "et": "A"
+          },
+          {
+            "id": 800561,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800562,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800563,
+        "tipo": "CUSTOM_AND",
+        "x": -180,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800564,
+            "et": "A"
+          },
+          {
+            "id": 800565,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800566,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800571,
+        "tipo": "CUSTOM_AND",
+        "x": -340,
+        "y": 490,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800572,
+            "et": "A"
+          },
+          {
+            "id": 800573,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800574,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800575,
+        "tipo": "CUSTOM_AND",
+        "x": -180,
+        "y": 490,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800576,
+            "et": "A"
+          },
+          {
+            "id": 800577,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800578,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800583,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -580,
+        "y": -1600,
+        "stato": 0,
+        "nomeCustom": "b0",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800584,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800585,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -440,
+        "y": -1600,
+        "stato": 0,
+        "nomeCustom": "b1",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800586,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800587,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -300,
+        "y": -1600,
+        "stato": 0,
+        "nomeCustom": "b2",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800588,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800589,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -160,
+        "y": -1600,
+        "stato": 0,
+        "nomeCustom": "b3",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800590,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800591,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -20,
+        "y": -1600,
+        "stato": 0,
+        "nomeCustom": "b4",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800592,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800593,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 120,
+        "y": -1600,
+        "stato": 0,
+        "nomeCustom": "b5",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800594,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800595,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 260,
+        "y": -1600,
+        "stato": 0,
+        "nomeCustom": "b6",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800596,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800597,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 400,
+        "y": -1600,
+        "stato": 0,
+        "nomeCustom": "b7",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800598,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800599,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -580,
+        "y": -1480,
+        "stato": 0,
+        "nomeCustom": "b8",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800600,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800601,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -440,
+        "y": -1480,
+        "stato": 0,
+        "nomeCustom": "b9",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800602,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800603,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -300,
+        "y": -1480,
+        "stato": 0,
+        "nomeCustom": "b10",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800604,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800605,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -160,
+        "y": -1480,
+        "stato": 0,
+        "nomeCustom": "b11",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800606,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800607,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -20,
+        "y": -1480,
+        "stato": 0,
+        "nomeCustom": "b12",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800608,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800609,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 120,
+        "y": -1480,
+        "stato": 0,
+        "nomeCustom": "b13",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800610,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800611,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 260,
+        "y": -1480,
+        "stato": 0,
+        "nomeCustom": "b14",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800612,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800613,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 400,
+        "y": -1480,
+        "stato": 0,
+        "nomeCustom": "b15",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800614,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800615,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -580,
+        "y": -1340,
+        "stato": 0,
+        "nomeCustom": "b16",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800616,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800617,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -440,
+        "y": -1340,
+        "stato": 0,
+        "nomeCustom": "b17",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800618,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800619,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -300,
+        "y": -1340,
+        "stato": 0,
+        "nomeCustom": "b18",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800620,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800621,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -160,
+        "y": -1340,
+        "stato": 0,
+        "nomeCustom": "b19",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800622,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800623,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -20,
+        "y": -1340,
+        "stato": 0,
+        "nomeCustom": "b20",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800624,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800625,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 120,
+        "y": -1340,
+        "stato": 0,
+        "nomeCustom": "b21",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800626,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800627,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 260,
+        "y": -1340,
+        "stato": 0,
+        "nomeCustom": "b22",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800628,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800629,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 400,
+        "y": -1340,
+        "stato": 0,
+        "nomeCustom": "b23",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800630,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800631,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -580,
+        "y": -1220,
+        "stato": 0,
+        "nomeCustom": "b24",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800632,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800633,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -440,
+        "y": -1220,
+        "stato": 0,
+        "nomeCustom": "b25",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800634,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800635,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -300,
+        "y": -1220,
+        "stato": 0,
+        "nomeCustom": "b26",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800636,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800637,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -160,
+        "y": -1220,
+        "stato": 0,
+        "nomeCustom": "b27",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800638,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800639,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -20,
+        "y": -1220,
+        "stato": 0,
+        "nomeCustom": "b28",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800640,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800641,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 120,
+        "y": -1220,
+        "stato": 0,
+        "nomeCustom": "b29",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800642,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800643,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 260,
+        "y": -1220,
+        "stato": 0,
+        "nomeCustom": "b30",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800644,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800645,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 400,
+        "y": -1220,
+        "stato": 0,
+        "nomeCustom": "b31",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800646,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800647,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -580,
+        "y": -1100,
+        "stato": 0,
+        "nomeCustom": "b32",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800648,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800649,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -440,
+        "y": -1100,
+        "stato": 0,
+        "nomeCustom": "b33",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800650,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800651,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -300,
+        "y": -1100,
+        "stato": 0,
+        "nomeCustom": "b34",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800652,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800653,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -160,
+        "y": -1100,
+        "stato": 0,
+        "nomeCustom": "b35",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800654,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800655,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -20,
+        "y": -1100,
+        "stato": 0,
+        "nomeCustom": "b36",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800656,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800657,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 120,
+        "y": -1100,
+        "stato": 0,
+        "nomeCustom": "b37",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800658,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800659,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 260,
+        "y": -1100,
+        "stato": 0,
+        "nomeCustom": "b38",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800660,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800661,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 400,
+        "y": -1100,
+        "stato": 0,
+        "nomeCustom": "b39",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800662,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800663,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -580,
+        "y": -980,
+        "stato": 0,
+        "nomeCustom": "b40",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800664,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800665,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -440,
+        "y": -980,
+        "stato": 0,
+        "nomeCustom": "b41",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800666,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800667,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -300,
+        "y": -980,
+        "stato": 0,
+        "nomeCustom": "b42",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800668,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800669,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -160,
+        "y": -980,
+        "stato": 0,
+        "nomeCustom": "b43",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800670,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800671,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -20,
+        "y": -980,
+        "stato": 0,
+        "nomeCustom": "b44",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800672,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800673,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 120,
+        "y": -980,
+        "stato": 0,
+        "nomeCustom": "b45",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800674,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800675,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 260,
+        "y": -980,
+        "stato": 0,
+        "nomeCustom": "b46",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800676,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800677,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 400,
+        "y": -980,
+        "stato": 0,
+        "nomeCustom": "b47",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800678,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800679,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -580,
+        "y": -860,
+        "stato": 0,
+        "nomeCustom": "b48",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800680,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800681,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -440,
+        "y": -860,
+        "stato": 0,
+        "nomeCustom": "b49",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800682,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800683,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -300,
+        "y": -860,
+        "stato": 0,
+        "nomeCustom": "b50",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800684,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800685,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -160,
+        "y": -860,
+        "stato": 0,
+        "nomeCustom": "b51",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800686,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800687,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -20,
+        "y": -860,
+        "stato": 0,
+        "nomeCustom": "b52",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800688,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800689,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 120,
+        "y": -860,
+        "stato": 0,
+        "nomeCustom": "b53",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800690,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800691,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 260,
+        "y": -860,
+        "stato": 0,
+        "nomeCustom": "b54",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800692,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800693,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 400,
+        "y": -860,
+        "stato": 0,
+        "nomeCustom": "b55",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800694,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800695,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -580,
+        "y": -740,
+        "stato": 0,
+        "nomeCustom": "b56",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800696,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800697,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -440,
+        "y": -740,
+        "stato": 0,
+        "nomeCustom": "b57",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800698,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800699,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -300,
+        "y": -740,
+        "stato": 0,
+        "nomeCustom": "b58",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800700,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800701,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -160,
+        "y": -740,
+        "stato": 0,
+        "nomeCustom": "b59",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800702,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800703,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": -20,
+        "y": -740,
+        "stato": 0,
+        "nomeCustom": "b60",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800704,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800705,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 120,
+        "y": -740,
+        "stato": 0,
+        "nomeCustom": "b61",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800706,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800707,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 260,
+        "y": -740,
+        "stato": 0,
+        "nomeCustom": "b62",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800708,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800709,
+        "tipo": "CUSTOM_CELLA_1_BIT",
+        "x": 400,
+        "y": -740,
+        "stato": 0,
+        "nomeCustom": "b63",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800710,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800711,
+        "tipo": "CUSTOM_AND",
+        "x": 320,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800712,
+            "et": "A"
+          },
+          {
+            "id": 800713,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800714,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800717,
+        "tipo": "CUSTOM_AND",
+        "x": 320,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800718,
+            "et": "A"
+          },
+          {
+            "id": 800719,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800720,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800723,
+        "tipo": "CUSTOM_AND",
+        "x": 320,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800724,
+            "et": "A"
+          },
+          {
+            "id": 800725,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800726,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800729,
+        "tipo": "CUSTOM_AND",
+        "x": 320,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800730,
+            "et": "A"
+          },
+          {
+            "id": 800731,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800732,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800735,
+        "tipo": "CUSTOM_AND",
+        "x": 320,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800736,
+            "et": "A"
+          },
+          {
+            "id": 800737,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800738,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800741,
+        "tipo": "CUSTOM_AND",
+        "x": 320,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800742,
+            "et": "A"
+          },
+          {
+            "id": 800743,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800744,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800747,
+        "tipo": "CUSTOM_AND",
+        "x": 320,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800748,
+            "et": "A"
+          },
+          {
+            "id": 800749,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800750,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800753,
+        "tipo": "CUSTOM_AND",
+        "x": 320,
+        "y": 480,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800754,
+            "et": "A"
+          },
+          {
+            "id": 800755,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800756,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800759,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -1640,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800760,
+            "et": "A"
+          },
+          {
+            "id": 800761,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800762,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800765,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -1500,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800766,
+            "et": "A"
+          },
+          {
+            "id": 800767,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800768,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800771,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -1360,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800772,
+            "et": "A"
+          },
+          {
+            "id": 800773,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800774,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800777,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -1220,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800778,
+            "et": "A"
+          },
+          {
+            "id": 800779,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800780,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800783,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": -1560,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800784,
+            "et": "A"
+          },
+          {
+            "id": 800785,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800786,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800789,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": -1420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800790,
+            "et": "A"
+          },
+          {
+            "id": 800791,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800792,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800795,
+        "tipo": "CUSTOM_OR",
+        "x": 2000,
+        "y": -1420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800796,
+            "et": "A"
+          },
+          {
+            "id": 800797,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800798,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800801,
+        "tipo": "USCITA",
+        "x": 2160,
+        "y": -1400,
+        "stato": 0,
+        "nomeCustom": "D0",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800802,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 800804,
+        "tipo": "CUSTOM_AND",
+        "x": 440,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800805,
+            "et": "A"
+          },
+          {
+            "id": 800806,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800807,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800810,
+        "tipo": "CUSTOM_AND",
+        "x": 440,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800811,
+            "et": "A"
+          },
+          {
+            "id": 800812,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800813,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800816,
+        "tipo": "CUSTOM_AND",
+        "x": 440,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800817,
+            "et": "A"
+          },
+          {
+            "id": 800818,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800819,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800822,
+        "tipo": "CUSTOM_AND",
+        "x": 440,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800823,
+            "et": "A"
+          },
+          {
+            "id": 800824,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800825,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800828,
+        "tipo": "CUSTOM_AND",
+        "x": 440,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800829,
+            "et": "A"
+          },
+          {
+            "id": 800830,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800831,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800834,
+        "tipo": "CUSTOM_AND",
+        "x": 440,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800835,
+            "et": "A"
+          },
+          {
+            "id": 800836,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800837,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800840,
+        "tipo": "CUSTOM_AND",
+        "x": 440,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800841,
+            "et": "A"
+          },
+          {
+            "id": 800842,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800843,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800846,
+        "tipo": "CUSTOM_AND",
+        "x": 440,
+        "y": 480,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800847,
+            "et": "A"
+          },
+          {
+            "id": 800848,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800849,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800852,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -1080,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800853,
+            "et": "A"
+          },
+          {
+            "id": 800854,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800855,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800858,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -940,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800859,
+            "et": "A"
+          },
+          {
+            "id": 800860,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800861,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800864,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -800,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800865,
+            "et": "A"
+          },
+          {
+            "id": 800866,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800867,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800870,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -660,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800871,
+            "et": "A"
+          },
+          {
+            "id": 800872,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800873,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800876,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": -1000,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800877,
+            "et": "A"
+          },
+          {
+            "id": 800878,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800879,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800882,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": -860,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800883,
+            "et": "A"
+          },
+          {
+            "id": 800884,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800885,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800888,
+        "tipo": "CUSTOM_OR",
+        "x": 2000,
+        "y": -860,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800889,
+            "et": "A"
+          },
+          {
+            "id": 800890,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800891,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800894,
+        "tipo": "USCITA",
+        "x": 2180,
+        "y": -840,
+        "stato": 0,
+        "nomeCustom": "D1",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800895,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 800897,
+        "tipo": "CUSTOM_AND",
+        "x": 560,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800898,
+            "et": "A"
+          },
+          {
+            "id": 800899,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800900,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800903,
+        "tipo": "CUSTOM_AND",
+        "x": 560,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800904,
+            "et": "A"
+          },
+          {
+            "id": 800905,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800906,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800909,
+        "tipo": "CUSTOM_AND",
+        "x": 560,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800910,
+            "et": "A"
+          },
+          {
+            "id": 800911,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800912,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800915,
+        "tipo": "CUSTOM_AND",
+        "x": 560,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800916,
+            "et": "A"
+          },
+          {
+            "id": 800917,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800918,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800921,
+        "tipo": "CUSTOM_AND",
+        "x": 560,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800922,
+            "et": "A"
+          },
+          {
+            "id": 800923,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800924,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800927,
+        "tipo": "CUSTOM_AND",
+        "x": 560,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800928,
+            "et": "A"
+          },
+          {
+            "id": 800929,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800930,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800933,
+        "tipo": "CUSTOM_AND",
+        "x": 560,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800934,
+            "et": "A"
+          },
+          {
+            "id": 800935,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800936,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800939,
+        "tipo": "CUSTOM_AND",
+        "x": 560,
+        "y": 480,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800940,
+            "et": "A"
+          },
+          {
+            "id": 800941,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800942,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800945,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -520,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800946,
+            "et": "A"
+          },
+          {
+            "id": 800947,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800948,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800951,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -380,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800952,
+            "et": "A"
+          },
+          {
+            "id": 800953,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800954,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800957,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -240,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800958,
+            "et": "A"
+          },
+          {
+            "id": 800959,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800960,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800963,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": -100,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800964,
+            "et": "A"
+          },
+          {
+            "id": 800965,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800966,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800969,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": -440,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800970,
+            "et": "A"
+          },
+          {
+            "id": 800971,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800972,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800975,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": -300,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800976,
+            "et": "A"
+          },
+          {
+            "id": 800977,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800978,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800981,
+        "tipo": "CUSTOM_OR",
+        "x": 2000,
+        "y": -300,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800982,
+            "et": "A"
+          },
+          {
+            "id": 800983,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800984,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800987,
+        "tipo": "USCITA",
+        "x": 2200,
+        "y": -300,
+        "stato": 0,
+        "nomeCustom": "D2",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800988,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 800990,
+        "tipo": "CUSTOM_AND",
+        "x": 680,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800991,
+            "et": "A"
+          },
+          {
+            "id": 800992,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800993,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800996,
+        "tipo": "CUSTOM_AND",
+        "x": 680,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800997,
+            "et": "A"
+          },
+          {
+            "id": 800998,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800999,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801002,
+        "tipo": "CUSTOM_AND",
+        "x": 680,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801003,
+            "et": "A"
+          },
+          {
+            "id": 801004,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801005,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801008,
+        "tipo": "CUSTOM_AND",
+        "x": 680,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801009,
+            "et": "A"
+          },
+          {
+            "id": 801010,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801011,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801014,
+        "tipo": "CUSTOM_AND",
+        "x": 680,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801015,
+            "et": "A"
+          },
+          {
+            "id": 801016,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801017,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801020,
+        "tipo": "CUSTOM_AND",
+        "x": 680,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801021,
+            "et": "A"
+          },
+          {
+            "id": 801022,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801023,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801026,
+        "tipo": "CUSTOM_AND",
+        "x": 680,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801027,
+            "et": "A"
+          },
+          {
+            "id": 801028,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801029,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801032,
+        "tipo": "CUSTOM_AND",
+        "x": 680,
+        "y": 480,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801033,
+            "et": "A"
+          },
+          {
+            "id": 801034,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801035,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801038,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801039,
+            "et": "A"
+          },
+          {
+            "id": 801040,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801041,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801044,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 180,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801045,
+            "et": "A"
+          },
+          {
+            "id": 801046,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801047,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801050,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 320,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801051,
+            "et": "A"
+          },
+          {
+            "id": 801052,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801053,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801056,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 460,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801057,
+            "et": "A"
+          },
+          {
+            "id": 801058,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801059,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801062,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": 120,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801063,
+            "et": "A"
+          },
+          {
+            "id": 801064,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801065,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801068,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": 260,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801069,
+            "et": "A"
+          },
+          {
+            "id": 801070,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801071,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801074,
+        "tipo": "CUSTOM_OR",
+        "x": 2000,
+        "y": 260,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801075,
+            "et": "A"
+          },
+          {
+            "id": 801076,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801077,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801080,
+        "tipo": "USCITA",
+        "x": 2200,
+        "y": 260,
+        "stato": 0,
+        "nomeCustom": "D3",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801081,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801083,
+        "tipo": "CUSTOM_AND",
+        "x": 800,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801084,
+            "et": "A"
+          },
+          {
+            "id": 801085,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801086,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801089,
+        "tipo": "CUSTOM_AND",
+        "x": 800,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801090,
+            "et": "A"
+          },
+          {
+            "id": 801091,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801092,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801095,
+        "tipo": "CUSTOM_AND",
+        "x": 800,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801096,
+            "et": "A"
+          },
+          {
+            "id": 801097,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801098,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801101,
+        "tipo": "CUSTOM_AND",
+        "x": 800,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801102,
+            "et": "A"
+          },
+          {
+            "id": 801103,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801104,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801107,
+        "tipo": "CUSTOM_AND",
+        "x": 800,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801108,
+            "et": "A"
+          },
+          {
+            "id": 801109,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801110,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801113,
+        "tipo": "CUSTOM_AND",
+        "x": 800,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801114,
+            "et": "A"
+          },
+          {
+            "id": 801115,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801116,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801119,
+        "tipo": "CUSTOM_AND",
+        "x": 800,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801120,
+            "et": "A"
+          },
+          {
+            "id": 801121,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801122,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801125,
+        "tipo": "CUSTOM_AND",
+        "x": 800,
+        "y": 480,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801126,
+            "et": "A"
+          },
+          {
+            "id": 801127,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801128,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801131,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 580,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801132,
+            "et": "A"
+          },
+          {
+            "id": 801133,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801134,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801137,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 720,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801138,
+            "et": "A"
+          },
+          {
+            "id": 801139,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801140,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801143,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 860,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801144,
+            "et": "A"
+          },
+          {
+            "id": 801145,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801146,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801149,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 1000,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801150,
+            "et": "A"
+          },
+          {
+            "id": 801151,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801152,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801155,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": 660,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801156,
+            "et": "A"
+          },
+          {
+            "id": 801157,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801158,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801161,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": 800,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801162,
+            "et": "A"
+          },
+          {
+            "id": 801163,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801164,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801167,
+        "tipo": "CUSTOM_OR",
+        "x": 2000,
+        "y": 800,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801168,
+            "et": "A"
+          },
+          {
+            "id": 801169,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801170,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801173,
+        "tipo": "USCITA",
+        "x": 2220,
+        "y": 800,
+        "stato": 0,
+        "nomeCustom": "D4",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801174,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801176,
+        "tipo": "CUSTOM_AND",
+        "x": 920,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801177,
+            "et": "A"
+          },
+          {
+            "id": 801178,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801179,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801182,
+        "tipo": "CUSTOM_AND",
+        "x": 920,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801183,
+            "et": "A"
+          },
+          {
+            "id": 801184,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801185,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801188,
+        "tipo": "CUSTOM_AND",
+        "x": 920,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801189,
+            "et": "A"
+          },
+          {
+            "id": 801190,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801191,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801194,
+        "tipo": "CUSTOM_AND",
+        "x": 920,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801195,
+            "et": "A"
+          },
+          {
+            "id": 801196,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801197,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801200,
+        "tipo": "CUSTOM_AND",
+        "x": 920,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801201,
+            "et": "A"
+          },
+          {
+            "id": 801202,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801203,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801206,
+        "tipo": "CUSTOM_AND",
+        "x": 920,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801207,
+            "et": "A"
+          },
+          {
+            "id": 801208,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801209,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801212,
+        "tipo": "CUSTOM_AND",
+        "x": 920,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801213,
+            "et": "A"
+          },
+          {
+            "id": 801214,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801215,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801218,
+        "tipo": "CUSTOM_AND",
+        "x": 920,
+        "y": 480,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801219,
+            "et": "A"
+          },
+          {
+            "id": 801220,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801221,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801224,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 1120,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801225,
+            "et": "A"
+          },
+          {
+            "id": 801226,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801227,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801230,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 1260,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801231,
+            "et": "A"
+          },
+          {
+            "id": 801232,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801233,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801236,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 1400,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801237,
+            "et": "A"
+          },
+          {
+            "id": 801238,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801239,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801242,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 1540,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801243,
+            "et": "A"
+          },
+          {
+            "id": 801244,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801245,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801248,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": 1200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801249,
+            "et": "A"
+          },
+          {
+            "id": 801250,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801251,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801254,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": 1340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801255,
+            "et": "A"
+          },
+          {
+            "id": 801256,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801257,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801260,
+        "tipo": "CUSTOM_OR",
+        "x": 2000,
+        "y": 1340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801261,
+            "et": "A"
+          },
+          {
+            "id": 801262,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801263,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801266,
+        "tipo": "USCITA",
+        "x": 2200,
+        "y": 1340,
+        "stato": 0,
+        "nomeCustom": "D5",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801267,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801269,
+        "tipo": "CUSTOM_AND",
+        "x": 1040,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801270,
+            "et": "A"
+          },
+          {
+            "id": 801271,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801272,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801275,
+        "tipo": "CUSTOM_AND",
+        "x": 1040,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801276,
+            "et": "A"
+          },
+          {
+            "id": 801277,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801278,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801281,
+        "tipo": "CUSTOM_AND",
+        "x": 1040,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801282,
+            "et": "A"
+          },
+          {
+            "id": 801283,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801284,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801287,
+        "tipo": "CUSTOM_AND",
+        "x": 1040,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801288,
+            "et": "A"
+          },
+          {
+            "id": 801289,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801290,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801293,
+        "tipo": "CUSTOM_AND",
+        "x": 1040,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801294,
+            "et": "A"
+          },
+          {
+            "id": 801295,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801296,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801299,
+        "tipo": "CUSTOM_AND",
+        "x": 1040,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801300,
+            "et": "A"
+          },
+          {
+            "id": 801301,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801302,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801305,
+        "tipo": "CUSTOM_AND",
+        "x": 1040,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801306,
+            "et": "A"
+          },
+          {
+            "id": 801307,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801308,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801311,
+        "tipo": "CUSTOM_AND",
+        "x": 1040,
+        "y": 480,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801312,
+            "et": "A"
+          },
+          {
+            "id": 801313,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801314,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801317,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 1680,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801318,
+            "et": "A"
+          },
+          {
+            "id": 801319,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801320,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801323,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 1820,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801324,
+            "et": "A"
+          },
+          {
+            "id": 801325,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801326,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801329,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 1960,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801330,
+            "et": "A"
+          },
+          {
+            "id": 801331,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801332,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801335,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 2100,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801336,
+            "et": "A"
+          },
+          {
+            "id": 801337,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801338,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801341,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": 1760,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801342,
+            "et": "A"
+          },
+          {
+            "id": 801343,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801344,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801347,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": 1900,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801348,
+            "et": "A"
+          },
+          {
+            "id": 801349,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801350,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801353,
+        "tipo": "CUSTOM_OR",
+        "x": 2000,
+        "y": 1900,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801354,
+            "et": "A"
+          },
+          {
+            "id": 801355,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801356,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801359,
+        "tipo": "USCITA",
+        "x": 2220,
+        "y": 1880,
+        "stato": 0,
+        "nomeCustom": "D6",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801360,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 801362,
+        "tipo": "CUSTOM_AND",
+        "x": 1160,
+        "y": 0,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801363,
+            "et": "A"
+          },
+          {
+            "id": 801364,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801365,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801368,
+        "tipo": "CUSTOM_AND",
+        "x": 1160,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801369,
+            "et": "A"
+          },
+          {
+            "id": 801370,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801371,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801374,
+        "tipo": "CUSTOM_AND",
+        "x": 1160,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801375,
+            "et": "A"
+          },
+          {
+            "id": 801376,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801377,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801380,
+        "tipo": "CUSTOM_AND",
+        "x": 1160,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801381,
+            "et": "A"
+          },
+          {
+            "id": 801382,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801383,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801386,
+        "tipo": "CUSTOM_AND",
+        "x": 1160,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801387,
+            "et": "A"
+          },
+          {
+            "id": 801388,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801389,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801392,
+        "tipo": "CUSTOM_AND",
+        "x": 1160,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801393,
+            "et": "A"
+          },
+          {
+            "id": 801394,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801395,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801398,
+        "tipo": "CUSTOM_AND",
+        "x": 1160,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801399,
+            "et": "A"
+          },
+          {
+            "id": 801400,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801401,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801404,
+        "tipo": "CUSTOM_AND",
+        "x": 1160,
+        "y": 480,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801405,
+            "et": "A"
+          },
+          {
+            "id": 801406,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801407,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801410,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 2260,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801411,
+            "et": "A"
+          },
+          {
+            "id": 801412,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801413,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801416,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 2400,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801417,
+            "et": "A"
+          },
+          {
+            "id": 801418,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801419,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801422,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 2540,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801423,
+            "et": "A"
+          },
+          {
+            "id": 801424,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801425,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801428,
+        "tipo": "CUSTOM_OR",
+        "x": 1740,
+        "y": 2680,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801429,
+            "et": "A"
+          },
+          {
+            "id": 801430,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801431,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801434,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": 2340,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801435,
+            "et": "A"
+          },
+          {
+            "id": 801436,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801437,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801440,
+        "tipo": "CUSTOM_OR",
+        "x": 1860,
+        "y": 2480,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801441,
+            "et": "A"
+          },
+          {
+            "id": 801442,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801443,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801446,
+        "tipo": "CUSTOM_OR",
+        "x": 2000,
+        "y": 2480,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801447,
+            "et": "A"
+          },
+          {
+            "id": 801448,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 801449,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 801452,
+        "tipo": "USCITA",
+        "x": 2220,
+        "y": 2480,
+        "stato": 0,
+        "nomeCustom": "D7",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 801453,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800484,
+        "srcId": 800470,
+        "dstId": 800476
+      },
+      {
+        "id": 800485,
+        "srcId": 800472,
+        "dstId": 800479
+      },
+      {
+        "id": 800486,
+        "srcId": 800474,
+        "dstId": 800482
+      },
+      {
+        "id": 800495,
+        "srcId": 800477,
+        "dstId": 800488
+      },
+      {
+        "id": 800496,
+        "srcId": 800480,
+        "dstId": 800489
+      },
+      {
+        "id": 800497,
+        "srcId": 800490,
+        "dstId": 800492
+      },
+      {
+        "id": 800498,
+        "srcId": 800483,
+        "dstId": 800493
+      },
+      {
+        "id": 800507,
+        "srcId": 800470,
+        "dstId": 800500
+      },
+      {
+        "id": 800508,
+        "srcId": 800480,
+        "dstId": 800501
+      },
+      {
+        "id": 800509,
+        "srcId": 800502,
+        "dstId": 800504
+      },
+      {
+        "id": 800510,
+        "srcId": 800483,
+        "dstId": 800505
+      },
+      {
+        "id": 800519,
+        "srcId": 800477,
+        "dstId": 800512
+      },
+      {
+        "id": 800520,
+        "srcId": 800472,
+        "dstId": 800513
+      },
+      {
+        "id": 800521,
+        "srcId": 800514,
+        "dstId": 800516
+      },
+      {
+        "id": 800522,
+        "srcId": 800483,
+        "dstId": 800517
+      },
+      {
+        "id": 800531,
+        "srcId": 800470,
+        "dstId": 800524
+      },
+      {
+        "id": 800532,
+        "srcId": 800472,
+        "dstId": 800525
+      },
+      {
+        "id": 800533,
+        "srcId": 800526,
+        "dstId": 800528
+      },
+      {
+        "id": 800534,
+        "srcId": 800483,
+        "dstId": 800529
+      },
+      {
+        "id": 800543,
+        "srcId": 800477,
+        "dstId": 800536
+      },
+      {
+        "id": 800544,
+        "srcId": 800480,
+        "dstId": 800537
+      },
+      {
+        "id": 800545,
+        "srcId": 800538,
+        "dstId": 800540
+      },
+      {
+        "id": 800546,
+        "srcId": 800474,
+        "dstId": 800541
+      },
+      {
+        "id": 800555,
+        "srcId": 800470,
+        "dstId": 800548
+      },
+      {
+        "id": 800556,
+        "srcId": 800480,
+        "dstId": 800549
+      },
+      {
+        "id": 800557,
+        "srcId": 800550,
+        "dstId": 800552
+      },
+      {
+        "id": 800558,
+        "srcId": 800474,
+        "dstId": 800553
+      },
+      {
+        "id": 800567,
+        "srcId": 800477,
+        "dstId": 800560
+      },
+      {
+        "id": 800568,
+        "srcId": 800472,
+        "dstId": 800561
+      },
+      {
+        "id": 800569,
+        "srcId": 800562,
+        "dstId": 800564
+      },
+      {
+        "id": 800570,
+        "srcId": 800474,
+        "dstId": 800565
+      },
+      {
+        "id": 800579,
+        "srcId": 800470,
+        "dstId": 800572
+      },
+      {
+        "id": 800580,
+        "srcId": 800472,
+        "dstId": 800573
+      },
+      {
+        "id": 800581,
+        "srcId": 800574,
+        "dstId": 800576
+      },
+      {
+        "id": 800582,
+        "srcId": 800474,
+        "dstId": 800577
+      },
+      {
+        "id": 800715,
+        "srcId": 800584,
+        "dstId": 800712
+      },
+      {
+        "id": 800716,
+        "srcId": 800494,
+        "dstId": 800713
+      },
+      {
+        "id": 800721,
+        "srcId": 800600,
+        "dstId": 800718
+      },
+      {
+        "id": 800722,
+        "srcId": 800506,
+        "dstId": 800719
+      },
+      {
+        "id": 800727,
+        "srcId": 800616,
+        "dstId": 800724
+      },
+      {
+        "id": 800728,
+        "srcId": 800518,
+        "dstId": 800725
+      },
+      {
+        "id": 800733,
+        "srcId": 800632,
+        "dstId": 800730
+      },
+      {
+        "id": 800734,
+        "srcId": 800530,
+        "dstId": 800731
+      },
+      {
+        "id": 800739,
+        "srcId": 800648,
+        "dstId": 800736
+      },
+      {
+        "id": 800740,
+        "srcId": 800542,
+        "dstId": 800737
+      },
+      {
+        "id": 800745,
+        "srcId": 800664,
+        "dstId": 800742
+      },
+      {
+        "id": 800746,
+        "srcId": 800554,
+        "dstId": 800743
+      },
+      {
+        "id": 800751,
+        "srcId": 800680,
+        "dstId": 800748
+      },
+      {
+        "id": 800752,
+        "srcId": 800566,
+        "dstId": 800749
+      },
+      {
+        "id": 800757,
+        "srcId": 800696,
+        "dstId": 800754
+      },
+      {
+        "id": 800758,
+        "srcId": 800578,
+        "dstId": 800755
+      },
+      {
+        "id": 800763,
+        "srcId": 800714,
+        "dstId": 800760
+      },
+      {
+        "id": 800764,
+        "srcId": 800720,
+        "dstId": 800761
+      },
+      {
+        "id": 800769,
+        "srcId": 800726,
+        "dstId": 800766
+      },
+      {
+        "id": 800770,
+        "srcId": 800732,
+        "dstId": 800767
+      },
+      {
+        "id": 800775,
+        "srcId": 800738,
+        "dstId": 800772
+      },
+      {
+        "id": 800776,
+        "srcId": 800744,
+        "dstId": 800773
+      },
+      {
+        "id": 800781,
+        "srcId": 800750,
+        "dstId": 800778
+      },
+      {
+        "id": 800782,
+        "srcId": 800756,
+        "dstId": 800779
+      },
+      {
+        "id": 800787,
+        "srcId": 800762,
+        "dstId": 800784
+      },
+      {
+        "id": 800788,
+        "srcId": 800768,
+        "dstId": 800785
+      },
+      {
+        "id": 800793,
+        "srcId": 800774,
+        "dstId": 800790
+      },
+      {
+        "id": 800794,
+        "srcId": 800780,
+        "dstId": 800791
+      },
+      {
+        "id": 800799,
+        "srcId": 800786,
+        "dstId": 800796
+      },
+      {
+        "id": 800800,
+        "srcId": 800792,
+        "dstId": 800797
+      },
+      {
+        "id": 800803,
+        "srcId": 800798,
+        "dstId": 800802
+      },
+      {
+        "id": 800808,
+        "srcId": 800586,
+        "dstId": 800805
+      },
+      {
+        "id": 800809,
+        "srcId": 800494,
+        "dstId": 800806
+      },
+      {
+        "id": 800814,
+        "srcId": 800602,
+        "dstId": 800811
+      },
+      {
+        "id": 800815,
+        "srcId": 800506,
+        "dstId": 800812
+      },
+      {
+        "id": 800820,
+        "srcId": 800618,
+        "dstId": 800817
+      },
+      {
+        "id": 800821,
+        "srcId": 800518,
+        "dstId": 800818
+      },
+      {
+        "id": 800826,
+        "srcId": 800634,
+        "dstId": 800823
+      },
+      {
+        "id": 800827,
+        "srcId": 800530,
+        "dstId": 800824
+      },
+      {
+        "id": 800832,
+        "srcId": 800650,
+        "dstId": 800829
+      },
+      {
+        "id": 800833,
+        "srcId": 800542,
+        "dstId": 800830
+      },
+      {
+        "id": 800838,
+        "srcId": 800666,
+        "dstId": 800835
+      },
+      {
+        "id": 800839,
+        "srcId": 800554,
+        "dstId": 800836
+      },
+      {
+        "id": 800844,
+        "srcId": 800682,
+        "dstId": 800841
+      },
+      {
+        "id": 800845,
+        "srcId": 800566,
+        "dstId": 800842
+      },
+      {
+        "id": 800850,
+        "srcId": 800698,
+        "dstId": 800847
+      },
+      {
+        "id": 800851,
+        "srcId": 800578,
+        "dstId": 800848
+      },
+      {
+        "id": 800856,
+        "srcId": 800807,
+        "dstId": 800853
+      },
+      {
+        "id": 800857,
+        "srcId": 800813,
+        "dstId": 800854
+      },
+      {
+        "id": 800862,
+        "srcId": 800819,
+        "dstId": 800859
+      },
+      {
+        "id": 800863,
+        "srcId": 800825,
+        "dstId": 800860
+      },
+      {
+        "id": 800868,
+        "srcId": 800831,
+        "dstId": 800865
+      },
+      {
+        "id": 800869,
+        "srcId": 800837,
+        "dstId": 800866
+      },
+      {
+        "id": 800874,
+        "srcId": 800843,
+        "dstId": 800871
+      },
+      {
+        "id": 800875,
+        "srcId": 800849,
+        "dstId": 800872
+      },
+      {
+        "id": 800880,
+        "srcId": 800855,
+        "dstId": 800877
+      },
+      {
+        "id": 800881,
+        "srcId": 800861,
+        "dstId": 800878
+      },
+      {
+        "id": 800886,
+        "srcId": 800867,
+        "dstId": 800883
+      },
+      {
+        "id": 800887,
+        "srcId": 800873,
+        "dstId": 800884
+      },
+      {
+        "id": 800892,
+        "srcId": 800879,
+        "dstId": 800889
+      },
+      {
+        "id": 800893,
+        "srcId": 800885,
+        "dstId": 800890
+      },
+      {
+        "id": 800896,
+        "srcId": 800891,
+        "dstId": 800895
+      },
+      {
+        "id": 800901,
+        "srcId": 800588,
+        "dstId": 800898
+      },
+      {
+        "id": 800902,
+        "srcId": 800494,
+        "dstId": 800899
+      },
+      {
+        "id": 800907,
+        "srcId": 800604,
+        "dstId": 800904
+      },
+      {
+        "id": 800908,
+        "srcId": 800506,
+        "dstId": 800905
+      },
+      {
+        "id": 800913,
+        "srcId": 800620,
+        "dstId": 800910
+      },
+      {
+        "id": 800914,
+        "srcId": 800518,
+        "dstId": 800911
+      },
+      {
+        "id": 800919,
+        "srcId": 800636,
+        "dstId": 800916
+      },
+      {
+        "id": 800920,
+        "srcId": 800530,
+        "dstId": 800917
+      },
+      {
+        "id": 800925,
+        "srcId": 800652,
+        "dstId": 800922
+      },
+      {
+        "id": 800926,
+        "srcId": 800542,
+        "dstId": 800923
+      },
+      {
+        "id": 800931,
+        "srcId": 800668,
+        "dstId": 800928
+      },
+      {
+        "id": 800932,
+        "srcId": 800554,
+        "dstId": 800929
+      },
+      {
+        "id": 800937,
+        "srcId": 800684,
+        "dstId": 800934
+      },
+      {
+        "id": 800938,
+        "srcId": 800566,
+        "dstId": 800935
+      },
+      {
+        "id": 800943,
+        "srcId": 800700,
+        "dstId": 800940
+      },
+      {
+        "id": 800944,
+        "srcId": 800578,
+        "dstId": 800941
+      },
+      {
+        "id": 800949,
+        "srcId": 800900,
+        "dstId": 800946
+      },
+      {
+        "id": 800950,
+        "srcId": 800906,
+        "dstId": 800947
+      },
+      {
+        "id": 800955,
+        "srcId": 800912,
+        "dstId": 800952
+      },
+      {
+        "id": 800956,
+        "srcId": 800918,
+        "dstId": 800953
+      },
+      {
+        "id": 800961,
+        "srcId": 800924,
+        "dstId": 800958
+      },
+      {
+        "id": 800962,
+        "srcId": 800930,
+        "dstId": 800959
+      },
+      {
+        "id": 800967,
+        "srcId": 800936,
+        "dstId": 800964
+      },
+      {
+        "id": 800968,
+        "srcId": 800942,
+        "dstId": 800965
+      },
+      {
+        "id": 800973,
+        "srcId": 800948,
+        "dstId": 800970
+      },
+      {
+        "id": 800974,
+        "srcId": 800954,
+        "dstId": 800971
+      },
+      {
+        "id": 800979,
+        "srcId": 800960,
+        "dstId": 800976
+      },
+      {
+        "id": 800980,
+        "srcId": 800966,
+        "dstId": 800977
+      },
+      {
+        "id": 800985,
+        "srcId": 800972,
+        "dstId": 800982
+      },
+      {
+        "id": 800986,
+        "srcId": 800978,
+        "dstId": 800983
+      },
+      {
+        "id": 800989,
+        "srcId": 800984,
+        "dstId": 800988
+      },
+      {
+        "id": 800994,
+        "srcId": 800590,
+        "dstId": 800991
+      },
+      {
+        "id": 800995,
+        "srcId": 800494,
+        "dstId": 800992
+      },
+      {
+        "id": 801000,
+        "srcId": 800606,
+        "dstId": 800997
+      },
+      {
+        "id": 801001,
+        "srcId": 800506,
+        "dstId": 800998
+      },
+      {
+        "id": 801006,
+        "srcId": 800622,
+        "dstId": 801003
+      },
+      {
+        "id": 801007,
+        "srcId": 800518,
+        "dstId": 801004
+      },
+      {
+        "id": 801012,
+        "srcId": 800638,
+        "dstId": 801009
+      },
+      {
+        "id": 801013,
+        "srcId": 800530,
+        "dstId": 801010
+      },
+      {
+        "id": 801018,
+        "srcId": 800654,
+        "dstId": 801015
+      },
+      {
+        "id": 801019,
+        "srcId": 800542,
+        "dstId": 801016
+      },
+      {
+        "id": 801024,
+        "srcId": 800670,
+        "dstId": 801021
+      },
+      {
+        "id": 801025,
+        "srcId": 800554,
+        "dstId": 801022
+      },
+      {
+        "id": 801030,
+        "srcId": 800686,
+        "dstId": 801027
+      },
+      {
+        "id": 801031,
+        "srcId": 800566,
+        "dstId": 801028
+      },
+      {
+        "id": 801036,
+        "srcId": 800702,
+        "dstId": 801033
+      },
+      {
+        "id": 801037,
+        "srcId": 800578,
+        "dstId": 801034
+      },
+      {
+        "id": 801042,
+        "srcId": 800993,
+        "dstId": 801039
+      },
+      {
+        "id": 801043,
+        "srcId": 800999,
+        "dstId": 801040
+      },
+      {
+        "id": 801048,
+        "srcId": 801005,
+        "dstId": 801045
+      },
+      {
+        "id": 801049,
+        "srcId": 801011,
+        "dstId": 801046
+      },
+      {
+        "id": 801054,
+        "srcId": 801017,
+        "dstId": 801051
+      },
+      {
+        "id": 801055,
+        "srcId": 801023,
+        "dstId": 801052
+      },
+      {
+        "id": 801060,
+        "srcId": 801029,
+        "dstId": 801057
+      },
+      {
+        "id": 801061,
+        "srcId": 801035,
+        "dstId": 801058
+      },
+      {
+        "id": 801066,
+        "srcId": 801041,
+        "dstId": 801063
+      },
+      {
+        "id": 801067,
+        "srcId": 801047,
+        "dstId": 801064
+      },
+      {
+        "id": 801072,
+        "srcId": 801053,
+        "dstId": 801069
+      },
+      {
+        "id": 801073,
+        "srcId": 801059,
+        "dstId": 801070
+      },
+      {
+        "id": 801078,
+        "srcId": 801065,
+        "dstId": 801075
+      },
+      {
+        "id": 801079,
+        "srcId": 801071,
+        "dstId": 801076
+      },
+      {
+        "id": 801082,
+        "srcId": 801077,
+        "dstId": 801081
+      },
+      {
+        "id": 801087,
+        "srcId": 800592,
+        "dstId": 801084
+      },
+      {
+        "id": 801088,
+        "srcId": 800494,
+        "dstId": 801085
+      },
+      {
+        "id": 801093,
+        "srcId": 800608,
+        "dstId": 801090
+      },
+      {
+        "id": 801094,
+        "srcId": 800506,
+        "dstId": 801091
+      },
+      {
+        "id": 801099,
+        "srcId": 800624,
+        "dstId": 801096
+      },
+      {
+        "id": 801100,
+        "srcId": 800518,
+        "dstId": 801097
+      },
+      {
+        "id": 801105,
+        "srcId": 800640,
+        "dstId": 801102
+      },
+      {
+        "id": 801106,
+        "srcId": 800530,
+        "dstId": 801103
+      },
+      {
+        "id": 801111,
+        "srcId": 800656,
+        "dstId": 801108
+      },
+      {
+        "id": 801112,
+        "srcId": 800542,
+        "dstId": 801109
+      },
+      {
+        "id": 801117,
+        "srcId": 800672,
+        "dstId": 801114
+      },
+      {
+        "id": 801118,
+        "srcId": 800554,
+        "dstId": 801115
+      },
+      {
+        "id": 801123,
+        "srcId": 800688,
+        "dstId": 801120
+      },
+      {
+        "id": 801124,
+        "srcId": 800566,
+        "dstId": 801121
+      },
+      {
+        "id": 801129,
+        "srcId": 800704,
+        "dstId": 801126
+      },
+      {
+        "id": 801130,
+        "srcId": 800578,
+        "dstId": 801127
+      },
+      {
+        "id": 801135,
+        "srcId": 801086,
+        "dstId": 801132
+      },
+      {
+        "id": 801136,
+        "srcId": 801092,
+        "dstId": 801133
+      },
+      {
+        "id": 801141,
+        "srcId": 801098,
+        "dstId": 801138
+      },
+      {
+        "id": 801142,
+        "srcId": 801104,
+        "dstId": 801139
+      },
+      {
+        "id": 801147,
+        "srcId": 801110,
+        "dstId": 801144
+      },
+      {
+        "id": 801148,
+        "srcId": 801116,
+        "dstId": 801145
+      },
+      {
+        "id": 801153,
+        "srcId": 801122,
+        "dstId": 801150
+      },
+      {
+        "id": 801154,
+        "srcId": 801128,
+        "dstId": 801151
+      },
+      {
+        "id": 801159,
+        "srcId": 801134,
+        "dstId": 801156
+      },
+      {
+        "id": 801160,
+        "srcId": 801140,
+        "dstId": 801157
+      },
+      {
+        "id": 801165,
+        "srcId": 801146,
+        "dstId": 801162
+      },
+      {
+        "id": 801166,
+        "srcId": 801152,
+        "dstId": 801163
+      },
+      {
+        "id": 801171,
+        "srcId": 801158,
+        "dstId": 801168
+      },
+      {
+        "id": 801172,
+        "srcId": 801164,
+        "dstId": 801169
+      },
+      {
+        "id": 801175,
+        "srcId": 801170,
+        "dstId": 801174
+      },
+      {
+        "id": 801180,
+        "srcId": 800594,
+        "dstId": 801177
+      },
+      {
+        "id": 801181,
+        "srcId": 800494,
+        "dstId": 801178
+      },
+      {
+        "id": 801186,
+        "srcId": 800610,
+        "dstId": 801183
+      },
+      {
+        "id": 801187,
+        "srcId": 800506,
+        "dstId": 801184
+      },
+      {
+        "id": 801192,
+        "srcId": 800626,
+        "dstId": 801189
+      },
+      {
+        "id": 801193,
+        "srcId": 800518,
+        "dstId": 801190
+      },
+      {
+        "id": 801198,
+        "srcId": 800642,
+        "dstId": 801195
+      },
+      {
+        "id": 801199,
+        "srcId": 800530,
+        "dstId": 801196
+      },
+      {
+        "id": 801204,
+        "srcId": 800658,
+        "dstId": 801201
+      },
+      {
+        "id": 801205,
+        "srcId": 800542,
+        "dstId": 801202
+      },
+      {
+        "id": 801210,
+        "srcId": 800674,
+        "dstId": 801207
+      },
+      {
+        "id": 801211,
+        "srcId": 800554,
+        "dstId": 801208
+      },
+      {
+        "id": 801216,
+        "srcId": 800690,
+        "dstId": 801213
+      },
+      {
+        "id": 801217,
+        "srcId": 800566,
+        "dstId": 801214
+      },
+      {
+        "id": 801222,
+        "srcId": 800706,
+        "dstId": 801219
+      },
+      {
+        "id": 801223,
+        "srcId": 800578,
+        "dstId": 801220
+      },
+      {
+        "id": 801228,
+        "srcId": 801179,
+        "dstId": 801225
+      },
+      {
+        "id": 801229,
+        "srcId": 801185,
+        "dstId": 801226
+      },
+      {
+        "id": 801234,
+        "srcId": 801191,
+        "dstId": 801231
+      },
+      {
+        "id": 801235,
+        "srcId": 801197,
+        "dstId": 801232
+      },
+      {
+        "id": 801240,
+        "srcId": 801203,
+        "dstId": 801237
+      },
+      {
+        "id": 801241,
+        "srcId": 801209,
+        "dstId": 801238
+      },
+      {
+        "id": 801246,
+        "srcId": 801215,
+        "dstId": 801243
+      },
+      {
+        "id": 801247,
+        "srcId": 801221,
+        "dstId": 801244
+      },
+      {
+        "id": 801252,
+        "srcId": 801227,
+        "dstId": 801249
+      },
+      {
+        "id": 801253,
+        "srcId": 801233,
+        "dstId": 801250
+      },
+      {
+        "id": 801258,
+        "srcId": 801239,
+        "dstId": 801255
+      },
+      {
+        "id": 801259,
+        "srcId": 801245,
+        "dstId": 801256
+      },
+      {
+        "id": 801264,
+        "srcId": 801251,
+        "dstId": 801261
+      },
+      {
+        "id": 801265,
+        "srcId": 801257,
+        "dstId": 801262
+      },
+      {
+        "id": 801268,
+        "srcId": 801263,
+        "dstId": 801267
+      },
+      {
+        "id": 801273,
+        "srcId": 800596,
+        "dstId": 801270
+      },
+      {
+        "id": 801274,
+        "srcId": 800494,
+        "dstId": 801271
+      },
+      {
+        "id": 801279,
+        "srcId": 800612,
+        "dstId": 801276
+      },
+      {
+        "id": 801280,
+        "srcId": 800506,
+        "dstId": 801277
+      },
+      {
+        "id": 801285,
+        "srcId": 800628,
+        "dstId": 801282
+      },
+      {
+        "id": 801286,
+        "srcId": 800518,
+        "dstId": 801283
+      },
+      {
+        "id": 801291,
+        "srcId": 800644,
+        "dstId": 801288
+      },
+      {
+        "id": 801292,
+        "srcId": 800530,
+        "dstId": 801289
+      },
+      {
+        "id": 801297,
+        "srcId": 800660,
+        "dstId": 801294
+      },
+      {
+        "id": 801298,
+        "srcId": 800542,
+        "dstId": 801295
+      },
+      {
+        "id": 801303,
+        "srcId": 800676,
+        "dstId": 801300
+      },
+      {
+        "id": 801304,
+        "srcId": 800554,
+        "dstId": 801301
+      },
+      {
+        "id": 801309,
+        "srcId": 800692,
+        "dstId": 801306
+      },
+      {
+        "id": 801310,
+        "srcId": 800566,
+        "dstId": 801307
+      },
+      {
+        "id": 801315,
+        "srcId": 800708,
+        "dstId": 801312
+      },
+      {
+        "id": 801316,
+        "srcId": 800578,
+        "dstId": 801313
+      },
+      {
+        "id": 801321,
+        "srcId": 801272,
+        "dstId": 801318
+      },
+      {
+        "id": 801322,
+        "srcId": 801278,
+        "dstId": 801319
+      },
+      {
+        "id": 801327,
+        "srcId": 801284,
+        "dstId": 801324
+      },
+      {
+        "id": 801328,
+        "srcId": 801290,
+        "dstId": 801325
+      },
+      {
+        "id": 801333,
+        "srcId": 801296,
+        "dstId": 801330
+      },
+      {
+        "id": 801334,
+        "srcId": 801302,
+        "dstId": 801331
+      },
+      {
+        "id": 801339,
+        "srcId": 801308,
+        "dstId": 801336
+      },
+      {
+        "id": 801340,
+        "srcId": 801314,
+        "dstId": 801337
+      },
+      {
+        "id": 801345,
+        "srcId": 801320,
+        "dstId": 801342
+      },
+      {
+        "id": 801346,
+        "srcId": 801326,
+        "dstId": 801343
+      },
+      {
+        "id": 801351,
+        "srcId": 801332,
+        "dstId": 801348
+      },
+      {
+        "id": 801352,
+        "srcId": 801338,
+        "dstId": 801349
+      },
+      {
+        "id": 801357,
+        "srcId": 801344,
+        "dstId": 801354
+      },
+      {
+        "id": 801358,
+        "srcId": 801350,
+        "dstId": 801355
+      },
+      {
+        "id": 801361,
+        "srcId": 801356,
+        "dstId": 801360
+      },
+      {
+        "id": 801366,
+        "srcId": 800598,
+        "dstId": 801363
+      },
+      {
+        "id": 801367,
+        "srcId": 800494,
+        "dstId": 801364
+      },
+      {
+        "id": 801372,
+        "srcId": 800614,
+        "dstId": 801369
+      },
+      {
+        "id": 801373,
+        "srcId": 800506,
+        "dstId": 801370
+      },
+      {
+        "id": 801378,
+        "srcId": 800630,
+        "dstId": 801375
+      },
+      {
+        "id": 801379,
+        "srcId": 800518,
+        "dstId": 801376
+      },
+      {
+        "id": 801384,
+        "srcId": 800646,
+        "dstId": 801381
+      },
+      {
+        "id": 801385,
+        "srcId": 800530,
+        "dstId": 801382
+      },
+      {
+        "id": 801390,
+        "srcId": 800662,
+        "dstId": 801387
+      },
+      {
+        "id": 801391,
+        "srcId": 800542,
+        "dstId": 801388
+      },
+      {
+        "id": 801396,
+        "srcId": 800678,
+        "dstId": 801393
+      },
+      {
+        "id": 801397,
+        "srcId": 800554,
+        "dstId": 801394
+      },
+      {
+        "id": 801402,
+        "srcId": 800694,
+        "dstId": 801399
+      },
+      {
+        "id": 801403,
+        "srcId": 800566,
+        "dstId": 801400
+      },
+      {
+        "id": 801408,
+        "srcId": 800710,
+        "dstId": 801405
+      },
+      {
+        "id": 801409,
+        "srcId": 800578,
+        "dstId": 801406
+      },
+      {
+        "id": 801414,
+        "srcId": 801365,
+        "dstId": 801411
+      },
+      {
+        "id": 801415,
+        "srcId": 801371,
+        "dstId": 801412
+      },
+      {
+        "id": 801420,
+        "srcId": 801377,
+        "dstId": 801417
+      },
+      {
+        "id": 801421,
+        "srcId": 801383,
+        "dstId": 801418
+      },
+      {
+        "id": 801426,
+        "srcId": 801389,
+        "dstId": 801423
+      },
+      {
+        "id": 801427,
+        "srcId": 801395,
+        "dstId": 801424
+      },
+      {
+        "id": 801432,
+        "srcId": 801401,
+        "dstId": 801429
+      },
+      {
+        "id": 801433,
+        "srcId": 801407,
+        "dstId": 801430
+      },
+      {
+        "id": 801438,
+        "srcId": 801413,
+        "dstId": 801435
+      },
+      {
+        "id": 801439,
+        "srcId": 801419,
+        "dstId": 801436
+      },
+      {
+        "id": 801444,
+        "srcId": 801425,
+        "dstId": 801441
+      },
+      {
+        "id": 801445,
+        "srcId": 801431,
+        "dstId": 801442
+      },
+      {
+        "id": 801450,
+        "srcId": 801437,
+        "dstId": 801447
+      },
+      {
+        "id": 801451,
+        "srcId": 801443,
+        "dstId": 801448
+      },
+      {
+        "id": 801454,
+        "srcId": 801449,
+        "dstId": 801453
+      }
+    ]
+  },
+  "descrizione": "ROM/RAM 64 bit organizzata in 8 righe da 8 bit (immagine 8x8): un decoder di indirizzo (R0-R2) seleziona la riga, le cui 8 celle escono su D0-D7 attraverso una rete AND/OR (D0 = pixel piu' a sinistra). Il contenuto si modifica con click sull'anteprima del chip: ogni bit e' una Cella 1 bit (latch SR) ispezionabile nella vista interna.",
+  "categoria": "display"
+}

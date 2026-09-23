@@ -151,7 +151,7 @@
       },
       {
         "id": 1050,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -280,
         "y": -180,
         "stato": 0,

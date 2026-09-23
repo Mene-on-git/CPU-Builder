@@ -1,0 +1,212 @@
+{
+  "nome": "NOR",
+  "colore": "#1abc9c",
+  "ingressi": [
+    "A",
+    "B"
+  ],
+  "uscite": [
+    "Q"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 800087,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 20,
+        "stato": 0,
+        "nomeCustom": "A",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800088,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800089,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 240,
+        "stato": 0,
+        "nomeCustom": "B",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 800090,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 800091,
+        "tipo": "NAND",
+        "x": -240,
+        "y": 20,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800092,
+            "et": "A"
+          },
+          {
+            "id": 800093,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800094,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800095,
+        "tipo": "NAND",
+        "x": -240,
+        "y": 240,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800096,
+            "et": "A"
+          },
+          {
+            "id": 800097,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800098,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800099,
+        "tipo": "NAND",
+        "x": -90,
+        "y": 120,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800100,
+            "et": "A"
+          },
+          {
+            "id": 800101,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800102,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800103,
+        "tipo": "NAND",
+        "x": 60,
+        "y": 120,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800104,
+            "et": "A"
+          },
+          {
+            "id": 800105,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 800106,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 800107,
+        "tipo": "USCITA",
+        "x": 220,
+        "y": 120,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 800108,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 800109,
+        "srcId": 800088,
+        "dstId": 800092
+      },
+      {
+        "id": 800110,
+        "srcId": 800088,
+        "dstId": 800093
+      },
+      {
+        "id": 800111,
+        "srcId": 800090,
+        "dstId": 800096
+      },
+      {
+        "id": 800112,
+        "srcId": 800090,
+        "dstId": 800097
+      },
+      {
+        "id": 800113,
+        "srcId": 800094,
+        "dstId": 800100
+      },
+      {
+        "id": 800114,
+        "srcId": 800098,
+        "dstId": 800101
+      },
+      {
+        "id": 800115,
+        "srcId": 800102,
+        "dstId": 800104
+      },
+      {
+        "id": 800116,
+        "srcId": 800102,
+        "dstId": 800105
+      },
+      {
+        "id": 800117,
+        "srcId": 800106,
+        "dstId": 800108
+      }
+    ]
+  },
+  "descrizione": "Porta NOR: una OR (3 NAND) seguita da un invertitore (NAND ad ingressi uniti).",
+  "categoria": "porte"
+}

@@ -44,7 +44,7 @@
       },
       {
         "id": 667,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": -260,
         "y": -380,
         "stato": 0,
@@ -68,7 +68,7 @@
       },
       {
         "id": 674,
-        "tipo": "NOT",
+        "tipo": "CUSTOM_NOT",
         "x": -280,
         "y": -140,
         "stato": 0,
@@ -88,7 +88,7 @@
       },
       {
         "id": 680,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -80,
         "y": -240,
         "stato": 0,

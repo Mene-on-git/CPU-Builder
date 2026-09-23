@@ -62,7 +62,7 @@
       },
       {
         "id": 227,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -640,
         "y": -240,
         "stato": 0,
@@ -86,7 +86,7 @@
       },
       {
         "id": 232,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -640,
         "y": 100,
         "stato": 0,
@@ -110,7 +110,7 @@
       },
       {
         "id": 250,
-        "tipo": "XOR",
+        "tipo": "CUSTOM_XOR",
         "x": -440,
         "y": -220,
         "stato": 0,
@@ -134,7 +134,7 @@
       },
       {
         "id": 259,
-        "tipo": "AND",
+        "tipo": "CUSTOM_AND",
         "x": -480,
         "y": -80,
         "stato": 0,
@@ -158,7 +158,7 @@
       },
       {
         "id": 268,
-        "tipo": "OR",
+        "tipo": "CUSTOM_OR",
         "x": -300,
         "y": 60,
         "stato": 0,
