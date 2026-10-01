@@ -1,13 +1,15 @@
 {
   "nome": "alu-register",
-  "colore": "#e0d806",
+  "colore": "#7f8c8d",
   "ingressi": [
     "B3",
     "B2",
     "B1",
     "B0",
-    "WE",
-    "CLK"
+    "WE_A",
+    "WE_B",
+    "CLK",
+    "SUB"
   ],
   "uscite": [
     "Q3",
@@ -18,438 +20,669 @@
   "circuito": {
     "chips": [
       {
-        "id": 2124,
+        "id": 960001,
         "tipo": "INGRESSO",
-        "x": -1000,
-        "y": -640,
+        "x": -700,
+        "y": 40,
         "stato": 0,
+        "nomeCustom": "B3",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
           {
-            "id": 2125,
+            "id": 960002,
             "et": "OUT"
           }
-        ],
-        "nomeCustom": "B3"
+        ]
       },
       {
-        "id": 2127,
+        "id": 960003,
         "tipo": "INGRESSO",
-        "x": -1000,
-        "y": -580,
+        "x": -700,
+        "y": 130,
         "stato": 0,
+        "nomeCustom": "B2",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
           {
-            "id": 2128,
+            "id": 960004,
             "et": "OUT"
           }
-        ],
-        "nomeCustom": "B2"
+        ]
       },
       {
-        "id": 2130,
+        "id": 960005,
         "tipo": "INGRESSO",
-        "x": -1000,
-        "y": -520,
+        "x": -700,
+        "y": 220,
         "stato": 0,
+        "nomeCustom": "B1",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
           {
-            "id": 2131,
+            "id": 960006,
             "et": "OUT"
           }
-        ],
-        "nomeCustom": "B1"
+        ]
       },
       {
-        "id": 2133,
+        "id": 960007,
         "tipo": "INGRESSO",
-        "x": -1000,
-        "y": -460,
+        "x": -700,
+        "y": 310,
         "stato": 0,
+        "nomeCustom": "B0",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
           {
-            "id": 2134,
+            "id": 960008,
             "et": "OUT"
           }
-        ],
-        "nomeCustom": "B0"
+        ]
       },
       {
-        "id": 2136,
+        "id": 960009,
         "tipo": "INGRESSO",
-        "x": -1000,
-        "y": -300,
+        "x": -700,
+        "y": 430,
         "stato": 0,
+        "nomeCustom": "WE_A",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
           {
-            "id": 2137,
+            "id": 960010,
             "et": "OUT"
           }
-        ],
-        "nomeCustom": "WE"
+        ]
       },
       {
-        "id": 2139,
+        "id": 960011,
         "tipo": "INGRESSO",
-        "x": -1000,
-        "y": -240,
+        "x": -700,
+        "y": 520,
         "stato": 0,
+        "nomeCustom": "WE_B",
         "statoInterno": {},
         "pinI": [],
         "pinU": [
           {
-            "id": 2140,
+            "id": 960012,
             "et": "OUT"
           }
-        ],
-        "nomeCustom": "CLK"
+        ]
       },
       {
-        "id": 2142,
-        "tipo": "USCITA",
-        "x": -100,
-        "y": -880,
+        "id": 960013,
+        "tipo": "INGRESSO",
+        "x": -700,
+        "y": 610,
         "stato": 0,
+        "nomeCustom": "CLK",
         "statoInterno": {},
-        "pinI": [
+        "pinI": [],
+        "pinU": [
           {
-            "id": 2143,
-            "et": "IN"
+            "id": 960014,
+            "et": "OUT"
           }
-        ],
-        "pinU": [],
-        "nomeCustom": "Q3"
+        ]
       },
       {
-        "id": 2145,
-        "tipo": "USCITA",
-        "x": -100,
-        "y": -800,
+        "id": 960015,
+        "tipo": "INGRESSO",
+        "x": -700,
+        "y": 700,
         "stato": 0,
+        "nomeCustom": "SUB",
         "statoInterno": {},
-        "pinI": [
+        "pinI": [],
+        "pinU": [
           {
-            "id": 2146,
-            "et": "IN"
+            "id": 960016,
+            "et": "OUT"
           }
-        ],
-        "pinU": [],
-        "nomeCustom": "Q2"
+        ]
       },
       {
-        "id": 2148,
-        "tipo": "USCITA",
-        "x": -100,
-        "y": -720,
-        "stato": 0,
-        "statoInterno": {},
-        "pinI": [
-          {
-            "id": 2149,
-            "et": "IN"
-          }
-        ],
-        "pinU": [],
-        "nomeCustom": "Q1"
-      },
-      {
-        "id": 2151,
-        "tipo": "USCITA",
-        "x": -100,
-        "y": -640,
-        "stato": 0,
-        "statoInterno": {},
-        "pinI": [
-          {
-            "id": 2152,
-            "et": "IN"
-          }
-        ],
-        "pinU": [],
-        "nomeCustom": "Q0"
-      },
-      {
-        "id": 3253,
+        "id": 960017,
         "tipo": "CUSTOM_4_BIT_REGISTER",
-        "x": -660,
-        "y": -680,
+        "x": -420,
+        "y": 60,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
-            "id": 3254,
+            "id": 960018,
             "et": "D0"
           },
           {
-            "id": 3255,
+            "id": 960019,
             "et": "D1"
           },
           {
-            "id": 3256,
+            "id": 960020,
             "et": "D2"
           },
           {
-            "id": 3257,
+            "id": 960021,
             "et": "D3"
           },
           {
-            "id": 3258,
+            "id": 960022,
             "et": "WE"
           },
           {
-            "id": 3259,
+            "id": 960023,
             "et": "CLK"
           }
         ],
         "pinU": [
           {
-            "id": 3260,
+            "id": 960024,
             "et": "Q0"
           },
           {
-            "id": 3261,
+            "id": 960025,
             "et": "Q1"
           },
           {
-            "id": 3262,
+            "id": 960026,
             "et": "Q2"
           },
           {
-            "id": 3263,
+            "id": 960027,
             "et": "Q3"
           }
         ]
       },
       {
-        "id": 3265,
-        "tipo": "CUSTOM_4_BIT_REGISTER",
-        "x": -660,
-        "y": -440,
-        "stato": 0,
-        "statoInterno": {},
-        "pinI": [
-          {
-            "id": 3266,
-            "et": "D0"
-          },
-          {
-            "id": 3267,
-            "et": "D1"
-          },
-          {
-            "id": 3268,
-            "et": "D2"
-          },
-          {
-            "id": 3269,
-            "et": "D3"
-          },
-          {
-            "id": 3270,
-            "et": "WE"
-          },
-          {
-            "id": 3271,
-            "et": "CLK"
-          }
-        ],
-        "pinU": [
-          {
-            "id": 3272,
-            "et": "Q0"
-          },
-          {
-            "id": 3273,
-            "et": "Q1"
-          },
-          {
-            "id": 3274,
-            "et": "Q2"
-          },
-          {
-            "id": 3275,
-            "et": "Q3"
-          }
-        ]
-      },
-      {
-        "id": 7933,
+        "id": 960034,
         "tipo": "CUSTOM_ALU",
-        "x": -180,
-        "y": -500,
+        "x": -120,
+        "y": 300,
         "stato": 0,
+        "nomeCustom": "",
         "statoInterno": {},
         "pinI": [
           {
-            "id": 7934,
+            "id": 960035,
             "et": "A3"
           },
           {
-            "id": 7935,
+            "id": 960036,
             "et": "A2"
           },
           {
-            "id": 7936,
+            "id": 960037,
             "et": "A1"
           },
           {
-            "id": 7937,
+            "id": 960038,
             "et": "A0"
           },
           {
-            "id": 7938,
+            "id": 960039,
             "et": "B3"
           },
           {
-            "id": 7939,
+            "id": 960040,
             "et": "B2"
           },
           {
-            "id": 7940,
+            "id": 960041,
             "et": "B1"
           },
           {
-            "id": 7941,
+            "id": 960042,
             "et": "B0"
           },
           {
-            "id": 7942,
+            "id": 960043,
             "et": "SUB"
           }
         ],
         "pinU": [
           {
-            "id": 7943,
+            "id": 960044,
             "et": "S3"
           },
           {
-            "id": 7944,
+            "id": 960045,
             "et": "S2"
           },
           {
-            "id": 7945,
+            "id": 960046,
             "et": "S1"
           },
           {
-            "id": 7946,
+            "id": 960047,
             "et": "S0"
           },
           {
-            "id": 7947,
+            "id": 960048,
             "et": "CARRY"
           },
           {
-            "id": 7948,
+            "id": 960049,
             "et": "NEG"
           },
           {
-            "id": 7949,
+            "id": 960050,
             "et": "ZERO"
           }
         ]
+      },
+      {
+        "id": 960052,
+        "tipo": "CUSTOM_AND",
+        "x": -420,
+        "y": 560,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 960053,
+            "et": "A"
+          },
+          {
+            "id": 960054,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 960055,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 960058,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": 160,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 960059,
+            "et": "D"
+          },
+          {
+            "id": 960060,
+            "et": "CLK"
+          },
+          {
+            "id": 960061,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 960062,
+            "et": "Q"
+          },
+          {
+            "id": 960063,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 960064,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": 160,
+        "y": 210,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 960065,
+            "et": "D"
+          },
+          {
+            "id": 960066,
+            "et": "CLK"
+          },
+          {
+            "id": 960067,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 960068,
+            "et": "Q"
+          },
+          {
+            "id": 960069,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 960070,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": 160,
+        "y": 360,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 960071,
+            "et": "D"
+          },
+          {
+            "id": 960072,
+            "et": "CLK"
+          },
+          {
+            "id": 960073,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 960074,
+            "et": "Q"
+          },
+          {
+            "id": 960075,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 960076,
+        "tipo": "CUSTOM_FLIP-FLOP_D",
+        "x": 160,
+        "y": 510,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 960077,
+            "et": "D"
+          },
+          {
+            "id": 960078,
+            "et": "CLK"
+          },
+          {
+            "id": 960079,
+            "et": "RST"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 960080,
+            "et": "Q"
+          },
+          {
+            "id": 960081,
+            "et": "Q̄"
+          }
+        ]
+      },
+      {
+        "id": 960082,
+        "tipo": "COSTANTE_0",
+        "x": 60,
+        "y": 640,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 960083,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 960092,
+        "tipo": "USCITA",
+        "x": 460,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "Q3",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 960093,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 960094,
+        "tipo": "USCITA",
+        "x": 460,
+        "y": 210,
+        "stato": 0,
+        "nomeCustom": "Q2",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 960095,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 960096,
+        "tipo": "USCITA",
+        "x": 460,
+        "y": 360,
+        "stato": 0,
+        "nomeCustom": "Q1",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 960097,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 960098,
+        "tipo": "USCITA",
+        "x": 460,
+        "y": 510,
+        "stato": 0,
+        "nomeCustom": "Q0",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 960099,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
       }
     ],
     "fili": [
       {
-        "id": 7951,
-        "srcId": 3260,
-        "dstId": 7934
+        "id": 960028,
+        "srcId": 960002,
+        "dstId": 960018
       },
       {
-        "id": 7953,
-        "srcId": 3261,
-        "dstId": 7935
+        "id": 960029,
+        "srcId": 960004,
+        "dstId": 960019
       },
       {
-        "id": 7955,
-        "srcId": 3262,
-        "dstId": 7936
+        "id": 960030,
+        "srcId": 960006,
+        "dstId": 960020
       },
       {
-        "id": 7957,
-        "srcId": 3263,
-        "dstId": 7937
+        "id": 960031,
+        "srcId": 960008,
+        "dstId": 960021
       },
       {
-        "id": 7959,
-        "srcId": 3272,
-        "dstId": 7938
+        "id": 960032,
+        "srcId": 960012,
+        "dstId": 960022
       },
       {
-        "id": 7961,
-        "srcId": 3273,
-        "dstId": 7939
+        "id": 960033,
+        "srcId": 960014,
+        "dstId": 960023
       },
       {
-        "id": 7963,
-        "srcId": 3274,
-        "dstId": 7940
+        "id": 960051,
+        "srcId": 960016,
+        "dstId": 960043
       },
       {
-        "id": 7965,
-        "srcId": 3275,
-        "dstId": 7941
+        "id": 960056,
+        "srcId": 960014,
+        "dstId": 960053
       },
       {
-        "id": 7967,
-        "srcId": 7943,
-        "dstId": 3254
+        "id": 960057,
+        "srcId": 960010,
+        "dstId": 960054
       },
       {
-        "id": 7969,
-        "srcId": 7944,
-        "dstId": 3255
+        "id": 960084,
+        "srcId": 960055,
+        "dstId": 960060
       },
       {
-        "id": 7971,
-        "srcId": 7945,
-        "dstId": 3256
+        "id": 960085,
+        "srcId": 960083,
+        "dstId": 960061
       },
       {
-        "id": 7973,
-        "srcId": 7946,
-        "dstId": 3257
+        "id": 960086,
+        "srcId": 960055,
+        "dstId": 960066
       },
       {
-        "id": 8691,
-        "srcId": 3260,
-        "dstId": 2143
+        "id": 960087,
+        "srcId": 960083,
+        "dstId": 960067
       },
       {
-        "id": 8693,
-        "srcId": 3261,
-        "dstId": 2146
+        "id": 960088,
+        "srcId": 960055,
+        "dstId": 960072
       },
       {
-        "id": 8695,
-        "srcId": 3262,
-        "dstId": 2149
+        "id": 960089,
+        "srcId": 960083,
+        "dstId": 960073
       },
       {
-        "id": 8697,
-        "srcId": 3263,
-        "dstId": 2152
+        "id": 960090,
+        "srcId": 960055,
+        "dstId": 960078
       },
       {
-        "id": 8699,
-        "srcId": 2137,
-        "dstId": 3258
+        "id": 960091,
+        "srcId": 960083,
+        "dstId": 960079
       },
       {
-        "id": 8701,
-        "srcId": 2140,
-        "dstId": 3259
+        "id": 960100,
+        "srcId": 960062,
+        "dstId": 960035
+      },
+      {
+        "id": 960101,
+        "srcId": 960044,
+        "dstId": 960059
+      },
+      {
+        "id": 960102,
+        "srcId": 960062,
+        "dstId": 960093
+      },
+      {
+        "id": 960103,
+        "srcId": 960068,
+        "dstId": 960036
+      },
+      {
+        "id": 960104,
+        "srcId": 960045,
+        "dstId": 960065
+      },
+      {
+        "id": 960105,
+        "srcId": 960068,
+        "dstId": 960095
+      },
+      {
+        "id": 960106,
+        "srcId": 960074,
+        "dstId": 960037
+      },
+      {
+        "id": 960107,
+        "srcId": 960046,
+        "dstId": 960071
+      },
+      {
+        "id": 960108,
+        "srcId": 960074,
+        "dstId": 960097
+      },
+      {
+        "id": 960109,
+        "srcId": 960080,
+        "dstId": 960038
+      },
+      {
+        "id": 960110,
+        "srcId": 960047,
+        "dstId": 960077
+      },
+      {
+        "id": 960111,
+        "srcId": 960080,
+        "dstId": 960099
+      },
+      {
+        "id": 960112,
+        "srcId": 960024,
+        "dstId": 960039
+      },
+      {
+        "id": 960113,
+        "srcId": 960025,
+        "dstId": 960040
+      },
+      {
+        "id": 960114,
+        "srcId": 960026,
+        "dstId": 960041
+      },
+      {
+        "id": 960115,
+        "srcId": 960027,
+        "dstId": 960042
       }
     ]
   },
-  "descrizione": "Blocco ALU con registri. Due registri a 4 bit (A e B) collegati a un'ALU. Il risultato dell'ALU viene riscritto nel registro A. B3-B0 sono gli ingressi dati per il registro B. WE abilita la scrittura, CLK è il clock."
+  "descrizione": "Accumulatore a 4 bit con ALU integrata e registro operando: sul fronte di salita di CLK, WE_A=1 memorizza in A il risultato della ALU (A + B, oppure A - B se SUB=1) e WE_B=1 carica in B il nuovo operando dagli ingressi B3-B0 (B3 = MSB). Le uscite Q3-Q0 mostrano l'accumulatore (Q3 = MSB). Uso tipico: WE_B per caricare l'operando, poi WE_A per accumulare. L'accumulatore usa 4 Flip-Flop D con clock condizionato (CLK AND WE_A), cosi' la cattura avviene sul risultato corrente della ALU, senza retroazione attraverso un registro.",
+  "categoria": "custom"
 }
