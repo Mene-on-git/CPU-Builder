@@ -61,11 +61,14 @@
       },
       {
         "id": 1887,
-        "tipo": "CUSTOM_D_FLIP_FLOP",
+        "tipo": "CUSTOM_FLIP-FLOP_D",
         "x": -380,
         "y": -400,
         "stato": 0,
-        "statoInterno": {},
+        "statoInterno": {
+          "Q": 0,
+          "clkPrev": 0
+        },
         "pinI": [
           {
             "id": 1888,
@@ -74,12 +77,20 @@
           {
             "id": 1889,
             "et": "CLK"
+          },
+          {
+            "id": 900500,
+            "et": "RST"
           }
         ],
         "pinU": [
           {
             "id": 1890,
             "et": "Q"
+          },
+          {
+            "id": 900501,
+            "et": "Q̄"
           }
         ]
       },

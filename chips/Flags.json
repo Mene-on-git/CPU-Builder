@@ -1,0 +1,216 @@
+{
+  "nome": "Flags",
+  "colore": "#8e44ad",
+  "ingressi": [
+    "C_IN",
+    "Z_IN",
+    "EN",
+    "CLK"
+  ],
+  "uscite": [
+    "C",
+    "Z"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 900309,
+        "tipo": "INGRESSO",
+        "x": -340,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "C_IN",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900310,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900311,
+        "tipo": "INGRESSO",
+        "x": -340,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "Z_IN",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900312,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900313,
+        "tipo": "INGRESSO",
+        "x": -340,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "EN",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900314,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900315,
+        "tipo": "INGRESSO",
+        "x": -340,
+        "y": 440,
+        "stato": 0,
+        "nomeCustom": "CLK",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900316,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900317,
+        "tipo": "CUSTOM_1_BIT_REGISTER",
+        "x": -120,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900318,
+            "et": "D"
+          },
+          {
+            "id": 900319,
+            "et": "WE"
+          },
+          {
+            "id": 900320,
+            "et": "CLK"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900321,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900322,
+        "tipo": "CUSTOM_1_BIT_REGISTER",
+        "x": -120,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900323,
+            "et": "D"
+          },
+          {
+            "id": 900324,
+            "et": "WE"
+          },
+          {
+            "id": 900325,
+            "et": "CLK"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900326,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900327,
+        "tipo": "USCITA",
+        "x": 160,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "C",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900328,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900329,
+        "tipo": "USCITA",
+        "x": 160,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "Z",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900330,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 900331,
+        "srcId": 900310,
+        "dstId": 900318
+      },
+      {
+        "id": 900332,
+        "srcId": 900314,
+        "dstId": 900319
+      },
+      {
+        "id": 900333,
+        "srcId": 900316,
+        "dstId": 900320
+      },
+      {
+        "id": 900334,
+        "srcId": 900312,
+        "dstId": 900323
+      },
+      {
+        "id": 900335,
+        "srcId": 900314,
+        "dstId": 900324
+      },
+      {
+        "id": 900336,
+        "srcId": 900316,
+        "dstId": 900325
+      },
+      {
+        "id": 900337,
+        "srcId": 900321,
+        "dstId": 900328
+      },
+      {
+        "id": 900338,
+        "srcId": 900326,
+        "dstId": 900330
+      }
+    ]
+  },
+  "descrizione": "Registro dei flag Carry e Zero: quando EN=1, sul fronte di salita di CLK cattura i valori C_IN e Z_IN (tipicamente prodotti dalla ALU) e li mantiene. Servono per i salti condizionali (JC/JZ) della CPU.",
+  "categoria": "memoria"
+}

@@ -1,0 +1,190 @@
+{
+  "nome": "DEMUX 1-2",
+  "colore": "#2e86c1",
+  "ingressi": [
+    "IN",
+    "S"
+  ],
+  "uscite": [
+    "Y0",
+    "Y1"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 900071,
+        "tipo": "INGRESSO",
+        "x": -320,
+        "y": 120,
+        "stato": 0,
+        "nomeCustom": "IN",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900072,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900073,
+        "tipo": "INGRESSO",
+        "x": -320,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "S",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900074,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900075,
+        "tipo": "CUSTOM_NOT",
+        "x": -180,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900076,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900077,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900078,
+        "tipo": "CUSTOM_AND",
+        "x": -60,
+        "y": 80,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900079,
+            "et": "A"
+          },
+          {
+            "id": 900080,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900081,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900082,
+        "tipo": "CUSTOM_AND",
+        "x": -60,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900083,
+            "et": "A"
+          },
+          {
+            "id": 900084,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900085,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900086,
+        "tipo": "USCITA",
+        "x": 120,
+        "y": 80,
+        "stato": 0,
+        "nomeCustom": "Y0",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900087,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900088,
+        "tipo": "USCITA",
+        "x": 120,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "Y1",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900089,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 900090,
+        "srcId": 900074,
+        "dstId": 900076
+      },
+      {
+        "id": 900091,
+        "srcId": 900072,
+        "dstId": 900079
+      },
+      {
+        "id": 900092,
+        "srcId": 900077,
+        "dstId": 900080
+      },
+      {
+        "id": 900093,
+        "srcId": 900072,
+        "dstId": 900083
+      },
+      {
+        "id": 900094,
+        "srcId": 900074,
+        "dstId": 900084
+      },
+      {
+        "id": 900095,
+        "srcId": 900081,
+        "dstId": 900087
+      },
+      {
+        "id": 900096,
+        "srcId": 900085,
+        "dstId": 900089
+      }
+    ]
+  },
+  "descrizione": "Demultiplexer 1 ingresso a 2 uscite: S=0 instrada IN su Y0, S=1 su Y1. L'altra uscita resta a 0. Realizzato con NOT/AND custom.",
+  "categoria": "custom"
+}

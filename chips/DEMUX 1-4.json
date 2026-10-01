@@ -1,0 +1,272 @@
+{
+  "nome": "DEMUX 1-4",
+  "colore": "#2e86c1",
+  "ingressi": [
+    "IN",
+    "S0",
+    "S1"
+  ],
+  "uscite": [
+    "Y0",
+    "Y1",
+    "Y2",
+    "Y3"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 900097,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "IN",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900098,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900099,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 460,
+        "stato": 0,
+        "nomeCustom": "S0",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900100,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900101,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 560,
+        "stato": 0,
+        "nomeCustom": "S1",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900102,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900103,
+        "tipo": "CUSTOM_DEMUX_1-2",
+        "x": -200,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900104,
+            "et": "IN"
+          },
+          {
+            "id": 900105,
+            "et": "S"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900106,
+            "et": "Y0"
+          },
+          {
+            "id": 900107,
+            "et": "Y1"
+          }
+        ]
+      },
+      {
+        "id": 900108,
+        "tipo": "CUSTOM_DEMUX_1-2",
+        "x": 0,
+        "y": 120,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900109,
+            "et": "IN"
+          },
+          {
+            "id": 900110,
+            "et": "S"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900111,
+            "et": "Y0"
+          },
+          {
+            "id": 900112,
+            "et": "Y1"
+          }
+        ]
+      },
+      {
+        "id": 900113,
+        "tipo": "CUSTOM_DEMUX_1-2",
+        "x": 0,
+        "y": 360,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900114,
+            "et": "IN"
+          },
+          {
+            "id": 900115,
+            "et": "S"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900116,
+            "et": "Y0"
+          },
+          {
+            "id": 900117,
+            "et": "Y1"
+          }
+        ]
+      },
+      {
+        "id": 900118,
+        "tipo": "USCITA",
+        "x": 220,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "Y0",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900119,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900120,
+        "tipo": "USCITA",
+        "x": 220,
+        "y": 170,
+        "stato": 0,
+        "nomeCustom": "Y1",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900121,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900122,
+        "tipo": "USCITA",
+        "x": 220,
+        "y": 280,
+        "stato": 0,
+        "nomeCustom": "Y2",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900123,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900124,
+        "tipo": "USCITA",
+        "x": 220,
+        "y": 390,
+        "stato": 0,
+        "nomeCustom": "Y3",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900125,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 900126,
+        "srcId": 900098,
+        "dstId": 900104
+      },
+      {
+        "id": 900127,
+        "srcId": 900102,
+        "dstId": 900105
+      },
+      {
+        "id": 900128,
+        "srcId": 900106,
+        "dstId": 900109
+      },
+      {
+        "id": 900129,
+        "srcId": 900100,
+        "dstId": 900110
+      },
+      {
+        "id": 900130,
+        "srcId": 900107,
+        "dstId": 900114
+      },
+      {
+        "id": 900131,
+        "srcId": 900100,
+        "dstId": 900115
+      },
+      {
+        "id": 900132,
+        "srcId": 900111,
+        "dstId": 900119
+      },
+      {
+        "id": 900133,
+        "srcId": 900112,
+        "dstId": 900121
+      },
+      {
+        "id": 900134,
+        "srcId": 900116,
+        "dstId": 900123
+      },
+      {
+        "id": 900135,
+        "srcId": 900117,
+        "dstId": 900125
+      }
+    ]
+  },
+  "descrizione": "Demultiplexer 1 ingresso a 4 uscite: l'indirizzo binario S1 S0 (0-3) sceglie su quale uscita instradare IN; le altre restano a 0. Albero di tre DEMUX 1:2.",
+  "categoria": "custom"
+}

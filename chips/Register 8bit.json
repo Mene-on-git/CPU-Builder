@@ -1,0 +1,528 @@
+{
+  "nome": "Register 8bit",
+  "colore": "#27ae60",
+  "ingressi": [
+    "D0",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "WE",
+    "CLK"
+  ],
+  "uscite": [
+    "Q0",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 900231,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "D0",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900232,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900233,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "D1",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900234,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900235,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 240,
+        "stato": 0,
+        "nomeCustom": "D2",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900236,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900237,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "D3",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900238,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900239,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 440,
+        "stato": 0,
+        "nomeCustom": "D4",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900240,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900241,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 540,
+        "stato": 0,
+        "nomeCustom": "D5",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900242,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900243,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 640,
+        "stato": 0,
+        "nomeCustom": "D6",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900244,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900245,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 740,
+        "stato": 0,
+        "nomeCustom": "D7",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900246,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900247,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 860,
+        "stato": 0,
+        "nomeCustom": "WE",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900248,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900249,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 960,
+        "stato": 0,
+        "nomeCustom": "CLK",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900250,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900251,
+        "tipo": "CUSTOM_4_BIT_REGISTER",
+        "x": -180,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900252,
+            "et": "D0"
+          },
+          {
+            "id": 900253,
+            "et": "D1"
+          },
+          {
+            "id": 900254,
+            "et": "D2"
+          },
+          {
+            "id": 900255,
+            "et": "D3"
+          },
+          {
+            "id": 900256,
+            "et": "WE"
+          },
+          {
+            "id": 900257,
+            "et": "CLK"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900258,
+            "et": "Q0"
+          },
+          {
+            "id": 900259,
+            "et": "Q1"
+          },
+          {
+            "id": 900260,
+            "et": "Q2"
+          },
+          {
+            "id": 900261,
+            "et": "Q3"
+          }
+        ]
+      },
+      {
+        "id": 900262,
+        "tipo": "CUSTOM_4_BIT_REGISTER",
+        "x": -180,
+        "y": 600,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900263,
+            "et": "D0"
+          },
+          {
+            "id": 900264,
+            "et": "D1"
+          },
+          {
+            "id": 900265,
+            "et": "D2"
+          },
+          {
+            "id": 900266,
+            "et": "D3"
+          },
+          {
+            "id": 900267,
+            "et": "WE"
+          },
+          {
+            "id": 900268,
+            "et": "CLK"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900269,
+            "et": "Q0"
+          },
+          {
+            "id": 900270,
+            "et": "Q1"
+          },
+          {
+            "id": 900271,
+            "et": "Q2"
+          },
+          {
+            "id": 900272,
+            "et": "Q3"
+          }
+        ]
+      },
+      {
+        "id": 900273,
+        "tipo": "USCITA",
+        "x": 200,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "Q0",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900274,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900275,
+        "tipo": "USCITA",
+        "x": 200,
+        "y": 140,
+        "stato": 0,
+        "nomeCustom": "Q1",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900276,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900277,
+        "tipo": "USCITA",
+        "x": 200,
+        "y": 240,
+        "stato": 0,
+        "nomeCustom": "Q2",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900278,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900279,
+        "tipo": "USCITA",
+        "x": 200,
+        "y": 340,
+        "stato": 0,
+        "nomeCustom": "Q3",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900280,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900281,
+        "tipo": "USCITA",
+        "x": 200,
+        "y": 440,
+        "stato": 0,
+        "nomeCustom": "Q4",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900282,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900283,
+        "tipo": "USCITA",
+        "x": 200,
+        "y": 540,
+        "stato": 0,
+        "nomeCustom": "Q5",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900284,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900285,
+        "tipo": "USCITA",
+        "x": 200,
+        "y": 640,
+        "stato": 0,
+        "nomeCustom": "Q6",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900286,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900287,
+        "tipo": "USCITA",
+        "x": 200,
+        "y": 740,
+        "stato": 0,
+        "nomeCustom": "Q7",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900288,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 900289,
+        "srcId": 900232,
+        "dstId": 900252
+      },
+      {
+        "id": 900290,
+        "srcId": 900240,
+        "dstId": 900263
+      },
+      {
+        "id": 900291,
+        "srcId": 900234,
+        "dstId": 900253
+      },
+      {
+        "id": 900292,
+        "srcId": 900242,
+        "dstId": 900264
+      },
+      {
+        "id": 900293,
+        "srcId": 900236,
+        "dstId": 900254
+      },
+      {
+        "id": 900294,
+        "srcId": 900244,
+        "dstId": 900265
+      },
+      {
+        "id": 900295,
+        "srcId": 900238,
+        "dstId": 900255
+      },
+      {
+        "id": 900296,
+        "srcId": 900246,
+        "dstId": 900266
+      },
+      {
+        "id": 900297,
+        "srcId": 900248,
+        "dstId": 900256
+      },
+      {
+        "id": 900298,
+        "srcId": 900250,
+        "dstId": 900257
+      },
+      {
+        "id": 900299,
+        "srcId": 900248,
+        "dstId": 900267
+      },
+      {
+        "id": 900300,
+        "srcId": 900250,
+        "dstId": 900268
+      },
+      {
+        "id": 900301,
+        "srcId": 900258,
+        "dstId": 900274
+      },
+      {
+        "id": 900302,
+        "srcId": 900269,
+        "dstId": 900282
+      },
+      {
+        "id": 900303,
+        "srcId": 900259,
+        "dstId": 900276
+      },
+      {
+        "id": 900304,
+        "srcId": 900270,
+        "dstId": 900284
+      },
+      {
+        "id": 900305,
+        "srcId": 900260,
+        "dstId": 900278
+      },
+      {
+        "id": 900306,
+        "srcId": 900271,
+        "dstId": 900286
+      },
+      {
+        "id": 900307,
+        "srcId": 900261,
+        "dstId": 900280
+      },
+      {
+        "id": 900308,
+        "srcId": 900272,
+        "dstId": 900288
+      }
+    ]
+  },
+  "descrizione": "Registro a 8 bit con Write Enable e Clock (due 4 bit register): quando WE=1, sul fronte di salita di CLK memorizza D0-D7. Base per ACC, IR, MAR e i registri della CPU.",
+  "categoria": "memoria"
+}

@@ -1,0 +1,164 @@
+{
+  "nome": "Half Adder",
+  "colore": "#e67e22",
+  "ingressi": [
+    "A",
+    "B"
+  ],
+  "uscite": [
+    "S",
+    "Cout"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 900136,
+        "tipo": "INGRESSO",
+        "x": -300,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "A",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900137,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900138,
+        "tipo": "INGRESSO",
+        "x": -300,
+        "y": 180,
+        "stato": 0,
+        "nomeCustom": "B",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900139,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900140,
+        "tipo": "CUSTOM_XOR",
+        "x": -120,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900141,
+            "et": "A"
+          },
+          {
+            "id": 900142,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900143,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900144,
+        "tipo": "CUSTOM_AND",
+        "x": -120,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900145,
+            "et": "A"
+          },
+          {
+            "id": 900146,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900147,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900148,
+        "tipo": "USCITA",
+        "x": 80,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "S",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900149,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900150,
+        "tipo": "USCITA",
+        "x": 80,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "Cout",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900151,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 900152,
+        "srcId": 900137,
+        "dstId": 900141
+      },
+      {
+        "id": 900153,
+        "srcId": 900139,
+        "dstId": 900142
+      },
+      {
+        "id": 900154,
+        "srcId": 900137,
+        "dstId": 900145
+      },
+      {
+        "id": 900155,
+        "srcId": 900139,
+        "dstId": 900146
+      },
+      {
+        "id": 900156,
+        "srcId": 900143,
+        "dstId": 900149
+      },
+      {
+        "id": 900157,
+        "srcId": 900147,
+        "dstId": 900151
+      }
+    ]
+  },
+  "descrizione": "Sommatore a 1 bit senza riporto in ingresso: S = A XOR B, Cout = A AND B. Il Full Adder (ADDER) e' la sua estensione con Cin.",
+  "categoria": "custom"
+}

@@ -1,0 +1,272 @@
+{
+  "nome": "MUX 4-1",
+  "colore": "#16a085",
+  "ingressi": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "S0",
+    "S1"
+  ],
+  "uscite": [
+    "Q"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 900032,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 20,
+        "stato": 0,
+        "nomeCustom": "A",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900033,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900034,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 120,
+        "stato": 0,
+        "nomeCustom": "B",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900035,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900036,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "C",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900037,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900038,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 320,
+        "stato": 0,
+        "nomeCustom": "D",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900039,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900040,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 460,
+        "stato": 0,
+        "nomeCustom": "S0",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900041,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900042,
+        "tipo": "INGRESSO",
+        "x": -380,
+        "y": 560,
+        "stato": 0,
+        "nomeCustom": "S1",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900043,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900044,
+        "tipo": "CUSTOM_MUX_2-1",
+        "x": -160,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900045,
+            "et": "A"
+          },
+          {
+            "id": 900046,
+            "et": "B"
+          },
+          {
+            "id": 900047,
+            "et": "S"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900048,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900049,
+        "tipo": "CUSTOM_MUX_2-1",
+        "x": -160,
+        "y": 260,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900050,
+            "et": "A"
+          },
+          {
+            "id": 900051,
+            "et": "B"
+          },
+          {
+            "id": 900052,
+            "et": "S"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900053,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900054,
+        "tipo": "CUSTOM_MUX_2-1",
+        "x": 60,
+        "y": 170,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900055,
+            "et": "A"
+          },
+          {
+            "id": 900056,
+            "et": "B"
+          },
+          {
+            "id": 900057,
+            "et": "S"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900058,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900059,
+        "tipo": "USCITA",
+        "x": 280,
+        "y": 170,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900060,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 900061,
+        "srcId": 900033,
+        "dstId": 900045
+      },
+      {
+        "id": 900062,
+        "srcId": 900035,
+        "dstId": 900046
+      },
+      {
+        "id": 900063,
+        "srcId": 900041,
+        "dstId": 900047
+      },
+      {
+        "id": 900064,
+        "srcId": 900037,
+        "dstId": 900050
+      },
+      {
+        "id": 900065,
+        "srcId": 900039,
+        "dstId": 900051
+      },
+      {
+        "id": 900066,
+        "srcId": 900041,
+        "dstId": 900052
+      },
+      {
+        "id": 900067,
+        "srcId": 900048,
+        "dstId": 900055
+      },
+      {
+        "id": 900068,
+        "srcId": 900053,
+        "dstId": 900056
+      },
+      {
+        "id": 900069,
+        "srcId": 900043,
+        "dstId": 900057
+      },
+      {
+        "id": 900070,
+        "srcId": 900058,
+        "dstId": 900060
+      }
+    ]
+  },
+  "descrizione": "Multiplexer 4 ingressi a 1: l'indirizzo binario S1 S0 (0-3) seleziona rispettivamente A, B, C o D. Costruito come albero di tre MUX 2:1.",
+  "categoria": "custom"
+}

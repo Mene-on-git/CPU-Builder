@@ -1,0 +1,496 @@
+{
+  "nome": "Subtractor 4bit",
+  "colore": "#c0392b",
+  "ingressi": [
+    "A3",
+    "A2",
+    "A1",
+    "A0",
+    "B3",
+    "B2",
+    "B1",
+    "B0"
+  ],
+  "uscite": [
+    "S3",
+    "S2",
+    "S1",
+    "S0",
+    "Cout"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 900158,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 310,
+        "stato": 0,
+        "nomeCustom": "A3",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900159,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900160,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 220,
+        "stato": 0,
+        "nomeCustom": "A2",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900161,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900162,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 130,
+        "stato": 0,
+        "nomeCustom": "A1",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900163,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900164,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "A0",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900165,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900166,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 690,
+        "stato": 0,
+        "nomeCustom": "B3",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900167,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900168,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 600,
+        "stato": 0,
+        "nomeCustom": "B2",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900169,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900170,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 510,
+        "stato": 0,
+        "nomeCustom": "B1",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900171,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900172,
+        "tipo": "INGRESSO",
+        "x": -420,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "B0",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900173,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900174,
+        "tipo": "CUSTOM_NOT",
+        "x": -280,
+        "y": 420,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900175,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900176,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900177,
+        "tipo": "CUSTOM_NOT",
+        "x": -280,
+        "y": 510,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900178,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900179,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900180,
+        "tipo": "CUSTOM_NOT",
+        "x": -280,
+        "y": 600,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900181,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900182,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900183,
+        "tipo": "CUSTOM_NOT",
+        "x": -280,
+        "y": 690,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900184,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900185,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900186,
+        "tipo": "COSTANTE_1",
+        "x": -280,
+        "y": 800,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900187,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900188,
+        "tipo": "CUSTOM_4_BIT_ADDER",
+        "x": -60,
+        "y": 300,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900189,
+            "et": "A3"
+          },
+          {
+            "id": 900190,
+            "et": "A2"
+          },
+          {
+            "id": 900191,
+            "et": "A1"
+          },
+          {
+            "id": 900192,
+            "et": "A0"
+          },
+          {
+            "id": 900193,
+            "et": "B3"
+          },
+          {
+            "id": 900194,
+            "et": "B2"
+          },
+          {
+            "id": 900195,
+            "et": "B1"
+          },
+          {
+            "id": 900196,
+            "et": "B0"
+          },
+          {
+            "id": 900197,
+            "et": "Cin"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900198,
+            "et": "S3"
+          },
+          {
+            "id": 900199,
+            "et": "S2"
+          },
+          {
+            "id": 900200,
+            "et": "S1"
+          },
+          {
+            "id": 900201,
+            "et": "S0"
+          },
+          {
+            "id": 900202,
+            "et": "Cout"
+          }
+        ]
+      },
+      {
+        "id": 900203,
+        "tipo": "USCITA",
+        "x": 300,
+        "y": 330,
+        "stato": 0,
+        "nomeCustom": "S3",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900204,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900205,
+        "tipo": "USCITA",
+        "x": 300,
+        "y": 240,
+        "stato": 0,
+        "nomeCustom": "S2",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900206,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900207,
+        "tipo": "USCITA",
+        "x": 300,
+        "y": 150,
+        "stato": 0,
+        "nomeCustom": "S1",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900208,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900209,
+        "tipo": "USCITA",
+        "x": 300,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "S0",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900210,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      },
+      {
+        "id": 900211,
+        "tipo": "USCITA",
+        "x": 300,
+        "y": 460,
+        "stato": 0,
+        "nomeCustom": "Cout",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900212,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 900213,
+        "srcId": 900159,
+        "dstId": 900189
+      },
+      {
+        "id": 900214,
+        "srcId": 900167,
+        "dstId": 900175
+      },
+      {
+        "id": 900215,
+        "srcId": 900176,
+        "dstId": 900193
+      },
+      {
+        "id": 900216,
+        "srcId": 900161,
+        "dstId": 900190
+      },
+      {
+        "id": 900217,
+        "srcId": 900169,
+        "dstId": 900178
+      },
+      {
+        "id": 900218,
+        "srcId": 900179,
+        "dstId": 900194
+      },
+      {
+        "id": 900219,
+        "srcId": 900163,
+        "dstId": 900191
+      },
+      {
+        "id": 900220,
+        "srcId": 900171,
+        "dstId": 900181
+      },
+      {
+        "id": 900221,
+        "srcId": 900182,
+        "dstId": 900195
+      },
+      {
+        "id": 900222,
+        "srcId": 900165,
+        "dstId": 900192
+      },
+      {
+        "id": 900223,
+        "srcId": 900173,
+        "dstId": 900184
+      },
+      {
+        "id": 900224,
+        "srcId": 900185,
+        "dstId": 900196
+      },
+      {
+        "id": 900225,
+        "srcId": 900187,
+        "dstId": 900197
+      },
+      {
+        "id": 900226,
+        "srcId": 900198,
+        "dstId": 900204
+      },
+      {
+        "id": 900227,
+        "srcId": 900199,
+        "dstId": 900206
+      },
+      {
+        "id": 900228,
+        "srcId": 900200,
+        "dstId": 900208
+      },
+      {
+        "id": 900229,
+        "srcId": 900201,
+        "dstId": 900210
+      },
+      {
+        "id": 900230,
+        "srcId": 900202,
+        "dstId": 900212
+      }
+    ]
+  },
+  "descrizione": "Sottrattore a 4 bit: S = A - B calcolato in complemento a 2 (A + NOT B + 1) riusando il 4 bit ADDER. Cout=1 indica che il risultato non e' negativo (nessun prestito).",
+  "categoria": "custom"
+}

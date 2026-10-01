@@ -1,0 +1,220 @@
+{
+  "nome": "MUX 2-1",
+  "colore": "#16a085",
+  "ingressi": [
+    "A",
+    "B",
+    "S"
+  ],
+  "uscite": [
+    "Q"
+  ],
+  "circuito": {
+    "chips": [
+      {
+        "id": 900001,
+        "tipo": "INGRESSO",
+        "x": -320,
+        "y": 40,
+        "stato": 0,
+        "nomeCustom": "A",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900002,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900003,
+        "tipo": "INGRESSO",
+        "x": -320,
+        "y": 180,
+        "stato": 0,
+        "nomeCustom": "B",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900004,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900005,
+        "tipo": "INGRESSO",
+        "x": -320,
+        "y": 320,
+        "stato": 0,
+        "nomeCustom": "S",
+        "statoInterno": {},
+        "pinI": [],
+        "pinU": [
+          {
+            "id": 900006,
+            "et": "OUT"
+          }
+        ]
+      },
+      {
+        "id": 900007,
+        "tipo": "CUSTOM_NOT",
+        "x": -180,
+        "y": 320,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900008,
+            "et": "A"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900009,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900010,
+        "tipo": "CUSTOM_AND",
+        "x": -60,
+        "y": 60,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900011,
+            "et": "A"
+          },
+          {
+            "id": 900012,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900013,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900014,
+        "tipo": "CUSTOM_AND",
+        "x": -60,
+        "y": 200,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900015,
+            "et": "A"
+          },
+          {
+            "id": 900016,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900017,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900018,
+        "tipo": "CUSTOM_OR",
+        "x": 100,
+        "y": 130,
+        "stato": 0,
+        "nomeCustom": "",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900019,
+            "et": "A"
+          },
+          {
+            "id": 900020,
+            "et": "B"
+          }
+        ],
+        "pinU": [
+          {
+            "id": 900021,
+            "et": "Q"
+          }
+        ]
+      },
+      {
+        "id": 900022,
+        "tipo": "USCITA",
+        "x": 260,
+        "y": 130,
+        "stato": 0,
+        "nomeCustom": "Q",
+        "statoInterno": {},
+        "pinI": [
+          {
+            "id": 900023,
+            "et": "IN"
+          }
+        ],
+        "pinU": []
+      }
+    ],
+    "fili": [
+      {
+        "id": 900024,
+        "srcId": 900006,
+        "dstId": 900008
+      },
+      {
+        "id": 900025,
+        "srcId": 900002,
+        "dstId": 900011
+      },
+      {
+        "id": 900026,
+        "srcId": 900009,
+        "dstId": 900012
+      },
+      {
+        "id": 900027,
+        "srcId": 900004,
+        "dstId": 900015
+      },
+      {
+        "id": 900028,
+        "srcId": 900006,
+        "dstId": 900016
+      },
+      {
+        "id": 900029,
+        "srcId": 900013,
+        "dstId": 900019
+      },
+      {
+        "id": 900030,
+        "srcId": 900017,
+        "dstId": 900020
+      },
+      {
+        "id": 900031,
+        "srcId": 900021,
+        "dstId": 900023
+      }
+    ]
+  },
+  "descrizione": "Multiplexer 2 ingressi a 1: S=0 seleziona A, S=1 seleziona B. Realizzato con NOT/AND/OR custom (a loro volta da NAND).",
+  "categoria": "custom"
+}
